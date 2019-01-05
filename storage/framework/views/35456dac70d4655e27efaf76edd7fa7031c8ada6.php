@@ -7,7 +7,7 @@
         <link href="<?php echo e(asset('css/styles_qs.css')); ?>" rel="stylesheet">
         <script type="text/javascript" src="<?php echo e(asset('js/dropdown.js')); ?>"></script>
 
-        <title>Laravel</title>
+        <title>¿Quiénes Somos? - LogUCAB</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">

@@ -14,7 +14,7 @@
     <div class="links">
         <a href="quienes_somos">¿Quienes Somos?</a>
         <div class="dropdown">
-          <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+          <a onclick="myFunction()" class="dropbtn">Tablas</a>
           <div id="myDropdown" class="dropdown-content">
             <a href="usuario">Usuarios</a>
             <a href="rol">Roles</a>
