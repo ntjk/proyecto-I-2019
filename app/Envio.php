@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $fk_cliente
  * @property int $fk_flota_ruta_1
  * @property int $fk_destinatario
- * @property string $en_tipo
+ * @property string $fk_tipo
  * @property float $en_precio
  * @property float $en_peso
  * @property string $en_descripcion
@@ -44,7 +44,7 @@ class Envio extends Model
     /**
      * @var array
      */
-    protected $fillable = ['en_tipo', 'en_precio', 'en_peso', 'en_descripcion', 'en_anchura', 'en_altura', 'en_profundidad', 'en_fecha_envio', 'en_fecha_entrega_estimada', 'fk_sucursal_origen', 'fk_cliente', 'fk_destinatario', 'fk_flota_ruta_1', 'fk_sucursal_destino'];
+    protected $fillable = ['fk_tipo', 'en_precio', 'en_peso', 'en_descripcion', 'en_anchura', 'en_altura', 'en_profundidad', 'en_fecha_envio', 'en_fecha_entrega_estimada', 'fk_sucursal_origen', 'fk_cliente', 'fk_destinatario', 'fk_flota_ruta_1', 'fk_sucursal_destino'];
     
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -78,5 +78,11 @@ class Envio extends Model
     {
         return $this->belongsTo('App\Floru', 'fk_flota_ruta_1', 'flo_ru_clave');
     }
-   
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function tipo()
+    {
+        return $this->belongsTo('App\Tipo', 'fk_tipo', 'ti_clave');
+    }
 }

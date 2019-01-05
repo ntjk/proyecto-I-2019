@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <meta name="csrf-token" content="{!! csrf_token() !!}" />
-        <title>Laravel</title>
+        <title>Sucursal - LogUCAB</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
@@ -152,7 +152,7 @@
         </style>
     </head>
     <body>
-          @include('header')
+            @include('header')
             <div class="container">
             <br/>
             <h1 class="text-center">Sucursales</h1>

@@ -12,6 +12,7 @@ use App\Ruta;
 use App\Flota;
 use App\Destinatario;
 use App\Telefono;
+use App\Tipo;
 
 class EnvioController extends Controller
 {
@@ -20,7 +21,9 @@ class EnvioController extends Controller
      *
      * @return \Illuminate\View\View
      */
-
+    public function calcularMesConMasEnvios(){
+      
+    }
 
     public function index()
     {
@@ -28,7 +31,20 @@ class EnvioController extends Controller
       $rutas=Ruta::orderBy('ru_clave')->get();
       $sucursales=Sucursal::orderBy('su_nombre')->get();
       $florus=Floru::orderBy('flo_ru_clave')->get();
+      $tipos=Tipo::orderBy('ti_clave')->get();
 
+      $mayor=0;
+      for ($i = 1; $i <= 12; $i++){
+        $num=Envio::whereMonth('en_fecha_envio', $i)->count();
+        if($num>$mayor)
+          $mayor=$i;
+      }
+      $mesConMasEnvios=$mayor;
+        
+      /*$mesConMasEnvios=Envio::groupBy(function (Gk $item) {
+        return $item->en_fecha_envio->format('m');
+    })->count()->first();//select count(*) as conteo, extract(month from en_fecha_envio) as mes from envio group by extract(month from en_fecha_envio) order by conteo desc
+      
      /* Con esto seleccionas un nodo y está bien. Hacer que esto salga en una filita o varias filitas
 select su_nombre, ru_clave from ruta, sucursal where fk_sucursal_1=su_clave and fk_sucursal_2=335 and fk_ruta in (select ru_clave from ruta where fk_sucursal_1 = 1 and fk_ruta is null)
 
@@ -37,25 +53,28 @@ select su_nombre, ru_clave from ruta, sucursal where fk_sucursal_1=su_clave and 
 Habria que hacer esto para obtener el nombre del nodo 1
 select su_nombre, ru_clave from ruta, sucursal where fk_sucursal_1=su_clave and fk_sucursal_2!=335 and fk_ruta in (select ru_clave from ruta where fk_sucursal_1 = 1 and fk_ruta is null) */
 
-      $envio1 = Envio::join('sucursal','sucursal.su_clave','=','envio.fk_sucursal_origen')
+        $envio1 = Envio::join('sucursal','sucursal.su_clave','=','envio.fk_sucursal_origen')
         ->select(['sucursal.su_nombre'])
-        //->whereBetween('sucursal.su_clave', [1, 10])
+        ->whereBetween('sucursal.su_clave', [1, 10])
         ->get();
         $envio2 = Envio::join('sucursal','sucursal.su_clave','=','envio.fk_sucursal_destino')
         ->select(['sucursal.su_nombre'])
-        //->whereBetween('sucursal.su_clave', [1, 10])
+        ->whereBetween('sucursal.su_clave', [1, 10])
         ->get();
         $envio3 = Envio::join('cliente','cli_clave','=','envio.fk_cliente')->select(['cliente.cli_cedula'])
-        //->whereBetween('cliente.cli_clave', [1, 10])
+        ->whereBetween('cliente.cli_clave', [1, 10])
         ->get();
         $envio4 = Envio::join('destinatario','des_clave','=','envio.fk_destinatario')->select(['destinatario.des_cedula'])
-        //->whereBetween('destinatario.des_clave', [1, 10])
+        ->whereBetween('destinatario.des_clave', [1, 10])
         ->get();
-
-
+        $envio5 = Envio::join('tipo','ti_clave','=','envio.fk_tipo')->select(['tipo.ti_nombre'])
+        ->whereBetween('tipo.ti_clave', [1, 10])
+        ->get();
+//este poco de envios es por los atributos que necesitamos que salgan en la tabla pero no pertenecen a la tabla envio 
+    
         $envios = Envio::select(
             'envio.en_clave',
-            'envio.en_tipo',
+            'envio.fk_tipo',
             'envio.en_precio',
             'envio.en_peso',
             'envio.en_descripcion',
@@ -63,11 +82,11 @@ select su_nombre, ru_clave from ruta, sucursal where fk_sucursal_1=su_clave and 
             'envio.en_anchura',
             'envio.en_profundidad',
             'envio.en_fecha_envio',
-            'envio.en_fecha_entrega_estimada',
+            'envio.en_fecha_entrega_estimada',   
             'envio.fk_flota_ruta_1')
-        //->whereBetween('envio.en_clave', [1, 10])
+        ->whereBetween('envio.en_clave', [1, 10])
         ->get();
-
+              
 
         $i=0;
         foreach($envios as $envi){
@@ -75,10 +94,11 @@ select su_nombre, ru_clave from ruta, sucursal where fk_sucursal_1=su_clave and 
           $envi->setAttribute("sd_nombre",$envio2[$i]->su_nombre);
           $envi->setAttribute("cli_cedula",$envio3[$i]->cli_cedula);
           $envi->setAttribute("des_cedula",$envio4[$i]->des_cedula);
+          $envi->setAttribute("ti_nombre",$envio5[$i]->ti_nombre);
           $i++;
         }
 
-      return view('envio')->with(compact('sucursales'))->with(compact('clientes'))->with(compact('florus'))->with(compact('rutas'))->with(compact('envios'));
+      return view('envio')->with(compact('sucursales'))->with(compact('clientes'))->with(compact('tipos'))->with(compact('florus'))->with(compact('rutas'))->with(compact('envios'))->with(compact('mesConMasEnvios'));
      // return view('envio')->with(compact('sucursales'))->with(compact('clientes'))->with(compact('florus'))->with(compact('rutas'));
     }
 
@@ -90,13 +110,14 @@ select su_nombre, ru_clave from ruta, sucursal where fk_sucursal_1=su_clave and 
 
     public function getData()
     {
-
+    
         $envio = Envio::join('sucursal','sucursal.su_clave','=','envio.fk_sucursal_origen')
         ->join('cliente','cliente.cli_clave','=','envio.fk_cliente')
         ->join('destinatario','destinatario.des_clave','=','envio.fk_destinatario')
+        ->join('tipo','tipo.ti_clave','=','envio.fk_tipo')
         ->select([
             'envio.en_clave',
-            'envio.en_tipo',
+            'tipo.ti_nombre',
             'envio.en_precio',
             'envio.en_peso',
             'envio.en_descripcion',
@@ -119,15 +140,21 @@ select su_nombre, ru_clave from ruta, sucursal where fk_sucursal_1=su_clave and 
 
     public function store(Request $request){
       if ($request->operation == "Edit"){
+        console.log($request);
         $cliente = Cliente::find($request->fk_cliente);
         $cliente->cli_cedula = $request->input('fk_cliente');
         $cliente->save();
+        $destinatario = Destinatario::find($request->fk_destinatario);
+        $destinatario = $request->input('fk_destinatario');
+        $destinatario->save();
         $envio = Envio::find($request->en_clave);
         $envio->fill($request->all());
         $envio->save();
       } else {
+          $destin = Destinatario::where('destinatario.des_cedula','=', $request->input('des_cedula'))->where('destinatario.des_nombre','=', $request->input('des_nombre'))->where('destinatario.des_apellido','=', $request->input('des_apellido'))->exists();
+
           $envio = new Envio();
-          $envio -> en_tipo = $request->input('en_tipo');
+          $envio -> fk_tipo = $request->input('fk_tipo');
           $envio -> en_precio = $request->input('en_precio');
           $envio -> en_peso = $request->input('en_peso');
           $envio -> en_descripcion = $request->input('en_descripcion');
@@ -147,20 +174,22 @@ select su_nombre, ru_clave from ruta, sucursal where fk_sucursal_1=su_clave and 
           $envio -> fk_flota_ruta_4 = $ruta3->fk_ruta_2;
           $envio -> fk_flota_ruta_5 = $ruta3->fk_ruta_3;
 
-          $destinatario = new Destinatario();
-          $destinatario -> des_nombre = $request->input('des_nombre');
-          $destinatario -> des_apellido = $request->input('des_apellido');
-          $destinatario -> des_cedula = $request->input('des_cedula');
-          $destinatario -> save();
-
           $telefono = new Telefono();
           $telefono -> tel_numero = $request->input('tel_numero');
+
+          if($destin==false){
+            $destinatario = new Destinatario();
+            $destinatario -> des_nombre = $request->input('des_nombre');
+            $destinatario -> des_apellido = $request->input('des_apellido');
+            $destinatario -> des_cedula = $request->input('des_cedula');
+            $destinatario -> save();
+          }
+          
           $destinatarioClave = Destinatario::where('destinatario.des_cedula','=', $request->input('des_cedula'))->where('destinatario.des_nombre','=', $request->input('des_nombre'))->where('destinatario.des_apellido','=', $request->input('des_apellido'))->first()->des_clave;
-          $telefono -> fk_destinatario = $destinatarioClave;
-          $telefono -> save();
-
           $envio-> fk_destinatario = $destinatarioClave;
-
+          $telefono -> fk_destinatario = $destinatarioClave;
+          $telefono -> save();       
+          
           $envio -> save();
         }
         return ['success' => true, 'message' => 'Saved !!'];
@@ -169,12 +198,6 @@ select su_nombre, ru_clave from ruta, sucursal where fk_sucursal_1=su_clave and 
     public function getOne(Request $request){
       return $envio = Envio::find($request->en_clave);
     }
-
-   /* public function destroy(Request $request){
-      $envio = Envio::find($request->en_clave);
-      $envio->delete();
-      return ['success' => true, 'message' => 'Deleted !!'];
-    }*/
 
     public function destroy($id){
       $envio = Envio::find($id);

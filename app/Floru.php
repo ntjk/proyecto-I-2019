@@ -28,7 +28,7 @@ class Floru extends Model
     /**
      * @var array
      */
-    protected $fillable = ['fk_ruta_5','fk_ruta_2','fk_ruta_3','fk_ruta_4','flo_ru_duracion_hrs', 'flo_ru_costo', 'fk_flota'];
+    protected $fillable = ['flo_ru_clave','fk_ruta_5','fk_ruta_2','fk_ruta_3','fk_ruta_4','flo_ru_duracion_hrs', 'flo_ru_costo', 'fk_flota'];
 
     public function formaParte()
     {
