@@ -10,146 +10,14 @@
         <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <meta name="csrf-token" content="{!! csrf_token() !!}" />
+        <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
+        <script type="text/javascript" src="{{ asset('js/dropdown.js') }}"></script>
         <title>Envio - LogUCAB</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Lato', sans-serif;
-                font-weight: 200;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                width: 100vw;
-                background-color: #ffc002;
-                text-align: center;
-                height:200px;
-            }
-
-            .title {
-                font-size: 46px;
-                text-decoration: underline;
-            }
-
-            .links > a {
-                width:100vw;
-                color: #ffffff;
-                padding: 0 10px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-                float:none;
-            }
-
-            .m-b-md {
-              margin-top: 20px;
-                text-align: center;
-                margin-left: 30px;
-            }
-            .logo-container{
-              display: inline;
-              float: left;
-              width: 30vw;
-            }
-            .logo{
-                height:200px;
-            }
-
-            .motto-container{
-              width:70vw;
-              float:right;
-            }
-
-            .motto{
-              color:#ffffff;
-              font-family: 'Abril Fatface', cursive;
-                  padding-top: 45px;
-                  font-size: 52px;
-                  text-decoration: bold;
-                  text-align: center;
-            }
-
-            .nav{
-              text-align: center;
-              width:100vw;
-              height: 30px;
-              background-color: #000000;
-            }
-            .main{
-              padding-top: 50px;
-            }
-          .banner{
-            height:350px;
-          }
-          .third{
-            float:left;
-            height:inherit;
-            width:32vw;
-          }
-          .mbp{
-            display: block;
-            max-width:33vw;
-            max-height: 300px;
-            width: auto;
-            height: auto;
-            margin: 20px;
-          }
-          .blue-block{
-            background-color: #1480d1;
-            margin-top: 20px;
-            max-height: 300px;
-          }
-          .red-block{
-            background-color: #FF4136;
-            margin-top: 20px;
-            margin-left: 20px;
-            max-height: 300px;
-          }
-          .a-bit-off{
-            margin-top:-2px;
-            font-size: 46px;
-          }
-          .line{
-            background-color: #000000;
-            height: 3px;
-            margin-left: 2vw;
-            width: 95vw;
-          }
-          .footer{
-            text-align: center;
-            margin-top: 50px;
-          }
-        </style>
     </head>
     <body>
             @include('header')
@@ -254,7 +122,7 @@
           else{
             document.getElementById("en_precio").value = peso;
           }
-          
+
         }
         </script>
      </br>
@@ -300,9 +168,9 @@
     <input type="text" name="des_cedula" id="des_cedula" class="form-control" />
     <label>Telefono del destinatario</label>
     <input type="text" name="tel_numero" id="tel_numero" class="form-control" />
-    <br />  
-    
-     
+    <br />
+
+
     </div>
     <div class="modal-footer">
      <input type="hidden" name="en_clave" id="en_clave" />
@@ -320,12 +188,12 @@
         <script src="//code.jquery.com/jquery.js"></script>
         <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-       
+
         <script>$(function() {
             $('#users-table').DataTable({
             })
 
-         
+
             $(document).on('submit', '#user_form', function(event){
             event.preventDefault();
             var fk_tipo = $('#fk_tipo').val();
@@ -391,7 +259,7 @@
                 $('#en_fecha_entrega_estimada').val(data.en_fecha_entrega_estimada);
                 $('.modal-title').text("Edit envio");
                 $('#en_clave').val(en_clave);
-                $('#fk_sucursal_origen').val(data.fk_sucursal_origen); 
+                $('#fk_sucursal_origen').val(data.fk_sucursal_origen);
                 $('#fk_cliente').val(data.fk_cliente);
                 $('#fk_destinatario').val(data.fk_destinatario);
                 $('#fk_flota_ruta_1').val(data.fk_flota_ruta_1);
@@ -403,7 +271,7 @@
           });
           $(document).on('click','.delete',function(){
             var en_clave = $(this).attr("id");
-            
+
             if(confirm("¿Estás seguro de que quieres borrar esta información?")){
               $.ajax({
                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},

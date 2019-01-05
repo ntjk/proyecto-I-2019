@@ -13,15 +13,33 @@
   <div class="nav">
     <div class="links">
         <a href="quienes_somos">¿Quienes Somos?</a>
-        <a href="usuario">Usuarios</a>
-        <a href="rol">Roles</a>
-        <a href="sucursal">Sucursales</a>
-        <a href="transporte">Transportes T</a>
-        <a href="transporteM">Transportes M</a>
-        <a href="transporteA">Transportes A</a>
-        <a href="cliente">Clientes</a>
-        <a href="empleado">Empleados</a>
-        <a href="ruta">Rutas</a>
-        <a href="envio">Envios</a>
+        <div class="dropdown">
+          <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+          <div id="myDropdown" class="dropdown-content">
+            <a href="usuario">Usuarios</a>
+            <a href="rol">Roles</a>
+            <a href="sucursal">Sucursales</a>
+            <a href="transporte">Transportes T</a>
+            <a href="transporteM">Transportes M</a>
+            <a href="transporteA">Transportes A</a>
+            <a href="cliente">Clientes</a>
+            <a href="empleado">Empleados</a>
+            <a href="ruta">Rutas</a>
+            <a href="envio">Envios</a>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
+
+
+
+  <!--<a href="usuario">Usuarios</a>
+  <a href="rol">Roles</a>
+  <a href="sucursal">Sucursales</a>
+  <a href="transporte">Transportes T</a>
+  <a href="transporteM">Transportes M</a>
+  <a href="transporteA">Transportes A</a>
+  <a href="cliente">Clientes</a>
+  <a href="empleado">Empleados</a>
+  <a href="ruta">Rutas</a>
+  <a href="envio">Envios</a>-->

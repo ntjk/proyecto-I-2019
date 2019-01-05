@@ -1,0 +1,42 @@
+        <style>
+
+            .nav{
+              text-align: center;
+              width:100vw;
+              height: 30px;
+              background-color: #000000;
+            }
+            .main{
+              padding-top: 50px;
+              background-color: #404040;
+              height: auto;
+            }
+            .description{
+              display: block;
+              padding-bottom: 1px;
+              margin-top:20px;
+              margin-bottom:50px;
+              margin-left: 20vw;
+              margin-right: 20vw;
+              color: #ffffff;
+              text-align: center;
+            }
+          .half-container{
+            margin: 0px;
+            width:80vw;
+            padding-left: 10vw;
+            padding-right: 10vw;
+            overflow: hidden;
+          }
+          .half{
+            margin-left: 0;
+            margin-right: 0;
+            border: 20vw;
+            float:left;
+            max-width: 40vw;
+            width: auto;
+          }
+          .half h1{
+            color: #45a5ed;
+          }
+    </style>

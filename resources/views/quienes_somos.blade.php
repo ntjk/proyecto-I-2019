@@ -3,149 +3,16 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/styles_qs.css') }}" rel="stylesheet">
+        <script type="text/javascript" src="{{ asset('js/dropdown.js') }}"></script>
 
-        <title>Laravel</title>
+        <title>¿Quiénes Somos? - LogUCAB</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Lato', sans-serif;
-                font-weight: 200;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                width: 100vw;
-                background-color: #ffc002;
-                text-align: center;
-                height:200px;
-            }
-
-            .title {
-                font-size: 46px;
-                text-decoration: underline;
-            }
-
-            .links > a {
-                width:100vw;
-                color: #ffffff;
-                padding: 0 10px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-                float:none;
-            }
-
-            .m-b-md {
-              margin-top: 20px;
-                text-align: center;
-                margin-left: 30px;
-            }
-            .logo-container{
-              display: inline;
-              float: left;
-              width: 30vw;
-            }
-            .logo{
-                height:200px;
-            }
-
-            .motto-container{
-              width:70vw;
-              float:right;
-            }
-
-            .motto{
-              color:#ffffff;
-              font-family: 'Abril Fatface', cursive;
-                  padding-top: 45px;
-                  font-size: 52px;
-                  text-decoration: bold;
-                  text-align: center;
-            }
-
-            .nav{
-              text-align: center;
-              width:100vw;
-              height: 30px;
-              background-color: #000000;
-            }
-            .main{
-              padding-top: 50px;
-              background-color: #404040;
-              height: auto;
-            }
-            .description{
-              display: block;
-              padding-bottom: 1px;
-              margin-top:20px;
-              margin-bottom:50px;
-              margin-left: 20vw;
-              margin-right: 20vw;
-              color: #ffffff;
-              text-align: center;
-            }
-          .banner{
-            height:350px;
-          }
-          .line{
-            background-color: #000000;
-            height: 3px;
-            margin-left: 2vw;
-            width: 95vw;
-          }
-          .footer{
-            text-align: center;
-            margin-top: 50px;
-          }
-          .half-container{
-            margin: 0px;
-            width:80vw;
-            padding-left: 10vw;
-            padding-right: 10vw;
-            overflow: hidden;
-          }
-          .half{
-            margin-left: 0;
-            margin-right: 0;
-            border: 20vw;
-            float:left;
-            max-width: 40vw;
-            width: auto;
-          }
-          .half h1{
-            color: #45a5ed;
-          }
-        </style>
     </head>
     <body>
       <!--  <div class="flex-center position-ref full-height">
