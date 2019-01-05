@@ -28,7 +28,7 @@ class EnvioController extends Controller
       $rutas=Ruta::orderBy('ru_clave')->get();
       $sucursales=Sucursal::orderBy('su_nombre')->get();
       $florus=Floru::orderBy('flo_ru_clave')->get();
-      
+
      /* Con esto seleccionas un nodo y está bien. Hacer que esto salga en una filita o varias filitas
 select su_nombre, ru_clave from ruta, sucursal where fk_sucursal_1=su_clave and fk_sucursal_2=335 and fk_ruta in (select ru_clave from ruta where fk_sucursal_1 = 1 and fk_ruta is null)
 
@@ -52,7 +52,7 @@ select su_nombre, ru_clave from ruta, sucursal where fk_sucursal_1=su_clave and 
         //->whereBetween('destinatario.des_clave', [1, 10])
         ->get();
 
-    
+
         $envios = Envio::select(
             'envio.en_clave',
             'envio.en_tipo',
@@ -63,11 +63,11 @@ select su_nombre, ru_clave from ruta, sucursal where fk_sucursal_1=su_clave and 
             'envio.en_anchura',
             'envio.en_profundidad',
             'envio.en_fecha_envio',
-            'envio.en_fecha_entrega_estimada',   
+            'envio.en_fecha_entrega_estimada',
             'envio.fk_flota_ruta_1')
         //->whereBetween('envio.en_clave', [1, 10])
         ->get();
-              
+
 
         $i=0;
         foreach($envios as $envi){
@@ -78,7 +78,7 @@ select su_nombre, ru_clave from ruta, sucursal where fk_sucursal_1=su_clave and 
           $i++;
         }
 
-      return view('envio')->with(compact('sucursales'))->with(compact('clientes'))->with(compact('destinatarios'))->with(compact('florus'))->with(compact('rutas'))->with(compact('envios'));
+      return view('envio')->with(compact('sucursales'))->with(compact('clientes'))->with(compact('florus'))->with(compact('rutas'))->with(compact('envios'));
      // return view('envio')->with(compact('sucursales'))->with(compact('clientes'))->with(compact('florus'))->with(compact('rutas'));
     }
 
@@ -90,7 +90,7 @@ select su_nombre, ru_clave from ruta, sucursal where fk_sucursal_1=su_clave and 
 
     public function getData()
     {
-    
+
         $envio = Envio::join('sucursal','sucursal.su_clave','=','envio.fk_sucursal_origen')
         ->join('cliente','cliente.cli_clave','=','envio.fk_cliente')
         ->join('destinatario','destinatario.des_clave','=','envio.fk_destinatario')
@@ -160,7 +160,7 @@ select su_nombre, ru_clave from ruta, sucursal where fk_sucursal_1=su_clave and 
           $telefono -> save();
 
           $envio-> fk_destinatario = $destinatarioClave;
-          
+
           $envio -> save();
         }
         return ['success' => true, 'message' => 'Saved !!'];
