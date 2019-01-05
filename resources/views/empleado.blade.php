@@ -155,33 +155,7 @@
         </style>
     </head>
     <body>
-            <div class="content">
-              <div class="logo-container">
-              <div class="logo">
-                <a href="welcome"><img src={{ asset('img/logo.png')}} class="logo"></img></a>
-              </div>
-            </div>
-            <div class="motto-container">
-              <div class="motto">
-                  Mayor empresa de envios en venezuela.
-              </div>
-            </div>
-            </div>
-              <div class="nav">
-                <div class="links">
-                    <a href="quienes_somos">¿Quienes Somos?</a>
-                    <a href="usuario">Usuarios</a>
-                    <a href="rol">Roles</a>
-                    <a href="sucursal">Sucursales</a>
-                    <a href="transporte">Transportes T</a>
-                    <a href="transporteM">Transportes M</a>
-                    <a href="transporteA">Transportes A</a>
-                    <a href="cliente">Clientes</a>
-                    <a href="empleado">Empleados</a>
-                    <a href="ruta">Rutas</a>
-                    <a href="envio">Envios</a>
-                </div>
-              </div>
+            @include('header')
             <div class="container">
             <br/>
             <h1 class="text-center">Empleados</h1>
@@ -461,15 +435,7 @@
         });
         </script>
         @stack('scripts')
-              <div class="line-container">
-                <div class="line">
-                </div>
-              </div>
-              <div class="footer">
-                Envíos UCAB, Rif: J-00274758-7, LogUCAB Venezuela todos los derechos reservados<br>
-Diseñado y desarrollado por SSR Lerana C.A.
-
-              </div>
+        @include('footer')
         </div>
       </div>
     </body>

@@ -152,33 +152,7 @@
         </style>
     </head>
     <body>
-            <div class="content">
-              <div class="logo-container">
-              <div class="logo">
-                <a href="welcome"><img src={{ asset('img/logo.png')}} class="logo"></img></a>
-              </div>
-            </div>
-            <div class="motto-container">
-              <div class="motto">
-                  Mayor empresa de envios en venezuela.
-              </div>
-            </div>
-            </div>
-              <div class="nav">
-                <div class="links">
-                    <a href="quienes_somos">¿Quienes Somos?</a>
-                    <a href="usuario">Usuarios</a>
-                    <a href="rol">Roles</a>
-                    <a href="sucursal">Sucursales</a>
-                    <a href="transporte">Transportes T</a>
-                    <a href="transporteM">Transportes M</a>
-                    <a href="transporteA">Transportes A</a>
-                    <a href="cliente">Clientes</a>
-                    <a href="empleado">Empleados</a>
-                    <a href="ruta">Rutas</a>
-                    <a href="envio">Envios</a>
-                </div>
-              </div>
+            @include('header')
             <div class="container">
             <br/>
             <h1 class="text-center">Envios</h1>
@@ -294,9 +268,9 @@
         @endforeach
       </select>
      <br />
-     
+
     <label>Ruta (flota-ruta)</label>
-         
+
 
         <input type="number" name="fk_flota_ruta_1" id="fk_flota_ruta_1" class="form-control"/>
       <br />
@@ -308,9 +282,9 @@
     <input type="text" name="des_cedula" id="des_cedula" class="form-control" />
     <label>Telefono del destinatario</label>
     <input type="text" name="tel_numero" id="tel_numero" class="form-control" />
-    <br />  
-    
-     
+    <br />
+
+
     </div>
     <div class="modal-footer">
      <input type="hidden" name="en_clave" id="en_clave" />
@@ -328,7 +302,7 @@
         <script src="//code.jquery.com/jquery.js"></script>
         <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-       
+
         <script>$(function() {
             $('#users-table').DataTable({
       /*          processing: true,
@@ -354,7 +328,7 @@
                 ]*/
             })
 
-         
+
             $(document).on('submit', '#user_form', function(event){
             event.preventDefault();
             var en_tipo = $('#en_tipo').val();
@@ -421,7 +395,7 @@
                 $('#en_fecha_entrega_estimada').val(en_fecha_entrega_estimada);
                 $('.modal-title').text("Edit envio");
                 $('#en_clave').val(en_clave);
-                $('#fk_sucursal_origen').val(data.fk_sucursal_origen); 
+                $('#fk_sucursal_origen').val(data.fk_sucursal_origen);
                 $('#fk_cliente').val(data.fk_cliente);
                 $('#fk_destinatario').val(data.fk_destinatario);
                 $('#fk_flota_ruta_1').val(data.fk_flota_ruta_1);
@@ -433,7 +407,7 @@
           });
           $(document).on('click','.delete',function(){
             var en_clave = $(this).attr("id");
-            
+
             if(confirm("¿Estás seguro de que quieres borrar esta información?")){
               $.ajax({
                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
@@ -455,15 +429,7 @@
         });
         </script>
         @stack('scripts')
-              <div class="line-container">
-                <div class="line">
-                </div>
-              </div>
-              <div class="footer">
-                Envíos UCAB, Rif: J-00274758-7, LogUCAB Venezuela todos los derechos reservados<br>
-Diseñado y desarrollado por SSR Lerana C.A.
-
-              </div>
+              @include('footer')
         </div>
       </div>
     </body>
