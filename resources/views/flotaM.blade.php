@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <meta name="csrf-token" content="{!! csrf_token() !!}" />
-        <title>Envio - LogUCAB</title>
+        <title>Transporte - LogUCAB</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
@@ -181,142 +181,90 @@
               </div>
             <div class="container">
             <br/>
-            <h1 class="text-center">Envios</h1>
+            <h1 class="text-center">Transportes Maritimos</h1>
             <br/>
             <button type="button" id="add_button" data-toggle="modal" data-target="#userModal" class="btn btn-info btn-lg">Add</button>
             <table class="table table-bordered" id="users-table">
                 <thead>
                     <tr>
                         <th>Clave</th>
+                        <th>Suptipo</th>
                         <th>Tipo</th>
-                        <th>Precio</th>
                         <th>Peso</th>
+                        <th>Placa</th>
                         <th>Descripción</th>
-                        <th>Altura</th>
-                        <th>Anchura</th>
-                        <th>Profundidad</th>
-                        <th>Fecha de envío</th>
-                        <th>Fecha de entrega estimada</th>
-                        <th>Cliente emisor</th>
-                        <th>Destinatario</th>
-                        <th>FKFR1</th>
-                        <th>Sucursal origen</th>
-                        <th>Sucursal destino</th>
+                        <th>Combustible por hora</th>
+                        <th>Serial de carroceria</th>
+                        <th>Capacidad de carga</th>
+                        <th>Modelo</th>
+                        <th>Sucursal</th>
+                        <th>Año</th>
+                        <th>Serial Motor</th>
                         <th>Accion</th>
                     </tr>
                 </thead>
-                <tbody>
-                  @foreach ($envios as $envio)
-                  <tr>
-                    <td>{{$envio->en_clave}}</td>
-                    <td>{{$envio->en_tipo}}</td>
-                    <td>{{$envio->en_precio}}</td>
-                    <td>{{$envio->en_peso}}</td>
-                    <td>{{$envio->en_descripcion}}</td>
-                    <td>{{$envio->en_altura}}</td>
-                    <td>{{$envio->en_anchura}}</td>
-                    <td>{{$envio->en_profundidad}}</td>
-                    <td>{{$envio->en_fecha_envio}}</td>
-                    <td>{{$envio->en_fecha_entrega_estimada}}</td>
-                    <td>{{$envio->cli_cedula}}</td>
-                    <td>{{$envio->des_cedula}}</td>
-                    <td>{{$envio->fk_flota_ruta_1}}</td>
-                    <td>{{$envio->so_nombre}}</td>
-                    <td>{{$envio->sd_nombre}}</td>
-                    <td>
-                      <button class="btn btn-warning btn-detail update" id="{{$envio->en_clave}}" value="{{$envio->en_clave}}" name="Update">Update</button>
-                      <button class="btn btn-danger btn-delete delete" id="{{$envio->en_clave}}" value="{{$envio->en_clave}}" name="delete">Delete</button>
-                    </td>
-                  </tr>
-                  @endforeach
-                </tbody>
-
             </table>
         </div>
-
-
-
-
         <div id="userModal" class="modal fade">
  <div class="modal-dialog">
   <form method="post" id="user_form" enctype="multipart/form-data">
    <div class="modal-content">
     <div class="modal-header">
      <button type="button" class="close" data-dismiss="modal">&times;</button>
-     <h4 class="modal-title">Añadir envio</h4>
+     <h4 class="modal-title">Añadir Flota</h4>
     </div>
-  <div class="modal-body">
-     <label>Tipo</label>
-     <input type="text" name="en_tipo" id="en_tipo" class="form-control" />
+    <div class="modal-body">
+     <label>Subtipo</label>
+     <select class="form-control" name="flo_subtipo" id="flo_subtipo">
+      <!-- <option value="aerea">aerea</option>
+       <option value="terrestre">terrestre</option>-->
+       <option value="marítima" selected>marítima</option>
+     </select>
      <br />
-     <label>Precio</label>
-     <input type="number" step="0.01" name="en_precio" id="en_precio" class="form-control"/>
+     <label>Tipo</label>
+     <input type="text" name="flo_tipo" id="flo_tipo" class="form-control" />
      <br />
      <label>Peso</label>
-     <input type="number" step="0.01" name="en_peso" id="en_peso" class="form-control" />
+     <input type="number" step="0.01" name="flo_peso" id="flo_peso" class="form-control" />
+     <br />
+     <label>Placa</label>
+     <input type="text" name="flo_placa" id="flo_placa" class="form-control" />
      <br />
      <label>Descripción</label>
-     <input type="text" name="en_descripcion" id="en_descripcion" class="form-control" />
+     <input type="text" name="flo_descripcion" id="flo_descripcion" class="form-control" />
      <br />
-     <label>Altura</label>
-     <input type="number" step="0.01" name="en_altura" id="en_altura" class="form-control" />
+     <label>Combustible por hora</label>
+     <input type="number" step="0.01" name="flo_combustible_por_hora" id="flo_combustible_por_hora" class="form-control" />
      <br />
-     <label>Anchura</label>
-     <input type="number" step="0.01" name="en_anchura" id="en_anchura" class="form-control" />
+     <label>Serial de carroceria</label>
+     <input type="text" name="flo_serial_carroceria" id="flo_serial_carroceria" class="form-control" />
      <br />
-     <label>Profundidad</label>
-     <input type="number" step="0.01" name="en_profundidad" id="en_profundidad" class="form-control" />
+     <label>Capacidad de carga</label>
+     <input type="number" step="0.01" name="flo_capacidad_carga" id="flo_capacidad_carga" class="form-control" />
      <br />
-     <label>Fecha de envío</label>
-     <input type="date" name="en_fecha_envio" id="en_fecha_envio" class="form-control" />
-     <br />
-     <label>Fecha de entrega estimada</label>
-     <input type="date" name="en_fecha_entrega_estimada" id="en_fecha_entrega_estimada" class="form-control" />
-     <br />
-     <label>Sucursal origen</label>
-     <select name="fk_sucursal_origen" id="fk_sucursal_origen" class="form-control">
-        @foreach($sucursales as $sucursal)
-        <option value="{{$sucursal->su_clave}}">{{$sucursal->su_nombre}}</option>
+     <label>Modelo</label>
+     <select class="form-control" name="fk_modelo" id="fk_modelo">
+        @foreach($modelos as $modelo)
+        <option value="{{$modelo->mod_clave}}">{{$modelo->mod_nombre}}</option>
         @endforeach
       </select>
-      <br />
-     <label>Sucursal destino</label>
-     <select name="fk_sucursal_destino" id="fk_sucursal_destino" class="form-control">
+     <label>Sucursal Base</label>
+     <select class="form-control" name="fk_sucursal" id="fk_sucursal">
         @foreach($sucursales as $sucursal)
         <option value="{{$sucursal->su_clave}}">{{$sucursal->su_nombre}}</option>
         @endforeach
       </select>
      <br />
-     <label>Cliente emisor</label>
-     <select name="fk_cliente" id="fk_cliente" class="form-control">
-        @foreach($clientes as $cliente)
-        <option value="{{$cliente->cli_clave}}">{{$cliente->cli_nacionalidad}} {{$cliente->cli_cedula}}</option>
-        @endforeach
-      </select>
+     <label>Año</label>
+     <input type="text" name="flo_año" id="flo_año" class="form-control" />
      <br />
-     
-    <label>Ruta (flota-ruta)</label>
-         
-
-        <input type="number" name="fk_flota_ruta_1" id="fk_flota_ruta_1" class="form-control"/>
-      <br />
-    <label>Nombre del destinatario</label>
-    <input type="text" name="des_nombre" id="des_nombre" class="form-control" />
-    <label>Apellido del destinatario</label>
-    <input type="text" name="des_apellido" id="des_apellido" class="form-control" />
-    <label>Cedula del destinatario</label>
-    <input type="text" name="des_cedula" id="des_cedula" class="form-control" />
-    <label>Telefono del destinatario</label>
-    <input type="text" name="tel_numero" id="tel_numero" class="form-control" />
-    <br />  
-    
-     
+     <br />
+     <label>Serial del Motor</label>
+     <input type="text" name="flo_ma_serial_motor" id="flo_ma_serial_motor" class="form-control" />
+     <br />
     </div>
     <div class="modal-footer">
-     <input type="hidden" name="en_clave" id="en_clave" />
-      <input type="hidden" name="fk_sucursal_cliente_1" id="fk_sucursal_cliente_1" />
-       <input type="hidden" name="fk_flota_ruta_3" id="fk_flota_ruta_3" />
-        <input type="hidden" name="fk_flota_ruta_4" id="fk_flota_ruta_4" />
+     <input type="hidden" name="flo_clave" id="flo_clave" />
      <input type="hidden" name="operation" id="operation" />
      <input type="submit" name="action" id="action" class="btn btn-success" value="Add" />
      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -328,59 +276,48 @@
         <script src="//code.jquery.com/jquery.js"></script>
         <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-       
         <script>$(function() {
             $('#users-table').DataTable({
-      /*          processing: true,
+                processing: true,
                 serverSide: true,
-                ajax: '{!! route('envio_getData') !!}',
+                ajax: '{!! route('transporteM_getData') !!}',
                 columns: [
-                    { data: 'en_clave', name: 'envio.en_clave' },
-                    { data: 'en_tipo', name: 'envio.en_tipo' },
-                    { data: 'en_precio', name: 'envio.en_precio' },
-                    { data: 'en_peso', name: 'envio.en_peso' },
-                    { data: 'en_descripcion', name: 'envio.en_descripcion' },
-                    { data: 'en_altura', name: 'envio.en_altura' },
-                    { data: 'en_anchura', name: 'envio.en_anchura' },
-                    { data: 'en_profundidad', name: 'envio.en_profundidad' },
-                    { data: 'en_fecha_envio', name: 'envio.en_fecha_envio' },
-                    { data: 'en_fecha_entrega_estimada', name: 'envio.en_fecha_entrega_estimada' },
-                    { data: 'cli_cedula', name: 'cliente.cli_cedula' },
-                    { data: 'des_cedula', name: 'destinatario.des_cedula' },
-                    { data: 'fk_flota_ruta_1', name: 'envio.fk_flota_ruta_1' },
+                    { data: 'flo_clave', name: 'flota.flo_clave' },
+                    { data: 'flo_subtipo', name: 'flota.flo_subtipo' },
+                    { data: 'flo_tipo', name: 'flota.flo_tipo' },
+                    { data: 'flo_peso', name: 'flota.flo_peso' },
+                    { data: 'flo_placa', name: 'flota.flo_placa' },
+                    { data: 'flo_descripcion', name: 'flota.flo_descripcion' },
+                    { data: 'flo_combustible_por_hora', name: 'flota.flo_combustible_por_hora' },
+                    { data: 'flo_serial_carroceria', name: 'flota.flo_serial_carroceria' },
+                    { data: 'flo_capacidad_carga', name: 'flota.flo_capacidad_carga' },
+                    { data: 'mod_nombre', name: 'modelo.mod_nombre' },
                     { data: 'su_nombre', name: 'sucursal.su_nombre' },
-                    { data: 'fk_sucursal_destino', name: 'envio.fk_sucursal_destino' },
+                    { data: 'flo_año', name: 'flota.flo_año' },
+                    { data: 'flo_ma_serial_motor', name: 'flota.flo_ma_serial_motor' },
                     {data: 'action', name: 'action', orderable: false, searchable: false}
-                ]*/
+                ]
             })
 
-         
             $(document).on('submit', '#user_form', function(event){
             event.preventDefault();
-            var en_tipo = $('#en_tipo').val();
-            var en_precio = $('#en_precio').val();
-            var en_peso = $('#en_peso').val();
-            var en_descripcion = $('#en_descripcion').val();
-            var en_altura = $('#en_altura').val();
-            var en_anchura = $('#en_anchura').val();
-            var en_profundidad = $('#en_profundidad').val();
-            var en_fecha_envio = $('#en_fecha_envio').val();
-            var en_fecha_entrega_estimada = $('#en_fecha_entrega_estimada').val();
-            var fk_sucursal_origen = $('#fk_sucursal_origen').val();
-            var fk_sucursal_destino = $('#fk_sucursal_destino').val();
-            var fk_cliente = $('#fk_cliente').val();
-            var fk_flota_ruta_1 = $('#fk_flota_ruta_1').val();
-            var des_nombre = $('#des_nombre').val();
-            var des_apellido = $('#des_apellido').val();
-            var des_cedula = $('#des_cedula').val();
-            var tel_numero =$('#tel_numero').val();
-
-            if(en_tipo != '' && en_precio!= '' && en_peso!= ''&& en_descripcion!= ''&& en_altura!= ''&& en_anchura!= ''&& en_profundidad!= ''
-            && en_fecha_envio != ''&& en_fecha_entrega_estimada != '')
+            var flo_subtipo = $('#flo_subtipo').val();
+            var flo_tipo = $('#flo_tipo').val();
+            var flo_peso = $('#flo_peso').val();
+            var flo_placa = $('#flo_placa').val();
+            var flo_descripcion = $('#flo_descripcion').val();
+            var flo_combustible_por_hora = $('#flo_combustible_por_hora').val();
+            var flo_serial_carroceria = $('#flo_serial_carroceria').val();
+            var flo_capacidad_carga = $('#flo_capacidad_carga').val();
+            var fk_modelo = $('#fk_modelo').val();
+            var fk_sucursal = $('#fk_sucursal').val();
+            var flo_año = $('#flo_año').val();
+            var flo_te_serial_motor = $('#flo_ma_serial_motor').val();
+            if(flo_subtipo != '' && flo_tipo != '')
             {
               $.ajax({
                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                url:"envio",
+                url:"transporteM",
                 method:'POST',
                 data: new FormData(this),
                 contentType:false,
@@ -395,53 +332,46 @@
             }
             else
             {
-              alert("All Fields are Required");
+              alert("Both Fields are Required");
             }
           });
           $(document).on('click', '.update', function(){
-            var en_clave = $(this).attr("id");
-            console.log(en_clave);
+            var flo_clave = $(this).attr("id");
             $.ajax({
               headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-              url:"envio/getOne",
+              url:"transporteM/getOne",
               method:"POST",
-              data:{en_clave:en_clave}
-              ,
+              data:{flo_clave:flo_clave},
               dataType:"json",
               success:function(data){
                 $('#userModal').modal('show');
-                $('#en_tipo').val(data.en_tipo);
-                $('#en_precio').val(data.en_precio);
-                $('#en_peso').val(data.en_peso);
-                $('#en_descripcion').val(data.en_descripcion);
-                $('#en_altura').val(data.en_altura);
-                $('#en_anchura').val(data.en_anchura);
-                $('#en_profundidad').val(data.en_profundidad);
-                $('#en_fecha_envio').val(data.en_fecha_envio);
-                $('#en_fecha_entrega_estimada').val(en_fecha_entrega_estimada);
-                $('.modal-title').text("Edit envio");
-                $('#en_clave').val(en_clave);
-                $('#fk_sucursal_origen').val(data.fk_sucursal_origen); 
-                $('#fk_cliente').val(data.fk_cliente);
-                $('#fk_destinatario').val(data.fk_destinatario);
-                $('#fk_flota_ruta_1').val(data.fk_flota_ruta_1);
-                $('#fk_sucursal_destino').val(data.fk_sucursal_destino);
+                $('#flo_subtipo').val(data.flo_subtipo);
+                $('#flo_tipo').val(data.flo_tipo);
+                $('#flo_peso').val(data.flo_peso);
+                $('#flo_placa').val(data.flo_placa);
+                $('#flo_descripcion').val(data.flo_descripcion);
+                $('#flo_combustible_por_hora').val(data.flo_combustible_por_hora);
+                $('#flo_serial_carroceria').val(data.flo_serial_carroceria);
+                $('#flo_capacidad_carga').val(data.flo_capacidad_carga);
+                $('#flo_año').val(data.flo_año);
+                $('#flo_ma_serial_motor').val(data.flo_te_serial_motor);
+                $('.modal-title').text("Edit Flota");
+                $('#flo_clave').val(flo_clave);
+                $('#fk_modelo').val(fk_modelo);
+                $('#fk_sucursal').val(fk_sucursal);
                 $('#action').val("Edit");
                 $('#operation').val("Edit");
               }
             })
           });
           $(document).on('click','.delete',function(){
-            var en_clave = $(this).attr("id");
-            
+            var flo_clave = $(this).attr("id");
             if(confirm("¿Estás seguro de que quieres borrar esta información?")){
               $.ajax({
                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                url:"envio/"+en_clave,
+                url:"transporteM/"+flo_clave,
                 type:"DELETE",
-                data:{
-                  en_clave:en_clave,
-                },
+                data:{flo_clave:flo_clave},
                 success:function(data){
                   alert(data.message);
                   $('#users-table').dataTable().ajax.reload(null, false);
