@@ -22,7 +22,7 @@ class EnvioController extends Controller
      * @return \Illuminate\View\View
      */
     public function calcularMesConMasEnvios(){
-      
+
     }
 
     public function index()
@@ -40,11 +40,11 @@ class EnvioController extends Controller
           $mayor=$i;
       }
       $mesConMasEnvios=$mayor;
-        
+
       /*$mesConMasEnvios=Envio::groupBy(function (Gk $item) {
         return $item->en_fecha_envio->format('m');
     })->count()->first();//select count(*) as conteo, extract(month from en_fecha_envio) as mes from envio group by extract(month from en_fecha_envio) order by conteo desc
-      
+
      /* Con esto seleccionas un nodo y está bien. Hacer que esto salga en una filita o varias filitas
 select su_nombre, ru_clave from ruta, sucursal where fk_sucursal_1=su_clave and fk_sucursal_2=335 and fk_ruta in (select ru_clave from ruta where fk_sucursal_1 = 1 and fk_ruta is null)
 
@@ -70,8 +70,8 @@ select su_nombre, ru_clave from ruta, sucursal where fk_sucursal_1=su_clave and 
         $envio5 = Envio::join('tipo','ti_clave','=','envio.fk_tipo')->select(['tipo.ti_nombre'])
         ->whereBetween('tipo.ti_clave', [1, 10])
         ->get();
-//este poco de envios es por los atributos que necesitamos que salgan en la tabla pero no pertenecen a la tabla envio 
-    
+//este poco de envios es por los atributos que necesitamos que salgan en la tabla pero no pertenecen a la tabla envio
+
         $envios = Envio::select(
             'envio.en_clave',
             'envio.fk_tipo',
@@ -82,11 +82,11 @@ select su_nombre, ru_clave from ruta, sucursal where fk_sucursal_1=su_clave and 
             'envio.en_anchura',
             'envio.en_profundidad',
             'envio.en_fecha_envio',
-            'envio.en_fecha_entrega_estimada',   
+            'envio.en_fecha_entrega_estimada',
             'envio.fk_flota_ruta_1')
         ->whereBetween('envio.en_clave', [1, 10])
         ->get();
-              
+
 
         $i=0;
         foreach($envios as $envi){
@@ -110,7 +110,7 @@ select su_nombre, ru_clave from ruta, sucursal where fk_sucursal_1=su_clave and 
 
     public function getData()
     {
-    
+
         $envio = Envio::join('sucursal','sucursal.su_clave','=','envio.fk_sucursal_origen')
         ->join('cliente','cliente.cli_clave','=','envio.fk_cliente')
         ->join('destinatario','destinatario.des_clave','=','envio.fk_destinatario')
@@ -184,12 +184,12 @@ select su_nombre, ru_clave from ruta, sucursal where fk_sucursal_1=su_clave and 
             $destinatario -> des_cedula = $request->input('des_cedula');
             $destinatario -> save();
           }
-          
+
           $destinatarioClave = Destinatario::where('destinatario.des_cedula','=', $request->input('des_cedula'))->where('destinatario.des_nombre','=', $request->input('des_nombre'))->where('destinatario.des_apellido','=', $request->input('des_apellido'))->first()->des_clave;
           $envio-> fk_destinatario = $destinatarioClave;
           $telefono -> fk_destinatario = $destinatarioClave;
-          $telefono -> save();       
-          
+          $telefono -> save();
+
           $envio -> save();
         }
         return ['success' => true, 'message' => 'Saved !!'];
@@ -203,5 +203,18 @@ select su_nombre, ru_clave from ruta, sucursal where fk_sucursal_1=su_clave and 
       $envio = Envio::find($id);
       $envio->delete();
       return ['success' => true, 'message' => 'Deleted !!'];
+    }
+
+    public function updatePrecio(Request $request){
+      $tipoF = Tipo::find($request->tipo);
+      //$tipoValor = $tipoF->ti_precio;
+      $floruF = Floru::find($request->floru);
+      //$floruValor = $floruF->flo_ru_costo;
+      if ($request->en_peso>=10){
+        $precio=($tipoF->ti_precio + $floruF->flo_ru_costo) * $request->altura * $request->anchura * $request->profundidad;
+      }else{
+        $precio=($tipoF->ti_precio + $floruF->flo_ru_costo) * $request->peso;
+      }
+      return $precio;
     }
 }

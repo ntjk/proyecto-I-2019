@@ -10,151 +10,18 @@
         <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <meta name="csrf-token" content="<?php echo csrf_token(); ?>" />
+        <link href="<?php echo e(asset('css/styles.css')); ?>" rel="stylesheet">
+        <link href="<?php echo e(asset('css/unselectable.css')); ?>" rel="stylesheet">
+        <script type="text/javascript" src="<?php echo e(asset('js/dropdown.js')); ?>"></script>
         <title>Envio - LogUCAB</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Lato', sans-serif;
-                font-weight: 200;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                width: 100vw;
-                background-color: #ffc002;
-                text-align: center;
-                height:200px;
-            }
-
-            .title {
-                font-size: 46px;
-                text-decoration: underline;
-            }
-
-            .links > a {
-                width:100vw;
-                color: #ffffff;
-                padding: 0 10px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-                float:none;
-            }
-
-            .m-b-md {
-              margin-top: 20px;
-                text-align: center;
-                margin-left: 30px;
-            }
-            .logo-container{
-              display: inline;
-              float: left;
-              width: 30vw;
-            }
-            .logo{
-                height:200px;
-            }
-
-            .motto-container{
-              width:70vw;
-              float:right;
-            }
-
-            .motto{
-              color:#ffffff;
-              font-family: 'Abril Fatface', cursive;
-                  padding-top: 45px;
-                  font-size: 52px;
-                  text-decoration: bold;
-                  text-align: center;
-            }
-
-            .nav{
-              text-align: center;
-              width:100vw;
-              height: 30px;
-              background-color: #000000;
-            }
-            .main{
-              padding-top: 50px;
-            }
-          .banner{
-            height:350px;
-          }
-          .third{
-            float:left;
-            height:inherit;
-            width:32vw;
-          }
-          .mbp{
-            display: block;
-            max-width:33vw;
-            max-height: 300px;
-            width: auto;
-            height: auto;
-            margin: 20px;
-          }
-          .blue-block{
-            background-color: #1480d1;
-            margin-top: 20px;
-            max-height: 300px;
-          }
-          .red-block{
-            background-color: #FF4136;
-            margin-top: 20px;
-            margin-left: 20px;
-            max-height: 300px;
-          }
-          .a-bit-off{
-            margin-top:-2px;
-            font-size: 46px;
-          }
-          .line{
-            background-color: #000000;
-            height: 3px;
-            margin-left: 2vw;
-            width: 95vw;
-          }
-          .footer{
-            text-align: center;
-            margin-top: 50px;
-          }
-        </style>
     </head>
     <body>
             <?php echo $__env->make('header', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-            <div class="container">
-            <br/>
             <h1 class="text-center">Envios</h1>
             <br/>
             <button type="button" id="add_button" data-toggle="modal" data-target="#userModal" class="btn btn-info btn-lg">Add</button>
@@ -183,7 +50,7 @@
                   <?php $__currentLoopData = $envios; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $envio): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                   <tr>
                     <td><?php echo e($envio->en_clave); ?></td>
-                    <td><?php echo e($envio->en_tipo); ?></td>
+                    <td><?php echo e($envio->ti_nombre); ?></td>
                     <td><?php echo e($envio->en_precio); ?></td>
                     <td><?php echo e($envio->en_peso); ?></td>
                     <td><?php echo e($envio->en_descripcion); ?></td>
@@ -208,9 +75,6 @@
             </table>
         </div>
 
-
-
-
         <div id="userModal" class="modal fade">
  <div class="modal-dialog">
   <form method="post" id="user_form" enctype="multipart/form-data">
@@ -220,27 +84,44 @@
      <h4 class="modal-title">Añadir envio</h4>
     </div>
   <div class="modal-body">
-     <label>Tipo</label>
-     <input type="text" name="en_tipo" id="en_tipo" class="form-control" />
-     <br />
-     <label>Precio</label>
-     <input type="number" step="0.01" name="en_precio" id="en_precio" class="form-control"/>
-     <br />
-     <label>Peso</label>
-     <input type="number" step="0.01" name="en_peso" id="en_peso" class="form-control" />
-     <br />
+     <!--<input value=<?php echo e($mesConMasEnvios); ?>> </input>-->
      <label>Descripción</label>
      <input type="text" name="en_descripcion" id="en_descripcion" class="form-control" />
      <br />
+     <div id="precioCalculo">
+     <label>Tipo</label>
+      <select name="fk_tipo" id="fk_tipo" class="form-control">
+        <?php $__currentLoopData = $tipos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tipo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+        <option value="<?php echo e($tipo->ti_clave); ?>"><?php echo e($tipo->ti_nombre); ?></option>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+      </select>
+     <br />
+     <label>Peso</label>
+     <input type="number" step="0.01" name="en_peso" id="en_peso" class="form-control"/>
+     <br />
      <label>Altura</label>
-     <input type="number" step="0.01" name="en_altura" id="en_altura" class="form-control" />
+     <input type="number" step="0.01" name="en_altura" id="en_altura" class="form-control"/>
      <br />
      <label>Anchura</label>
-     <input type="number" step="0.01" name="en_anchura" id="en_anchura" class="form-control" />
+     <input type="number" step="0.01" name="en_anchura" id="en_anchura" class="form-control"/>
      <br />
      <label>Profundidad</label>
-     <input type="number" step="0.01" name="en_profundidad" id="en_profundidad" class="form-control" />
+     <input type="number" step="0.01" name="en_profundidad" id="en_profundidad" class="form-control"/>
      <br />
+     <label>Ruta (flota-ruta) </label>
+      <select name="fk_flota_ruta_1" id="fk_flota_ruta_1" class="form-control">
+        <?php $__currentLoopData = $florus; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $flor): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+        <option value="<?php echo e($flor->flo_ru_clave); ?>"><?php echo e($flor->flo_ru_clave); ?></option>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+      </select>
+    <br />
+     <label>Precio</label>
+     <input name="en_precio" id="en_precio" class="form-control" type="number" step="0.01"/>
+     <script>
+      $("#en_precio").attr('readonly', true).addClass("unselectable"); <!-- make the precio box uneditable -->
+     </script>
+     </br>
+     </div>
      <label>Fecha de envío</label>
      <input type="date" name="en_fecha_envio" id="en_fecha_envio" class="form-control" />
      <br />
@@ -268,18 +149,15 @@
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
       </select>
      <br />
-
-    <label>Ruta (flota-ruta)</label>
-
-
-        <input type="number" name="fk_flota_ruta_1" id="fk_flota_ruta_1" class="form-control"/>
-      <br />
     <label>Nombre del destinatario</label>
     <input type="text" name="des_nombre" id="des_nombre" class="form-control" />
+    <br />
     <label>Apellido del destinatario</label>
     <input type="text" name="des_apellido" id="des_apellido" class="form-control" />
+    <br />
     <label>Cedula del destinatario</label>
     <input type="text" name="des_cedula" id="des_cedula" class="form-control" />
+    <br />
     <label>Telefono del destinatario</label>
     <input type="text" name="tel_numero" id="tel_numero" class="form-control" />
     <br />
@@ -305,33 +183,12 @@
 
         <script>$(function() {
             $('#users-table').DataTable({
-      /*          processing: true,
-                serverSide: true,
-                ajax: '<?php echo route('envio_getData'); ?>',
-                columns: [
-                    { data: 'en_clave', name: 'envio.en_clave' },
-                    { data: 'en_tipo', name: 'envio.en_tipo' },
-                    { data: 'en_precio', name: 'envio.en_precio' },
-                    { data: 'en_peso', name: 'envio.en_peso' },
-                    { data: 'en_descripcion', name: 'envio.en_descripcion' },
-                    { data: 'en_altura', name: 'envio.en_altura' },
-                    { data: 'en_anchura', name: 'envio.en_anchura' },
-                    { data: 'en_profundidad', name: 'envio.en_profundidad' },
-                    { data: 'en_fecha_envio', name: 'envio.en_fecha_envio' },
-                    { data: 'en_fecha_entrega_estimada', name: 'envio.en_fecha_entrega_estimada' },
-                    { data: 'cli_cedula', name: 'cliente.cli_cedula' },
-                    { data: 'des_cedula', name: 'destinatario.des_cedula' },
-                    { data: 'fk_flota_ruta_1', name: 'envio.fk_flota_ruta_1' },
-                    { data: 'su_nombre', name: 'sucursal.su_nombre' },
-                    { data: 'fk_sucursal_destino', name: 'envio.fk_sucursal_destino' },
-                    {data: 'action', name: 'action', orderable: false, searchable: false}
-                ]*/
             })
 
 
             $(document).on('submit', '#user_form', function(event){
             event.preventDefault();
-            var en_tipo = $('#en_tipo').val();
+            var fk_tipo = $('#fk_tipo').val();
             var en_precio = $('#en_precio').val();
             var en_peso = $('#en_peso').val();
             var en_descripcion = $('#en_descripcion').val();
@@ -349,7 +206,7 @@
             var des_cedula = $('#des_cedula').val();
             var tel_numero =$('#tel_numero').val();
 
-            if(en_tipo != '' && en_precio!= '' && en_peso!= ''&& en_descripcion!= ''&& en_altura!= ''&& en_anchura!= ''&& en_profundidad!= ''
+            if(fk_tipo != '' && en_precio!= '' && en_peso!= ''&& en_descripcion!= ''&& en_altura!= ''&& en_anchura!= ''&& en_profundidad!= ''
             && en_fecha_envio != ''&& en_fecha_entrega_estimada != '')
             {
               $.ajax({
@@ -372,19 +229,41 @@
               alert("All Fields are Required");
             }
           });
+          $(document).on('change','#precioCalculo',function(event){
+            var altura = $('#en_altura').val();
+            var anchura = $('#en_anchura').val();
+            var profundidad = $('#en_profundidad').val();
+            var peso = $('#en_peso').val();
+            var tipo = $('#fk_tipo').val();
+            var floru = $('#fk_flota_ruta_1').val();
+            $.ajax({
+              headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+              type: "POST",
+              url: "envio/updatePrecio",
+              data:{
+                altura: altura,
+                anchura: anchura,
+                profundidad: profundidad,
+                peso: peso,
+                tipo: tipo,
+                floru: floru
+              },
+              success: function(data){
+                $('#en_precio').val(data);
+              }
+            });
+          });
           $(document).on('click', '.update', function(){
             var en_clave = $(this).attr("id");
-            console.log(en_clave);
             $.ajax({
               headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
               url:"envio/getOne",
               method:"POST",
-              data:{en_clave:en_clave}
-              ,
+              data:{en_clave:en_clave},
               dataType:"json",
               success:function(data){
                 $('#userModal').modal('show');
-                $('#en_tipo').val(data.en_tipo);
+                $('#fk_tipo').val(data.fk_tipo);
                 $('#en_precio').val(data.en_precio);
                 $('#en_peso').val(data.en_peso);
                 $('#en_descripcion').val(data.en_descripcion);
@@ -392,7 +271,7 @@
                 $('#en_anchura').val(data.en_anchura);
                 $('#en_profundidad').val(data.en_profundidad);
                 $('#en_fecha_envio').val(data.en_fecha_envio);
-                $('#en_fecha_entrega_estimada').val(en_fecha_entrega_estimada);
+                $('#en_fecha_entrega_estimada').val(data.en_fecha_entrega_estimada);
                 $('.modal-title').text("Edit envio");
                 $('#en_clave').val(en_clave);
                 $('#fk_sucursal_origen').val(data.fk_sucursal_origen);
@@ -429,7 +308,8 @@
         });
         </script>
         <?php echo $__env->yieldPushContent('scripts'); ?>
-              <?php echo $__env->make('footer', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+        <?php echo $__env->make('footer', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+              </div>
         </div>
       </div>
     </body>

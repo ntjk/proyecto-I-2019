@@ -11,6 +11,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <meta name="csrf-token" content="{!! csrf_token() !!}" />
         <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/unselectable.css') }}" rel="stylesheet">
         <script type="text/javascript" src="{{ asset('js/dropdown.js') }}"></script>
         <title>Envio - LogUCAB</title>
 
@@ -83,49 +84,44 @@
      <h4 class="modal-title">Añadir envio</h4>
     </div>
   <div class="modal-body">
-     <input value={{$mesConMasEnvios}}> </input>
-     <label>Tipo</label>
-      <select name="fk_tipo" id="fk_tipo" class="form-control">
-        @foreach($tipos as $tipo)
-        <option value="{{$tipo->ti_clave}}" oninput="calcularPrecio()">{{$tipo->ti_nombre}}</option>
-        @endforeach
-      </select>
-     <br />
+     <!--<input value={{$mesConMasEnvios}}> </input>-->
      <label>Descripción</label>
      <input type="text" name="en_descripcion" id="en_descripcion" class="form-control" />
      <br />
+     <div id="precioCalculo">
+     <label>Tipo</label>
+      <select name="fk_tipo" id="fk_tipo" class="form-control">
+        @foreach($tipos as $tipo)
+        <option value="{{$tipo->ti_clave}}">{{$tipo->ti_nombre}}</option>
+        @endforeach
+      </select>
+     <br />
      <label>Peso</label>
-     <input type="number" step="0.01" name="en_peso" id="en_peso" class="form-control" oninput="calcularPrecio()"/>
+     <input type="number" step="0.01" name="en_peso" id="en_peso" class="form-control"/>
      <br />
      <label>Altura</label>
-     <input type="number" step="0.01" name="en_altura" id="en_altura" class="form-control" oninput="calcularPrecio()"/>
+     <input type="number" step="0.01" name="en_altura" id="en_altura" class="form-control"/>
      <br />
      <label>Anchura</label>
-     <input type="number" step="0.01" name="en_anchura" id="en_anchura" class="form-control" oninput="calcularPrecio()"/>
+     <input type="number" step="0.01" name="en_anchura" id="en_anchura" class="form-control"/>
      <br />
      <label>Profundidad</label>
-     <input type="number" step="0.01" name="en_profundidad" id="en_profundidad" class="form-control" oninput="calcularPrecio()"/>
+     <input type="number" step="0.01" name="en_profundidad" id="en_profundidad" class="form-control"/>
      <br />
+     <label>Ruta (flota-ruta) </label>
+      <select name="fk_flota_ruta_1" id="fk_flota_ruta_1" class="form-control">
+        @foreach($florus as $flor)
+        <option value="{{$flor->flo_ru_clave}}">{{$flor->flo_ru_clave}}</option>
+        @endforeach
+      </select>
+    <br />
      <label>Precio</label>
-     <input name="en_precio" id="en_precio" class="form-control"/>
-        <script>
-        function calcularPrecio() {
-          var peso = document.getElementById("en_peso").value;
-          if (peso >= 10){
-            var alto = document.getElementById("en_altura").value;
-            var ancho = document.getElementById("en_anchura").value;
-            var profundo = document.getElementById("en_profundidad").value;
-            var tipo = document.getElementById("fk_tipo").value;
-            var precioTipo = Tipo::find(tipo);
-            document.getElementById("en_precio").value = tipo+" "precioTipo+" "alto*ancho*profundo;
-          }
-          else{
-            document.getElementById("en_precio").value = peso;
-          }
-
-        }
-        </script>
+     <input name="en_precio" id="en_precio" class="form-control" type="number" step="0.01"/>
+     <script>
+      $("#en_precio").attr('readonly', true).addClass("unselectable"); <!-- make the precio box uneditable -->
+     </script>
      </br>
+     </div>
      <label>Fecha de envío</label>
      <input type="date" name="en_fecha_envio" id="en_fecha_envio" class="form-control" />
      <br />
@@ -153,19 +149,15 @@
         @endforeach
       </select>
      <br />
-     <label>Ruta (flota-ruta) </label>
-      <select name="fk_flota_ruta_1" id="fk_flota_ruta_1" class="form-control">
-        @foreach($florus as $flor)
-        <option value="{{$flor->flo_ru_clave}}">{{$flor->flo_ru_clave}}</option>
-        @endforeach
-      </select>
-    <br />
     <label>Nombre del destinatario</label>
     <input type="text" name="des_nombre" id="des_nombre" class="form-control" />
+    <br />
     <label>Apellido del destinatario</label>
     <input type="text" name="des_apellido" id="des_apellido" class="form-control" />
+    <br />
     <label>Cedula del destinatario</label>
     <input type="text" name="des_cedula" id="des_cedula" class="form-control" />
+    <br />
     <label>Telefono del destinatario</label>
     <input type="text" name="tel_numero" id="tel_numero" class="form-control" />
     <br />
@@ -237,14 +229,37 @@
               alert("All Fields are Required");
             }
           });
+          $(document).on('change','#precioCalculo',function(event){
+            var altura = $('#en_altura').val();
+            var anchura = $('#en_anchura').val();
+            var profundidad = $('#en_profundidad').val();
+            var peso = $('#en_peso').val();
+            var tipo = $('#fk_tipo').val();
+            var floru = $('#fk_flota_ruta_1').val();
+            $.ajax({
+              headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+              type: "POST",
+              url: "envio/updatePrecio",
+              data:{
+                altura: altura,
+                anchura: anchura,
+                profundidad: profundidad,
+                peso: peso,
+                tipo: tipo,
+                floru: floru
+              },
+              success: function(data){
+                $('#en_precio').val(data);
+              }
+            });
+          });
           $(document).on('click', '.update', function(){
             var en_clave = $(this).attr("id");
             $.ajax({
               headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
               url:"envio/getOne",
               method:"POST",
-              data:{en_clave:en_clave}
-              ,
+              data:{en_clave:en_clave},
               dataType:"json",
               success:function(data){
                 $('#userModal').modal('show');
