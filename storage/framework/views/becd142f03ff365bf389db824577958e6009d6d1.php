@@ -1,7 +1,7 @@
 <div class="content">
   <div class="logo-container">
   <div class="logo">
-    <a href="welcome"><img src={{ asset('img/logo.png')}} class="logo"></img></a>
+    <a href="welcome"><img src=<?php echo e(asset('img/logo.png')); ?> class="logo"></img></a>
   </div>
 </div>
 <div class="motto-container">
