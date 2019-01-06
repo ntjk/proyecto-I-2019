@@ -210,10 +210,10 @@ select su_nombre, ru_clave from ruta, sucursal where fk_sucursal_1=su_clave and 
       //$tipoValor = $tipoF->ti_precio;
       $floruF = Floru::find($request->floru);
       //$floruValor = $floruF->flo_ru_costo;
-      if ($request->en_peso>=10){
-        $precio=($tipoF->ti_precio + $floruF->flo_ru_costo) * $request->altura * $request->anchura * $request->profundidad;
+      if ($request->peso>=10){
+        $precio=($tipoF->ti_precio_kg + $floruF->flo_ru_costo) * $request->altura * $request->anchura * $request->profundidad;
       }else{
-        $precio=($tipoF->ti_precio + $floruF->flo_ru_costo) * $request->peso;
+        $precio=($tipoF->ti_precio_kg + $floruF->flo_ru_costo) * $request->peso;
       }
       return $precio;
     }
