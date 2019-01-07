@@ -26,34 +26,22 @@
         <h1 class="text-center">Rastreo del envío</h1>
         <br/>
 			<form method="post" id="user_form">
-					<label class="labelDestacado">Ingrese el nro. de guía</label> 
+					<label class="labelDestacado">Ingrese el nro. de guía</label>
 					<input name="fk_envio"  id="fk_envio" class="buscador">
 				<br/><br/>
-				<input type="submit" name="action" id="action" class="btn btn-info btn-lg buscar" value="Buscar">
-                <a href="<?php echo e(url('chequeo3/1')); ?>">Edit</a>
+				<!-- <button href="" type="reset" name="action" onclick="navigate(this,'fk_envio')" id="action" class="btn btn-info btn-lg buscar" value="Buscar"> -->
+        <a type="reset" onclick="navigate(this,'fk_envio')">Edit</a>
+        <script>
+        function navigate(link, inputid){
+          var url = "http://localhost:8080/version6ene/public/chequeo" + document.getElementById(inputid).value;
+          window.location.href = url; //navigates to the given url, disabled for demo
+          //alert(url);
+        }
+        </script>
 			</form>
         </div>
 		<br/><br/>
 
-        <script>$(function() {
-
-            $(document).on('click', '.buscar', function(event){
-            event.preventDefault();
-            var fk_envio = document.getElementById("fk_envio").value;
-            console.log(fk_envio);
-            $.ajax({
-              headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-              type: "POST",
-              url: "rastreo/prueba",
-              data:{
-                fk_envio:fk_envio
-              }
-            });
-          });
-
-        });
-
-        </script>
 
 		<script src="//code.jquery.com/jquery.js"></script>
         <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
