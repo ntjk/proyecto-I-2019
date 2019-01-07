@@ -30,7 +30,8 @@ class ConsultasEnvioController extends Controller
             if($num>$mayor)
                 $mayor=$i;
         }
-        return $mayor;
+        $mesMasEnvios=Envio::select(DB::raw('count(*) as cantidad, extract(month from en_fecha_envio) as mes, extract(year from en_fecha_envio) as yy'))->groupBy('yy', 'mes')->get();
+        return view('consulta1')->with(compact('mesMasEnvios'));
     }
 
     public function pesoPromedioPorOficina(){
