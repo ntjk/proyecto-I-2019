@@ -115,6 +115,10 @@ $resul=DB::select("select * from sucursal where su_clave = ?", [12]);
 		return $resu->su_nombre;
 	}
 });
+
+/* Consultas */
+Route::get('consultas','ConsultasController@index');
+
 /*Route::get("/aje",function(){
 $resul=DB::select("select en_tipo, en_precio, en_peso, en_descripcion, en_altura, en_anchura, en_profundidad, en_fecha_envio, en_fecha_entrega_estimada, sucursalo.su_nombre, cli_cedula, des_cedula, fk_flota_ruta_1, sucursald.su_nombre
 from sucursal as sucursalo, sucursal as sucursald, envio, cliente, destinatario where
