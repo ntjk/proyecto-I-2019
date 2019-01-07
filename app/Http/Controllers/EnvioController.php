@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
+use Illuminate\Support\Facades\DB;
 use App\Envio;
 use App\Cliente;
 use App\Sucursal;
@@ -88,7 +89,7 @@ select su_nombre, ru_clave from ruta, sucursal where fk_sucursal_1=su_clave and 
         ->get();
 
 
-        $i=0;
+         $i=0;
         foreach($envios as $envi){
           $envi->setAttribute("so_nombre",$envio1[$i]->su_nombre);
           $envi->setAttribute("sd_nombre",$envio2[$i]->su_nombre);
@@ -99,7 +100,7 @@ select su_nombre, ru_clave from ruta, sucursal where fk_sucursal_1=su_clave and 
         }
 
       return view('envio')->with(compact('sucursales'))->with(compact('clientes'))->with(compact('tipos'))->with(compact('florus'))->with(compact('rutas'))->with(compact('envios'))->with(compact('mesConMasEnvios'));
-     // return view('envio')->with(compact('sucursales'))->with(compact('clientes'))->with(compact('florus'))->with(compact('rutas'));
+     
     }
 
     /**

@@ -29,9 +29,10 @@
             <table class="table table-bordered" id="users-table">
                 <thead>
                     <tr>
-                    	<th>#</th
-                        <th>Tipo</th>
-                        <th>Precio</th>
+                    	<th>#</th>
+                      <th>Tipo</th>
+                      <th>Precio</th>
+                      <th>Acción</th>
                     </tr>
                 </thead>
             </table>

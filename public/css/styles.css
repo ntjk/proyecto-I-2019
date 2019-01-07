@@ -185,4 +185,18 @@
     text-align: center;
     margin-top: 50px;
   }
+  .labelDestacado{
+    font-weight: bold;
+    font-size: 130%;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .buscador{
+  width: 240px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  padding: 4px 12px 4px 4px;
+  margin-left: 12px;
 </style>

@@ -54,7 +54,7 @@
 #51 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
 #52 C:\\xampp\\htdocs\\Proyecto\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #53 {main}
-"} 
+"}
 [2019-01-07 02:34:21] local.ERROR: count(): Parameter must be an array or an object that implements Countable {"exception":"[object] (ErrorException(code: 0): count(): Parameter must be an array or an object that implements Countable at C:\\xampp\\htdocs\\Proyecto\\app\\Http\\Controllers\\EnvioController.php:170)
 [stacktrace]
 #0 [internal function]: Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(2, 'count(): Parame...', 'C:\\\\xampp\\\\htdocs...', 170, Array)
@@ -111,7 +111,7 @@
 #51 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
 #52 C:\\xampp\\htdocs\\Proyecto\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #53 {main}
-"} 
+"}
 [2019-01-07 02:47:37] local.ERROR: Undefined offset: 21 {"exception":"[object] (ErrorException(code: 0): Undefined offset: 21 at C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Collection.php:1897)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Collection.php(1897): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(8, 'Undefined offse...', 'C:\\\\xampp\\\\htdocs...', 1897, Array)
@@ -168,7 +168,7 @@
 #51 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
 #52 C:\\xampp\\htdocs\\Proyecto\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #53 {main}
-"} 
+"}
 [2019-01-07 02:50:36] local.ERROR: Undefined offset: 21 {"exception":"[object] (ErrorException(code: 0): Undefined offset: 21 at C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Collection.php:1897)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Collection.php(1897): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(8, 'Undefined offse...', 'C:\\\\xampp\\\\htdocs...', 1897, Array)
@@ -225,7 +225,7 @@
 #51 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
 #52 C:\\xampp\\htdocs\\Proyecto\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #53 {main}
-"} 
+"}
 [2019-01-07 02:50:55] local.ERROR: Undefined offset: 21 {"exception":"[object] (ErrorException(code: 0): Undefined offset: 21 at C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Collection.php:1897)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Collection.php(1897): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(8, 'Undefined offse...', 'C:\\\\xampp\\\\htdocs...', 1897, Array)
@@ -282,4 +282,4 @@
 #51 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
 #52 C:\\xampp\\htdocs\\Proyecto\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #53 {main}
-"} 
+"}

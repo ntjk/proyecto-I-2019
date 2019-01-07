@@ -26,6 +26,9 @@ Route::get('/', function () {
 Route::get('quienes_somos', function(){
   return view('quienes_somos');
 });
+Route::get('buscadorChequeo', function(){
+  return view('buscadorChequeo');
+});
 
 /* REAL HACKER HOURS */
 /* sucursal */
@@ -107,6 +110,20 @@ Route::post('floru/getOne','FloruController@getOne');
 Route::post('floru/updateSelect','FloruController@updateSelect');
 Route::get('floru','FloruController@index');
 //Route::get('floru-getData','FloruController@getData')->name('floru_getData');
+
+/*tipo paquete*/
+Route::resource('tipo','TipoController');
+Route::post('tipo/getOne','TipoController@getOne');
+Route::post('tipo/updateSelect','TipoController@updateSelect');
+Route::get('tipo','TipoController@index');
+Route::get('tipo-getData','TipoController@getData')->name('tipo_getData');
+
+/*chequeo - rastreo*/
+Route::resource('chequeo','ChequeoController');
+Route::post('chequeo/getOne','ChequeoController@getOne');
+Route::post('chequeo/updateSelect','ChequeoController@updateSelect');
+Route::get('chequeo-getData','ChequeoController@getData')->name('chequeo_getData');
+Route::get('chequeo{id}', 'ChequeoController@show');
 
 
 Route::get("/aja",function(){
