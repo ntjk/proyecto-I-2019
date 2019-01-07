@@ -118,21 +118,11 @@ Route::get('tipo','TipoController@index');
 Route::get('tipo-getData','TipoController@getData')->name('tipo_getData');
 
 /*chequeo - rastreo*/
-//Route::resource('chequeo','ChequeoController');
-//Route::post('chequeo/getOne','ChequeoController@getOne');
-//Route::post('chequeo/updateSelect','ChequeoController@updateSelect');
-//Route::get('rastreo/{id}','ChequeoController@show');
-//Route::get('chequeo-getData','ChequeoController@getData')->name('chequeo_getData');
-
-Route::get('chequeo3/{id}', 'ChequeoController@show');
-
-Route::post('rastreo/prueba','ChequeoController@prueba');
-
 Route::resource('chequeo','ChequeoController');
 Route::post('chequeo/getOne','ChequeoController@getOne');
 Route::post('chequeo/updateSelect','ChequeoController@updateSelect');
-Route::get('chequeo','ChequeoController@index');
-
+Route::get('chequeo-getData','ChequeoController@getData')->name('chequeo_getData');
+Route::get('chequeo{id}', 'ChequeoController@show');
 
 
 Route::get("/aja",function(){

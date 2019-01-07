@@ -23,7 +23,7 @@
             <?php echo $__env->make('header', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
             <div class="container">
             <br/>
-            <h1 class="text-center">Rastreo del envío</h1>
+            <h1 class="text-center" name="h1" id="h1" value=<?php echo e($envio); ?>>Rastreo del envío <?php echo e($envio); ?></h1>
             <br/>
             <button type="button" id="add_button" data-toggle="modal" data-target="#userModal" class="btn btn-info btn-lg">Add</button>
             <table class="table table-bordered" id="users-table">
@@ -41,7 +41,7 @@
                   <tr>
                     <td><?php echo e($c->che_fecha); ?></td>
                     <td><?php echo e($c->che_descripcion); ?></td>
-                    <td><?php echo e($c->che_fk_zona); ?></td>
+                    <td><?php echo e($c->fk_zona); ?></td>
                     <td><?php echo e($c->che_estatus); ?></td>
                     <td>
                       <button class="btn btn-warning btn-detail update" id="<?php echo e($c->che_clave); ?>" value="<?php echo e($c->che_clave); ?>" name="Update">Update</button>
@@ -61,29 +61,35 @@
      <h4 class="modal-title">Añadir Chequeo</h4>
     </div>
     <div class="modal-body">
-     <label>Envio con nro de guia</label>
      <br />
      <label>Fecha</label>
-     <input type="date" name="che_fecha" disabled=true id="che_fecha" class="form-control"/>
+     <input name="che_fecha" disabled=true id="che_fecha" class="form-control"/>
      <br />
+       <script>
+        var f = new Date();
+        document.getElementById("che_fecha").value = f;
+       </script>
      <label>Descripcion</label>
      <input type="text" name="che_descripcion" id="che_descripcion" class="form-control" />
      <br />
      <label>Sucursal</label>
-     <select name="fk_sucursal_" id="fk_sucursal" class="form-control">
+     <select name="fk_sucursal" id="fk_sucursal" class="form-control">
         <?php $__currentLoopData = $sucursales; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sucursal): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <option value="<?php echo e($sucursal->su_clave); ?>"><?php echo e($sucursal->su_nombre); ?></option>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
      </select>
      <br />
      <label>Zona</label>
-     <input type="text" name="fk_zona" id="fk_zona" class="form-control" />
+     <select class="form-control" name="fk_zona" id="fk_zona">
+    </select>
      <br />
      <label>Estatus</label>
-     <select name="fk_sucursal_origen" id="fk_sucursal_origen" class="form-control">
-        <?php $__currentLoopData = $chequeos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $chequeo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-        <option value="<?php echo e($chequeo->che_clave); ?>"><?php echo e($chequeo->che_estatus); ?></option>
-        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+     <select name="che_estatus" id="che_estatus" class="form-control">
+        <option value="entregado">Entregado</option>
+        <option value="en aduana">En aduana</option>
+        <option value="en oficina origen">En oficina origen</option>        
+        <option value="en oficina destino">En oficina destino</option>
+        <option value="en oficina intermedia">En oficina intermedia</option>
      </select>
      <br />
     </div>
@@ -110,7 +116,7 @@
             var che_descripcion = $('#che_descripcion').val();
             var che_estatus = $('#che_estatus').val();
             var fk_zona = $('#fk_zona').val();
-            var fk_envio = $('#fk_zona').val();
+            var fk_envio = $('#h1').val();
             if(che_estatus != '' && che_descripcion != '')
             {
               $.ajax({
@@ -133,6 +139,24 @@
               alert("Debe seleccionar un estatus y colocar una descripcion");
             }
           });
+
+          $(document).on('change','#fk_sucursal',function(){
+              var sucursal = $(this).val();
+              $.ajax({
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                type: "POST",
+                url: "chequeo/updateSelect",
+                data:{sucursal:sucursal},
+                success: function(data){
+                    var options = '';
+                    $.each(data, function(i, item) {
+                      options += '<option value="' + item.zo_clave + '">' + item.zo_nombre + '</option>';
+                    });
+                    $('#fk_zona').empty().html(options);
+                }
+              });
+            });
+              
           $(document).on('click', '.update', function(){
             var che_clave = $(this).attr("id");
             $.ajax({

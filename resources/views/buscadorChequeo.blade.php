@@ -33,7 +33,7 @@
         <a type="reset" onclick="navigate(this,'fk_envio')">Edit</a>
         <script>
         function navigate(link, inputid){
-          var url = "http://localhost/Proyecto/public/chequeo3/" + document.getElementById(inputid).value;
+          var url = "http://localhost:8080/version6ene/public/chequeo" + document.getElementById(inputid).value;
           window.location.href = url; //navigates to the given url, disabled for demo
           //alert(url);
         }
@@ -43,27 +43,6 @@
 		<br/><br/>
 
 
-<!--
-        <script>$(function() {
-
-            $(document).on('click', '.buscar', function(event){
-            event.preventDefault();
-            var fk_envio = document.getElementById("fk_envio").value;
-            console.log(fk_envio);
-            $.ajax({
-              headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-              type: "POST",
-              url: "rastreo/prueba",
-              data:{
-                fk_envio:fk_envio
-              }
-            });
-          });
-
-        });
-
-        </script>
--->
 		<script src="//code.jquery.com/jquery.js"></script>
         <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
