@@ -1,0 +1,1 @@
+[2019-01-07 00:16:08] local.ERROR: SQLSTATE[08006] [7] FATAL:  la autentificación password falló para el usuario «postgres» (SQL: select * from "lugar" where "lu_tipo" = estado order by "lu_nombre" asc)  
