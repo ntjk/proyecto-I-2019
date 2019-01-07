@@ -12,7 +12,7 @@
     <meta name="csrf-token" content="{!! csrf_token() !!}" />
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
     <script type="text/javascript" src="{{ asset('js/dropdown.js') }}"></script>
-    <title>template - LogUCAB</title>
+    <title>Promedio de envios {{$mensaje}} de la Sucursal {{$sucursal}} - LogUCAB</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
