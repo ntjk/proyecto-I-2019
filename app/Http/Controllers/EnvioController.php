@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+ 
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 use Illuminate\Support\Facades\DB;
@@ -22,9 +22,6 @@ class EnvioController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function calcularMesConMasEnvios(){
-
-    }
 
     public function index()
     {
@@ -34,17 +31,6 @@ class EnvioController extends Controller
       $florus=Floru::orderBy('flo_ru_clave')->get();
       $tipos=Tipo::orderBy('ti_clave')->get();
 
-      $mayor=0;
-      for ($i = 1; $i <= 12; $i++){
-        $num=Envio::whereMonth('en_fecha_envio', $i)->count();
-        if($num>$mayor)
-          $mayor=$i;
-      }
-      $mesConMasEnvios=$mayor;
-
-      /*$mesConMasEnvios=Envio::groupBy(function (Gk $item) {
-        return $item->en_fecha_envio->format('m');
-    })->count()->first();//select count(*) as conteo, extract(month from en_fecha_envio) as mes from envio group by extract(month from en_fecha_envio) order by conteo desc
 
      /* Con esto seleccionas un nodo y está bien. Hacer que esto salga en una filita o varias filitas
 select su_nombre, ru_clave from ruta, sucursal where fk_sucursal_1=su_clave and fk_sucursal_2=335 and fk_ruta in (select ru_clave from ruta where fk_sucursal_1 = 1 and fk_ruta is null)
@@ -56,20 +42,20 @@ select su_nombre, ru_clave from ruta, sucursal where fk_sucursal_1=su_clave and 
 
         $envio1 = Envio::join('sucursal','sucursal.su_clave','=','envio.fk_sucursal_origen')
         ->select(['sucursal.su_nombre'])
-        //->whereBetween('sucursal.su_clave', [1, 10])
+        ->whereBetween('sucursal.su_clave', [1, 10])
         ->get();
         $envio2 = Envio::join('sucursal','sucursal.su_clave','=','envio.fk_sucursal_destino')
         ->select(['sucursal.su_nombre'])
-        //->whereBetween('sucursal.su_clave', [1, 10])
+        ->whereBetween('sucursal.su_clave', [1, 10])
         ->get();
         $envio3 = Envio::join('cliente','cli_clave','=','envio.fk_cliente')->select(['cliente.cli_cedula'])
-        //->whereBetween('cliente.cli_clave', [1, 10])
+        ->whereBetween('cliente.cli_clave', [1, 10])
         ->get();
         $envio4 = Envio::join('destinatario','des_clave','=','envio.fk_destinatario')->select(['destinatario.des_cedula'])
-        //->whereBetween('destinatario.des_clave', [1, 10])
+        ->whereBetween('destinatario.des_clave', [1, 10])
         ->get();
         $envio5 = Envio::join('tipo','ti_clave','=','envio.fk_tipo')->select(['tipo.ti_nombre'])
-        //->whereBetween('tipo.ti_clave', [1, 10])
+        ->whereBetween('tipo.ti_clave', [1, 10])
         ->get();
 //este poco de envios es por los atributos que necesitamos que salgan en la tabla pero no pertenecen a la tabla envio
 
@@ -85,7 +71,7 @@ select su_nombre, ru_clave from ruta, sucursal where fk_sucursal_1=su_clave and 
             'envio.en_fecha_envio',
             'envio.en_fecha_entrega_estimada',
             'envio.fk_flota_ruta_1')
-        //->whereBetween('envio.en_clave', [1, 21])
+        ->whereBetween('envio.en_clave', [1, 21])
         ->get();
 
 
@@ -108,36 +94,6 @@ select su_nombre, ru_clave from ruta, sucursal where fk_sucursal_1=su_clave and 
      *
      * @return \Illuminate\Http\JsonResponse
      */
-
-    public function getData()
-    {
-
-        $envio = Envio::join('sucursal','sucursal.su_clave','=','envio.fk_sucursal_origen')
-        ->join('cliente','cliente.cli_clave','=','envio.fk_cliente')
-        ->join('destinatario','destinatario.des_clave','=','envio.fk_destinatario')
-        ->join('tipo','tipo.ti_clave','=','envio.fk_tipo')
-        ->select([
-            'envio.en_clave',
-            'tipo.ti_nombre',
-            'envio.en_precio',
-            'envio.en_peso',
-            'envio.en_descripcion',
-            'envio.en_altura',
-            'envio.en_anchura',
-            'envio.en_profundidad',
-            'envio.en_fecha_envio',
-            'envio.en_fecha_entrega_estimada',
-            'envio.fk_flota_ruta_1',
-            'envio.fk_sucursal_destino',
-            'sucursal.su_nombre',
-            'cliente.cli_cedula',
-            'destinatario.des_cedula'
-        ]);
-
-        return Datatables::of($envio)->addColumn('action', function ($envio) {
-            return '<button class="btn btn-warning btn-detail update" id="'.$envio->en_clave.'" value="'.$envio->en_clave.'" name="Update">Update</button>
-            <button class="btn btn-danger btn-delete delete" id="'.$envio->en_clave.'" value="'.$envio->en_clave.'" name="delete">Delete</button>'; })->make(true);
-    }
 
     public function store(Request $request){
       if ($request->operation == "Edit"){

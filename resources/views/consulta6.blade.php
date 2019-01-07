@@ -1,0 +1,1 @@
+consulta6.blade.php
