@@ -84,7 +84,6 @@
      <h4 class="modal-title">Añadir envio</h4>
     </div>
   <div class="modal-body">
-     <!--<input value={{$mesConMasEnvios}}> </input>-->
      <label>Descripción</label>
      <input type="text" name="en_descripcion" id="en_descripcion" class="form-control" />
      <br />

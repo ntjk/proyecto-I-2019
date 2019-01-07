@@ -12,7 +12,7 @@
     <meta name="csrf-token" content="<?php echo csrf_token(); ?>" />
     <link href="<?php echo e(asset('css/styles.css')); ?>" rel="stylesheet">
     <script type="text/javascript" src="<?php echo e(asset('js/dropdown.js')); ?>"></script>
-    <title>Cliente - LogUCAB</title>
+    <title>Consultas - LogUCAB</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
@@ -25,15 +25,26 @@
       <br/>
       <h1 class="text-center">Consultas</h1>
       <br/>
-      <a href="test1">Test1</a>
+      <a href="consulta1">Mes del año que se realizan más envíos</a>
       <br/>
-      <a href="test2">Test2</a>
+      <a href="consulta2">Peso promedio de los paquetes que se envían por oficina</a>
       <br/>
-      <a href="test3">Test3</a>
+      <a href="consulta3">Listado de paquetes por estatus </a>
       <br/>
-      <a href="test4">Test4</a>
+      <a href="consulta4">¿Qué oficina es la que recibe más paquetes? ¿Qué oficina envía más
+paquetes? </a>
       <br/>
-      <a href="test5">Test5</a>
+      <a href="consulta5">Test5</a>
+      <br/>
+      <a href="consulta20-1-60">Promedio de paquetes de una oficina en un periodo de tiempo</a>
+      <br/>
+      <a href="consulta5">Test5</a>
+      <br/>
+      <a href="consulta5">Test5</a>
+      <br/>
+      <a href="consulta5">Test5</a>
+      <br/>
+      <a href="consulta5">Test5</a>
       <br/>
     </div>
     <?php echo $__env->yieldPushContent('scripts'); ?>

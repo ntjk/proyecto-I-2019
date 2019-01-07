@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
- 
+
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 use Illuminate\Support\Facades\DB;
@@ -42,20 +42,20 @@ select su_nombre, ru_clave from ruta, sucursal where fk_sucursal_1=su_clave and 
 
         $envio1 = Envio::join('sucursal','sucursal.su_clave','=','envio.fk_sucursal_origen')
         ->select(['sucursal.su_nombre'])
-        ->whereBetween('sucursal.su_clave', [1, 10])
+        //->whereBetween('sucursal.su_clave', [1, 10])
         ->get();
         $envio2 = Envio::join('sucursal','sucursal.su_clave','=','envio.fk_sucursal_destino')
         ->select(['sucursal.su_nombre'])
-        ->whereBetween('sucursal.su_clave', [1, 10])
+        //->whereBetween('sucursal.su_clave', [1, 10])
         ->get();
         $envio3 = Envio::join('cliente','cli_clave','=','envio.fk_cliente')->select(['cliente.cli_cedula'])
-        ->whereBetween('cliente.cli_clave', [1, 10])
+        //->whereBetween('cliente.cli_clave', [1, 10])
         ->get();
         $envio4 = Envio::join('destinatario','des_clave','=','envio.fk_destinatario')->select(['destinatario.des_cedula'])
-        ->whereBetween('destinatario.des_clave', [1, 10])
+        //->whereBetween('destinatario.des_clave', [1, 10])
         ->get();
         $envio5 = Envio::join('tipo','ti_clave','=','envio.fk_tipo')->select(['tipo.ti_nombre'])
-        ->whereBetween('tipo.ti_clave', [1, 10])
+        //->whereBetween('tipo.ti_clave', [1, 10])
         ->get();
 //este poco de envios es por los atributos que necesitamos que salgan en la tabla pero no pertenecen a la tabla envio
 
@@ -71,7 +71,7 @@ select su_nombre, ru_clave from ruta, sucursal where fk_sucursal_1=su_clave and 
             'envio.en_fecha_envio',
             'envio.en_fecha_entrega_estimada',
             'envio.fk_flota_ruta_1')
-        ->whereBetween('envio.en_clave', [1, 21])
+        //->whereBetween('envio.en_clave', [1, 21])
         ->get();
 
 
@@ -85,8 +85,8 @@ select su_nombre, ru_clave from ruta, sucursal where fk_sucursal_1=su_clave and 
           $i++;
         }
 
-      return view('envio')->with(compact('sucursales'))->with(compact('clientes'))->with(compact('tipos'))->with(compact('florus'))->with(compact('rutas'))->with(compact('envios'))->with(compact('mesConMasEnvios'));
-     
+      return view('envio')->with(compact('sucursales'))->with(compact('clientes'))->with(compact('tipos'))->with(compact('florus'))->with(compact('rutas'))->with(compact('envios'));
+
     }
 
     /**

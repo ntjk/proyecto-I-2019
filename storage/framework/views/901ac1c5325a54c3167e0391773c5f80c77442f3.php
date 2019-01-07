@@ -1,4 +1,4 @@
- <!doctype html>
+<!doctype html>
 <html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>">
     <head>
         <meta charset="utf-8">
@@ -11,8 +11,9 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <meta name="csrf-token" content="<?php echo csrf_token(); ?>" />
         <link href="<?php echo e(asset('css/styles.css')); ?>" rel="stylesheet">
+        <link href="<?php echo e(asset('css/unselectable.css')); ?>" rel="stylesheet">
         <script type="text/javascript" src="<?php echo e(asset('js/dropdown.js')); ?>"></script>
-        <title>Rastreo - LogUCAB</title>
+        <title>Consulta 2</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
@@ -20,34 +21,43 @@
         <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     </head>
     <body>
-        <?php echo $__env->make('header', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-        <div class="container">
-        <br/>
-        <h1 class="text-center">Rastreo del envío</h1>
-        <br/>
-			<form method="post" id="user_form">
-					<label class="labelDestacado">Ingrese el nro. de guía</label>
-					<input name="fk_envio"  id="fk_envio" class="buscador">
-				<br/><br/>
-				<!-- <button href="" type="reset" name="action" onclick="navigate(this,'fk_envio')" id="action" class="btn btn-info btn-lg buscar" value="Buscar"> -->
-        <a type="reset" onclick="navigate(this,'fk_envio')">Edit</a>
-        <script>
-        function navigate(link, inputid){
-          var url = "<?php echo e(url('/chequeo')); ?>" + document.getElementById(inputid).value;
-          window.location.href = url; //navigates to the given url, disabled for demo
-          //alert(url);
-        }
-        </script>
-			</form>
+            <?php echo $__env->make('header', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+            <h1 class="text-center">Oficina origen mas escogida</h1>
+            <br/>
+            <table class="table table-bordered" width="80%" id="users-table">
+                <thead>
+                    <tr>
+                        <th>Sucursal</th>
+                        <th>Cantidad de envíos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  <?php $__currentLoopData = $origenMaxPaquetes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $a): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                  <tr>
+                  	<td><?php echo e($a->so); ?></td>
+                    <td><?php echo e($a->mo); ?></td>
+                  </tr>
+                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </tbody>
+            </table>
+            <br/>
         </div>
-		<br/><br/>
-
-
-		<script src="//code.jquery.com/jquery.js"></script>
+        <div id="userModal" class="modal fade">
+        <script src="//code.jquery.com/jquery.js"></script>
         <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+        <script>$(function() {
+            $('#users-table').DataTable({
+            })
+          	$(document).on('click', '.update', function(){
+            	var en_clave = $(this).attr("id");
+          	});
+        });
+        </script>
         <?php echo $__env->yieldPushContent('scripts'); ?>
         <?php echo $__env->make('footer', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+              </div>
         </div>
       </div>
     </body>

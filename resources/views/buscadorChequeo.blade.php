@@ -33,7 +33,7 @@
         <a type="reset" onclick="navigate(this,'fk_envio')">Edit</a>
         <script>
         function navigate(link, inputid){
-          var url = "http://localhost:8080/version6ene/public/chequeo" + document.getElementById(inputid).value;
+          var url = "{{url('/chequeo')}}" + document.getElementById(inputid).value;
           window.location.href = url; //navigates to the given url, disabled for demo
           //alert(url);
         }
