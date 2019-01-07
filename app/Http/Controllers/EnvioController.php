@@ -140,7 +140,6 @@ select su_nombre, ru_clave from ruta, sucursal where fk_sucursal_1=su_clave and 
 
     public function store(Request $request){
       if ($request->operation == "Edit"){
-        console.log($request);
         $cliente = Cliente::find($request->fk_cliente);
         $cliente->cli_cedula = $request->input('fk_cliente');
         $cliente->save();
