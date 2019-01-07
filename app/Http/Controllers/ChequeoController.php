@@ -37,10 +37,11 @@ class ChequeoController extends Controller
       if ($request->operation == "Edit"){
         $chequeo = Chequeo::find($request->che_clave);
         $chequeo->fill($request->all());
+      	$chequeo -> fk_envio = $request->fk_envio;
         $chequeo->save();
       } else {
           $chequeo = new Chequeo();
-          $chequeo -> che_fecha = $request->input('che_fecha');
+          $chequeo -> che_fecha = date("Y-m-d h:i:sa");
           $chequeo -> che_descripcion = $request->input('che_descripcion');
           $chequeo -> che_estatus = $request->input('che_estatus');
           $chequeo -> fk_zona = $request->input('fk_zona');
