@@ -141,6 +141,14 @@ Route::get('consulta2','ConsultasEnvioController@pesoPromedioPorOficina');
 Route::get('consulta3','ConsultasEnvioController@enviosPorEstatus');
 Route::get('consulta4','ConsultasEnvioController@origenMaxPaquetes');
 Route::get('consulta5','ConsultasEnvioController@destinoMaxPaquetes');
+Route::get('consulta6', function(){
+  return view('buscadorFecha');
+});
+Route::get('filtrarFecha_1{f}','ConsultasEnvioController@consulta6_1');
+Route::get('filtrarFecha_2{ri}','ConsultasEnvioController@consulta6_2');
+Route::get('consulta7','ConsultasEnvioController@destinoMaxPaquetes');
+Route::get('consulta8','ConsultasEnvioController@destinoMaxPaquetes');
+
 
 /*Route::get("/aje",function(){
 $resul=DB::select("select en_tipo, en_precio, en_peso, en_descripcion, en_altura, en_anchura, en_profundidad, en_fecha_envio, en_fecha_entrega_estimada, sucursalo.su_nombre, cli_cedula, des_cedula, fk_flota_ruta_1, sucursald.su_nombre

@@ -1,4 +1,4 @@
- <!doctype html>
+<!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
@@ -11,8 +11,9 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <meta name="csrf-token" content="{!! csrf_token() !!}" />
         <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/unselectable.css') }}" rel="stylesheet">
         <script type="text/javascript" src="{{ asset('js/dropdown.js') }}"></script>
-        <title>Rastreo - LogUCAB</title>
+        <title>Consulta 2</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
@@ -20,34 +21,44 @@
         <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     </head>
     <body>
-        @include('header')
-        <div class="container">
-        <br/>
-        <h1 class="text-center">Rastreo del envío</h1>
-        <br/>
-			<form method="post" id="user_form">
-					<label class="labelDestacado">Ingrese el nro. de guía</label>
-					<input name="fk_envio"  id="fk_envio" class="buscador">
-				<br/><br/>
-				<!-- <button href="" type="reset" name="action" onclick="navigate(this,'fk_envio')" id="action" class="btn btn-info btn-lg buscar" value="Buscar"> -->
-        <a type="reset" class="btn btn-info btn-lg" onclick="navigate(this,'fk_envio')">Buscar</a>
-        <script>
-        function navigate(link, inputid){
-          var url = "http://localhost:8080/version6ene/public/chequeo" + document.getElementById(inputid).value;
-          window.location.href = url; //navigates to the given url, disabled for demo
-          //alert(url);
-        }
-        </script>
-			</form>
+            @include('header')
+            <h1 class="text-center">Oficina destino mas escogida</h1>
+            <br/>
+            <table class="table table-bordered" width="80%" id="users-table">
+                <thead>
+                    <tr>
+                        <th>Sucursal</th>
+                        <th>Cantidad de envíos</th>
+                        <th>Fecha</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  @foreach ($consulta as $b)
+                  <tr>
+                    <td>{{$b->so}}</td>
+                    <td>{{$b->mo}}</td>
+                    <td>{{$b->fecha}}</td>
+                  </tr>
+                  @endforeach
+                </tbody>
+            </table>
         </div>
-		<br/><br/>
-
-
-		<script src="//code.jquery.com/jquery.js"></script>
+        <div id="userModal" class="modal fade">
+        <script src="//code.jquery.com/jquery.js"></script>
         <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+        <script>$(function() {
+            $('#users-table').DataTable({
+            })
+            $(document).on('click', '.update', function(){
+              var en_clave = $(this).attr("id");
+            });
+        });
+        </script>
         @stack('scripts')
         @include('footer')
+              </div>
         </div>
       </div>
     </body>

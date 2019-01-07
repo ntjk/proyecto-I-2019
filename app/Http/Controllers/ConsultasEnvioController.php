@@ -101,6 +101,18 @@ class ConsultasEnvioController extends Controller
         return view('consulta5')->with(compact('destinoMaxPaquetes'));
     }
 
+    public function consulta6_1($fecha)
+    {
+           $consulta = Envio::join('sucursal','sucursal.su_clave','=','envio.fk_sucursal_origen')->select(DB::raw('count(*) as mo, su_nombre as so, en_fecha_envio as fecha'))->groupBy('so','fecha')->where('en_fecha_envio', $fecha)->get();
+            return view('consulta6_1')->with(compact('consulta'));
+    }
+
+    public function consulta6_2($rango)
+    {
+        $consulta = Envio::join('sucursal','sucursal.su_clave','=','envio.fk_sucursal_origen')->select(DB::raw('count(*) as mo, su_nombre as so, en_fecha_envio as fecha'))->groupBy('so','fecha')->whereBetween('en_fecha_envio', [substr($rango, 0, 10), substr($rango, 10)])->get();
+            return view('consulta6_2')->with(compact('consulta'));
+    }
+
 
 
     public function index()
