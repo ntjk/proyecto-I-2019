@@ -13,6 +13,7 @@
   <div class="nav">
     <div class="links">
         <a href="quienes_somos">¿Quienes Somos?</a>
+        <a href="consultas">Consultas</a>
         <a href="buscadorChequeo">Rastreo de envíos</a>
         <div class="dropdown">
           <a onclick="myFunction()" class="dropbtn">Tablas</a>

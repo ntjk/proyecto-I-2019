@@ -283,3 +283,4 @@
 #52 C:\\xampp\\htdocs\\Proyecto\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #53 {main}
 "}
+[2019-01-07 03:57:05] local.ERROR: SQLSTATE[08006] [7] FATAL:  la autentificación password falló para el usuario «postgres» (SQL: select * from "lugar" where "lu_tipo" = estado order by "lu_nombre" asc)  
