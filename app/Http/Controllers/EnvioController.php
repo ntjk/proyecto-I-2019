@@ -84,7 +84,7 @@ select su_nombre, ru_clave from ruta, sucursal where fk_sucursal_1=su_clave and 
             'envio.en_fecha_envio',
             'envio.en_fecha_entrega_estimada',
             'envio.fk_flota_ruta_1')
-        ->whereBetween('envio.en_clave', [1, 10])
+        ->whereBetween('envio.en_clave', [1, 21])
         ->get();
 
 
@@ -166,6 +166,14 @@ select su_nombre, ru_clave from ruta, sucursal where fk_sucursal_1=su_clave and 
           $envio -> fk_sucursal_origen = $request->input('fk_sucursal_origen');
           $envio -> fk_sucursal_destino = $request->input('fk_sucursal_destino');
 
+          $cliente = Cliente::find($request->input('fk_cliente'));
+          if (Envio::where('fk_cliente',$request->input('fk_cliente'))->count()>=5){
+            $cliente->cli_vip = 1;
+          } else {
+            $cliente->cli_vip = 0;
+          }
+          $cliente->save();
+
           $ruta3 = Floru::where('flo_ru_clave','=', $request->input('fk_flota_ruta_1'))->first();
           $envio -> fk_flota_ruta_1 = $ruta3->flo_ru_clave;
           $envio -> fk_flota_ruta_2 = $ruta3->fk_flota;
@@ -191,7 +199,7 @@ select su_nombre, ru_clave from ruta, sucursal where fk_sucursal_1=su_clave and 
 
           $envio -> save();
         }
-        return ['success' => true, 'message' => 'Saved !!'];
+        return ['success' => true, 'message' => 'Saved !!', 'value' => Envio::where('fk_cliente',$request->input('fk_cliente'))->count()];
     }
 
     public function getOne(Request $request){
@@ -201,7 +209,7 @@ select su_nombre, ru_clave from ruta, sucursal where fk_sucursal_1=su_clave and 
     public function destroy($id){
       $envio = Envio::find($id);
       $envio->delete();
-      return ['success' => true, 'message' => 'Deleted !!'];
+      return ['success' => true, 'message' => 'Deleted !!', ];
     }
 
     public function updatePrecio(Request $request){
