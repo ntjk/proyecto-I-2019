@@ -23,7 +23,7 @@
             <?php echo $__env->make('header', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
             <div class="container">
             <br/>
-            <h1 class="text-center" name="h1" id="h1" value=<?php echo e($envio); ?>>Rastreo del envío <?php echo e($envio); ?></h1>
+            <h1 class="text-center">Rastreo del envío <?php echo e($envio); ?></h1>
             <br/>
             <button type="button" id="add_button" data-toggle="modal" data-target="#userModal" class="btn btn-info btn-lg">Add</button>
             <table class="table table-bordered" id="users-table">
@@ -94,6 +94,7 @@
      <br />
     </div>
     <div class="modal-footer">
+     <input type="hidden" name="fk_envio" id="fk_envio" value=<?php echo e($envio); ?>> 
      <input type="hidden" name="che_clave" id="che_clave" />
      <input type="hidden" name="operation" id="operation" />
      <input type="submit" name="action" id="action" class="btn btn-success" value="Add"/>
@@ -112,11 +113,10 @@
 
             $(document).on('submit', '#user_form', function(event){
             event.preventDefault();
-            var che_fecha = $('#che_fecha').val();
             var che_descripcion = $('#che_descripcion').val();
             var che_estatus = $('#che_estatus').val();
             var fk_zona = $('#fk_zona').val();
-            var fk_envio = $('#h1').val();
+            var fk_envio = $('#fk_envio').val();
             if(che_estatus != '' && che_descripcion != '')
             {
               $.ajax({
@@ -169,8 +169,10 @@
                 $('#userModal').modal('show');
                 $('#che_estatus').val(data.che_estatus);
                 $('#che_descripcion').val(data.che_descripcion);
+                $('#che_fecha').val(data.che_fecha);
+                $('#che_clave').val(che_clave);
                 $('.modal-title').text("Edit Chequeo");
-                $('#fk_zona').val(fk_zona);
+                $('#fk_zona').val(data.fk_zona);
                 $('#action').val("Edit");
                 $('#operation').val("Edit");
               }
