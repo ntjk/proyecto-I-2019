@@ -36,6 +36,9 @@ paquetes? </a>
       <br/>
       <a href="consulta5">Test5</a>
       <br/>
+      <br/>
+      <a href="consulta6">Cantidad de envíos según período</a>
+      <br/>
     </div>
     <?php echo $__env->yieldPushContent('scripts'); ?>
     <?php echo $__env->make('footer', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>

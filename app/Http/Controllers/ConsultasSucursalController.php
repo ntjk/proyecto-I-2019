@@ -39,4 +39,8 @@ class ConsultasSucursalController extends Controller
       }
       return view('consulta20')->with(compact('avgES'))->with(compact('sucursal'))->with(compact('sucursales'))->with(compact('mensaje'));
     }
+
+    public function listadoRegion(){
+      
+    }
 }
