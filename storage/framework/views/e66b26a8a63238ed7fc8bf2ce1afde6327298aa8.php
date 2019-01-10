@@ -119,10 +119,12 @@
         <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script>$(function() {
-         // input[name=parametro]
-            $('[name="hd1"]').hide();
+         // input[name=parametro] El if iria aca y ni modo, repetir la funcion gigante esta que llama las columnas, una sin el boton y otra con.
+           /* $('[name="hd1"]').hide();
             $('[name="delete"]').hide();
-            $('[name="Update"]').hide();
+            $('[name="Update"]').hide();*/
+            $(".delete").hide();
+
             $('#users-table').DataTable({
                 processing: true,
                 serverSide: true,
@@ -138,7 +140,7 @@
                     { data: 'cli_vip', name: 'cli_vip' },
                     { data: 'fk_lugar', name: 'fk_lugar' },
                     { data: 'cli_nacionalidad', name: 'cli_nacionalidad' },
-                    {data: 'action', name: 'action', orderable: false, searchable: false}
+                    { data: 'action', name: 'action', orderable: false, searchable: false}
                 ]
             })
             $(document).on('change','#estado',function(){

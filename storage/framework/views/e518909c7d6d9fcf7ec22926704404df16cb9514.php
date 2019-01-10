@@ -12,7 +12,7 @@
         <meta name="csrf-token" content="<?php echo csrf_token(); ?>" />
         <link href="<?php echo e(asset('css/styles.css')); ?>" rel="stylesheet">
         <script type="text/javascript" src="<?php echo e(asset('js/dropdown.js')); ?>"></script>
-        <title>Roles - LogUCAB</title>
+        <title>Usuarios - LogUCAB</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
@@ -23,30 +23,20 @@
             <?php echo $__env->make('header', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
             <div class="container">
             <br/>
-            <h1 class="text-center">Roles</h1>
+            <h1 class="text-center">Usuarios</h1>
             <br/>
             <button type="button" id="add_button" data-toggle="modal" data-target="#userModal" class="btn btn-info btn-lg">Add</button>
             <table class="table table-bordered" id="users-table">
                 <thead>
                     <tr>
+                        <th>Clave</th>
                         <th>Nombre</th>
-                        <th>Descripcion</th>
-                        <th>Accion</th> 
+                        <th>Contraseña</th>
+                        <th>Rol</th>>
+                        <th>Nombre del Empleado</th>
+                        <th>Accion</th>
                     </tr>
                 </thead>
-                <tbody>
-                  <?php $__currentLoopData = $roles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rol): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                  <tr>
-                    <td><?php echo e($rol->rol_nombre); ?></td>
-                    <td><?php echo e($rol->rol_descripcion); ?></td>
-                    <td>
-                      <button class="btn btn-warning btn-detail update" id="<?php echo e($rol->rol_clave); ?>" value="<?php echo e($rol->rol_clave); ?>" name="Update">Update</button>
-                      <button class="btn btn-danger btn-delete delete" id="<?php echo e($rol->rol_clave); ?>" value="<?php echo e($rol->rol_clave); ?>" name="delete">Delete</button>
-                      <button class="btn btn-primary verPermisos" id="<?php echo e($rol->rol_clave); ?>" value="<?php echo e($rol->rol_clave); ?>" name="verPermisos">Permisos</button>
-                    </td>
-                  </tr>
-                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                </tbody>
             </table>
         </div>
         <div id="userModal" class="modal fade">
@@ -55,18 +45,32 @@
    <div class="modal-content">
     <div class="modal-header">
      <button type="button" class="close" data-dismiss="modal">&times;</button>
-     <h4 class="modal-title">Añadir Rol</h4>
+     <h4 class="modal-title">Añadir Empleado</h4>
     </div>
     <div class="modal-body">
      <label>Nombre</label>
-     <input type="text" name="rol_nombre" id="rol_nombre" class="form-control" />
+     <input type="text" name="u_nombre" id="u_nombre" class="form-control" />
      <br />
-     <label>Descripcion</label>
-     <input type="text" name="rol_descripcion" id="rol_descripcion" class="form-control" />
+     <label>Contraseña</label>
+     <input type="text" name="u_contraseña" id="u_contraseña" class="form-control" />
      <br />
+     <label>Roles</label>
+     <select class="form-control" name="fk_rol" id="fk_rol">
+      <?php $__currentLoopData = $roles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rol): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+      <option value="<?php echo e($rol->rol_clave); ?>"><?php echo e($rol->rol_nombre); ?></option>
+      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+      </select>
+     <br />
+     <label>Empleado</label>
+     <select class="form-control" name="fk_empleado" id="fk_empleado">
+        <?php $__currentLoopData = $empleados; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $empleado): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+        <option value="<?php echo e($empleado->em_clave); ?>"><?php echo e($empleado->em_nombre); ?> <?php echo e($empleado->em_apellido); ?></option>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+      </select>
+      <br />
     </div>
     <div class="modal-footer">
-     <input type="hidden" name="rol_clave" id="rol_clave" />
+     <input type="hidden" name="u_id" id="u_id" />
      <input type="hidden" name="operation" id="operation" />
      <input type="submit" name="action" id="action" class="btn btn-success" value="Add" />
      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -80,19 +84,30 @@
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script>$(function() {
             $('#users-table').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: '<?php echo route('usuario_getData'); ?>',
+                columns: [
+                    { data: 'u_id', name: 'usuario.u_id' },
+                    { data: 'u_nombre', name: 'usuario.u_nombre' },
+                    { data: 'u_contraseña', name: 'usuario.u_contraseña' },
+                    { data: 'rol_nombre', name: 'rol.rol_nombre' },
+                    { data: 'em_nombre', name: 'empleado.em_nombre' },
+                    {data: 'action', name: 'action', orderable: false, searchable: false}
+                ]
             })
-
-            //$('#add_button').hide();
 
             $(document).on('submit', '#user_form', function(event){
             event.preventDefault();
-            var rol_nombre = $('#rol_nombre').val();
-            var rol_descripcion = $('#rol_descripcion').val();
-            if(rol_nombre != '' && rol_descripcion != '')
+            var u_nombre = $('#u_nombre').val();
+            var u_contraseña = $('#u_contraseña').val();
+            var fk_rol = $('#fk_rol').val();
+            var fk_empleado = $('#fk_empleado').val();
+            if(u_nombre != '' && u_contraseña != '')
             {
               $.ajax({
                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                url:"rol",
+                url:"usuario",
                 method:'POST',
                 data: new FormData(this),
                 contentType:false,
@@ -107,41 +122,38 @@
             }
             else
             {
-              alert("Both Fields are Required");
+              alert("Llene los campos requeridos.");
             }
           });
           $(document).on('click', '.update', function(){
-            var rol_clave = $(this).attr("id");
+            var u_id = $(this).attr("id");
             $.ajax({
               headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-              url:"rol/getOne",
+              url:"usuario/getOne",
               method:"POST",
-              data:{rol_clave:rol_clave},
+              data:{u_id:u_id},
               dataType:"json",
               success:function(data){
                 $('#userModal').modal('show');
-                $('#rol_nombre').val(data.rol_nombre);
-                $('#rol_descripcion').val(data.rol_descripcion);
-                $('.modal-title').text("Edit Rol");
-                $('#rol_clave').val(rol_clave);
+                $('#u_nombre').val(data.u_nombre);
+                $('#u_contraseña').val(data.u_contraseña);
+                $('.modal-title').text("Edit Usuario");
+                $('#u_id').val(u_id);
+                $('#fk_rol').val(data.fk_rol);
+                $('#fk_empleado').val(data.fk_empleado);
                 $('#action').val("Edit");
                 $('#operation').val("Edit");
               }
             })
           });
-          $(document).on('click', '.verPermisos', function(){
-            var rol_clave = $(this).attr("id");
-            var url = "<?php echo e(url('/rolper')); ?>" + rol_clave;
-            window.location.href = url;
-          });
           $(document).on('click','.delete',function(){
-            var rol_clave = $(this).attr("id");
+            var u_id = $(this).attr("id");
             if(confirm("¿Estás seguro de que quieres borrar esta información?")){
               $.ajax({
                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                url:"rol/"+rol_clave,
+                url:"usuario/"+u_id,
                 type:"DELETE",
-                data:{rol_clave:rol_clave},
+                data:{u_id:u_id},
                 success:function(data){
                   alert(data.message);
                   $('#users-table').dataTable().ajax.reload(null, false);
@@ -151,7 +163,7 @@
             else {
               return false;
             }
-          });     
+          });
         });
         </script>
         <?php echo $__env->yieldPushContent('scripts'); ?>

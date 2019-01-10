@@ -120,9 +120,11 @@
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script>$(function() {
          // input[name=parametro] El if iria aca y ni modo, repetir la funcion gigante esta que llama las columnas, una sin el boton y otra con.
-            $('[name="hd1"]').hide();
+           /* $('[name="hd1"]').hide();
             $('[name="delete"]').hide();
-            $('[name="Update"]').hide();
+            $('[name="Update"]').hide();*/
+           // $(".delete").hide();
+
             $('#users-table').DataTable({
                 processing: true,
                 serverSide: true,

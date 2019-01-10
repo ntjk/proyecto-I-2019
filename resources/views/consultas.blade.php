@@ -49,7 +49,10 @@
       <br/>
       <a href="consulta12">Listado de paquetes por clasificación y por oficina en un periodo de tiempo</a>
       <br/>
-      <a href="consulta13"></a>
+      <a href="consulta14">Listado de empleados con las inasistencias</a>
+      <br/>
+      <a href="consulta15">Cantidad de inasistencias por empleado</a>
+      
       
        
     </div>

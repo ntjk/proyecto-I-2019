@@ -5,6 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="<?php echo e(asset('css/styles.css')); ?>" rel="stylesheet">
         <script type="text/javascript" src="<?php echo e(asset('js/dropdown.js')); ?>"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
         <title>Inicio</title>
 
@@ -47,6 +49,26 @@
                   </div>
                 </div>
               </div>
+              <script src="//code.jquery.com/jquery.js"></script>
+              <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+              <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+              <script>
+              $(document).ready(function () {
+                //function leerUsuario() {
+                  var lasCookies = document.cookie;
+                  //document.write ("All Cookies : " + lasCookies );
+                  
+                  // Get all the cookies pairs in an array
+                  cookieArray = lasCookies.split(';');
+                  //varriable = cookieArray[i].split('=')[0];
+                  var usu = cookieArray[0].split('=')[1];
+                  var contra = cookieArray[1].split('=')[1];
+                  console.log("Usu "+usu);
+                  console.log("Contra "+contra);
+                //}
+              });
+              </script>
+
               <?php echo $__env->make('footer', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
         </div>
     </body>

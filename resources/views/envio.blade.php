@@ -64,7 +64,7 @@
                     <td>{{$envio->fk_flota_ruta_1}}</td>
                     <td>{{$envio->so_nombre}}</td>
                     <td>{{$envio->sd_nombre}}</td>
-                    <td id="hidden3">
+                    <td name="hidden3">
                       <button class="btn btn-warning btn-detail update" id="{{$envio->en_clave}}" value="{{$envio->en_clave}}" name="Update">Update</button>
                       <button class="btn btn-danger btn-delete delete" id="{{$envio->en_clave}}" value="{{$envio->en_clave}}" name="delete">Delete</button>
                     </td>
@@ -184,6 +184,7 @@
             $('#users-table').DataTable({
             })
 
+            //$(".delete").hide();
 
             $(document).on('submit', '#user_form', function(event){
             event.preventDefault();

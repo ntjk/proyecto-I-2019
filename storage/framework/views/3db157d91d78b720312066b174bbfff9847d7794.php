@@ -31,9 +31,9 @@
       <br/>
       <a href="consulta3">Listado de paquetes por estatus </a>
       <br/>
-      <a href="consulta4">¿Qué oficina envía más paquetes? </a>
+      <a href="consulta4">¿Qué oficina envía más y qué oficina recibe más paquetes?</a>
       <br/>
-      <a href="consulta5">¿Qué oficina es la que recibe más paquetes? </a>
+      <a href="consulta5"></a>
       <br/>
       <a href="consulta6">Cantidad de envíos por oficina por fecha</a>
       <br/>
@@ -49,7 +49,10 @@
       <br/>
       <a href="consulta12">Listado de paquetes por clasificación y por oficina en un periodo de tiempo</a>
       <br/>
-      <a href="consulta13"></a>
+      <a href="consulta14">Listado de empleados con las inasistencias</a>
+      <br/>
+      <a href="consulta15">Cantidad de inasistencias por empleado</a>
+      
       
        
     </div>

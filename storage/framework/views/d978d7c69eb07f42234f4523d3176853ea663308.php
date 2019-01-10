@@ -43,7 +43,7 @@
                         <th>FKFR1</th>
                         <th>Sucursal origen</th>
                         <th>Sucursal destino</th>
-                        <th>Accion</th>
+                        <th id="hidden2">Accion</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -64,7 +64,7 @@
                     <td><?php echo e($envio->fk_flota_ruta_1); ?></td>
                     <td><?php echo e($envio->so_nombre); ?></td>
                     <td><?php echo e($envio->sd_nombre); ?></td>
-                    <td>
+                    <td name="hidden3">
                       <button class="btn btn-warning btn-detail update" id="<?php echo e($envio->en_clave); ?>" value="<?php echo e($envio->en_clave); ?>" name="Update">Update</button>
                       <button class="btn btn-danger btn-delete delete" id="<?php echo e($envio->en_clave); ?>" value="<?php echo e($envio->en_clave); ?>" name="delete">Delete</button>
                     </td>
@@ -184,6 +184,7 @@
             $('#users-table').DataTable({
             })
 
+            //$(".delete").hide();
 
             $(document).on('submit', '#user_form', function(event){
             event.preventDefault();

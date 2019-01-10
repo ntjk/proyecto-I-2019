@@ -29,6 +29,9 @@ Route::get('quienes_somos', function(){
 Route::get('buscadorChequeo', function(){
   return view('buscadorChequeo');
 });
+Route::get('inicioSesion', function(){
+  return view('inicioSesion');
+});
 
 /* REAL HACKER HOURS */
 /* sucursal */
@@ -125,7 +128,7 @@ Route::post('chequeo/updateSelect','ChequeoController@updateSelect');
 Route::get('chequeo-getData','ChequeoController@getData')->name('chequeo_getData');
 Route::get('chequeo{id}', 'ChequeoController@show');
 
-
+//Probando
 Route::get("/aja",function(){
 $resul=DB::select("select * from sucursal where su_clave = ?", [12]);
 	foreach($resul as $resu){
@@ -162,6 +165,9 @@ Route::get('consulta12', function(){
   return view('buscadorFecha')->with(compact('paraDiferenciar')); });
 Route::get('filtrarFecha_3{rango}','ConsultasEnvioController@clasificacionPaquetesPorOficina');
 
+Route::get('consulta14', 'ConsultasEmpleadoController@inasistenciasEmpleados');
+Route::get('consulta15', 'ConsultasEmpleadoController@inasistenciasEmpleados2');
+
 /*Asistencias*/
 Route::resource('asistencia','AsistenciaController');
 Route::post('asistencia/getOne','AsistenciaController@getOne');
@@ -169,6 +175,8 @@ Route::post('asistencia/updateSelect','AsistenciaController@updateSelect');
 Route::get('asistencia','AsistenciaController@index');
 Route::get('asistencia-getData','AsistenciaController@getData')->name('asistencia_getData');
 
-Route::get('lets{fecha}','AsistenciaController@asistenciasPorFecha');
-Route::get('lats{fecha}','AsistenciaController@asistenciasPorRango');
-
+/*Permisos de un rol*/
+Route::resource('rolper','RolperController');
+Route::post('rolper/getOne','RolperController@getOne');
+Route::post('rolper/updateSelect','RolperController@updateSelect');
+Route::get('rolper{id}', 'RolperController@show');
