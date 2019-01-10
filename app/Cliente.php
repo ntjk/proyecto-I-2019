@@ -15,8 +15,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $cli_fecha_nacimiento
  * @property boolean $cli_vip
  * @property string $cli_nacionalidad
- * @property Lugar $lugar
- * @property SucursalCliente[] $sucursalClientes
+ * @property int fk_sucursal
  */
 class Cliente extends Model
 {
@@ -38,7 +37,7 @@ class Cliente extends Model
     /**
      * @var array
      */
-    protected $fillable = ['fk_lugar', 'cli_cedula', 'cli_nombre', 'cli_apellido', 'cli_estado_civil', 'cli_empresa_trabajo', 'cli_fecha_nacimiento', 'cli_vip', 'cli_nacionalidad'];
+    protected $fillable = ['fk_lugar', 'cli_cedula', 'cli_nombre', 'cli_apellido', 'cli_estado_civil', 'cli_empresa_trabajo', 'cli_fecha_nacimiento', 'cli_vip', 'cli_nacionalidad', 'fk_sucursal'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

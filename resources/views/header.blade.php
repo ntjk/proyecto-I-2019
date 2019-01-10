@@ -29,6 +29,7 @@
             <a href="ruta">Rutas</a>
             <a href="envio">Envios</a>
             <a href="tipo">Tipos de Paquete</a>
+            <a href="asistencia">Asistencias</a>
           </div>
         </div>
       </div>

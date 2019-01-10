@@ -13,7 +13,7 @@
         <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
         <link href="{{ asset('css/unselectable.css') }}" rel="stylesheet">
         <script type="text/javascript" src="{{ asset('js/dropdown.js') }}"></script>
-        <title>Consulta 5</title>
+        <title>Consulta 9</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
@@ -22,24 +22,27 @@
     </head>
     <body>
             @include('header')
-            <h1 class="text-center">Oficina destino mas escogida</h1>
+            <h1 class="text-center">Promedio de estancia de los paquetes por cada zona de las sucursales</h1>
             <br/>
             <table class="table table-bordered" width="80%" id="users-table">
                 <thead>
                     <tr>
                         <th>Sucursal</th>
-                        <th>Cantidad de envíos</th>
+                        <th>Zona</th>
+                        <th>Tiempo promedio de estancia</th>
                     </tr>
                 </thead>
                 <tbody>
-                  @foreach ($destinoMaxPaquetes as $b)
+                  @foreach ($consulta as $b)
                   <tr>
-                    <td>{{$b->sd}}</td>
-                    <td>{{$b->md}}</td>
+                    <td>{{$b->so}}</td>
+                    <td>{{$b->zo}}</td>
+                    <td>{{$b->dias}}</td>
                   </tr>
                   @endforeach
                 </tbody>
             </table>
+            <label><b>Nota</b>: Tiempo promedio de estancia sin algún valor quiere decir que todos los respectivos paquetes siguen allí y no han sido entregados.
         </div>
         <div id="userModal" class="modal fade">
         <script src="//code.jquery.com/jquery.js"></script>
@@ -49,9 +52,9 @@
         <script>$(function() {
             $('#users-table').DataTable({
             })
-          	$(document).on('click', '.update', function(){
-            	var en_clave = $(this).attr("id");
-          	});
+            $(document).on('click', '.update', function(){
+              var en_clave = $(this).attr("id");
+            });
         });
         </script>
         @stack('scripts')

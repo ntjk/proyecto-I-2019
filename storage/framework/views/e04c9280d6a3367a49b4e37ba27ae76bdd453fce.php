@@ -142,6 +142,11 @@
               return false;
             }
           });
+
+        
+                    
+                        $('#add_button').hide();
+                  
         });
         </script>
         <?php echo $__env->yieldPushContent('scripts'); ?>

@@ -13,7 +13,7 @@
         <link href="<?php echo e(asset('css/styles.css')); ?>" rel="stylesheet">
         <link href="<?php echo e(asset('css/unselectable.css')); ?>" rel="stylesheet">
         <script type="text/javascript" src="<?php echo e(asset('js/dropdown.js')); ?>"></script>
-        <title>Consulta 2</title>
+        <title>Consulta 5</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">

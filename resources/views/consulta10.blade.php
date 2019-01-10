@@ -13,7 +13,7 @@
         <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
         <link href="{{ asset('css/unselectable.css') }}" rel="stylesheet">
         <script type="text/javascript" src="{{ asset('js/dropdown.js') }}"></script>
-        <title>Consulta 5</title>
+        <title>Consulta 10</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
@@ -22,24 +22,27 @@
     </head>
     <body>
             @include('header')
-            <h1 class="text-center">Oficina destino mas escogida</h1>
+            <h1 class="text-center">Paquetes por oficina de cada cliente</h1>
             <br/>
             <table class="table table-bordered" width="80%" id="users-table">
                 <thead>
                     <tr>
                         <th>Sucursal</th>
+                        <th>Cedula del cliente</th>
                         <th>Cantidad de envíos</th>
                     </tr>
                 </thead>
                 <tbody>
-                  @foreach ($destinoMaxPaquetes as $b)
+                  @foreach ($consulta as $a)
                   <tr>
-                    <td>{{$b->sd}}</td>
-                    <td>{{$b->md}}</td>
+                  	<td>{{$a->su_nombre}}</td>
+                    <td>{{$a->cli_nacionalidad}} {{$a->cli_cedula}}</td>
+                    <td>{{$a->cant}}</td>
                   </tr>
                   @endforeach
                 </tbody>
             </table>
+            <br/>
         </div>
         <div id="userModal" class="modal fade">
         <script src="//code.jquery.com/jquery.js"></script>

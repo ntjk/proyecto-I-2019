@@ -13,7 +13,7 @@
         <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
         <link href="{{ asset('css/unselectable.css') }}" rel="stylesheet">
         <script type="text/javascript" src="{{ asset('js/dropdown.js') }}"></script>
-        <title>Consulta 5</title>
+        <title>Consulta 6</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
@@ -22,20 +22,22 @@
     </head>
     <body>
             @include('header')
-            <h1 class="text-center">Oficina destino mas escogida</h1>
+            <h1 class="text-center">Cantidad de envíos por oficina por fecha</h1>
             <br/>
             <table class="table table-bordered" width="80%" id="users-table">
                 <thead>
                     <tr>
                         <th>Sucursal</th>
                         <th>Cantidad de envíos</th>
+                        <th>Fecha</th>
                     </tr>
                 </thead>
                 <tbody>
-                  @foreach ($destinoMaxPaquetes as $b)
+                  @foreach ($consulta as $b)
                   <tr>
-                    <td>{{$b->sd}}</td>
-                    <td>{{$b->md}}</td>
+                    <td>{{$b->so}}</td>
+                    <td>{{$b->mo}}</td>
+                    <td>{{$b->fecha}}</td>
                   </tr>
                   @endforeach
                 </tbody>
@@ -49,9 +51,9 @@
         <script>$(function() {
             $('#users-table').DataTable({
             })
-          	$(document).on('click', '.update', function(){
-            	var en_clave = $(this).attr("id");
-          	});
+            $(document).on('click', '.update', function(){
+              var en_clave = $(this).attr("id");
+            });
         });
         </script>
         @stack('scripts')

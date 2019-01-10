@@ -14,6 +14,7 @@ use App\Flota;
 use App\Destinatario;
 use App\Telefono;
 use App\Tipo;
+use App\Chequeo;
 
 class ConsultasEnvioController extends Controller
 {
@@ -91,51 +92,68 @@ class ConsultasEnvioController extends Controller
      
     }
 
-    public function origenMaxPaquetes(){
-        $origenMaxPaquetes=Envio::join('sucursal','sucursal.su_clave','=','envio.fk_sucursal_origen')->select(DB::raw('count(*) as mo, su_nombre as so'))->groupBy('so')->get();
-        return view('consulta4')->with(compact('origenMaxPaquetes'));
+    public function origenDestinoMaxPaquetes(){
+        $origenMaxPaquetes=Envio::join('sucursal','sucursal.su_clave','=','envio.fk_sucursal_origen')->select(DB::raw('count(*) as mo, su_nombre as so'))->groupBy('so')->orderBy('mo','desc')->first();
+        $destinoMaxPaquetes=Envio::join('sucursal','sucursal.su_clave','=','envio.fk_sucursal_destino')->select(DB::raw('count(*) as md, su_nombre as sd'))->groupBy('sd')->orderBy('md','desc')->first();
+       return view('consulta4')->with(compact('origenMaxPaquetes'))->with(compact('destinoMaxPaquetes'));
     }
 
-    public function destinoMaxPaquetes(){
+    /*public function destinoMaxPaquetes(){
         $destinoMaxPaquetes=Envio::join('sucursal','sucursal.su_clave','=','envio.fk_sucursal_destino')->select(DB::raw('count(*) as md, su_nombre as sd'))->groupBy('sd')->get();
         return view('consulta5')->with(compact('destinoMaxPaquetes'));
-    }
+    }*/
 
-    public function consulta6_1($fecha)
+    public function consulta6($fecha)
     {
            $consulta = Envio::join('sucursal','sucursal.su_clave','=','envio.fk_sucursal_origen')->select(DB::raw('count(*) as mo, su_nombre as so, en_fecha_envio as fecha'))->groupBy('so','fecha')->where('en_fecha_envio', $fecha)->get();
-            return view('consulta6_1')->with(compact('consulta'));
+            return view('consulta6')->with(compact('consulta'));
     }
 
-    public function consulta6_2($rango)
+    public function consulta7($rango)
     {
         $consulta = Envio::join('sucursal','sucursal.su_clave','=','envio.fk_sucursal_origen')->select(DB::raw('count(*) as mo, su_nombre as so, en_fecha_envio as fecha'))->groupBy('so','fecha')->whereBetween('en_fecha_envio', [substr($rango, 0, 10), substr($rango, 10)])->get();
-            return view('consulta6_2')->with(compact('consulta'));
+            return view('consulta7')->with(compact('consulta'));
     }
 
+    public function promedioEstanciaZonas(){
+  
+        //Para los que no tienen che_fecha_salida todavia es que la estancia no ha terminado, por lo tanto, como es algo logico lo dejare en null, tampoco lo comparo con la fecha actual porque esa no sera su verdadera estancia, si nos pide cambio durante la consulta... Simplemente, sin comentar algo mas, descomentar todo lo de esta funcion
 
+        /*$consultaPrimitiva = Chequeo::join('sucursal','sucursal.su_clave','=','chequeo.fk_sucursal')->join('zona','zona.zo_clave','=','chequeo.fk_zona')->select('che_clave','che_fecha_salida')->whereRaw('chequeo.fk_zona is not null and che_fecha_salida is null')->distinct()->get();
 
-    public function index()
-    {
+        $i=0;
+        foreach($consultaPrimitiva as $cpr){
+            $c=Chequeo::find($cpr->che_clave);
+            $c->che_fecha_salida=date("Y-m-d h:i:sa");
+            $c->save();
+            $i++;
+        }*/
+    
+        $consulta = Chequeo::join('sucursal','sucursal.su_clave','=','chequeo.fk_sucursal')->join('zona','zona.zo_clave','=','chequeo.fk_zona')->select(DB::raw('avg(che_fecha_salida - che_fecha_entrada) as dias, su_nombre as so, zo_nombre as zo'))->whereRaw('chequeo.fk_zona is not null')->where('chequeo.che_estatus', '!=', 'entregado')->groupBy('so', 'zo')->get();
         
+        return view('consulta9')->with(compact('consulta'));
+
     }
 
-
-    public function create()
-    {
-        //
+    public function clasificacionPaquetesPorOficina($rango){
+        $rangoi = substr($rango, 0, 10);
+        $rangof = substr($rango, 10); 
+        //Listado de paquetes por clasificación y por oficina en un periodo de tiempo. 
+        $consulta = Envio::join('sucursal','sucursal.su_clave','=','envio.fk_sucursal_origen')->join('tipo', 'tipo.ti_clave', '=', 'fk_tipo')->select(DB::raw('count(*) as mo, su_nombre as so, tipo.ti_nombre as tipo'))->groupBy('tipo','so')->whereBetween('en_fecha_envio', [$rangoi, $rangof])->get();
+        return view('consulta12')->with(compact('consulta'))->with(compact('rangoi'))->with(compact('rangof')); 
+        //preg a Leopoldo como supo que al usar with compact era sin el signo $         
+        //return $consulta->count();
     }
 
+    public function index() {  }
 
-    public function store(Request $request)
-    {
-        //
-    }
 
-    public function show($id)
-    {
-        //
-    }
+    public function create() { }
+
+
+    public function store(Request $request) { }
+
+    public function show($id) { }
 
 
 }

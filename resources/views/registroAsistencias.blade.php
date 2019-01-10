@@ -1,5 +1,5 @@
- <!doctype html>
-<html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>">
+<!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,10 +9,10 @@
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-        <meta name="csrf-token" content="<?php echo csrf_token(); ?>" />
-        <link href="<?php echo e(asset('css/styles.css')); ?>" rel="stylesheet">
-        <script type="text/javascript" src="<?php echo e(asset('js/dropdown.js')); ?>"></script>
-        <title>Chequeos - LogUCAB</title>
+        <meta name="csrf-token" content="{!! csrf_token() !!}" />
+        <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
+        <script type="text/javascript" src="{{ asset('js/dropdown.js') }}"></script>
+        <title>Asistencias de un empleado - LogUCAB</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
@@ -20,38 +20,31 @@
         <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     </head>
     <body>
-            <?php echo $__env->make('header', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+            @include('header')
             <div class="container">
             <br/>
-            <h1 class="text-center">Rastreo del envío <?php echo e($envio); ?></h1>
+            <h1 class="text-center">Registro de asistencia del empleado {{$empleado->em_nombre}}, {{$empleado->em_cedula}}</h1>
             <br/>
-            <button type="button" id="add_button" data-toggle="modal" data-target="#userModal" class="btn btn-info btn-lg">Add</button>
             <table class="table table-bordered" id="users-table">
                 <thead>
                     <tr>
                       <th>Fecha</th>
-                      <th>Descripcion</th>
                       <th>Sucursal</th>
-                      <th>Zona de la sucursal</th>
-                      <th>Estatus</th>
-		                  <th>Acción</th>
-                    </tr>
+                      <th>Zona de trabajo</th>
+                      <th>Horario</th>
+                      <th>Check</th>
+		            </tr>
                 </thead>
                 <tbody>
-                  <?php $__currentLoopData = $chequeosFk; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $c): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                  @foreach ($asistenciasFk as $c)
                   <tr>
-                    <td><?php echo e($c->che_fecha_entrada); ?></td>
-                    <td><?php echo e($c->che_descripcion); ?></td>
-                    <td><?php echo e($c->su_nombre); ?>
-
-                    <td><?php echo e($c->zo_nombre); ?></td>
-                    <td><?php echo e($c->che_estatus); ?></td>
-                    <td>
-                      <button class="btn btn-warning btn-detail update" id="<?php echo e($c->che_clave); ?>" value="<?php echo e($c->che_clave); ?>" name="Update">Update</button>
-                      <button class="btn btn-danger btn-delete delete" id="<?php echo e($c->che_clave); ?>" value="<?php echo e($c->che_clave); ?>" name="delete">Delete</button>
-                    </td>
-                  </tr>
-                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    <td>{{$c->a_fecha}}</td>
+                    <td>{{$c->fk_zo_em_ho_2}}</td>
+                    <td>{{$c->fk_zo_em_ho_1}}</td>
+                    <td>{{$c->fk_zo_em_ho_4}}
+                    <td>{{$c->a_check}}</td>
+                   </tr>
+                  @endforeach
                 </tbody>
             </table>
         </div>
@@ -66,39 +59,19 @@
     <div class="modal-body">
      <br />
      <label>Fecha</label>
-     <input name="che_fecha_entrada" disabled=true id="che_fecha_entrada" class="form-control"/>
+     <input name="che_fecha_entrada" id="che_fecha_entrada" class="form-control"/>
      <br />
-       <script>
-        var f = new Date();
-        document.getElementById("che_fecha_entrada").value = f;
-       </script>
      <label>Descripcion</label>
      <input type="text" name="che_descripcion" id="che_descripcion" class="form-control" />
      <br />
      <label>Sucursal</label>
-     <select name="fk_sucursal" id="fk_sucursal" class="form-control">
-        <option value="<?php echo e(null); ?>" selected disabled hidden>Si está en una sucursal, indique cuál</option>
-        <?php $__currentLoopData = $sucursales; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sucursal): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-          <option value="<?php echo e($sucursal->su_clave); ?>"><?php echo e($sucursal->su_nombre); ?></option>
-        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-     </select>
      <br />
      <label>Zona</label>
      <select class="form-control" name="fk_zona" id="fk_zona">
     </select>
-     <br />
-     <label>Estatus</label>
-     <select name="che_estatus" id="che_estatus" class="form-control">
-        <option value="entregado">Entregado</option>
-        <option value="en aduana">En aduana</option>
-        <option value="en oficina origen">En oficina origen</option>        
-        <option value="en oficina destino">En oficina destino</option>
-        <option value="por entregar">Por entregar</option>
-     </select>
-     <br />
     </div>
     <div class="modal-footer">
-     <input type="hidden" name="fk_envio" id="fk_envio" value=<?php echo e($envio); ?>> 
+     <input type="hidden" name="fk_envio" id="fk_envio" value={{$empleado}}> 
      <input type="hidden" name="che_clave" id="che_clave" />
      <input type="hidden" name="operation" id="operation" />
      <input type="submit" name="action" id="action" class="btn btn-success" value="Add"/>
@@ -112,7 +85,7 @@
         <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script>$(function() {
-            $('#users-table').DataTable({
+           /* $('#users-table').DataTable({
             })
 
             $(document).on('submit', '#user_form', function(event){
@@ -202,10 +175,10 @@
               return false;
             }
           });
-        });
+        });*/
         </script>
-        <?php echo $__env->yieldPushContent('scripts'); ?>
-        <?php echo $__env->make('footer', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+        @stack('scripts')
+        @include('footer')
         </div>
       </div>
     </body>

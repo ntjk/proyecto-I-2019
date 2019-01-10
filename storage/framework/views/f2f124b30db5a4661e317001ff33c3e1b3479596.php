@@ -1,4 +1,4 @@
- <!doctype html>
+<!doctype html>
 <html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>">
     <head>
         <meta charset="utf-8">
@@ -12,7 +12,7 @@
         <meta name="csrf-token" content="<?php echo csrf_token(); ?>" />
         <link href="<?php echo e(asset('css/styles.css')); ?>" rel="stylesheet">
         <script type="text/javascript" src="<?php echo e(asset('js/dropdown.js')); ?>"></script>
-        <title>Chequeos - LogUCAB</title>
+        <title>Asistencias - LogUCAB</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
@@ -23,83 +23,58 @@
             <?php echo $__env->make('header', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
             <div class="container">
             <br/>
-            <h1 class="text-center">Rastreo del envío <?php echo e($envio); ?></h1>
+            <h1 class="text-center">Registro de asistencia</h1>
             <br/>
             <button type="button" id="add_button" data-toggle="modal" data-target="#userModal" class="btn btn-info btn-lg">Add</button>
             <table class="table table-bordered" id="users-table">
                 <thead>
                     <tr>
                       <th>Fecha</th>
-                      <th>Descripcion</th>
                       <th>Sucursal</th>
-                      <th>Zona de la sucursal</th>
-                      <th>Estatus</th>
+                      <th>Zona</th>
+                      <th>Empleado</th>
+                      <th>Cedula</th>
+                      <th>Dia</th>
+                      <th>Hora de entrada</th>
+                      <th>Hora de salida</th>
+                      <th>Check</th>
 		                  <th>Acción</th>
                     </tr>
                 </thead>
-                <tbody>
-                  <?php $__currentLoopData = $chequeosFk; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $c): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                  <tr>
-                    <td><?php echo e($c->che_fecha_entrada); ?></td>
-                    <td><?php echo e($c->che_descripcion); ?></td>
-                    <td><?php echo e($c->su_nombre); ?>
-
-                    <td><?php echo e($c->zo_nombre); ?></td>
-                    <td><?php echo e($c->che_estatus); ?></td>
-                    <td>
-                      <button class="btn btn-warning btn-detail update" id="<?php echo e($c->che_clave); ?>" value="<?php echo e($c->che_clave); ?>" name="Update">Update</button>
-                      <button class="btn btn-danger btn-delete delete" id="<?php echo e($c->che_clave); ?>" value="<?php echo e($c->che_clave); ?>" name="delete">Delete</button>
-                    </td>
-                  </tr>
-                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                </tbody>
+                
             </table>
-        </div>
+          </div>
         <div id="userModal" class="modal fade">
  <div class="modal-dialog">
   <form method="post" id="user_form" enctype="multipart/form-data">
    <div class="modal-content">
     <div class="modal-header">
      <button type="button" class="close" data-dismiss="modal">&times;</button>
-     <h4 class="modal-title">Añadir Chequeo</h4>
+    <h4 class="modal-title">Añadir asistencia</h4>
     </div>
     <div class="modal-body">
      <br />
      <label>Fecha</label>
-     <input name="che_fecha_entrada" disabled=true id="che_fecha_entrada" class="form-control"/>
+     <input type="date" name="a_fecha" id="a_fecha" class="form-control"/>
      <br />
-       <script>
-        var f = new Date();
-        document.getElementById("che_fecha_entrada").value = f;
-       </script>
-     <label>Descripcion</label>
-     <input type="text" name="che_descripcion" id="che_descripcion" class="form-control" />
-     <br />
-     <label>Sucursal</label>
-     <select name="fk_sucursal" id="fk_sucursal" class="form-control">
-        <option value="<?php echo e(null); ?>" selected disabled hidden>Si está en una sucursal, indique cuál</option>
-        <?php $__currentLoopData = $sucursales; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sucursal): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-          <option value="<?php echo e($sucursal->su_clave); ?>"><?php echo e($sucursal->su_nombre); ?></option>
-        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+     <label>Empleado</label>
+     <select class="form-control" name="empleado" id="empleado">
+      <?php $__currentLoopData = $empleados; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $empleado): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+        <option value="<?php echo e($empleado->em_clave); ?>"><?php echo e($empleado->em_nombre); ?> <?php echo e($empleado->em_nacionalidad); ?> <?php echo e($empleado->em_cedula); ?></option>
+      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
      </select>
      <br />
-     <label>Zona</label>
-     <select class="form-control" name="fk_zona" id="fk_zona">
-    </select>
-     <br />
-     <label>Estatus</label>
-     <select name="che_estatus" id="che_estatus" class="form-control">
-        <option value="entregado">Entregado</option>
-        <option value="en aduana">En aduana</option>
-        <option value="en oficina origen">En oficina origen</option>        
-        <option value="en oficina destino">En oficina destino</option>
-        <option value="por entregar">Por entregar</option>
+     <label>Puesto de trabajo y horario</label>
+     <select class="form-control" name="fk_zo_em_ho_5" id="fk_zo_em_ho_5">
      </select>
+     <br/>
+     <label>Asistió</label>
+     <br />
+        <input type="radio" name="a_check" id="a_check" class="param"> Sí
      <br />
     </div>
     <div class="modal-footer">
-     <input type="hidden" name="fk_envio" id="fk_envio" value=<?php echo e($envio); ?>> 
-     <input type="hidden" name="che_clave" id="che_clave" />
+     <input type="hidden" name="a_clave" id="a_clave" />
      <input type="hidden" name="operation" id="operation" />
      <input type="submit" name="action" id="action" class="btn btn-success" value="Add"/>
      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -112,21 +87,41 @@
         <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script>$(function() {
+
             $('#users-table').DataTable({
+              processing: true,
+                serverSide: true,
+                ajax: '<?php echo route('asistencia_getData'); ?>',
+                columns: [
+                    { data: 'a_fecha', name: 'asistencia.a_fecha' },
+                    { data: 'su_nombre', name: 'sucursal.su_nombre' },
+                    { data: 'fk_zona_empleado_2', name: 'zona_empleado_horario.fk_zona_empleado_2' },
+                    { data: 'em_nombre', name: 'empleado.em_nombre' },
+                    { data: 'em_cedula', name: 'empleado.em_cedula' },
+                    { data: 'ho_dia' , name: 'horario.ho_dia' },
+                    { data: 'ho_hora_entrada' , name: 'horario.ho_hora_entrada' },
+                    { data: 'ho_hora_salida' , name: 'horario.ho_hora_salida' },
+                    { data: 'a_check', name: 'asistencia.a_check' },
+                    { data: 'action', name: 'action', orderable: false, searchable: false}
+                ]
             })
 
             $(document).on('submit', '#user_form', function(event){
             event.preventDefault();
-            var che_descripcion = $('#che_descripcion').val();
-            var che_estatus = $('#che_estatus').val();
-            var fk_sucursal = $('#fk_sucursal').val();
-            var fk_zona = $('#fk_zona').val();
-            var fk_envio = $('#fk_envio').val();
-            if(che_estatus != '' && che_descripcion != '')
+            var a_fecha = $('#a_fecha').val();
+            var fk_zo_em_ho_5 = $('#fk_zo_em_ho_5').val();
+            if ($("input[name=a_check]:checked"))
+              $('#a_check').val("x");
+            else
+              $('#a_check').val(null);
+            console.log(a_fecha);
+            console.log(fk_zo_em_ho_5);
+            console.log(a_check);
+            if(a_fecha != '' && fk_zo_em_ho_5 != '')
             {
               $.ajax({
                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                url:"chequeo",
+                url:"asistencia",
                 method:'POST',
                 data: new FormData(this),
                 contentType:false,
@@ -141,57 +136,61 @@
             }
             else
             {
-              alert("Debe seleccionar un estatus y colocar una descripcion");
+              alert("Falta campos por llenar");
             }
           });
 
-          $(document).on('change','#fk_sucursal',function(){
-              var sucursal = $(this).val();
+
+          $(document).on('change','#empleado',function(){
+              var empleado = $(this).val();
               $.ajax({
                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                 type: "POST",
-                url: "chequeo/updateSelect",
-                data:{sucursal:sucursal},
+                url: "asistencia/updateSelect",
+                data:{empleado:empleado},
                 success: function(data){
                     var options = '';
                     $.each(data, function(i, item) {
-                      options += '<option value="' + item.zo_clave + '">' + item.zo_nombre + '</option>';
+                      options += '<option value="' + item.zo_em_ho_clave + '">' + "Zona " + item.fk_zona_empleado_2 + " de la sucursal " + item.su_nombre + " los " + item.ho_dia + " de " + item.ho_hora_entrada + " a " + item.ho_hora_salida + '</option>';
                     });
-                    $('#fk_zona').empty().html(options);
+                    $('#fk_zo_em_ho_5').empty().html(options);
                 }
               });
             });
-              
+  
           $(document).on('click', '.update', function(){
-            var che_clave = $(this).attr("id");
+            var a_clave = $(this).attr("id");
+            if ($("input[name=a_check]:checked"))
+              var a_check = "x";
+            else
+              var a_check = null;
             $.ajax({
               headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-              url:"chequeo/getOne",
+              url:"asistencia/getOne",
               method:"POST",
-              data:{che_clave:che_clave},
+              data:{a_clave:a_clave,
+                  a_check:a_check},
               dataType:"json",
               success:function(data){
                 $('#userModal').modal('show');
-                $('#che_estatus').val(data.che_estatus);
-                $('#che_descripcion').val(data.che_descripcion);
-                $('#che_fecha_entrada').val(data.che_fecha_entrada);
-                $('#che_clave').val(che_clave);
-                $('.modal-title').text("Edit Chequeo");
-                $('#fk_zona').val(data.zo_nombre);
-                $('#fk_sucursal').val(data.su_nombre);
+                $('#a_fecha').val(data.a_fecha);
+                $('#fk_zo_em_ho_5').val(data.fk_zo_em_ho_5);
+                $('#a_check').val(a_check);
+                $('#a_clave').val(a_clave);
+                $('.modal-title').text("Edit Asistencia");
                 $('#action').val("Edit");
                 $('#operation').val("Edit");
               }
             })
           });
           $(document).on('click','.delete',function(){
-            var che_clave = $(this).attr("id");
+            var a_clave = $(this).attr("id");
             if(confirm("¿Estás seguro de que quieres borrar esta información?")){
               $.ajax({
                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                url:"chequeo/"+che_clave,
+                url:"asistencia/"+a_clave,
                 type:"DELETE",
-                data:{che_clave:che_clave},
+                data:{a_clave:a_clave},
                 success:function(data){
                   alert(data.message);
                   $('#users-table').dataTable().ajax.reload(null, false);

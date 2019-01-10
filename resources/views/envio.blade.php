@@ -43,7 +43,7 @@
                         <th>FKFR1</th>
                         <th>Sucursal origen</th>
                         <th>Sucursal destino</th>
-                        <th>Accion</th>
+                        <th id="hidden2">Accion</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -64,7 +64,7 @@
                     <td>{{$envio->fk_flota_ruta_1}}</td>
                     <td>{{$envio->so_nombre}}</td>
                     <td>{{$envio->sd_nombre}}</td>
-                    <td>
+                    <td id="hidden3">
                       <button class="btn btn-warning btn-detail update" id="{{$envio->en_clave}}" value="{{$envio->en_clave}}" name="Update">Update</button>
                       <button class="btn btn-danger btn-delete delete" id="{{$envio->en_clave}}" value="{{$envio->en_clave}}" name="delete">Delete</button>
                     </td>
@@ -84,7 +84,6 @@
      <h4 class="modal-title">Añadir envio</h4>
     </div>
   <div class="modal-body">
-     <!--<input value={{$mesConMasEnvios}}> </input>-->
      <label>Descripción</label>
      <input type="text" name="en_descripcion" id="en_descripcion" class="form-control" />
      <br />

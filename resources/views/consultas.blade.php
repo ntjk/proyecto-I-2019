@@ -21,7 +21,7 @@
   </head>
   <body>
     @include('header')
-    <div class="container">
+    <div class="container labelDestacado" >
       <br/>
       <h1 class="text-center">Consultas</h1>
       <br/>
@@ -31,14 +31,27 @@
       <br/>
       <a href="consulta3">Listado de paquetes por estatus </a>
       <br/>
-      <a href="consulta4">¿Qué oficina es la que recibe más paquetes? ¿Qué oficina envía más
-paquetes? </a>
+      <a href="consulta4">¿Qué oficina envía más y qué oficina recibe más paquetes?</a>
       <br/>
-      <a href="consulta5">Test5</a>
+      <a href="consulta5"></a>
       <br/>
+      <a href="consulta6">Cantidad de envíos por oficina por fecha</a>
       <br/>
-      <a href="consulta6">Cantidad de envíos según período</a>
+      <a href="consulta7">Cantidad de envíos por oficina según período</a>
       <br/>
+      <a href="consulta8">¿Qué tipo de paquetes combinan más medios de transporte? </a>
+      <br/>
+      <a href="consulta9">Promedio de estancia de los paquetes por cada zona de las oficinas</a>
+      <br/>
+      <a href="consulta10">¿Qué usuario registra más paquetes por oficina? </a>
+      <br/>
+      <a href="consulta11">Clientes frecuentes por oficina ordenado alfabéticamente </a>
+      <br/>
+      <a href="consulta12">Listado de paquetes por clasificación y por oficina en un periodo de tiempo</a>
+      <br/>
+      <a href="consulta13"></a>
+      
+       
     </div>
     @stack('scripts')
     @include('footer')

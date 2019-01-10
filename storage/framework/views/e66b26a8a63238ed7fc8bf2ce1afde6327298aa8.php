@@ -39,7 +39,7 @@
                         <th>VIP</th>
                         <th>Fk_Lugar</th>
                         <th>Nacionalidad</th>
-                        <th>Accion</th>
+                        <th id="hd1" name="hd1">Accion</th>
                     </tr>
                 </thead>
             </table>
@@ -119,6 +119,10 @@
         <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script>$(function() {
+         // input[name=parametro]
+            $('[name="hd1"]').hide();
+            $('[name="delete"]').hide();
+            $('[name="Update"]').hide();
             $('#users-table').DataTable({
                 processing: true,
                 serverSide: true,
