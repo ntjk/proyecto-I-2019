@@ -50,10 +50,29 @@
 
         <script>
         function inicioSesion(){
-            var usuario = $('#usuario').val()
-            var password = $('#password').val()
-            if(usuario != "" && password != ""){
-                var url = "<?php echo e(url('/welcome')); ?>";
+            var usuario = $('#usuario').val();
+            var password = $('#password').val();
+            /*if(usuario != "" && password != ""){
+                $.ajax({
+              headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+              type: "POST",
+              url: "inicioSesion/validar",
+              data:{
+                altura: altura,
+                anchura: anchura,
+                profundidad: profundidad,
+                peso: peso,
+                tipo: tipo,
+                floru: floru
+              },
+              success: function(data){
+                $('#en_precio').val(data);
+              }
+            });
+            }else{ 
+                alert("No ha llenado ambos campos");
+            }*/
+            var url = "<?php echo e(url('/welcome')); ?>";
                 document.cookie = "usuario=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
                 document.cookie = "password=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
                 console.log(document.cookie);
@@ -63,10 +82,8 @@
                 console.log(document.cookie);
                 console.log(document.cookie);
                 window.location = url;
-            }else{ 
-                alert("No ha llenado ambos campos");
-            }
         }
+
         </script>   
         <?php echo $__env->yieldPushContent('scripts'); ?>
         <?php echo $__env->make('footer', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>

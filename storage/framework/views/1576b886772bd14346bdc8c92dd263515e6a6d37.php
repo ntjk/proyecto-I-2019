@@ -56,16 +56,11 @@
               $(document).ready(function () {
                 //function leerUsuario() {
                   var lasCookies = document.cookie;
-                  //document.write ("All Cookies : " + lasCookies );
-                  
-                  // Get all the cookies pairs in an array
                   cookieArray = lasCookies.split(';');
-                  //varriable = cookieArray[i].split('=')[0];
                   var usu = cookieArray[0].split('=')[1];
                   var contra = cookieArray[1].split('=')[1];
-                  console.log("Usu "+usu);
-                  console.log("Contra "+contra);
-                //}
+                  //console.log("Usu "+usuario);
+                  //console.log("Contra "+password);
               });
               </script>
 

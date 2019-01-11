@@ -21,33 +21,19 @@ class RolperController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function index()
-    {
-        //
-    }
+    public function index(){   }
 
     public function show($id)
     {
         $permisosFk=Rolper::join('permiso','per_clave','=','rol_permiso.fk_permiso')->select(
          'per_clave', 'per_nombre', 'per_descripcion', 'per_tipo')->orderBy('per_tipo')->distinct()->where('fk_rol', '=', $id)->get();
         $rol=Rol::find($id);
-        /*$clavePermisos=Permiso::select('per_clave')->orderBy('per_clave')->distinct()->get();
-        $permisos=Permiso::get();
-        $i=0;
-        $j=0;
-        foreach($permisosFk as $p){
-          if($clavePermisos->contains($p->per_clave)){
-                $j+=1;
-            } 
-          $i++;
-
-        }
-        //return $j  . "   ".$clavePermisos;*/
         $permisos=Permiso::select(
-         'per_clave', 'per_nombre', 'per_descripcion')->get();
-        $permisosNoFk=Permiso::doesntHave('rolpers')->get();
+         'per_clave', 'per_nombre', 'per_descripcion')->get();//$permisosNoFk=Permiso::doesntHave('rolpers')->get();
+        $permisosNoFk=Permiso::whereDoesntHave('rolpers', function ($query) use ($id) {
+        $query->where('fk_rol', '=', $id);})->get();
 
-     return view('rolper')->with(compact('permisosFk'))->with(compact('rol'))->with(compact('permisosNoFk'));
+        return view('rolper')->with(compact('permisosFk'))->with(compact('rol'))->with(compact('permisosNoFk'));
     }
 
     public function store(Request $request)
@@ -63,11 +49,6 @@ class RolperController extends Controller
           $rolper -> save();
        // }
         return ['success' => true, 'message' => 'Saved !!'];
-    }
-
-    public function update(Request $request, $id)
-    {
-        //
     }
 
     public function destroy(Request $request)

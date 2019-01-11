@@ -180,3 +180,6 @@ Route::resource('rolper','RolperController');
 Route::post('rolper/getOne','RolperController@getOne');
 Route::post('rolper/updateSelect','RolperController@updateSelect');
 Route::get('rolper{id}', 'RolperController@show');
+
+Route::get('sesion', 'InicioSesionController@verificarPermisos');
+

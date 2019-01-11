@@ -50,23 +50,30 @@
 
         <script>
         function inicioSesion(){
-            var usuario = $('#usuario').val()
-            var password = $('#password').val()
+            var usuario = $('#usuario').val();
+            var password = $('#password').val();
             if(usuario != "" && password != ""){
+                $.ajax({
+              headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+              type: "POST",
+              url: "inicioSesion/validar",
+              data:{
+                usuario: usuario,
+                password: password
+              },
+              success:function(data){
                 var url = "{{url('/welcome')}}";
-                document.cookie = "usuario=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
-                document.cookie = "password=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
-                console.log(document.cookie);
-                console.log(document.cookie);
                 document.cookie = "usuario=" + usuario;
                 document.cookie = "password=" + password;
                 console.log(document.cookie);
-                console.log(document.cookie);
                 window.location = url;
+              }
+            });
             }else{ 
                 alert("No ha llenado ambos campos");
             }
         }
+
         </script>   
         @stack('scripts')
         @include('footer')
