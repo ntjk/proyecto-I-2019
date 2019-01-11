@@ -11,8 +11,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <meta name="csrf-token" content="<?php echo csrf_token(); ?>" />
     <link href="<?php echo e(asset('css/styles.css')); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset('css/stylesCarnet.css')); ?>" rel="stylesheet">
     <script type="text/javascript" src="<?php echo e(asset('js/dropdown.js')); ?>"></script>
-    <title>Consultas - LogUCAB</title>
+    <title>Carnet del Cliente <?php echo e($cliente->cli_nombre); ?> - LogUCAB</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
@@ -21,31 +22,16 @@
   </head>
   <body>
     <?php echo $__env->make('header', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-    <div class="container">
-      <br/>
-      <h1 class="text-center">Consultas</h1>
-      <br/>
-      <a href="consulta1">Mes del año que se realizan más envíos</a>
-      <br/>
-      <a href="consulta2">Peso promedio de los paquetes que se envían por oficina</a>
-      <br/>
-      <a href="consulta3">Listado de paquetes por estatus </a>
-      <br/>
-      <a href="consulta4">¿Qué oficina es la que recibe más paquetes? ¿Qué oficina envía más
-paquetes? </a>
-      <br/>
-      <a href="consulta5">Test5</a>
-      <br/>
-      <a href="consulta20-1-60">Promedio de paquetes de una oficina en un periodo de tiempo</a>
-      <br/>
-      <a href="consulta21">Listado de Sucursales por Region, Pais y Continente</a>
-      <br/>
-      <a href="consulta5">Test5</a>
-      <br/>
-      <a href="consulta5">Test5</a>
-      <br/>
-      <a href="consulta5">Test5</a>
-      <br/>
+    <div class="carnet-space">
+      <p class="carnet-name">
+        Nombre: <?php echo e($cliente->cli_nombre); ?> <?php echo e($cliente->cli_apellido); ?>
+
+      </br>Empresa: <?php echo e($cliente->cli_empresa_trabajo); ?>
+
+    </br>Fecha de Nacimiento: <?php echo e($cliente->cli_fecha_nacimiento); ?>
+
+      </p>
+
     </div>
     <?php echo $__env->yieldPushContent('scripts'); ?>
     <?php echo $__env->make('footer', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>

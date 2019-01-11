@@ -95,6 +95,7 @@ Route::post('cliente/updateSelect','ClienteController@updateSelect');
 Route::post('cliente/updateSelect2','ClienteController@updateSelect2');
 Route::get('cliente', 'ClienteController@index');
 Route::get('cliente-getData','ClienteController@getData')->name('cliente_getData');
+Route::get('cliente{id}','ClienteController@showCarnet');
 
 /* Envio */
 Route::resource('envio','EnvioController');
