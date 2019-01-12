@@ -15,10 +15,11 @@
         <a href="quienes_somos">¿Quiénes Somos?</a>
         <a href="consultas">Consultas</a>
         <a href="buscadorChequeo">Rastreo de envíos</a>
+        <a href="inicioSesion">Empleados</a>
         <div class="dropdown">
           <a onclick="myFunction()" class="dropbtn">Tablas</a>
           <div id="myDropdown" class="dropdown-content">
-            <a href="usuario">Usuarios</a>
+            <a id="usuario" href="usuario">Usuarios</a>
             <a href="rol">Roles</a>
             <a href="sucursal">Sucursales</a>
             <a href="transporte">Transportes T</a>
@@ -29,11 +30,25 @@
             <a href="ruta">Rutas</a>
             <a href="envio">Envíos</a>
             <a href="tipo">Tipos de Paquete</a>
+            <a href="asistencia">Asistencias</a>
           </div>
         </div>
       </div>
     </div>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script>  
+      $(document).ready(function () {
+      //function leerUsuario() {
+        $('#envio').hide();
+        $('#usuario').hide(); 
+        var ver = '{!! verificarPermisosHelper("ver envios"); !!}';
+        var usuario = '{!! verificarPermisosHelper("ver usuarios"); !!}';
+        if(ver)
+          $('#envio').show();
+        if(usuario)
+          $('#usuario').show();
+      });
+    </script>
 
 
   <!--<a href="usuario">Usuarios</a>

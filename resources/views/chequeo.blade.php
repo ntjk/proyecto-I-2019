@@ -31,6 +31,7 @@
                     <tr>
                       <th>Fecha</th>
                       <th>Descripcion</th>
+                      <th>Sucursal</th>
                       <th>Zona de la sucursal</th>
                       <th>Estatus</th>
 		                  <th>Acción</th>
@@ -39,9 +40,10 @@
                 <tbody>
                   @foreach ($chequeosFk as $c)
                   <tr>
-                    <td>{{$c->che_fecha}}</td>
+                    <td>{{$c->che_fecha_entrada}}</td>
                     <td>{{$c->che_descripcion}}</td>
-                    <td>{{$c->fk_zona}}</td>
+                    <td>{{$c->su_nombre}}
+                    <td>{{$c->zo_nombre}}</td>
                     <td>{{$c->che_estatus}}</td>
                     <td>
                       <button class="btn btn-warning btn-detail update" id="{{$c->che_clave}}" value="{{$c->che_clave}}" name="Update">Update</button>
@@ -63,19 +65,20 @@
     <div class="modal-body">
      <br />
      <label>Fecha</label>
-     <input name="che_fecha" disabled=true id="che_fecha" class="form-control"/>
+     <input name="che_fecha_entrada" disabled=true id="che_fecha_entrada" class="form-control"/>
      <br />
        <script>
         var f = new Date();
-        document.getElementById("che_fecha").value = f;
+        document.getElementById("che_fecha_entrada").value = f;
        </script>
      <label>Descripcion</label>
      <input type="text" name="che_descripcion" id="che_descripcion" class="form-control" />
      <br />
      <label>Sucursal</label>
      <select name="fk_sucursal" id="fk_sucursal" class="form-control">
+        <option value="{{null}}" selected disabled hidden>Si está en una sucursal, indique cuál</option>
         @foreach($sucursales as $sucursal)
-        <option value="{{$sucursal->su_clave}}">{{$sucursal->su_nombre}}</option>
+          <option value="{{$sucursal->su_clave}}">{{$sucursal->su_nombre}}</option>
         @endforeach
      </select>
      <br />
@@ -89,7 +92,7 @@
         <option value="en aduana">En aduana</option>
         <option value="en oficina origen">En oficina origen</option>        
         <option value="en oficina destino">En oficina destino</option>
-        <option value="en oficina intermedia">En oficina intermedia</option>
+        <option value="por entregar">Por entregar</option>
      </select>
      <br />
     </div>
@@ -115,6 +118,7 @@
             event.preventDefault();
             var che_descripcion = $('#che_descripcion').val();
             var che_estatus = $('#che_estatus').val();
+            var fk_sucursal = $('#fk_sucursal').val();
             var fk_zona = $('#fk_zona').val();
             var fk_envio = $('#fk_envio').val();
             if(che_estatus != '' && che_descripcion != '')
@@ -169,10 +173,11 @@
                 $('#userModal').modal('show');
                 $('#che_estatus').val(data.che_estatus);
                 $('#che_descripcion').val(data.che_descripcion);
-                $('#che_fecha').val(data.che_fecha);
+                $('#che_fecha_entrada').val(data.che_fecha_entrada);
                 $('#che_clave').val(che_clave);
                 $('.modal-title').text("Edit Chequeo");
-                $('#fk_zona').val(data.fk_zona);
+                $('#fk_zona').val(data.zo_nombre);
+                $('#fk_sucursal').val(data.su_nombre);
                 $('#action').val("Edit");
                 $('#operation').val("Edit");
               }

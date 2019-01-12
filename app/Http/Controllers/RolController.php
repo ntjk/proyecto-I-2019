@@ -12,16 +12,10 @@ class RolController extends Controller
 {
   public function index()
   {
-    return view('rol');
+    $roles = Rol::select(['rol_clave','rol_nombre','rol_descripcion'])->orderBy('rol_clave')->get();
+    return view('rol')->with(compact('roles'));
   }
 
-  public function getData()
-  {
-    $roles = Rol::select(['rol_clave','rol_nombre','rol_descripcion']);
-    return Datatables::of(Rol::query())->addColumn('action', function ($roles) {
-            return '<button class="btn btn-warning btn-detail update" id="'.$roles->rol_clave.'" value="'.$roles->rol_clave.'" name="Update">Update</button>
-          <button class="btn btn-danger btn-delete delete" id="'.$roles->rol_clave.'" value="'.$roles->rol_clave.'" name="delete">Delete</button>'; })->make(true);
-  }
 
   public function store(Request $request)
   {

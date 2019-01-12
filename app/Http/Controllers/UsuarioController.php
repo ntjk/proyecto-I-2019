@@ -16,10 +16,7 @@ class UsuarioController extends Controller
   {
     $roles= Rol::orderBy('rol_nombre')->get();
     $empleados= Empleado::orderby('em_nombre')->get();
-    $usuarios = Usuario::join('rol','rol.rol_clave','=','usuario.fk_rol')
-    ->join('empleado','empleado.em_clave','=','usuario.fk_empleado')
-    ->select(['usuario.u_id','usuario.u_nombre','usuario.u_contraseña',
-    'rol.rol_nombre','empleado.em_nombre', 'em_cedula', 'em_nacionalidad'])->get();
+    $usuarios = Usuario::join('rol','rol.rol_clave','=','usuario.fk_rol')->join('empleado','empleado.em_clave','=','usuario.fk_empleado')->select(['usuario.u_id','usuario.u_nombre','usuario.u_contraseña','rol.rol_nombre','empleado.em_nombre', 'em_cedula', 'em_nacionalidad'])->get();
     return view('usuario')->with(compact('roles'))->with(compact('empleados'))->with(compact('usuarios'));
     /*Copiar de getData al index y agregarle get()
     agregar la var de retorno

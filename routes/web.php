@@ -29,6 +29,9 @@ Route::get('quienes_somos', function(){
 Route::get('buscadorChequeo', function(){
   return view('buscadorChequeo');
 });
+Route::get('inicioSesion', function(){
+  return view('inicio');
+});
 
 /* REAL HACKER HOURS */
 /* sucursal */
@@ -125,7 +128,7 @@ Route::post('chequeo/updateSelect','ChequeoController@updateSelect');
 Route::get('chequeo-getData','ChequeoController@getData')->name('chequeo_getData');
 Route::get('chequeo{id}', 'ChequeoController@show');
 
-
+//Probando
 Route::get("/aja",function(){
 $resul=DB::select("select * from sucursal where su_clave = ?", [12]);
 	foreach($resul as $resu){
@@ -139,8 +142,44 @@ Route::get('consultas','ConsultasController@index');
 Route::get('consulta1','ConsultasEnvioController@calcularMesConMasEnvios');
 Route::get('consulta2','ConsultasEnvioController@pesoPromedioPorOficina');
 Route::get('consulta3','ConsultasEnvioController@enviosPorEstatus');
-Route::get('consulta4','ConsultasEnvioController@origenMaxPaquetes');
-Route::get('consulta5','ConsultasEnvioController@destinoMaxPaquetes');
+Route::get('consulta4','ConsultasEnvioController@origenDestinoMaxPaquetes');
+Route::get('consulta5','ConsultasEnvioController@calcularMesConMasEnvios2');
+Route::get('consulta101','ConsultasEnvioController@calcularMesConMasEnvios3');
+
+Route::get('consulta6', function(){
+  $paraDiferenciar = 6;
+  return view('buscadorFecha')->with(compact('paraDiferenciar')); });
+Route::get('filtrarFecha_1{f}','ConsultasEnvioController@consulta6');
+
+Route::get('consulta7', 'ConsultasEnvioController@promedioPaquetesDiarios');
+Route::get('filtrarFecha_2{rango}','ConsultasEnvioController@consulta6_2');
+
+Route::get('consulta8','ConsultasEnvioController@paquetesConMedios');
+Route::get('consulta9','ConsultasEnvioController@promedioEstanciaZonas');
+Route::get('consulta10','ConsultasClienteController@masEnviosPorOfic');
+Route::get('consulta11','ConsultasClienteController@vipPorOfic');
+
+Route::get('consulta12', function(){
+  $paraDiferenciar = 12;
+  return view('buscadorFecha')->with(compact('paraDiferenciar')); });
+Route::get('filtrarFecha_3{rango}','ConsultasEnvioController@clasificacionPaquetesPorOficina');
+
+Route::get('consulta14', 'ConsultasEmpleadoController@inasistenciasEmpleados');
+Route::get('consulta15', 'ConsultasEmpleadoController@inasistenciasEmpleadosSinHorario');
+
+/*Asistencias*/
+Route::resource('asistencia','AsistenciaController');
+Route::post('asistencia/getOne','AsistenciaController@getOne');
+Route::post('asistencia/updateSelect','AsistenciaController@updateSelect');
+Route::get('asistencia','AsistenciaController@index');
+Route::get('asistencia-getData','AsistenciaController@getData')->name('asistencia_getData');
+
+/*Permisos de un rol*/
+Route::resource('rolper','RolperController');
+Route::post('rolper/getOne','RolperController@getOne');
+Route::post('rolper/updateSelect','RolperController@updateSelect');
+Route::get('rolper{id}', 'RolperController@show');
+
 
 /* Listado de puerto */
 Route::resource('puerto','PuertoController');
@@ -177,13 +216,6 @@ Route::post('falla/updateSelect','FallaController@updateSelect');
 Route::get('falla', 'FallaController@index');
 Route::get('falla-getData','FallaController@getData')->name('falla_getData');
 
-// Route::get("/aje",function(){
-// $resul=DB::select("select en_tipo, en_precio, en_peso, en_descripcion, en_altura, en_anchura, en_profundidad, en_fecha_envio, en_fecha_entrega_estimada, sucursalo.su_nombre, cli_cedula, des_cedula, fk_flota_ruta_1, sucursald.su_nombre
-// from sucursal as sucursalo, sucursal as sucursald, envio, cliente, destinatario where
-// sucursalo.su_clave=fk_sucursal_origen and sucursald.su_clave=fk_sucursal_destino and cli_clave=fk_cliente and des_clave=fk_destinatario");
-// 	foreach($resul as $resu){
-// 		return $resu->su_nombre, $res;
-// 	}
-// });
-
-//select devuelve array t recorrer elemento por ele para leerlo
+Route::get('sesion', 'ConsultasEnvioController@verificarPermisos');
+Route::get('sesion2', 'ConsultasEnvioController@validarUsuario2');
+//Route::post('envio/updatePrecio','EnvioController@updatePrecio');

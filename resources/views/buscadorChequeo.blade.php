@@ -30,7 +30,7 @@
 					<input name="fk_envio"  id="fk_envio" class="buscador">
 				<br/><br/>
 				<!-- <button href="" type="reset" name="action" onclick="navigate(this,'fk_envio')" id="action" class="btn btn-info btn-lg buscar" value="Buscar"> -->
-        <a type="reset" onclick="navigate(this,'fk_envio')">Edit</a>
+        <a type="reset" class="btn btn-info btn-lg" onclick="navigate(this,'fk_envio')">Buscar</a>
         <script>
         function navigate(link, inputid){
           var url = "http://localhost:8080/version6ene/public/chequeo" + document.getElementById(inputid).value;

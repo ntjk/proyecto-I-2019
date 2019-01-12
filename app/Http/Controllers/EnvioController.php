@@ -71,7 +71,7 @@ select su_nombre, ru_clave from ruta, sucursal where fk_sucursal_1=su_clave and 
             'envio.en_fecha_envio',
             'envio.en_fecha_entrega_estimada',
             'envio.fk_flota_ruta_1')
-        ->whereBetween('envio.en_clave', [1, 21])
+        ->whereBetween('envio.en_clave', [1, 10])
         ->get();
 
 
@@ -85,7 +85,7 @@ select su_nombre, ru_clave from ruta, sucursal where fk_sucursal_1=su_clave and 
           $i++;
         }
 
-      return view('envio')->with(compact('sucursales'))->with(compact('clientes'))->with(compact('tipos'))->with(compact('florus'))->with(compact('rutas'))->with(compact('envios'))->with(compact('mesConMasEnvios'));
+      return view('envio')->with(compact('sucursales'))->with(compact('clientes'))->with(compact('tipos'))->with(compact('florus'))->with(compact('rutas'))->with(compact('envios'));
      
     }
 

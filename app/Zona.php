@@ -32,12 +32,12 @@ class Zona extends Model
     /**
      * @var array
      */
-    protected $fillable = ['su_clave', 'fk_lugar', 'su_nombre', 'su_email', 'su_capacidad'];
+    protected $fillable = ['zo_nombre', 'zo_descripcion', 'zo_ancho', 'zo_altura', 'zo_profundidad', 'fk_sucursal'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function lugar()
+    public function sucursal()
     {
         return $this->belongsTo('App\Sucursal', 'fk_sucursal', 'su_clave');
     }

@@ -13,7 +13,7 @@
         <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
         <link href="{{ asset('css/unselectable.css') }}" rel="stylesheet">
         <script type="text/javascript" src="{{ asset('js/dropdown.js') }}"></script>
-        <title>Consulta 2</title>
+        <title>Consulta 4</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
@@ -22,22 +22,27 @@
     </head>
     <body>
             @include('header')
-            <h1 class="text-center">Oficina origen mas escogida</h1>
+            <h1 class="text-center">Sucursal que envía y recibe más paquetes </h1>
             <br/>
             <table class="table table-bordered" width="80%" id="users-table">
                 <thead>
                     <tr>
                         <th>Sucursal</th>
-                        <th>Cantidad de envíos</th>
+                        <th>Nombre de la sucursal</th>
+                        <th id="action">Cantidad de envíos</th>
                     </tr>
                 </thead>
                 <tbody>
-                  @foreach ($origenMaxPaquetes as $a)
                   <tr>
-                  	<td>{{$a->so}}</td>
-                    <td>{{$a->mo}}</td>
+                    <td>Sucursal que más envía</td>
+                  	<td>{{$origenMaxPaquetes->so}}</td>
+                    <td id="action2">{{$origenMaxPaquetes->mo}}</td>
                   </tr>
-                  @endforeach
+                  <tr>
+                    <td>Sucursal que más recibe</td>
+                    <td>{{$destinoMaxPaquetes->sd}}</td>
+                    <td id="action3">{{$destinoMaxPaquetes->md}}</td>
+                  </tr>
                 </tbody>
             </table>
             <br/>
@@ -53,6 +58,11 @@
           	$(document).on('click', '.update', function(){
             	var en_clave = $(this).attr("id");
           	});
+                     /* Probando si la columna se oculta  
+                     $('#action').hide();
+                        $('#action2').hide();
+                        $('#action3').hide();*/
+                    
         });
         </script>
         @stack('scripts')
