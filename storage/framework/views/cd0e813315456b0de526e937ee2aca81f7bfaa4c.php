@@ -1,5 +1,5 @@
  <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,9 +9,9 @@
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-        <meta name="csrf-token" content="{!! csrf_token() !!}" />
-        <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
-        <script type="text/javascript" src="{{ asset('js/dropdown.js') }}"></script>
+        <meta name="csrf-token" content="<?php echo csrf_token(); ?>" />
+        <link href="<?php echo e(asset('css/styles.css')); ?>" rel="stylesheet">
+        <script type="text/javascript" src="<?php echo e(asset('js/dropdown.js')); ?>"></script>
         <title>Sucursal - LogUCAB</title>
 
         <!-- Fonts -->
@@ -20,7 +20,7 @@
         <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     </head>
     <body>
-            @include('header')
+            <?php echo $__env->make('header', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
             <div class="container">
             <br/>
             <h1 class="text-center">Sucursales</h1>
@@ -59,10 +59,10 @@
      <br />
      <label>Estado</label>
      <select class="form-control" name="estado" id="estado">
-        @foreach($estados as $estado)<!-- Busca de cada estado, el nombre, busca de cada
+        <?php $__currentLoopData = $estados; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $estado): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><!-- Busca de cada estado, el nombre, busca de cada
         Para usar variables del controlador usar llave para que lo lea, value es como un id-->
-        <option value="{{$estado->lu_clave}}">{{$estado->lu_nombre}}</option>
-        @endforeach
+        <option value="<?php echo e($estado->lu_clave); ?>"><?php echo e($estado->lu_nombre); ?></option>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
       </select>
       <br />
       <label>Municipio</label>
@@ -83,7 +83,7 @@
 
 function navigate(link, inputid){
   //alert(document.getElementById(inputid).value)
-  var url = "{{url('/sucursal')}}" + document.getElementById(inputid).value + '-0-0-0';
+  var url = "<?php echo e(url('/sucursal')); ?>" + document.getElementById(inputid).value + '-0-0-0';
   window.location.href = url; //navigates to the given url, disabled for demo
   //alert(url);
 }
@@ -95,7 +95,7 @@ function navigate(link, inputid){
             $('#users-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: '{!! route('sucursal_getData') !!}',
+                ajax: '<?php echo route('sucursal_getData'); ?>',
                 columns: [
                     { data: 'su_clave', name: 'sucursal.su_clave' },
                     { data: 'su_nombre', name: 'sucursal.su_nombre' },
@@ -192,8 +192,8 @@ function navigate(link, inputid){
           });
         });
         </script>
-        @stack('scripts')
-        @include('footer')
+        <?php echo $__env->yieldPushContent('scripts'); ?>
+        <?php echo $__env->make('footer', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
         </div>
       </div>
     </body>
