@@ -13,7 +13,7 @@
         <link href="<?php echo e(asset('css/styles.css')); ?>" rel="stylesheet">
         <link href="<?php echo e(asset('css/unselectable.css')); ?>" rel="stylesheet">
         <script type="text/javascript" src="<?php echo e(asset('js/dropdown.js')); ?>"></script>
-        <title>Consulta 2</title>
+        <title>Consulta 7</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
@@ -22,24 +22,20 @@
     </head>
     <body>
             <?php echo $__env->make('header', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-            <h1 class="text-center">Oficina destino mas escogida</h1>
+            <h1 class="text-center">Sucursal que tiene más tránsito de paquetes <br/> entre <?php echo e($rangoi); ?> y <?php echo e($rangof); ?></h1>
             <br/>
             <table class="table table-bordered" width="80%" id="users-table">
                 <thead>
                     <tr>
                         <th>Sucursal</th>
                         <th>Cantidad de envíos</th>
-                        <th>Fecha</th>
                     </tr>
                 </thead>
                 <tbody>
-                  <?php $__currentLoopData = $consulta; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $b): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                   <tr>
-                    <td><?php echo e($b->so); ?></td>
-                    <td><?php echo e($b->mo); ?></td>
-                    <td><?php echo e($b->fecha); ?></td>
+                    <td><?php echo e($consulta->so); ?></td>
+                    <td><?php echo e($consulta->mo); ?></td>
                   </tr>
-                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>
             </table>
         </div>

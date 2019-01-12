@@ -29,12 +29,24 @@
             <table class="table table-bordered" id="users-table">
                 <thead>
                     <tr>
-                        <th>Clave</th>
                         <th>Nombre</th>
                         <th>Descripcion</th>
-                        <th>Accion</th>
+                        <th>Accion</th> 
                     </tr>
                 </thead>
+                <tbody>
+                  <?php $__currentLoopData = $roles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rol): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                  <tr>
+                    <td><?php echo e($rol->rol_nombre); ?></td>
+                    <td><?php echo e($rol->rol_descripcion); ?></td>
+                    <td>
+                      <button class="btn btn-warning btn-detail update" id="<?php echo e($rol->rol_clave); ?>" value="<?php echo e($rol->rol_clave); ?>" name="Update">Update</button>
+                      <button class="btn btn-danger btn-delete delete" id="<?php echo e($rol->rol_clave); ?>" value="<?php echo e($rol->rol_clave); ?>" name="delete">Delete</button>
+                      <button class="btn btn-primary verPermisos" id="<?php echo e($rol->rol_clave); ?>" value="<?php echo e($rol->rol_clave); ?>" name="verPermisos">Permisos</button>
+                    </td>
+                  </tr>
+                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </tbody>
             </table>
         </div>
         <div id="userModal" class="modal fade">
@@ -68,16 +80,9 @@
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script>$(function() {
             $('#users-table').DataTable({
-                processing: true,
-                serverSide: true,
-                ajax: '<?php echo route('rol_getData'); ?>',
-                columns: [
-                    { data: 'rol_clave', name: 'rol_clave' },
-                    { data: 'rol_nombre', name: 'rol_nombre' },
-                    { data: 'rol_descripcion', name: 'rol_descripcion' },
-                    {data: 'action', name: 'action', orderable: false, searchable: false}
-                ]
             })
+
+            //$('#add_button').hide();
 
             $(document).on('submit', '#user_form', function(event){
             event.preventDefault();
@@ -124,6 +129,11 @@
               }
             })
           });
+          $(document).on('click', '.verPermisos', function(){
+            var rol_clave = $(this).attr("id");
+            var url = "<?php echo e(url('/rolper')); ?>" + rol_clave;
+            window.location.href = url;
+          });
           $(document).on('click','.delete',function(){
             var rol_clave = $(this).attr("id");
             if(confirm("¿Estás seguro de que quieres borrar esta información?")){
@@ -141,7 +151,7 @@
             else {
               return false;
             }
-          });
+          });     
         });
         </script>
         <?php echo $__env->yieldPushContent('scripts'); ?>

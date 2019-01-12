@@ -28,11 +28,12 @@
 			<form method="post" id="user_form">
 				<label class="labelDestacado">Seleccione por qué parámetro quiere filtrar</label>
                     <div>
-                        <input type="radio" name="parametro" class="param" value="fecha"> fecha<br>
+                        <input id="radioFecha" type="radio" name="parametro" class="param" value="fecha"> fecha<br>
                         <input type="radio" name="parametro" class="param" value="rango"> rango
                     </div>
 				<br/><br/>
-                <label class="labelDestacado">Seleccione la fecha</label>
+                <input value="{{$paraDiferenciar}}" type="hidden" name="paraDiferenciar" id="paraDiferenciar" />
+                <label class="labelDestacado" id="labelFecha">Seleccione la fecha</label>
                 <input type="date" name="fecha" id="fecha" class="form-control" />
                 <br/>
                 <label class="labelDestacado">Seleccione principio del rango</label>
@@ -40,20 +41,39 @@
                 <label class="labelDestacado">Seleccione final del rango</label>
                 <input type="date" name="rangof" id="rangof" class="form-control" />
                 <br/>
-                <input type="submit" name="action" id="action" class="btn btn-info btn-lg" value="Filtrar" />
-
-            <a type="reset" class="btn btn-info btn-lg" onclick="navigate(this,'fecha','rangoi','rangof')">Filtrar link</a>
+                <a type="reset" class="btn btn-info btn-lg" onclick="navigate(this,'fecha','rangoi','rangof')">Filtrar link</a>
                 <script>
-                function navigate(link, fecha, rangoi, rangof){
-                    if ($("input[name=parametro]:checked").val() == "fecha") {
-                        var url = "{{url('/filtrarFecha_1')}}" + document.getElementById(fecha).value;
-                        window.location.href = url; //navigates to the given url, disabled for demo
+                /*$(document).ready(function(){
+                    if($('#paraDiferenciar').val() == 12){
+                        $('#labelFecha').hide();
+                        $('#fecha').hide();
+                        $('#radioFecha').hide();
                     }
-                    if ($("input[name=parametro]:checked").val() == "rango") {
-                        var url = "{{url('/filtrarFecha_2')}}" + document.getElementById(rangoi).value + document.getElementById(rangof).value;
-                        window.location.href = url; 
-                    }
+                });*/
 
+                function navigate(link, fecha, rangoi, rangof){
+                    
+                    //Para la consulta 6
+                    if($('#paraDiferenciar').val() == 6){
+                        if ($("input[name=parametro]:checked").val() == "fecha") {
+                            var url = "{{url('/filtrarFecha_1')}}" + document.getElementById(fecha).value;
+                            window.location.href = url;
+                        }
+                    }
+                   // Para la consulta 6_2
+                    if($('#paraDiferenciar').val() == 6){
+                        if ($("input[name=parametro]:checked").val() == "rango") {
+                            var url = "{{url('/filtrarFecha_2')}}" + document.getElementById(rangoi).value + document.getElementById(rangof).value;
+                            window.location.href = url; 
+                        }
+                    }
+                    // Para la consulta 12
+                    if($('#paraDiferenciar').val() == 12){
+                        if ($("input[name=parametro]:checked").val() == "rango") {
+                            var url = "{{url('/filtrarFecha_3')}}" + document.getElementById(rangoi).value + document.getElementById(rangof).value;
+                            window.location.href = url; 
+                        }
+                    }
                 }
                 </script>
 

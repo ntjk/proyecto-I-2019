@@ -1,4 +1,4 @@
-<!doctype html>
+ <!doctype html>
 <html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>">
     <head>
         <meta charset="utf-8">
@@ -47,7 +47,7 @@
                         <th>Fecha (Nacimiento)</th>
                         <th>Parroquia</th>
                         <th>Nacionalidad</th>
-                        <th>Accion</th>
+                        <th id="hd1">Accion</th>
                     </tr>
                 </thead>
             </table>
@@ -145,10 +145,13 @@
   </form>
  </div>
 </div>
+<script>
+</script>
         <script src="//code.jquery.com/jquery.js"></script>
         <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script>$(function() {
+             //$('#hd1').hide();
             $('#users-table').DataTable({
                 processing: true,
                 serverSide: true,
@@ -170,10 +173,14 @@
                     { data: 'em_fecha_ingreso', name: 'empleado.em_fecha_ingreso' },
                     { data: 'em_fecha_nacimiento', name: 'empleado.em_fecha_nacimiento' },
                     { data: 'lu_nombre', name: 'lugar.lu_nombre' },
-                    { data: 'em_nacionalidad', name: 'em_nacionalidad' },
+                    { data: 'em_nacionalidad', name: 'em_nacionalidad' }
+                    ,
                     {data: 'action', name: 'action', orderable: false, searchable: false}
                 ]
             })
+  $(function(){
+      $(".delete").hide();
+    }  )
             $(document).on('change','#estado',function(){
               var estado = $(this).val();
               $.ajax({
@@ -225,7 +232,7 @@
             var em_fecha_nacimiento = $('#em_fecha_nacimiento').val();
             var em_clave = $('#em_clave').val();
             var fk_lugar = $('#fk_lugar').val();
-            if(em_nombre != '' && em_email_empresa != '' && em_cedula != '' && em_nacionalidad != '' && em_apellido != '' && em_profesion != '' && em_estado_civil != '' && em_salario_base != '' && em_email_personal != '' && em_nivel_academico != '' && em_cantidad_hijos != '' && em_fecha_ingreso != '' && em_fecha_nacimiento)
+            if(em_nombre != '')
             {
               $.ajax({
                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
@@ -244,9 +251,10 @@
             }
             else
             {
-              alert("Required Fields are not Filled.");
+              alert("Falta campos por llenar");
             }
           });
+
           $(document).on('click', '.update', function(){
             var em_clave = $(this).attr("id");
             $.ajax({
@@ -279,6 +287,13 @@
               }
             })
           });
+          /*$(document).on('click', '.registro', function(){
+            var em_clave = $(this).attr("id");
+            var url = "<?php echo e(url('/registro')); ?>" + em_clave;
+            window.location.href = url;
+            //alert(url);
+          });*/
+
           $(document).on('click','.delete',function(){
             var em_clave = $(this).attr("id");
             if(confirm("¿Estás seguro de que quieres borrar esta información?")){

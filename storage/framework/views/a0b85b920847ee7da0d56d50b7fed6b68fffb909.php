@@ -41,7 +41,19 @@
                 </tbody>
             </table>
         </div>
-
+        <div id="userModal" class="modal fade">
+<!-- <div class="modal-dialog">
+  <form method="post" id="user_form" enctype="multipart/form-data">
+   <div class="modal-content">
+    <div class="modal-header">
+     <button type="button" class="close" data-dismiss="modal">&times;</button>
+     <h4 class="modal-title">Añadir envio</h4>
+    </div>
+ 
+   </div>
+  </form>
+ </div>
+</div> -->
         <script src="//code.jquery.com/jquery.js"></script>
         <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>

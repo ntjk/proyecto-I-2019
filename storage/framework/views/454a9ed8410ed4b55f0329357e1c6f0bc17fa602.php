@@ -13,7 +13,7 @@
         <link href="<?php echo e(asset('css/styles.css')); ?>" rel="stylesheet">
         <link href="<?php echo e(asset('css/unselectable.css')); ?>" rel="stylesheet">
         <script type="text/javascript" src="<?php echo e(asset('js/dropdown.js')); ?>"></script>
-        <title>Consulta 2</title>
+        <title>Consulta 4</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
@@ -22,22 +22,27 @@
     </head>
     <body>
             <?php echo $__env->make('header', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-            <h1 class="text-center">Oficina origen mas escogida</h1>
+            <h1 class="text-center">Sucursal que envía y recibe más paquetes </h1>
             <br/>
             <table class="table table-bordered" width="80%" id="users-table">
                 <thead>
                     <tr>
                         <th>Sucursal</th>
-                        <th>Cantidad de envíos</th>
+                        <th>Nombre de la sucursal</th>
+                        <th id="action">Cantidad de envíos</th>
                     </tr>
                 </thead>
                 <tbody>
-                  <?php $__currentLoopData = $origenMaxPaquetes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $a): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                   <tr>
-                  	<td><?php echo e($a->so); ?></td>
-                    <td><?php echo e($a->mo); ?></td>
+                    <td>Sucursal que más envía</td>
+                  	<td><?php echo e($origenMaxPaquetes->so); ?></td>
+                    <td id="action2"><?php echo e($origenMaxPaquetes->mo); ?></td>
                   </tr>
-                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                  <tr>
+                    <td>Sucursal que más recibe</td>
+                    <td><?php echo e($destinoMaxPaquetes->sd); ?></td>
+                    <td id="action3"><?php echo e($destinoMaxPaquetes->md); ?></td>
+                  </tr>
                 </tbody>
             </table>
             <br/>
@@ -53,6 +58,11 @@
           	$(document).on('click', '.update', function(){
             	var en_clave = $(this).attr("id");
           	});
+                     /* Probando si la columna se oculta  
+                     $('#action').hide();
+                        $('#action2').hide();
+                        $('#action3').hide();*/
+                    
         });
         </script>
         <?php echo $__env->yieldPushContent('scripts'); ?>

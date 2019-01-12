@@ -13,7 +13,7 @@
         <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
         <link href="{{ asset('css/unselectable.css') }}" rel="stylesheet">
         <script type="text/javascript" src="{{ asset('js/dropdown.js') }}"></script>
-        <title>Consulta 2</title>
+        <title>Consulta 7</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
@@ -22,24 +22,20 @@
     </head>
     <body>
             @include('header')
-            <h1 class="text-center">Oficina destino mas escogida</h1>
+            <h1 class="text-center">Sucursal que tiene más tránsito de paquetes <br/> entre {{$rangoi}} y {{$rangof}}</h1>
             <br/>
             <table class="table table-bordered" width="80%" id="users-table">
                 <thead>
                     <tr>
                         <th>Sucursal</th>
                         <th>Cantidad de envíos</th>
-                        <th>Fecha</th>
                     </tr>
                 </thead>
                 <tbody>
-                  @foreach ($consulta as $b)
                   <tr>
-                    <td>{{$b->so}}</td>
-                    <td>{{$b->mo}}</td>
-                    <td>{{$b->fecha}}</td>
+                    <td>{{$consulta->so}}</td>
+                    <td>{{$consulta->mo}}</td>
                   </tr>
-                  @endforeach
                 </tbody>
             </table>
         </div>

@@ -43,7 +43,7 @@
                         <th>FKFR1</th>
                         <th>Sucursal origen</th>
                         <th>Sucursal destino</th>
-                        <th>Accion</th>
+                        <th id="hidden2">Accion</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -64,7 +64,7 @@
                     <td>{{$envio->fk_flota_ruta_1}}</td>
                     <td>{{$envio->so_nombre}}</td>
                     <td>{{$envio->sd_nombre}}</td>
-                    <td>
+                    <td name="hidden3">
                       <button class="btn btn-warning btn-detail update" id="{{$envio->en_clave}}" value="{{$envio->en_clave}}" name="Update">Update</button>
                       <button class="btn btn-danger btn-delete delete" id="{{$envio->en_clave}}" value="{{$envio->en_clave}}" name="delete">Delete</button>
                     </td>
@@ -183,6 +183,28 @@
         <script>$(function() {
             $('#users-table').DataTable({
             })
+
+            $(".delete").hide();
+            $(".update").hide();
+            $('#add_button').hide();
+            $('#hidden2').hide();    
+            $('#hidden3').hide();    
+
+            var eliminar = '{!! verificarPermisosHelper("eliminar envios"); !!}';
+            var modificar = '{!! verificarPermisosHelper("modificar envios"); !!}';
+            var insertar = '{!! verificarPermisosHelper("insertar envios"); !!}';
+
+            if(eliminar || modificar){
+              $('#hidden2').show();    
+              $('#hidden3').show();
+            }
+            if(eliminar)
+              $(".delete").show();
+            if(modificar)
+              $(".update").show();
+              
+            if(insertar)
+              $('#add_button').show();
 
 
             $(document).on('submit', '#user_form', function(event){

@@ -21,24 +21,46 @@
   </head>
   <body>
     <?php echo $__env->make('header', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-    <div class="container">
+    <div class="container labelDestacado" >
       <br/>
       <h1 class="text-center">Consultas</h1>
       <br/>
       <a href="consulta1">Mes del año que se realizan más envíos</a>
       <br/>
+      <a href="consulta5">Mes en el que se realizan más envíos</a>
+      <br/>
       <a href="consulta2">Peso promedio de los paquetes que se envían por oficina</a>
       <br/>
       <a href="consulta3">Listado de paquetes por estatus </a>
       <br/>
-      <a href="consulta4">¿Qué oficina es la que recibe más paquetes? ¿Qué oficina envía más
-paquetes? </a>
+      <a href="consulta4">¿Qué oficina envía más y qué oficina recibe más paquetes?</a>
       <br/>
-      <a href="consulta5">Test5</a>
+      <a href="consulta6">Sucursal que tiene más tránsito de paquetes según período</a>
       <br/>
+      <a href="consulta7">Promedio de paquetes diarios por oficina</a>
       <br/>
-      <a href="consulta6">Cantidad de envíos según período</a>
+      <a href="consulta8">¿Qué tipo de paquetes combinan más medios de transporte? </a>
       <br/>
+      <a href="consulta9">Promedio de estancia de los paquetes por cada zona de las oficinas</a>
+      <br/>
+      <a href="consulta10">¿Qué usuario registra más paquetes por oficina?</a>
+      <br/>
+      <a href="consulta11">Clientes frecuentes por oficina ordenado alfabéticamente </a>
+      <br/>
+      <a href="consulta12">Listado de paquetes por clasificación y por oficina en un periodo de tiempo</a>
+      <br/>
+      <a href="consulta14">Listado de inasistencia indicando el horario asignado al empleado </a>
+      <br/>
+      <a href="consulta15">Listado de empleados con las inasistencias</a>
+      <br/>
+      <a href="consulta14">Listado de vehículos por oficina base </a>
+      <br/>
+      <a href="consulta15">Listado de medios de transportes, agrupados por tipo</a>
+      
+      
+      
+      
+       
     </div>
     <?php echo $__env->yieldPushContent('scripts'); ?>
     <?php echo $__env->make('footer', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
