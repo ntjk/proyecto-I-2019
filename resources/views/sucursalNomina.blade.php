@@ -41,7 +41,7 @@
         <thead>
             <tr>
               <th>Empleado</th>
-              <th>Salario Base</th>
+              <th>Salario Semanal (Incluyendo Inasistencias)</th>
               <th>Accion</th>
             </tr>
         </thead>

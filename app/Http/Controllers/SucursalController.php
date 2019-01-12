@@ -84,6 +84,7 @@ class SucursalController extends Controller
         $monday = Carbon::create($year,$month,$day)->startOfWeek();
         $sunday = Carbon::create($year,$month,$day)->endOfWeek();
       }
+      
       $total=0;
 
       foreach ($empleados as $em) {
