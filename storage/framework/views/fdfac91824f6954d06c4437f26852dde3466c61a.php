@@ -42,7 +42,7 @@
                   <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>
             </table>
-            <label><b>Nota</b>: Tiempo promedio de estancia sin algún valor quiere decir que todos los respectivos paquetes siguen allí.
+            <label><b>Nota</b>: Tiempo promedio de estancia sin algún valor quiere decir que todos los respectivos paquetes siguen allí y no han sido entregados.
         </div>
         <div id="userModal" class="modal fade">
         <script src="//code.jquery.com/jquery.js"></script>

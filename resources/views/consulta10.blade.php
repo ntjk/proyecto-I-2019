@@ -22,7 +22,7 @@
     </head>
     <body>
             @include('header')
-            <h1 class="text-center">Paquetes por oficina de cada cliente</h1>
+            <h1 class="text-center">Cliente que registra más paquetes por oficina</h1>
             <br/>
             <table class="table table-bordered" width="80%" id="users-table">
                 <thead>
@@ -35,8 +35,8 @@
                 <tbody>
                   @foreach ($consulta as $a)
                   <tr>
-                  	<td>{{$a->su_nombre}}</td>
-                    <td>{{$a->cli_nacionalidad}} {{$a->cli_cedula}}</td>
+                    <td>{{$a->so}}</td>
+                    <td>{{$a->cli_nombre}} {{$a->cli_nacionalidad}} {{$a->cli_cedula}}</td>
                     <td>{{$a->cant}}</td>
                   </tr>
                   @endforeach

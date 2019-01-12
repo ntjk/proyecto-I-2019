@@ -184,7 +184,28 @@
             $('#users-table').DataTable({
             })
 
-            //$(".delete").hide();
+            $(".delete").hide();
+            $(".update").hide();
+            $('#add_button').hide();
+            $('#hidden2').hide();    
+            $('#hidden3').hide();    
+
+            var eliminar = '<?php echo verificarPermisosHelper("eliminar envios");; ?>';
+            var modificar = '<?php echo verificarPermisosHelper("modificar envios");; ?>';
+            var insertar = '<?php echo verificarPermisosHelper("insertar envios");; ?>';
+
+            if(eliminar || modificar){
+              $('#hidden2').show();    
+              $('#hidden3').show();
+            }
+            if(eliminar)
+              $(".delete").show();
+            if(modificar)
+              $(".update").show();
+              
+            if(insertar)
+              $('#add_button').show();
+
 
             $(document).on('submit', '#user_form', function(event){
             event.preventDefault();

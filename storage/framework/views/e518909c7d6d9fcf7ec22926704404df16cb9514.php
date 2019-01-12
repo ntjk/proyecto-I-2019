@@ -29,7 +29,6 @@
             <table class="table table-bordered" id="users-table">
                 <thead>
                     <tr>
-                        <th>Clave</th>
                         <th>Nombre</th>
                         <th>Contraseña</th>
                         <th>Rol</th>>
@@ -37,6 +36,19 @@
                         <th>Accion</th>
                     </tr>
                 </thead>
+                <<tbody>
+                  <?php $__currentLoopData = $usuarios; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $u): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                  <tr>
+                    <td><?php echo e($u->u_nombre); ?></td>
+                    <td><?php echo e($u->u_contraseña); ?></td>
+                    <td><?php echo e($u->rol_nombre); ?></td>
+                    <td><?php echo e($u->em_nombre); ?> <?php echo e($u->em_nacionalidad); ?> <?php echo e($u->em_cedula); ?></td>
+                    <td><button class="btn btn-warning btn-detail update" id="'.$usuarios->u_id.'" value="'.$usuarios->u_id.'" name="Update">Update</button>
+                      <button class="btn btn-danger btn-delete delete" id="'.$usuarios->u_id.'" value="'.$usuarios->u_id.'" name="delete">Delete</button>
+                    </td>
+                  </tr>
+                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </tbody>
             </table>
         </div>
         <div id="userModal" class="modal fade">
@@ -84,17 +96,6 @@
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script>$(function() {
             $('#users-table').DataTable({
-                processing: true,
-                serverSide: true,
-                ajax: '<?php echo route('usuario_getData'); ?>',
-                columns: [
-                    { data: 'u_id', name: 'usuario.u_id' },
-                    { data: 'u_nombre', name: 'usuario.u_nombre' },
-                    { data: 'u_contraseña', name: 'usuario.u_contraseña' },
-                    { data: 'rol_nombre', name: 'rol.rol_nombre' },
-                    { data: 'em_nombre', name: 'empleado.em_nombre' },
-                    {data: 'action', name: 'action', orderable: false, searchable: false}
-                ]
             })
 
             $(document).on('submit', '#user_form', function(event){

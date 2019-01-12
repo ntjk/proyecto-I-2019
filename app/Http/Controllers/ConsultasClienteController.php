@@ -16,9 +16,8 @@ use App\Tipo;
 class ConsultasClienteController extends Controller
 {
     public function masEnviosPorOfic(){
-		$consulta = Envio::join('cliente','cli_clave','=','envio.fk_cliente')->join('sucursal','su_clave','=','envio.fk_sucursal_origen')->select(DB::raw('count(en_clave) as cant, su_nombre, cli_cedula, cli_nacionalidad'))
-        ->groupBy('su_nombre', 'cli_nacionalidad', 'cli_cedula')->get();
-        return view('consulta10')->with(compact('consulta'));
+		$consulta= DB::select(DB::raw('select count(*) as cant, su_nombre so , fk_cliente, c.cli_cedula, c.cli_nombre, c.cli_nacionalidad from envio, sucursal, cliente as c where cli_clave=fk_cliente and su_clave=fk_sucursal_origen group by su_nombre, c.cli_cedula, c.cli_nombre, c.cli_nacionalidad, fk_cliente having count(*) >all (select count(*) from cliente where fk_cliente=cli_clave group by fk_cliente)'));
+		return view('consulta10')->with(compact('consulta'));
     }
 
     public function vipPorOfic(){

@@ -22,24 +22,22 @@
     </head>
     <body>
             <?php echo $__env->make('header', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-            <h1 class="text-center">Cantidad de envíos por oficina según período</h1>
+            <h1 class="text-center">Promedio de paquetes diarios por oficina <br/></h1>
             <br/>
             <table class="table table-bordered" width="80%" id="users-table">
                 <thead>
                     <tr>
                         <th>Sucursal</th>
-                        <th>Cantidad de envíos</th>
-                        <th>Fecha</th>
+                        <th>Promedio</th>
                     </tr>
                 </thead>
                 <tbody>
-                  <?php $__currentLoopData = $consulta; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $b): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                  <tr>
-                    <td><?php echo e($b->so); ?></td>
-                    <td><?php echo e($b->mo); ?></td>
-                    <td><?php echo e($b->fecha); ?></td>
-                  </tr>
-                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                	<?php $__currentLoopData = $consulta; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $b): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                	<tr>
+                		<td><?php echo e($b->so); ?></td>
+                		<td><?php echo e($b->round); ?></td>
+                	</tr>
+                	<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>
             </table>
         </div>

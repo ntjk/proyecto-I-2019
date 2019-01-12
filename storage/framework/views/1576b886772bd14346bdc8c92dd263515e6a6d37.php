@@ -52,18 +52,6 @@
               <script src="//code.jquery.com/jquery.js"></script>
               <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
               <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-              <script>
-              $(document).ready(function () {
-                //function leerUsuario() {
-                  var lasCookies = document.cookie;
-                  cookieArray = lasCookies.split(';');
-                  var usu = cookieArray[0].split('=')[1];
-                  var contra = cookieArray[1].split('=')[1];
-                  //console.log("Usu "+usuario);
-                  //console.log("Contra "+password);
-              });
-              </script>
-
               <?php echo $__env->make('footer', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
         </div>
     </body>

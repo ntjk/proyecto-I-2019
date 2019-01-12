@@ -145,11 +145,12 @@
   </form>
  </div>
 </div>
+<script>
+</script>
         <script src="//code.jquery.com/jquery.js"></script>
         <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script>$(function() {
-
              //$('#hd1').hide();
             $('#users-table').DataTable({
                 processing: true,
@@ -177,6 +178,9 @@
                     {data: 'action', name: 'action', orderable: false, searchable: false}
                 ]
             })
+  $(function(){
+      $(".delete").hide();
+    }  )
             $(document).on('change','#estado',function(){
               var estado = $(this).val();
               $.ajax({

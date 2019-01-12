@@ -37,9 +37,8 @@
                 <tbody>
                   @foreach ($permisosFk as $c)
                   <tr>
-                    <td>{{$c->per_tipo}} {{$c->per_nombre}}. {{$c->per_descripcion}}</td>
+                    <td>{{$c->per_descripcion}}</td>
                     <td>
-                      <!--<button class="btn btn-warning btn-detail update" id="{{$c->per_clave}}" value="{{$c->per_clave}}" name="Update">Update</button>-->
                       <button class="btn btn-danger btn-delete delete" id="{{$c->per_clave}}" value="{{$c->per_clave}}" name="delete">Quitar permiso</button>
                     </td>
                   </tr>

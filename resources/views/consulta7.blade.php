@@ -22,24 +22,22 @@
     </head>
     <body>
             @include('header')
-            <h1 class="text-center">Cantidad de envíos por oficina según período</h1>
+            <h1 class="text-center">Promedio de paquetes diarios por oficina <br/></h1>
             <br/>
             <table class="table table-bordered" width="80%" id="users-table">
                 <thead>
                     <tr>
                         <th>Sucursal</th>
-                        <th>Cantidad de envíos</th>
-                        <th>Fecha</th>
+                        <th>Promedio</th>
                     </tr>
                 </thead>
                 <tbody>
-                  @foreach ($consulta as $b)
-                  <tr>
-                    <td>{{$b->so}}</td>
-                    <td>{{$b->mo}}</td>
-                    <td>{{$b->fecha}}</td>
-                  </tr>
-                  @endforeach
+                	@foreach($consulta as $b)
+                	<tr>
+                		<td>{{$b->so}}</td>
+                		<td>{{$b->round}}</td>
+                	</tr>
+                	@endforeach
                 </tbody>
             </table>
         </div>

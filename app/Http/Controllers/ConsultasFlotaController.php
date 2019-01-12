@@ -17,5 +17,20 @@ use App\Tipo;
 
 class ConsultasFlotaController extends Controller
 {
-   
+   Listado de vehículos por oficina base </a>
+      <br/>
+      <a href="consulta15">Listado de medios de transportes, agrupados por tipo</a>
+    public function flotaPorOfic(){
+        $consulta= DB::select(DB::raw('select round(avg(mo),2), so from (select count(*) as mo, su_nombre as so, en_fecha_envio from sucursal, envio where fk_sucursal_origen=su_clave 
+    group by en_fecha_envio, so order by so) as hola group by so'));
+    /*select round(avg(en_peso),2) as peso, su_nombre as so from sucursal, envio where su_clave=fk_sucursal_origen group by su_nombre*/
+    return view('consulta7')->with(compact('consulta'));
+    }
+
+    public function flotaPorTipo(){
+        $consulta= DB::select(DB::raw('select round(avg(mo),2), so from (select count(*) as mo, su_nombre as so, en_fecha_envio from sucursal, envio where fk_sucursal_origen=su_clave 
+    group by en_fecha_envio, so order by so) as hola group by so'));
+    /*select round(avg(en_peso),2) as peso, su_nombre as so from sucursal, envio where su_clave=fk_sucursal_origen group by su_nombre*/
+    return view('consulta7')->with(compact('consulta'));
+    }
 }

@@ -60,8 +60,8 @@
                             window.location.href = url;
                         }
                     }
-                   // Para la consulta 7
-                    if($('#paraDiferenciar').val() == 7){
+                   // Para la consulta 6_2
+                    if($('#paraDiferenciar').val() == 6){
                         if ($("input[name=parametro]:checked").val() == "rango") {
                             var url = "{{url('/filtrarFecha_2')}}" + document.getElementById(rangoi).value + document.getElementById(rangof).value;
                             window.location.href = url; 

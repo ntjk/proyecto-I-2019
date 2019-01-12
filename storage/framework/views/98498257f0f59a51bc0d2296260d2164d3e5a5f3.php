@@ -22,22 +22,20 @@
     </head>
     <body>
             <?php echo $__env->make('header', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-            <h1 class="text-center">Oficina destino mas escogida</h1>
+            <h1 class="text-center">Mes con más envíos</h1>
             <br/>
             <table class="table table-bordered" width="80%" id="users-table">
                 <thead>
                     <tr>
-                        <th>Sucursal</th>
+                        <th>Mes</th>
                         <th>Cantidad de envíos</th>
                     </tr>
                 </thead>
                 <tbody>
-                  <?php $__currentLoopData = $destinoMaxPaquetes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $b): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                   <tr>
-                    <td><?php echo e($b->sd); ?></td>
-                    <td><?php echo e($b->md); ?></td>
+                    <td><?php echo e($mesMasEnvios->mes); ?></td>
+                    <td><?php echo e($mesMasEnvios->cantidad); ?></td>
                   </tr>
-                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>
             </table>
         </div>

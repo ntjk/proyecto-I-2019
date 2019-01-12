@@ -27,31 +27,37 @@
       <br/>
       <a href="consulta1">Mes del año que se realizan más envíos</a>
       <br/>
+      <a href="consulta5">Mes en el que se realizan más envíos</a>
+      <br/>
       <a href="consulta2">Peso promedio de los paquetes que se envían por oficina</a>
       <br/>
       <a href="consulta3">Listado de paquetes por estatus </a>
       <br/>
       <a href="consulta4">¿Qué oficina envía más y qué oficina recibe más paquetes?</a>
       <br/>
-      <a href="consulta5"></a>
+      <a href="consulta6">Sucursal que tiene más tránsito de paquetes según período</a>
       <br/>
-      <a href="consulta6">Cantidad de envíos por oficina por fecha</a>
-      <br/>
-      <a href="consulta7">Cantidad de envíos por oficina según período</a>
+      <a href="consulta7">Promedio de paquetes diarios por oficina</a>
       <br/>
       <a href="consulta8">¿Qué tipo de paquetes combinan más medios de transporte? </a>
       <br/>
       <a href="consulta9">Promedio de estancia de los paquetes por cada zona de las oficinas</a>
       <br/>
-      <a href="consulta10">¿Qué usuario registra más paquetes por oficina? </a>
+      <a href="consulta10">¿Qué usuario registra más paquetes por oficina?</a>
       <br/>
       <a href="consulta11">Clientes frecuentes por oficina ordenado alfabéticamente </a>
       <br/>
       <a href="consulta12">Listado de paquetes por clasificación y por oficina en un periodo de tiempo</a>
       <br/>
-      <a href="consulta14">Listado de empleados con las inasistencias</a>
+      <a href="consulta14">Listado de inasistencia indicando el horario asignado al empleado </a>
       <br/>
-      <a href="consulta15">Cantidad de inasistencias por empleado</a>
+      <a href="consulta15">Listado de empleados con las inasistencias</a>
+      <br/>
+      <a href="consulta14">Listado de vehículos por oficina base </a>
+      <br/>
+      <a href="consulta15">Listado de medios de transportes, agrupados por tipo</a>
+      
+      
       
       
        

@@ -22,20 +22,22 @@
     </head>
     <body>
             @include('header')
-            <h1 class="text-center">Cantidad de inasistencias por empleado</h1>
+            <h1 class="text-center">Listado de empleados con las inasistencias</h1>
             <br/>
             <table class="table table-bordered" width="80%" id="users-table">
                 <thead>
                     <tr>
                       <th>Empleado</th>  
-                      <th>Cantidad de inasistencias</th>
+                      <th>Fecha</th>
+                      <th>Check</th>
                     </tr>
                 </thead>
                 <tbody>
                   @foreach ($consulta as $b)
                   <tr>
                     <td>{{$b->em_nombre}} {{$b->em_apellido}}, {{$b->em_nacionalidad}} {{$b->em_cedula}}</td>
-                    <td>{{$b->cant}}</td>
+                    <td>{{$b->a_fecha}}</td>
+                    <td>{{$b->a_check}}</td>
                   </tr>
                   @endforeach
                 </tbody>

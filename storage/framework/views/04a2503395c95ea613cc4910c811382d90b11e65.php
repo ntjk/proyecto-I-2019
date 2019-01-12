@@ -37,7 +37,7 @@
                   <tr>
                   	<td><?php echo e($a->yy); ?></td>
                     <td><?php echo e($a->mes); ?></td>
-                    <td><?php echo e($a->cantidad); ?></td>
+                    <td><?php echo e($a->max); ?></td>
                   </tr>
                   <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>

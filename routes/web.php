@@ -30,7 +30,7 @@ Route::get('buscadorChequeo', function(){
   return view('buscadorChequeo');
 });
 Route::get('inicioSesion', function(){
-  return view('inicioSesion');
+  return view('inicio');
 });
 
 /* REAL HACKER HOURS */
@@ -143,17 +143,16 @@ Route::get('consulta1','ConsultasEnvioController@calcularMesConMasEnvios');
 Route::get('consulta2','ConsultasEnvioController@pesoPromedioPorOficina');
 Route::get('consulta3','ConsultasEnvioController@enviosPorEstatus');
 Route::get('consulta4','ConsultasEnvioController@origenDestinoMaxPaquetes');
-Route::get('consulta5','ConsultasEnvioController@');
+Route::get('consulta5','ConsultasEnvioController@calcularMesConMasEnvios2');
+Route::get('consulta101','ConsultasEnvioController@calcularMesConMasEnvios3');
 
 Route::get('consulta6', function(){
   $paraDiferenciar = 6;
   return view('buscadorFecha')->with(compact('paraDiferenciar')); });
 Route::get('filtrarFecha_1{f}','ConsultasEnvioController@consulta6');
 
-Route::get('consulta7', function(){
-  $paraDiferenciar = 7;
-  return view('buscadorFecha')->with(compact('paraDiferenciar')); });
-Route::get('filtrarFecha_2{rango}','ConsultasEnvioController@consulta7');
+Route::get('consulta7', 'ConsultasEnvioController@promedioPaquetesDiarios');
+Route::get('filtrarFecha_2{rango}','ConsultasEnvioController@consulta6_2');
 
 Route::get('consulta8','ConsultasEnvioController@paquetesConMedios');
 Route::get('consulta9','ConsultasEnvioController@promedioEstanciaZonas');
@@ -166,7 +165,7 @@ Route::get('consulta12', function(){
 Route::get('filtrarFecha_3{rango}','ConsultasEnvioController@clasificacionPaquetesPorOficina');
 
 Route::get('consulta14', 'ConsultasEmpleadoController@inasistenciasEmpleados');
-Route::get('consulta15', 'ConsultasEmpleadoController@inasistenciasEmpleados2');
+Route::get('consulta15', 'ConsultasEmpleadoController@inasistenciasEmpleadosSinHorario');
 
 /*Asistencias*/
 Route::resource('asistencia','AsistenciaController');
@@ -181,5 +180,5 @@ Route::post('rolper/getOne','RolperController@getOne');
 Route::post('rolper/updateSelect','RolperController@updateSelect');
 Route::get('rolper{id}', 'RolperController@show');
 
-Route::get('sesion', 'InicioSesionController@verificarPermisos');
 
+Route::get('sesion', 'ConsultasEnvioController@verificarPermisos');

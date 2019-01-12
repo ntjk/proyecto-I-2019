@@ -28,7 +28,7 @@
 			<form method="post" id="user_form">
 				<label class="labelDestacado">Seleccione por qué parámetro quiere filtrar</label>
                     <div>
-                        <input id="radioFecha" type="radio" name="parametro" class="param" value="fecha" checked> fecha<br>
+                        <input id="radioFecha" type="radio" name="parametro" class="param" value="fecha"> fecha<br>
                         <input type="radio" name="parametro" class="param" value="rango"> rango
                     </div>
 				<br/><br/>
@@ -60,8 +60,8 @@
                             window.location.href = url;
                         }
                     }
-                   // Para la consulta 7
-                    if($('#paraDiferenciar').val() == 7){
+                   // Para la consulta 6_2
+                    if($('#paraDiferenciar').val() == 6){
                         if ($("input[name=parametro]:checked").val() == "rango") {
                             var url = "<?php echo e(url('/filtrarFecha_2')); ?>" + document.getElementById(rangoi).value + document.getElementById(rangof).value;
                             window.location.href = url; 

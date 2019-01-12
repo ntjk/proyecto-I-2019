@@ -22,7 +22,7 @@
     </head>
     <body>
             <?php echo $__env->make('header', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-            <h1 class="text-center">Cantidad de envíos por oficina por fecha</h1>
+            <h1 class="text-center">Sucursal que tiene más tránsito de paquetes por fecha</h1>
             <br/>
             <table class="table table-bordered" width="80%" id="users-table">
                 <thead>
@@ -33,13 +33,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                  <?php $__currentLoopData = $consulta; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $b): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                   <tr>
-                    <td><?php echo e($b->so); ?></td>
-                    <td><?php echo e($b->mo); ?></td>
-                    <td><?php echo e($b->fecha); ?></td>
+                    <td><?php echo e($consulta->so); ?></td>
+                    <td><?php echo e($consulta->mo); ?></td>
+                    <td><?php echo e($consulta->fecha); ?></td>
                   </tr>
-                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>
             </table>
         </div>

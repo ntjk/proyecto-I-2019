@@ -15,6 +15,9 @@ use App\Destinatario;
 use App\Telefono;
 use App\Tipo;
 use App\Chequeo;
+use App\Permiso;
+use App\Rolper;
+use App\Usuario;
 
 class ConsultasEnvioController extends Controller
 {
@@ -23,22 +26,44 @@ class ConsultasEnvioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function verificarPermisos(){
+        //se halla el rol del usuario
+        //$rolFk=Usuario::where('u_nombre','=',$nombre)->first();
+       $permisoConsulta="ver envios"; //va a revisar si en los permisos tiene este string
+        $nombreUsuario=$_COOKIE['usuario'];
+         $usuario=Usuario::where('u_nombre','=',$nombreUsuario)->first();
+        //y con el rol se ven los permisos
+        $permisosFk=Rolper::join('permiso','per_clave','=','rol_permiso.fk_permiso')->select(
+         'per_clave', 'per_nombre', 'per_descripcion', 'per_tipo')->orderBy('per_tipo')->distinct()->where('fk_rol', '=', $usuario->fk_rol)->get();
+        $descripcionPermisos=Rolper::join('permiso','per_clave','=','rol_permiso.fk_permiso')->select(
+         'per_clave', 'per_nombre', 'per_descripcion', 'per_tipo')->orderBy('per_tipo')->distinct()->where('fk_rol', '=', $usuario->fk_rol)->pluck('per_descripcion');
+        if($descripcionPermisos->contains($permisoConsulta))
+            return "ajaaaa";
+        return $descripcionPermisos;
+    }
 
     public function calcularMesConMasEnvios(){
-        $mayor=0;
-        for ($i = 1; $i <= 12; $i++){
-            $num=Envio::whereMonth('en_fecha_envio', $i)->count();
-            if($num>$mayor)
-                $mayor=$i;
-        }
-        $mesMasEnvios=Envio::select(DB::raw('count(*) as cantidad, extract(month from en_fecha_envio) as mes, extract(year from en_fecha_envio) as yy'))->groupBy('yy', 'mes')->get();
+        $mesMasEnvios=DB::select(DB::raw('select max(cantidad) as max, mes, yy from (select count(*) as cantidad, extract(month from en_fecha_envio) as mes, extract(year from en_fecha_envio) as yy from envio group by yy, mes) as enviosPorMesYy group by yy, mes'));
         return view('consulta1')->with(compact('mesMasEnvios'));
     }
 
+    public function calcularMesConMasEnvios2(){ //lo mismo pero sin agrupar por year
+        $mesMasEnvios=Envio::select(DB::raw('count(*) as cantidad, extract(month from en_fecha_envio) as mes'))->groupBy('mes')->orderBy('cantidad','desc')->first();
+        return view('consulta5')->with(compact('mesMasEnvios'));
+    }
+    /*select count(*) as cantidad, extract(month from en_fecha_envio) as mes from envio group by mes order by cantidad desc limit 1*/
+
+    public function promedioPaquetesDiarios(){
+        $consulta= DB::select(DB::raw('select round(avg(mo),2), so from (select count(*) as mo, su_nombre as so, en_fecha_envio from sucursal, envio where fk_sucursal_origen=su_clave 
+    group by en_fecha_envio, so order by so) as hola group by so'));
+    /*select round(avg(en_peso),2) as peso, su_nombre as so from sucursal, envio where su_clave=fk_sucursal_origen group by su_nombre*/
+    return view('consulta7')->with(compact('consulta'));
+    }
+
     public function pesoPromedioPorOficina(){
-        $pesoPromedioEnvio=Envio::join('sucursal','sucursal.su_clave','=','envio.fk_sucursal_origen')->select(DB::raw('round(avg(en_peso),2) as peso, su_nombre as so'))
-        ->groupBy('su_nombre')->get();
+        $pesoPromedioEnvio=Envio::join('sucursal','sucursal.su_clave','=','envio.fk_sucursal_origen')->select(DB::raw('count(*) as mo, su_nombre as so, en_fecha_envio as fecha'))->groupBy('so','fecha')->get();
         return view('consulta2')->with(compact('pesoPromedioEnvio'));
+    /*select round(avg(en_peso),2) as peso, su_nombre as so from sucursal, envio where su_clave=fk_sucursal_origen group by su_nombre*/
     }
 
     public function enviosPorEstatus(){
@@ -96,23 +121,22 @@ class ConsultasEnvioController extends Controller
         $origenMaxPaquetes=Envio::join('sucursal','sucursal.su_clave','=','envio.fk_sucursal_origen')->select(DB::raw('count(*) as mo, su_nombre as so'))->groupBy('so')->orderBy('mo','desc')->first();
         $destinoMaxPaquetes=Envio::join('sucursal','sucursal.su_clave','=','envio.fk_sucursal_destino')->select(DB::raw('count(*) as md, su_nombre as sd'))->groupBy('sd')->orderBy('md','desc')->first();
        return view('consulta4')->with(compact('origenMaxPaquetes'))->with(compact('destinoMaxPaquetes'));
+       /*select count(*) as mo, su_nombre as so from sucursal, envio where fk_sucursal_origen=su_clave group by so order by mo desc limit 1 select count(*) as mo, su_nombre as so from sucursal, envio where fk_sucursal_destino=su_clave group by so order by mo desc limit 1 */
     }
 
-    /*public function destinoMaxPaquetes(){
-        $destinoMaxPaquetes=Envio::join('sucursal','sucursal.su_clave','=','envio.fk_sucursal_destino')->select(DB::raw('count(*) as md, su_nombre as sd'))->groupBy('sd')->get();
-        return view('consulta5')->with(compact('destinoMaxPaquetes'));
-    }*/
 
     public function consulta6($fecha)
     {
-           $consulta = Envio::join('sucursal','sucursal.su_clave','=','envio.fk_sucursal_origen')->select(DB::raw('count(*) as mo, su_nombre as so, en_fecha_envio as fecha'))->groupBy('so','fecha')->where('en_fecha_envio', $fecha)->get();
+           $consulta = Envio::join('sucursal','sucursal.su_clave','=','envio.fk_sucursal_origen')->select(DB::raw('count(*) as mo, su_nombre as so, en_fecha_envio as fecha'))->groupBy('so','fecha')->where('en_fecha_envio', $fecha)->orderBy('mo','desc')->first();
             return view('consulta6')->with(compact('consulta'));
     }
 
-    public function consulta7($rango)
+    public function consulta6_2($rango)
     {
-        $consulta = Envio::join('sucursal','sucursal.su_clave','=','envio.fk_sucursal_origen')->select(DB::raw('count(*) as mo, su_nombre as so, en_fecha_envio as fecha'))->groupBy('so','fecha')->whereBetween('en_fecha_envio', [substr($rango, 0, 10), substr($rango, 10)])->get();
-            return view('consulta7')->with(compact('consulta'));
+        $rangoi = substr($rango, 0, 10);
+        $rangof = substr($rango, 10); 
+        $consulta = Envio::join('sucursal','sucursal.su_clave','=','envio.fk_sucursal_origen')->select(DB::raw('count(*) as mo, su_nombre as so'))->groupBy('so')->whereBetween('en_fecha_envio', [$rangoi, $rangof])->orderBy('mo','desc')->first();
+            return view('consulta6_2')->with(compact('consulta'))->with(compact('rangoi'))->with(compact('rangof'));
     }
 
     public function promedioEstanciaZonas(){
@@ -128,7 +152,11 @@ class ConsultasEnvioController extends Controller
             $c->save();
             $i++;
         }*/
-    
+        /*select avg(c.che_fecha_salida - c.che_fecha_entrada) as dias, z.zo_nombre, s.su_nombre 
+        from chequeo c, zona z, sucursal s 
+        where z.zo_clave=c.fk_zona and s.su_clave=c.fk_sucursal and c.fk_zona is not null 
+        group by z.zo_nombre, s.su_nombre*/
+
         $consulta = Chequeo::join('sucursal','sucursal.su_clave','=','chequeo.fk_sucursal')->join('zona','zona.zo_clave','=','chequeo.fk_zona')->select(DB::raw('avg(che_fecha_salida - che_fecha_entrada) as dias, su_nombre as so, zo_nombre as zo'))->whereRaw('chequeo.fk_zona is not null')->where('chequeo.che_estatus', '!=', 'entregado')->groupBy('so', 'zo')->get();
         
         return view('consulta9')->with(compact('consulta'));

@@ -37,9 +37,8 @@
                 <tbody>
                   <?php $__currentLoopData = $permisosFk; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $c): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                   <tr>
-                    <td><?php echo e($c->per_tipo); ?> <?php echo e($c->per_nombre); ?>. <?php echo e($c->per_descripcion); ?></td>
+                    <td><?php echo e($c->per_descripcion); ?></td>
                     <td>
-                      <!--<button class="btn btn-warning btn-detail update" id="<?php echo e($c->per_clave); ?>" value="<?php echo e($c->per_clave); ?>" name="Update">Update</button>-->
                       <button class="btn btn-danger btn-delete delete" id="<?php echo e($c->per_clave); ?>" value="<?php echo e($c->per_clave); ?>" name="delete">Quitar permiso</button>
                     </td>
                   </tr>

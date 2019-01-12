@@ -37,7 +37,7 @@
                   <tr>
                   	<td>{{$a->yy}}</td>
                     <td>{{$a->mes}}</td>
-                    <td>{{$a->cantidad}}</td>
+                    <td>{{$a->max}}</td>
                   </tr>
                   @endforeach
                 </tbody>

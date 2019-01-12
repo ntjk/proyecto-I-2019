@@ -22,22 +22,20 @@
     </head>
     <body>
             @include('header')
-            <h1 class="text-center">Oficina destino mas escogida</h1>
+            <h1 class="text-center">Mes con más envíos</h1>
             <br/>
             <table class="table table-bordered" width="80%" id="users-table">
                 <thead>
                     <tr>
-                        <th>Sucursal</th>
+                        <th>Mes</th>
                         <th>Cantidad de envíos</th>
                     </tr>
                 </thead>
                 <tbody>
-                  @foreach ($destinoMaxPaquetes as $b)
                   <tr>
-                    <td>{{$b->sd}}</td>
-                    <td>{{$b->md}}</td>
+                    <td>{{$mesMasEnvios->mes}}</td>
+                    <td>{{$mesMasEnvios->cantidad}}</td>
                   </tr>
-                  @endforeach
                 </tbody>
             </table>
         </div>

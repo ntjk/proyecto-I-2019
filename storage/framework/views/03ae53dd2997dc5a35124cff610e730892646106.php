@@ -28,14 +28,16 @@
                 <thead>
                     <tr>
                       <th>Empleado</th>  
-                      <th>Cantidad de inasistencias</th>
+                      <th>Fecha</th>
+                      <th>Check</th>
                     </tr>
                 </thead>
                 <tbody>
                   <?php $__currentLoopData = $consulta; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $b): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                   <tr>
                     <td><?php echo e($b->em_nombre); ?> <?php echo e($b->em_apellido); ?>, <?php echo e($b->em_nacionalidad); ?> <?php echo e($b->em_cedula); ?></td>
-                    <td><?php echo e($b->cant); ?></td>
+                    <td><?php echo e($b->a_fecha); ?></td>
+                    <td><?php echo e($b->a_check); ?></td>
                   </tr>
                   <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>
