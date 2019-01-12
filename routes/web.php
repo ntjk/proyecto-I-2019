@@ -156,6 +156,27 @@ Route::post('aeropuerto/updateSelect','AeropuertoController@updateSelect');
 Route::get('aeropuerto', 'AeropuertoController@index');
 Route::get('aeropuerto-getData','AeropuertoController@getData')->name('aeropuerto_getData');
 
+/* Listado de Talleres */
+Route::resource('taller','TallerController');
+Route::post('taller/getOne','TallerController@getOne');
+Route::post('taller/updateSelect','TallerController@updateSelect');
+Route::get('taller', 'TallerController@index');
+Route::get('taller-getData','TallerController@getData')->name('taller_getData');
+
+/* Listado de Servicio_Sucursal */
+Route::resource('servicio_sucursal','Servicio_SucursalController');
+Route::post('servicio_sucursal/getOne','Servicio_SucursalController@getOne');
+Route::post('servicio_sucursal/updateSelect','Servicio_SucursalController@updateSelect');
+Route::get('servicio_sucursal', 'Servicio_SucursalController@index');
+Route::get('servicio_sucursal-getData','Servicio_SucursalController@getData')->name('servicio_sucursal_getData');
+
+/* Listado de Fallas */
+Route::resource('falla','FallaController');
+Route::post('falla/getOne','FallaController@getOne');
+Route::post('falla/updateSelect','FallaController@updateSelect');
+Route::get('falla', 'FallaController@index');
+Route::get('falla-getData','FallaController@getData')->name('falla_getData');
+
 // Route::get("/aje",function(){
 // $resul=DB::select("select en_tipo, en_precio, en_peso, en_descripcion, en_altura, en_anchura, en_profundidad, en_fecha_envio, en_fecha_entrega_estimada, sucursalo.su_nombre, cli_cedula, des_cedula, fk_flota_ruta_1, sucursald.su_nombre
 // from sucursal as sucursalo, sucursal as sucursald, envio, cliente, destinatario where

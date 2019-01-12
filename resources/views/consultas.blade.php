@@ -40,6 +40,12 @@ paquetes? </a>
       <br/>
       <a href="aeropuerto">Listado de aeropuertos.</a>
       <br/>
+      <a href="taller">Listado de talleres.</a>
+      <br/>
+      <a href="servicio_sucursal">Listado de Servicios - Sucursales.</a>
+      <br/>
+      <a href="falla">Listado de Fallas.</a>
+      <br/>
     </div>
     @stack('scripts')
     @include('footer')

@@ -102,7 +102,6 @@ class ConsultasEnvioController extends Controller
     }
 
 
-
     public function index()
     {
         

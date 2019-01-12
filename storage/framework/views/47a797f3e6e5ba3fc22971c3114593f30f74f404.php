@@ -40,6 +40,12 @@ paquetes? </a>
       <br/>
       <a href="aeropuerto">Listado de aeropuertos.</a>
       <br/>
+      <a href="taller">Listado de talleres.</a>
+      <br/>
+      <a href="servicio_sucursal">Listado de Servicios - Sucursales.</a>
+      <br/>
+      <a href="falla">Listado de Fallas.</a>
+      <br/>
     </div>
     <?php echo $__env->yieldPushContent('scripts'); ?>
     <?php echo $__env->make('footer', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>

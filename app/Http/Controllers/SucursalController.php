@@ -3,30 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use Yajra\Datatables\Datatables;
-
 use App\Sucursal;
 use App\Lugar;
 
 class SucursalController extends Controller
 {
 
-	/**
-     * Displays front end view
-     *
-     * @return \Illuminate\View\View
-     */
-    public function index()
+  public function index()
     {
       $estados= Lugar::where('lu_tipo','estado')->orderBy('lu_nombre')->get();
     	return view("sucursal",compact('estados'));
     }
-    /**
-     * Process ajax request.
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
+
     public function getData()
     {
       $sucursales = Sucursal::join('lugar','lugar.lu_clave','=','sucursal.fk_lugar')->select(['sucursal.su_nombre','sucursal.su_clave','sucursal.su_email','sucursal.su_capacidad','lugar.lu_nombre']);

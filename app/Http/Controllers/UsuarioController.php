@@ -16,14 +16,17 @@ class UsuarioController extends Controller
   {
     $roles= Rol::orderBy('rol_nombre')->get();
     $empleados= Empleado::orderby('em_nombre')->get();
-    return view('usuario',compact('roles'),compact('empleados'));
-  }
-  public function getData()
-  {
-    $usuarios = Usuario::join('rol','rol.rol_clave','=','usuario.fk_rol')->join('empleado','empleado.em_clave','=','usuario.fk_empleado')->select(['usuario.u_id','usuario.u_nombre','usuario.u_contraseña','rol.rol_nombre','empleado.em_nombre']);
-      return Datatables::of($usuarios)->addColumn('action', function ($usuarios) {
-              return '<button class="btn btn-warning btn-detail update" id="'.$usuarios->u_id.'" value="'.$usuarios->u_id.'" name="Update">Update</button>
-            <button class="btn btn-danger btn-delete delete" id="'.$usuarios->u_id.'" value="'.$usuarios->u_id.'" name="delete">Delete</button>'; })->make(true);
+    $usuarios = Usuario::join('rol','rol.rol_clave','=','usuario.fk_rol')
+    ->join('empleado','empleado.em_clave','=','usuario.fk_empleado')
+    ->select(['usuario.u_id','usuario.u_nombre','usuario.u_contraseña',
+    'rol.rol_nombre','empleado.em_nombre', 'em_cedula', 'em_nacionalidad'])->get();
+    return view('usuario')->with(compact('roles'))->with(compact('empleados'))->with(compact('usuarios'));
+    /*Copiar de getData al index y agregarle get()
+    agregar la var de retorno
+    borrar get data pero antes pasar esos botones a la vista
+    En la vista agrgar tbody y sus celdas con foreach
+    borrar de la vista el cotenido de datatables
+    */
   }
   public function store(Request $request){
     if ($request->operation == "Edit"){
@@ -48,6 +51,4 @@ class UsuarioController extends Controller
         $usuario->delete();
         return ['success' => true, 'message' => 'Deleted !!'];
       }
-
-
 }

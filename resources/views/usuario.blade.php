@@ -29,7 +29,6 @@
             <table class="table table-bordered" id="users-table">
                 <thead>
                     <tr>
-                        <th>Clave</th>
                         <th>Nombre</th>
                         <th>Contraseña</th>
                         <th>Rol</th>>
@@ -37,6 +36,19 @@
                         <th>Accion</th>
                     </tr>
                 </thead>
+                <<tbody>
+                  @foreach ($usuarios as $u)
+                  <tr>
+                    <td>{{$u->u_nombre}}</td>
+                    <td>{{$u->u_contraseña}}</td>
+                    <td>{{$u->rol_nombre}}</td>
+                    <td>{{$u->em_nombre}}. {{$u->em_nacionalidad}}-{{$u->em_cedula}}</td>
+                    <td><button class="btn btn-warning btn-detail update" id="'.$usuarios->u_id.'" value="'.$usuarios->u_id.'" name="Update">Update</button>
+                      <button class="btn btn-danger btn-delete delete" id="'.$usuarios->u_id.'" value="'.$usuarios->u_id.'" name="delete">Delete</button>
+                    </td>
+                  </tr>
+                  @endforeach
+                </tbody>
             </table>
         </div>
         <div id="userModal" class="modal fade">
@@ -84,17 +96,6 @@
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script>$(function() {
             $('#users-table').DataTable({
-                processing: true,
-                serverSide: true,
-                ajax: '{!! route('usuario_getData') !!}',
-                columns: [
-                    { data: 'u_id', name: 'usuario.u_id' },
-                    { data: 'u_nombre', name: 'usuario.u_nombre' },
-                    { data: 'u_contraseña', name: 'usuario.u_contraseña' },
-                    { data: 'rol_nombre', name: 'rol.rol_nombre' },
-                    { data: 'em_nombre', name: 'empleado.em_nombre' },
-                    {data: 'action', name: 'action', orderable: false, searchable: false}
-                ]
             })
 
             $(document).on('submit', '#user_form', function(event){
@@ -135,12 +136,12 @@
               dataType:"json",
               success:function(data){
                 $('#userModal').modal('show');
+                $('#u_id').val(u_id);
                 $('#u_nombre').val(data.u_nombre);
                 $('#u_contraseña').val(data.u_contraseña);
-                $('.modal-title').text("Edit Usuario");
-                $('#u_id').val(u_id);
                 $('#fk_rol').val(data.fk_rol);
                 $('#fk_empleado').val(data.fk_empleado);
+                $('.modal-title').text("Edit Usuario");
                 $('#action').val("Edit");
                 $('#operation').val("Edit");
               }
