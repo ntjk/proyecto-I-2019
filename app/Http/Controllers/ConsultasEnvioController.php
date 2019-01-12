@@ -55,25 +55,6 @@ class ConsultasEnvioController extends Controller
             // ."contra es ".$password." y pasaste ". $contra. "usu es ". $nombreUsuario;
             return $r;
         }
-        //else
-          //  return false;
-    }
-
-  public    function validarUsuario(Request $request){
-        //if(isset($_COOKIE['usuario']) && isset($_COOKIE['password']))
-        //{
-            $nombreUsuario=$request->usuario;
-            $contra=$request->password;
-            $password=Usuario::where('u_nombre','=',$nombreUsuario)->select('u_contraseña')->first();
-            if($password==$contra)
-                 $r=1;
-            else
-            $r=0;
-            // ."contra es ".$password." y pasaste ". $contra. "usu es ". $nombreUsuario;
-            return $r;
-        //}
-        //else
-          //  return false;
     }
 
     public function calcularMesConMasEnvios(){
