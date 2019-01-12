@@ -172,6 +172,8 @@ class ConsultasEnvioController extends Controller
         where z.zo_clave=c.fk_zona and s.su_clave=c.fk_sucursal and c.fk_zona is not null 
         group by z.zo_nombre, s.su_nombre*/
 
+        // que no muestre los que son null cambia whereRaw por whereRaw('chequeo.fk_zona is not null and che_fecha_salida is not null')
+
         $consulta = Chequeo::join('sucursal','sucursal.su_clave','=','chequeo.fk_sucursal')->join('zona','zona.zo_clave','=','chequeo.fk_zona')->select(DB::raw('avg(che_fecha_salida - che_fecha_entrada) as dias, su_nombre as so, zo_nombre as zo'))->whereRaw('chequeo.fk_zona is not null')->where('chequeo.che_estatus', '!=', 'entregado')->groupBy('so', 'zo')->get();
         
         return view('consulta9')->with(compact('consulta'));

@@ -166,6 +166,11 @@ Route::get('filtrarFecha_3{rango}','ConsultasEnvioController@clasificacionPaquet
 
 Route::get('consulta14', 'ConsultasEmpleadoController@inasistenciasEmpleados');
 Route::get('consulta15', 'ConsultasEmpleadoController@inasistenciasEmpleadosSinHorario');
+Route::get('consulta16', 'ConsultasFlotaController@flotaPorOfic');
+Route::get('consulta17', 'ConsultasFlotaController@flotaPorSubtipo');
+Route::get('consulta18', 'ConsultasFlotaController@flotaPorTipo');
+Route::get('consulta19', 'ConsultasFlotaController@flotaTerrestre');
+
 
 /*Asistencias*/
 Route::resource('asistencia','AsistenciaController');
