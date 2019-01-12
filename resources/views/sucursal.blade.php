@@ -79,6 +79,15 @@
   </form>
  </div>
 </div>
+<script>
+
+function navigate(link, inputid){
+  //alert(document.getElementById(inputid).value)
+  var url = "{{url('/sucursal')}}" + document.getElementById(inputid).value;
+  //window.location.href = url; //navigates to the given url, disabled for demo
+  alert(url);
+}
+</script>
         <script src="//code.jquery.com/jquery.js"></script>
         <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>

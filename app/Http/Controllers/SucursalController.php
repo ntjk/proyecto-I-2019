@@ -32,7 +32,8 @@ class SucursalController extends Controller
       $sucursales = Sucursal::join('lugar','lugar.lu_clave','=','sucursal.fk_lugar')->select(['sucursal.su_nombre','sucursal.su_clave','sucursal.su_email','sucursal.su_capacidad','lugar.lu_nombre']);
         return Datatables::of($sucursales)->addColumn('action', function ($sucursales) {
                 return '<button class="btn btn-warning btn-detail update" id="'.$sucursales->su_clave.'" value="'.$sucursales->su_clave.'" name="Update">Update</button>
-              <button class="btn btn-danger btn-delete delete" id="'.$sucursales->su_clave.'" value="'.$sucursales->su_clave.'" name="delete">Delete</button>'; })->make(true);
+              <button class="btn btn-danger btn-delete delete" id="'.$sucursales->su_clave.'" value="'.$sucursales->su_clave.'" name="delete">Delete</button>
+              <button class="btn btn-info btn-detail nomina" id="'.$sucursales->su_clave.'" value="'.$sucursales->su_clave.'" onclick="navigate(this,'.$sucursales->su_clave.')" name="Nomina">Nomina</button>'; })->make(true);
     }
 
     public function store(Request $request){
@@ -63,5 +64,10 @@ class SucursalController extends Controller
 
     public function updateSelect(Request $request){
       return $lugares= Lugar::where('fk_lugar',$request->estado)->orderBy('lu_nombre')->get();
+    }
+
+    public function showNomina($id){
+      $sucursal = Sucursal::find($id);
+      return view('sucursalNomina')->with(compact('sucursal'));
     }
 }

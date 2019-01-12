@@ -37,6 +37,7 @@ Route::post('sucursal/getOne','SucursalController@getOne');
 Route::post('sucursal/updateSelect','SucursalController@updateSelect');
 Route::get('sucursal', 'SucursalController@index');
 Route::get('sucursal-getData','SucursalController@getData')->name('sucursal_getData');
+Route::get('sucursal{id}','SucursalController@showNomina');
 // @eso quiere decir el metodo eso
 /* rol */
 Route::resource('rol','RolController');

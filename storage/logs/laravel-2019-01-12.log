@@ -1,0 +1,5 @@
+[2019-01-12 14:33:44] local.ERROR: Maximum execution time of 30 seconds exceeded {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Maximum execution time of 30 seconds exceeded at C:\\xampp\\htdocs\\Proyecto\\vendor\
+esbot\\carbon\\src\\Carbon\\Carbon.php:64)
+[stacktrace]
+#0 {main}
+"} 
