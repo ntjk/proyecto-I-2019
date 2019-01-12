@@ -50,6 +50,15 @@
 
           $('#users-table').DataTable({
           })
+            /*  var usuario = $('#uss').val();
+            var password = $('#password').val();
+
+              document.cookie = "usuario=" + usuario;
+              document.cookie = "password=" + password;
+              var validar = '{!! validarUsuario(); !!}';
+              var validar2 = '{!! verificarPermisosHelper("ver envios"); !!}';
+              console.log("prim " + validar);
+              console.log("prim " +validar2);*/
 
           $(document).on('click','.entra',function(){
             
@@ -58,12 +67,18 @@
             console.log(usuario);
             console.log(password);
             if(usuario != "" && password != ""){
+              document.cookie = "usuario=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+              document.cookie = "password=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
               document.cookie = "usuario=" + usuario;
               document.cookie = "password=" + password;
-              var validar = '{!! validarUsuario(); !!}';
-              console.log(validar);
-              if(validar==true){
-                var url = "{{url('/welcome')}}";
+              console.log("los que valida "+document.cookie);
+              var url = "{{url('/welcome')}}";
+              window.location = url;
+              /*var validar = '{!! validarUsuario() !!}';
+              console.log("v1 "+validar);
+              if(validar==1){
+                //var url = "{{url('/welcome')}}";
+                var url = "{{url('/sesion2')}}";
                 console.log("antes "+document.cookie);
                 document.cookie = "usuario=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
                 document.cookie = "password=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
@@ -74,13 +89,11 @@
                 //window.location = url;
               }else{
                 alert("Datos incorrectos");
-              }
-            }else{ 
-                alert("No ha llenado ambos campos");
+                document.cookie = "usuario=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+                document.cookie = "password=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+              }*/
             }
-          
           });
-
         });
         </script>
         @stack('scripts')

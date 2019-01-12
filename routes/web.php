@@ -182,3 +182,6 @@ Route::get('rolper{id}', 'RolperController@show');
 
 
 Route::get('sesion', 'ConsultasEnvioController@verificarPermisos');
+Route::post('sesion2', 'ConsultasEnvioController@validarUsuario');
+Route::get('sesion3', 'ConsultasEnvioController@validarUsuario2');
+//Route::post('envio/updatePrecio','EnvioController@updatePrecio');

@@ -38,8 +38,42 @@ class ConsultasEnvioController extends Controller
         $descripcionPermisos=Rolper::join('permiso','per_clave','=','rol_permiso.fk_permiso')->select(
          'per_clave', 'per_nombre', 'per_descripcion', 'per_tipo')->orderBy('per_tipo')->distinct()->where('fk_rol', '=', $usuario->fk_rol)->pluck('per_descripcion');
         if($descripcionPermisos->contains($permisoConsulta))
-            return "ajaaaa";
+            return "ajaaaa". $descripcionPermisos. " si tiene ".$permisoConsulta;
         return $descripcionPermisos;
+    }
+
+   public    function validarUsuario2(){
+        if(isset($_COOKIE['usuario']) && isset($_COOKIE['password']))
+        {
+            $nombreUsuario=$_COOKIE['usuario'];
+            $contra=$_COOKIE['password'];
+            $password=Usuario::where('u_nombre','=',$nombreUsuario)->pluck('u_contraseña')[0];
+            if($password==$contra)
+                 $r=1;
+            else
+            $r=0;
+            // ."contra es ".$password." y pasaste ". $contra. "usu es ". $nombreUsuario;
+            return $r;
+        }
+        //else
+          //  return false;
+    }
+
+  public    function validarUsuario(Request $request){
+        //if(isset($_COOKIE['usuario']) && isset($_COOKIE['password']))
+        //{
+            $nombreUsuario=$request->usuario;
+            $contra=$request->password;
+            $password=Usuario::where('u_nombre','=',$nombreUsuario)->select('u_contraseña')->first();
+            if($password==$contra)
+                 $r=1;
+            else
+            $r=0;
+            // ."contra es ".$password." y pasaste ". $contra. "usu es ". $nombreUsuario;
+            return $r;
+        //}
+        //else
+          //  return false;
     }
 
     public function calcularMesConMasEnvios(){
