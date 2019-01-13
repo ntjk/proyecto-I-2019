@@ -53,15 +53,15 @@
       <br/>
       <a href="consulta15">Listado de empleados con las inasistencias</a>
       <br/>
-      <a href="consulta14">Listado de vehículos por oficina base </a>
+      <a href="consulta16">Listado de vehículos por oficina base </a>
+      <br/>
+      <a href="consulta17">Listado de medios de transportes, agrupados por subtipo</a>
+      <br/>
+      <a href="consulta18">Listado de medios de transportes, agrupados por tipo</a>
+      <br/>
+      <a href="consulta19">Flota terrestre nacional e internacional ordenado por serial de motor</a>
       <br/>
       <a href="consulta20-1-60">Promedio de paquetes de una oficina en un periodo de tiempo</a>
-      <br/>
-      <a href="consulta21">Listado de Sucursales por Region, Pais y Continente</a>
-      <br/>
-      <a href="consulta5">Test5</a>
-      <br/>
-      <a href="consulta5">Test5</a>
       <br/>
 
 

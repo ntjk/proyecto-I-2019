@@ -42,8 +42,11 @@
         $('#envio').hide();
         $('#usuario').hide(); 
         var ver = '{!! verificarPermisosHelper("ver envios"); !!}';
+        var usuario = '{!! verificarPermisosHelper("ver usuarios"); !!}';
         if(ver)
           $('#envio').show();
+        if(usuario)
+          $('#usuario').show();
       });
     </script>
 

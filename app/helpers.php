@@ -26,15 +26,14 @@ use App\Usuario;
     }
 
     function validarUsuario(){
-        //if(isset($_COOKIE['usuario']) && isset($_COOKIE['password']))
-        //{
+        if(isset($_COOKIE['usuario']) && isset($_COOKIE['password']))
+        {
             $nombreUsuario=$_COOKIE['usuario'];
             $contra=$_COOKIE['password'];
-            $password=Usuario::where('u_nombre','=',$nombreUsuario)->pluck('u_contraseña')->first();
-            if($password == $contra)
-                 return true;
-            return false;
-        //}
-        //else
-          //  return false;
+            $password=Usuario::where('u_nombre','=',$nombreUsuario)->pluck('u_contraseña')[0];
+            if($password==$contra)
+                return 1;
+            else
+                return 0;
+        }
     }

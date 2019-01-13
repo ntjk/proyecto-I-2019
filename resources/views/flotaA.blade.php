@@ -29,8 +29,6 @@
             <table class="table table-bordered" id="users-table">
                 <thead>
                     <tr>
-                        <th>Clave</th>
-                        <th>Suptipo</th>
                         <th>Tipo</th>
                         <th>Peso</th>
                         <th>Placa</th>
@@ -160,8 +158,6 @@
                 serverSide: true,
                 ajax: '{!! route('transporteA_getData') !!}',
                 columns: [
-                    { data: 'flo_clave', name: 'flota.flo_clave' },
-                    { data: 'flo_subtipo', name: 'flota.flo_subtipo' },
                     { data: 'flo_tipo', name: 'flota.flo_tipo' },
                     { data: 'flo_peso', name: 'flota.flo_peso' },
                     { data: 'flo_placa', name: 'flota.flo_placa' },

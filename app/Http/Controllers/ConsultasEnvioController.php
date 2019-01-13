@@ -38,8 +38,23 @@ class ConsultasEnvioController extends Controller
         $descripcionPermisos=Rolper::join('permiso','per_clave','=','rol_permiso.fk_permiso')->select(
          'per_clave', 'per_nombre', 'per_descripcion', 'per_tipo')->orderBy('per_tipo')->distinct()->where('fk_rol', '=', $usuario->fk_rol)->pluck('per_descripcion');
         if($descripcionPermisos->contains($permisoConsulta))
-            return "ajaaaa";
+            return "ajaaaa". $descripcionPermisos. " si tiene ".$permisoConsulta;
         return $descripcionPermisos;
+    }
+
+   public    function validarUsuario2(){
+        if(isset($_COOKIE['usuario']) && isset($_COOKIE['password']))
+        {
+            $nombreUsuario=$_COOKIE['usuario'];
+            $contra=$_COOKIE['password'];
+            $password=Usuario::where('u_nombre','=',$nombreUsuario)->pluck('u_contraseña')[0];
+            if($password==$contra)
+                 $r=1;
+            else
+            $r=0;
+            // ."contra es ".$password." y pasaste ". $contra. "usu es ". $nombreUsuario;
+            return $r;
+        }
     }
 
     public function calcularMesConMasEnvios(){
@@ -156,6 +171,8 @@ class ConsultasEnvioController extends Controller
         from chequeo c, zona z, sucursal s 
         where z.zo_clave=c.fk_zona and s.su_clave=c.fk_sucursal and c.fk_zona is not null 
         group by z.zo_nombre, s.su_nombre*/
+
+        // que no muestre los que son null cambia whereRaw por whereRaw('chequeo.fk_zona is not null and che_fecha_salida is not null')
 
         $consulta = Chequeo::join('sucursal','sucursal.su_clave','=','chequeo.fk_sucursal')->join('zona','zona.zo_clave','=','chequeo.fk_zona')->select(DB::raw('avg(che_fecha_salida - che_fecha_entrada) as dias, su_nombre as so, zo_nombre as zo'))->whereRaw('chequeo.fk_zona is not null')->where('chequeo.che_estatus', '!=', 'entregado')->groupBy('so', 'zo')->get();
         
