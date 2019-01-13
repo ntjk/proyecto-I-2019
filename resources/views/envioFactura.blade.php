@@ -64,7 +64,7 @@
           Tipo de Paquete: {{$tipo->ti_nombre}}
         </div>
         <div class="fatter descripcion half white">
-          Peso: {{$envio->en_peso}}
+          Peso: {{$envio->en_peso}} Kg.
         </div>
       </div>
       <div class="container">
@@ -74,7 +74,7 @@
       </div>
       <div class="container">
         <div class="fatter full white">
-          Monto: {{$envio->en_precio}}
+          Monto: {{$envio->en_precio}} Bs.
         </div>
       </div>
 
