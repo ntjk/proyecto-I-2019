@@ -110,7 +110,11 @@ Route::get('envio', 'EnvioController@index');
 Route::get('envio-getData','EnvioController@getData')->name('envio_getData');
 
 /* ruta */
-Route::resource('floru','FloruController');
+//Route::resource('floru','FloruController');
+Route::get('floru', function(){
+  return view('floru');
+});
+Route::post('floru/agregarRuta','FloruController@guardarRuta');
 Route::post('floru/getOne','FloruController@getOne');
 Route::post('floru/updateSelect','FloruController@updateSelect');
 Route::get('floru','FloruController@index');
@@ -172,7 +176,12 @@ Route::get('consulta16', 'ConsultasFlotaController@flotaPorOfic');
 Route::get('consulta17', 'ConsultasFlotaController@flotaPorSubtipo');
 Route::get('consulta18', 'ConsultasFlotaController@flotaPorTipo');
 Route::get('consulta19', 'ConsultasFlotaController@flotaTerrestre');
-
+//Route::get('consulta20', 'ConsultasFlotaController@avgEnviosSucursales');
+Route::get('consulta20-{id}-{tiempo}', 'ConsultasSucursalController@avgEnviosSucursales');
+Route::get('consulta21', 'ConsultasSucursalController@oficPorEstado');
+Route::get('consulta22', 'ConsultasSucursalController@oficYZonaPorEstado');
+Route::get('consulta23', 'ConsultasSucursalController@oficInternacionales');
+Route::get('consulta24', 'ConsultasSucursalController@flotaTerrestre');
 
 /*Asistencias*/
 Route::resource('asistencia','AsistenciaController');

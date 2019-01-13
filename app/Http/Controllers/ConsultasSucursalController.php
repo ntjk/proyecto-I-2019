@@ -40,7 +40,21 @@ class ConsultasSucursalController extends Controller
       return view('consulta20')->with(compact('avgES'))->with(compact('sucursal'))->with(compact('sucursales'))->with(compact('mensaje'));
     }
 
-    public function listadoRegion(){
-      
+    public function oficPorEstado(){
+        $consulta=DB::select(DB::raw('select s.su_nombre, (select lu_nombre from lugar where lu_clave=(select fk_lugar from lugar where lu_clave = (select l.fk_lugar from lugar l, sucursal su where l.lu_clave = su.fk_lugar and su.su_clave=s.su_clave))) from sucursal s order by lu_nombre'));
+        return view('consulta21')->with(compact('consulta'));
     }
+
+    public function oficYZonaPorEstado(){
+        $consulta=DB::select(DB::raw('select s.su_nombre, zo_nombre, (select lu_nombre from lugar where lu_clave=(select fk_lugar from lugar where lu_clave = (select l.fk_lugar from lugar l, sucursal su where l.lu_clave = su.fk_lugar and su.su_clave=s.su_clave))) from sucursal s, zona where fk_sucursal=s.su_clave group by lu_nombre, s.su_nombre, zo_nombre'));
+        return view('consulta22')->with(compact('consulta'));
+    }
+    public function oficInternacionales(){
+        $pais='venezuela';
+        $tipo="pais";
+        $sql="select su_nombre from sucursal where fk_lugar in (select lu_clave from lugar where fk_lugar in (select lu_clave from lugar where fk_lugar in (select lu_clave from lugar where fk_lugar in ( select lu_clave from lugar where lu_nombre!= ? and lu_tipo= ? ))))";
+        //$consulta=DB::select(DB::raw('select su_nombre from sucursal where fk_lugar in (select lu_clave from lugar where fk_lugar in (select lu_clave from lugar where fk_lugar in (select lu_clave from lugar where fk_lugar in ( select lu_clave from lugar where lu_nombre!= ? and lu_tipo= ? ))))'))->setBindings($pais, $tipo);
+$consulta = DB::select(DB::raw($sql), [$pais, $tipo]);
+        return view('consulta23')->with(compact('consulta'));
+    }    
 }

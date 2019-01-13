@@ -60,11 +60,25 @@
       <a href="consulta18">Listado de medios de transportes, agrupados por tipo</a>
       <br/>
       <a href="consulta19">Flota terrestre nacional e internacional ordenado por serial de motor</a>
+      <br/>
+      <a href="consulta20-1-60">Promedio de paquetes de una oficina en un periodo de tiempo</a>
+      <br/>
+      <a href="consulta21">Listado de Oficinas por Estado ordenadas alfabéticamente</a>
+      <br/>
+      <a href="consulta22">Oficinas y sus zonas por estado</a>
+      <br/>
+      <a href="consulta23">Oficinas internacionales</a>
+      <br/>
+      <a href="consulta24">Oficinas y sus zonas por estado</a>
+      <br/>
+      <a href="consulta25">Oficinas y sus zonas por estado</a>
       
-      
-      
-      
-       
+      <br/>
+
+
+
+
+
     </div>
     <?php echo $__env->yieldPushContent('scripts'); ?>
     <?php echo $__env->make('footer', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>

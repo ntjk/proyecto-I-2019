@@ -63,6 +63,17 @@
       <br/>
       <a href="consulta20-1-60">Promedio de paquetes de una oficina en un periodo de tiempo</a>
       <br/>
+      <a href="consulta21">Listado de Oficinas por Estado ordenadas alfabéticamente</a>
+      <br/>
+      <a href="consulta22">Oficinas y sus zonas por estado</a>
+      <br/>
+      <a href="consulta23">Oficinas internacionales</a>
+      <br/>
+      <a href="consulta24">Oficinas y sus zonas por estado</a>
+      <br/>
+      <a href="consulta25">Oficinas y sus zonas por estado</a>
+      
+      <br/>
 
 
 

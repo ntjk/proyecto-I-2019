@@ -21,9 +21,10 @@ class FloruController extends Controller
     public function index()
     {
         $sucursales = Floru::join('sucursal','sucursal.su_clave','=','fk_ruta_3')
-        ->select(['sucursal.su_nombre'])->get();
+        ->select(['sucursal.su_clave', 'sucursal.su_nombre'])->get();
         $rutas = Floru::join('sucursal','sucursal.su_clave','=','fk_ruta_2')
-        ->select(['fk_ruta_1','sucursal.su_nombre'])->get();
+        ->select(['flo_ru_clave','flo_ruta','flo_ru_costo','flo_ru_duracion_hrs','sucursal.su_nombre','fk_flota','fk_ruta_1','fk_ruta_2','fk_ruta_3'])->get();
+        $flotas = Flota::get();
 
     $i=0;
       foreach($rutas as $ruta){
@@ -31,85 +32,45 @@ class FloruController extends Controller
         $i++;
       }
 
-      return view('floru')->with(compact('rutas'))->with(compact('sucursales'));
+      return view('floru')->with(compact('rutas'))->with(compact('sucursales'))->with(compact('flotas'));
 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+    public function guardarRuta(Request $request){
+        if ($request->operation == "Edit"){
+          $ruta = Ruta::find($request->ru_clave);
+          $ruta->fill($request->all());
+          $ruta->save();
+        } else {
+            $rut = Ruta::where('fk_sucursal_1','=', $request->input('fk_sucursal_1'))->where('fk_sucursal_2','=', $request->input('fk_sucursal_2'))->exists();
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+            if($rut==false){
+                $ruta = new Ruta();
+                $ruta -> fk_sucursal_1 = $request->fk_sucursal_1;
+                $ruta -> fk_sucursal_2 = $request->fk_sucursal_2;
+                $ruta -> save();
+//este no incluye el nro de ruta, solo tiene las punto a punto.
+            }//else{
+            $rutClave = Ruta::where('fk_sucursal_1','=', $request->input('fk_sucursal_1'))->where('fk_sucursal_2','=', $request->input('fk_sucursal_2'))->first()->ru_clave;
+            $UltimoFloru= Floru::max('flo_ruta')->first()->flo_ruta;//aseguras que la ruta sea la proxima
+    
+            $floru = new Floru();
+            $floru -> fk_ruta_1 = $rutClave;  
+            $floru -> fk_ruta_2 = $request->input('fk_sucursal_1');                
+            $floru -> fk_ruta_3 = $request->input('fk_sucursal_2');
+            $floru -> fk_flota = $request->input('fk_flota');
+            $floru -> flo_ru_costo = $request->input('flo_ru_costo');
+            $floru -> flo_ru_duracion_hrs = $request->input('flo_ru_duracion_hrs');
+            $floru -> flo_ruta = $UltimoFloru + 1;
+          //  }
+          }
+          return ['success' => true, 'message' => 'Saved !!'];
     }
 
 
-    /**
-     * Process ajax request.
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function getData()
+   /* public function getData()
     {
       $florus = Floru::select(['sucursal.su_nombre','sucursal.su_clave','sucursal.su_email','sucursal.su_capacidad','lugar.lu_nombre']);
-    }
+    }*/
 
 }

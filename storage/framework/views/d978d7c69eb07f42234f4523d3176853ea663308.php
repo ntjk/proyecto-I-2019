@@ -201,8 +201,7 @@
             if(eliminar)
               $(".delete").show();
             if(modificar)
-              $(".update").show();
-              
+              $(".update").show();              
             if(insertar)
               $('#add_button').show();
 
