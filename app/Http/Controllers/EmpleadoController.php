@@ -29,23 +29,28 @@ class EmpleadoController extends Controller
  public function store(Request $request){
    $validatedData = $request->validate([
        'em_cedula' => 'required|numeric',
-       'em_nombre' => 'required',
-       'em_apellido' => 'required',
-       'em_profesion' => 'required',
-       'em_estado_civil' => 'required',
-       'em_salario_base' => 'nullable',
-       'em_email_empresa' => 'required',
-       'em_email_personal' => 'required',
-       'em_nivel_academico' => 'required',
-       'em_cantidad_hijos' => 'required',
-       'em_descripcion_trabajo' => 'nullable',
-       'em_fecha_ingreso' => 'date',
-       'em_fecha_nacimiento' => 'date',
-       'em_nacionalidad' => 'required',
+       //'em_nombre' => 'required',
+       //'em_apellido' => 'required',
+       //'em_profesion' => 'required',
+       //'em_estado_civil' => 'required',
+       //'em_salario_base' => 'nullable',
+       //'em_email_empresa' => 'required',
+       //'em_email_personal' => 'required',
+       //'em_nivel_academico' => 'required',
+       //'em_cantidad_hijos' => 'required',
+       //'em_descripcion_trabajo' => 'nullable',
+       //'em_fecha_ingreso' => 'date',
+       //'em_fecha_nacimiento' => 'date',
+      // 'em_nacionalidad' => 'required',
    ]);
    if ($request->operation == "Edit"){
      $empleado = Empleado::find($request->em_clave);
+     $empleado -> em_fecha_egreso = $request->input('em_fecha_ingreso');
+     $fecha_ingreso = $empleado -> em_fecha_ingreso;
+     $fecha_nac = $empleado -> em_fecha_nacimiento;
      $empleado->fill($request->all());
+     $empleado -> em_fecha_ingreso = $fecha_ingreso;
+     $empleado -> em_fecha_nacimiento = $fecha_nac;     
      $empleado->save();
    } else {
        $empleado = new Empleado();
@@ -60,7 +65,6 @@ class EmpleadoController extends Controller
        $empleado -> em_nivel_academico = $request->input('em_nivel_academico');
        $empleado -> em_cantidad_hijos = $request->input('em_cantidad_hijos');
        $empleado -> em_descripcion_trabajo = $request->input('em_descripcion_trabajo');
-       $empleado -> em_fecha_egreso = $request->input('em_fecha_egreso');
        $empleado -> em_fecha_ingreso = $request->input('em_fecha_ingreso');
        $empleado -> em_fecha_nacimiento = $request->input('em_fecha_nacimiento');
        $empleado -> fk_lugar = $request->input('fk_lugar');

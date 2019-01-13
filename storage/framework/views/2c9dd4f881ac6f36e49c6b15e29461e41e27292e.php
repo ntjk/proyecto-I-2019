@@ -30,7 +30,6 @@
             <table class="table table-bordered special-table" id="users-table">
                 <thead>
                     <tr>
-                        <th>Clave</th>
                         <th>Cedula</th>
                         <th>Nombre</th>
                         <th>Apellido</th>
@@ -117,6 +116,9 @@
      <label>Fecha (Ingreso)</label>
      <input type="date" name="em_fecha_ingreso" id="em_fecha_ingreso" class="form-control" />
      <br />
+     <label>Fecha (Egreso)</label>
+     <input type="date" name="em_fecha_egreso" id="em_fecha_egreso" class="form-control" />
+     <br />
      <label>Fecha (Nacimiento)</label>
      <input type="date" name="em_fecha_nacimiento" id="em_fecha_nacimiento" class="form-control" />
      <br />
@@ -151,13 +153,14 @@
         <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script>$(function() {
-             //$('#hd1').hide();
+            
+            $("#em_fecha_egreso").attr("disabled", true);
+
             $('#users-table').DataTable({
                 processing: true,
                 serverSide: true,
                 ajax: '<?php echo route('empleado_getData'); ?>',
                 columns: [
-                    { data: 'em_clave', name: 'empleado.em_clave' },
                     { data: 'em_cedula', name: 'empleado.em_cedula' },
                     { data: 'em_nombre', name: 'empleado.em_nombre' },
                     { data: 'em_apellido', name: 'empleado.em_apellido' },
@@ -178,9 +181,7 @@
                     {data: 'action', name: 'action', orderable: false, searchable: false}
                 ]
             })
-  $(function(){
-      $(".delete").hide();
-    }  )
+
             $(document).on('change','#estado',function(){
               var estado = $(this).val();
               $.ajax({
@@ -229,6 +230,7 @@
             var em_cantidad_hijos = $('#em_cantidad_hijos').val();
             var em_descripcion_trabajo = $('#em_descripcion_trabajo').val();
             var em_fecha_ingreso = $('#em_fecha_ingreso').val();
+            var em_fecha_egreso = $('#em_fecha_egreso').val();
             var em_fecha_nacimiento = $('#em_fecha_nacimiento').val();
             var em_clave = $('#em_clave').val();
             var fk_lugar = $('#fk_lugar').val();
@@ -257,6 +259,7 @@
 
           $(document).on('click', '.update', function(){
             var em_clave = $(this).attr("id");
+
             $.ajax({
               headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
               url:"empleado/getOne",
@@ -265,6 +268,7 @@
               dataType:"json",
               success:function(data){
                 $('#userModal').modal('show');
+                $("#em_fecha_egreso").attr("disabled", false);
                 $('#em_cedula').val(data.em_cedula);
                 $('#em_nacionalidad').val(data.em_nacionalidad);
                 $('#em_nombre').val(data.em_nombre);

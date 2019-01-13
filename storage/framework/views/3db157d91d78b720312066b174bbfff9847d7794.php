@@ -21,65 +21,107 @@
   </head>
   <body>
     <?php echo $__env->make('header', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-    <div class="container labelDestacado" >
-      <br/>
-      <h1 class="text-center">Consultas</h1>
-      <br/>
-      <a href="consulta1">Mes del año que se realizan más envíos</a>
-      <br/>
-      <a href="consulta5">Mes en el que se realizan más envíos</a>
-      <br/>
-      <a href="consulta2">Peso promedio de los paquetes que se envían por oficina</a>
-      <br/>
-      <a href="consulta3">Listado de paquetes por estatus </a>
-      <br/>
-      <a href="consulta4">¿Qué oficina envía más y qué oficina recibe más paquetes?</a>
-      <br/>
-      <a href="consulta6">Sucursal que tiene más tránsito de paquetes según período</a>
-      <br/>
-      <a href="consulta7">Promedio de paquetes diarios por oficina</a>
-      <br/>
-      <a href="consulta8">¿Qué tipo de paquetes combinan más medios de transporte? </a>
-      <br/>
-      <a href="consulta9">Promedio de estancia de los paquetes por cada zona de las oficinas</a>
-      <br/>
-      <a href="consulta10">¿Qué usuario registra más paquetes por oficina?</a>
-      <br/>
-      <a href="consulta11">Clientes frecuentes por oficina ordenado alfabéticamente </a>
-      <br/>
-      <a href="consulta12">Listado de paquetes por clasificación y por oficina en un periodo de tiempo</a>
-      <br/>
-      <a href="consulta14">Listado de inasistencia indicando el horario asignado al empleado </a>
-      <br/>
-      <a href="consulta15">Listado de empleados con las inasistencias</a>
-      <br/>
-      <a href="consulta16">Listado de vehículos por oficina base </a>
-      <br/>
-      <a href="consulta17">Listado de medios de transportes, agrupados por subtipo</a>
-      <br/>
-      <a href="consulta18">Listado de medios de transportes, agrupados por tipo</a>
-      <br/>
-      <a href="consulta19">Flota terrestre nacional e internacional ordenado por serial de motor</a>
-      <br/>
-      <a href="consulta20-1-60">Promedio de paquetes de una oficina en un periodo de tiempo</a>
-      <br/>
-      <a href="consulta21">Listado de Oficinas por Estado ordenadas alfabéticamente</a>
-      <br/>
-      <a href="consulta22">Oficinas y sus zonas por estado</a>
-      <br/>
-      <a href="consulta23">Oficinas internacionales</a>
-      <br/>
-      <a href="consulta24">Oficinas y sus zonas por estado</a>
-      <br/>
-      <a href="consulta25">Oficinas y sus zonas por estado</a>
-      
-      <br/>
+ <!--   <div class="container labelDestacado" -->
 
-
-
-
-
-    </div>
+    <h1 class="text-center">Listados y reportes</h1>
+            <br/>
+            <table class="table table-bordered" width="60%" id="users-table">
+                <thead>
+                    <tr>
+                      <th>Listados</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a href="consulta1">Mes del año que se realizan más envíos</a></td>
+                  </tr>
+                  <tr>
+                    <td><a href="consulta5">Mes en el que se realizan más envíos</a></td>
+                  </tr>
+                  <tr>
+                    <td><a href="consulta2">Peso promedio de los paquetes que se envían por oficina</a></td>
+                  </tr>
+                  <tr>
+                    <td><a href="consulta3">Listado de paquetes por estatus </a></td>
+                  </tr>
+                  <tr>
+                    <td><a href="consulta4">¿Qué oficina envía más y qué oficina recibe más paquetes?</a></td>
+                  </tr>
+                  <tr>
+                    <td><a href="consulta6">Sucursal que tiene más tránsito de paquetes según período</a></td>
+                  </tr>
+                  <tr>
+                    <td><a href="consulta7">Promedio de paquetes diarios por oficina</a></td>
+                  </tr>
+                  <tr>
+                    <td><a href="consulta8">¿Qué tipo de paquetes combinan más medios de transporte? </a></td>
+                  </tr>
+                  <tr>
+                    <td><a href="consulta9">Promedio de estancia de los paquetes por cada zona de las oficinas</a></td>
+                  </tr>
+                  <tr>
+                    <td><a href="consulta10">¿Qué usuario registra más paquetes por oficina?</a></td>
+                  </tr>
+                  <tr>
+                    <td><a href="consulta11">Clientes frecuentes por oficina ordenado alfabéticamente </a></td>
+                  </tr>
+                  <tr>
+                    <td><a href="consulta12">Listado de paquetes por clasificación y por oficina en un periodo de tiempo</a></td>
+                  </tr>
+                  <tr>
+                    <td><a href="consulta14">Listado de inasistencia indicando el horario asignado al empleado </a></td>
+                  </tr>
+                  <tr>
+                    <td><a href="consulta15">Listado de empleados con las inasistencias</a></td>
+                  </tr>
+                  <tr>
+                    <td><a href="consulta16">Listado de vehículos por oficina base </a></td>
+                  </tr>
+                  <tr>
+                    <td><a href="consulta17">Listado de medios de transportes, agrupados por subtipo</a></td>
+                  </tr>
+                  <tr>
+                    <td><a href="consulta18">Listado de medios de transportes, agrupados por tipo</a></td>
+                  </tr>
+                  <tr>
+                    <td><a href="consulta19">Flota terrestre nacional e internacional ordenado por serial de motor</a></td>
+                  </tr>
+                  <tr>
+                    <td><a href="consulta20-1-60">Promedio de paquetes de una oficina en un periodo de tiempo</a></td>
+                  </tr>
+                  <tr>
+                    <td><a href="consulta21">Listado de Oficinas por Estado ordenadas alfabéticamente</a></td>
+                  </tr>
+                  <tr>
+                    <td><a href="consulta22">Oficinas y sus zonas por estado</a></td>
+                  </tr>
+                   <tr>
+                    <td><a href="consulta23">Oficinas internacionales</a></td>
+                  </tr>
+                  <tr>
+                    <td><a href="consulta24">Empleados activos, indicando su información básica, cargo que ocupa y fecha de ingreso a la compañía</a></td>
+                  </tr>
+                  <tr>
+                    <td><a href="consulta25">Empleados y total de empleados activos y total de empleados desincorporados</a></td>
+                  </tr>
+                  <tr>
+                    <td><a href="consulta26">Empleados con su horario y ubicación dentro de cada oficina</a></td>
+                  </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="userModal" class="modal fade">
+        <script src="//code.jquery.com/jquery.js"></script>
+        <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        <script>$(function() {
+            $('#users-table').DataTable({
+            })
+            $(document).on('click', '.update', function(){
+              var en_clave = $(this).attr("id");
+            });
+        });
+        </script>
     <?php echo $__env->yieldPushContent('scripts'); ?>
     <?php echo $__env->make('footer', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
   </body>

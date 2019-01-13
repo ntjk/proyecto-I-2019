@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,10 +9,10 @@
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-        <meta name="csrf-token" content="{!! csrf_token() !!}" />
-        <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/unselectable.css') }}" rel="stylesheet">
-        <script type="text/javascript" src="{{ asset('js/dropdown.js') }}"></script>
+        <meta name="csrf-token" content="<?php echo csrf_token(); ?>" />
+        <link href="<?php echo e(asset('css/styles.css')); ?>" rel="stylesheet">
+        <link href="<?php echo e(asset('css/unselectable.css')); ?>" rel="stylesheet">
+        <script type="text/javascript" src="<?php echo e(asset('js/dropdown.js')); ?>"></script>
         <title>Consulta 26</title>
 
         <!-- Fonts -->
@@ -21,7 +21,7 @@
         <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     </head>
     <body>
-            @include('header')
+            <?php echo $__env->make('header', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
             <h1 class="text-center">Listado de empleados con su horario y ubicación dentro de cada oficina ordenando el listado por oficina y por empleado</h1>
             <br/>
             <table class="table table-bordered" width="80%" id="users-table">
@@ -35,15 +35,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                  @foreach ($consulta as $b)
+                  <?php $__currentLoopData = $consulta; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $b): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                   <tr>
-                    <td>{{$b->su_nombre}}</td>
-                    <td>{{$b->zo_nombre}}</td>
-                    <td>{{$b->em_nombre}} {{$b->em_apellido}}</td>
-                    <td>{{$b->em_nacionalidad}} {{$b->em_cedula}}</td>
-                    <td>{{$b->ho_dia}} de {{$b->ho_hora_entrada}} a {{$b->ho_hora_salida}}</td>
+                    <td><?php echo e($b->su_nombre); ?></td>
+                    <td><?php echo e($b->zo_nombre); ?></td>
+                    <td><?php echo e($b->em_nombre); ?> <?php echo e($b->em_apellido); ?></td>
+                    <td><?php echo e($b->em_nacionalidad); ?> <?php echo e($b->em_cedula); ?></td>
+                    <td><?php echo e($b->ho_dia); ?> de <?php echo e($b->ho_hora_entrada); ?> a <?php echo e($b->ho_hora_salida); ?></td>
                   </tr>
-                  @endforeach
+                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>
             </table>
         </div>
@@ -60,8 +60,8 @@
             });
         });
         </script>
-        @stack('scripts')
-        @include('footer')
+        <?php echo $__env->yieldPushContent('scripts'); ?>
+        <?php echo $__env->make('footer', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
               </div>
         </div>
       </div>
