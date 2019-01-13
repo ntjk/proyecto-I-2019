@@ -26,6 +26,15 @@
       <h1 class="text-center">Recibo del Envio {{$envio->en_clave}}</h1>
       <br>
       <br>
+      <div class="container">
+        <div class="fatter full white">
+          <b>LogUCAB</b><br>
+          Urb. Montalbán, Univesidad Católica Andrés Bello, Edif. De<br>
+          Laboratorios, Piso 2, Escuela de Ing. Informática.<br>
+          J-3110096725-1<br>
+          Tlf. +58-2124076655/6656/6657
+        </div>
+      </div>
       <div class="half-container">
         <div class="fatter descripcion half">
           Fecha de entrega: {{$envio->en_fecha_envio}}
