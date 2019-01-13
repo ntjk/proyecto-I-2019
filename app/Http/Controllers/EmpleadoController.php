@@ -4,10 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
+use Carbon\Carbon;
 
 
 use App\Empleado;
 use App\Lugar;
+use App\Asistencia;
+use App\Zoemho;
+use App\Zona;
+use App\Sucursal;
+use App\Horario;
 
 class EmpleadoController extends Controller
 {
@@ -84,5 +90,44 @@ class EmpleadoController extends Controller
  }
  public function updateSelect2(Request $request){
    return $parroquias= Lugar::where('fk_lugar',$request->municipio)->orderBy('lu_nombre')->get();
+ }
+
+ public function showFactura($id,$year,$month,$day,$su_id){
+   $empleado=Empleado::find($id);
+   $sucursal=Sucursal::find($su_id);
+
+   $start=Carbon::parse('first day of January 1900');
+   $end=Carbon::create($year,$month,$day)->endOfWeek();
+
+   $acumulado=Empleado::join('asistencia','asistencia.fk_zo_em_ho_3','=','em_clave')
+   ->where('em_clave','=',$id)->where('a_check','!=',null)
+   ->whereBetween('a_fecha',array($start, $end))
+   ->sum('em_salario_base');
+
+   $start=Carbon::create($year,$month,$day);
+
+   $factura=Empleado::join('asistencia','asistencia.fk_zo_em_ho_3','=','em_clave')
+   ->join('zona_empleado_horario','fk_zona_empleado_3','=','em_clave')
+   ->join('horario','ho_clave','=','fk_horario')
+   ->select('em_salario_base','ho_dia','a_fecha')
+   ->where('em_clave','=',$id)->where('a_check','!=',null)
+   ->whereBetween('a_fecha',array($start, $end))
+   ->orderBy('a_fecha')
+   ->get();
+
+   $total=0;
+
+   foreach ($factura as $f) {
+     $total+=$f->em_salario_base;
+   }
+
+   return view('empleadoRecibo')
+   ->with(compact('empleado'))
+   ->with(compact('sucursal'))
+   ->with(compact('acumulado'))
+   ->with(compact('end'))
+   ->with(compact('factura'))
+   ->with(compact('total'));
+
  }
 }

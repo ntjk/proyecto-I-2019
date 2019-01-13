@@ -50,7 +50,7 @@
           <tr>
             <td>{{$em->em_nombre}}</td>
             <td>{{$em->salario}}</td>
-            <td><button class="btn btn-info btn-detail factura" id=".{{$em->em_clave}}." value=".{{$em->em_clave}}." onclick="navigate(this,'{{$em->em_clave}}')" name="factura">Factura</button></td>
+            <td><button class="btn btn-info btn-detail factura" id=".{{$em->em_clave}}." value=".{{$em->em_clave}}." onclick="navigate(this,'{{$em->em_clave}}','{{$monday}}','{{$sucursal->su_clave}}')" name="recibo">Recibo</button></td>
           </tr>
           @endforeach
         </tbody>
@@ -59,11 +59,12 @@
   <h2>Total: {{$total}}</h2>
 </div>
     <script>
-    function navigate(link, inputid){
+    function navigate(link, inputid, time, sucursal){
       //alert(document.getElementById(inputid).value)
-      var url = "{{url('/empleado')}}" + inputid;
-      //window.location.href = url; //navigates to the given url, disabled for demo
-      alert(url);
+      var date = time.split(' ')[0];
+      var url = "{{url('/empleado')}}" + inputid + "-" + date + "-" + sucursal;
+      window.location.href = url; //navigates to the given url, disabled for demo
+      //alert(url);
     }
     </script>
 <script src="//code.jquery.com/jquery.js"></script>

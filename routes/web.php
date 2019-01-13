@@ -63,6 +63,7 @@ Route::post('empleado/updateSelect','EmpleadoController@updateSelect');
 Route::post('empleado/updateSelect2','EmpleadoController@updateSelect2');
 Route::get('empleado','EmpleadoController@index');
 Route::get('empleado-getData','EmpleadoController@getData')->name('empleado_getData');
+Route::get('empleado{id}-{year}-{month}-{day}-{su_id}','EmpleadoController@showFactura');
 
 /* ruta */
 Route::resource('ruta','RutaController');
@@ -172,6 +173,7 @@ Route::get('consulta16', 'ConsultasFlotaController@flotaPorOfic');
 Route::get('consulta17', 'ConsultasFlotaController@flotaPorSubtipo');
 Route::get('consulta18', 'ConsultasFlotaController@flotaPorTipo');
 Route::get('consulta19', 'ConsultasFlotaController@flotaTerrestre');
+Route::get('consulta20-{id}-{tiempo}', 'ConsultasSucursalController@avgEnviosSucursales');
 
 
 /*Asistencias*/
