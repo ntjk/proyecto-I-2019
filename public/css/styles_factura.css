@@ -53,4 +53,21 @@
   .twenty{
     width:20vw;
   }
+  .full {
+    text-align: center;
+    color: #000000;
+    margin-left: 9vw;
+    margin-right: 9vw;
+    border: 70vw;
+    border-style: solid;
+    border-width: 1px;
+    max-width: 70vw;
+    width: 60vw;
+    background-color: #c2bfb8;
+  }
+
+  .fatter{
+    padding-top:10px;
+    padding-bottom: 10px;
+  }
 </style>

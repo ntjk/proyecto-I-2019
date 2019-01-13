@@ -181,4 +181,22 @@ select su_nombre, ru_clave from ruta, sucursal where fk_sucursal_1=su_clave and 
       }
       return $precio;
     }
+
+    public function showFactura($id){
+      $envio=Envio::find($id);
+
+      $cliente=Cliente::find($envio->fk_cliente);
+      $destinatario=Destinatario::find($envio->fk_destinatario);
+      $origen=Sucursal::find($envio->fk_sucursal_origen);
+      $destino=Sucursal::find($envio->fk_sucursal_destino);
+      $tipo=Tipo::find($envio->fk_tipo);
+
+      return view('envioFactura')
+      ->with(compact('envio'))
+      ->with(compact('cliente'))
+      ->with(compact('destinatario'))
+      ->with(compact('origen'))
+      ->with(compact('destino'))
+      ->with(compact('tipo'));
+    }
 }

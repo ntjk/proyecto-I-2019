@@ -109,6 +109,7 @@ Route::post('envio/updateSelect','EnvioController@updateSelect');
 Route::post('envio/updatePrecio','EnvioController@updatePrecio');
 Route::get('envio', 'EnvioController@index');
 Route::get('envio-getData','EnvioController@getData')->name('envio_getData');
+Route::get('envio{id}','EnvioController@showFactura');
 
 /* ruta */
 Route::resource('floru','FloruController');
