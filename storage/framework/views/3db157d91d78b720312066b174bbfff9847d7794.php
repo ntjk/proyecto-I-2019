@@ -66,7 +66,10 @@
                     <td><a href="consulta11">Clientes frecuentes por oficina ordenado alfabéticamente </a></td>
                   </tr>
                   <tr>
-                    <td><a href="consulta12">Listado de paquetes por clasificación y por oficina en un periodo de tiempo</a></td>
+                    <td><a href="consulta12">Cantidad de paquetes por clasificación y por oficina en un periodo de tiempo</a></td>
+                  </tr>
+                  <tr>
+                    <td><a href="consulta13">Paquetes por clasificación y por oficina en un periodo de tiempo</a></td>
                   </tr>
                   <tr>
                     <td><a href="consulta14">Listado de inasistencia indicando el horario asignado al empleado </a></td>

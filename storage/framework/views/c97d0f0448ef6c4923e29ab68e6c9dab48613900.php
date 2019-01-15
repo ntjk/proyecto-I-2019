@@ -27,18 +27,16 @@
             <table class="table table-bordered" width="80%" id="users-table">
                 <thead>
                     <tr>
-                        <th>Nombre del cliente</th>
                         <th>Sucursal</th>
-                        
+                        <th>Nombre del cliente</th>
                         <th>Cedula del cliente</th>
                     </tr>
                 </thead>
                 <tbody>
                   <?php $__currentLoopData = $consulta; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $a): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                   <tr>
+                    <td><?php echo e($a->su_nombre); ?> </td>
                     <td><?php echo e($a->cli_nombre); ?> <?php echo e($a->cli_apellido); ?></td>
-                  	<td><?php echo e($a->su_nombre); ?> </td>
-                  	
                     <td><?php echo e($a->cli_nacionalidad); ?> <?php echo e($a->cli_cedula); ?></td>
                   </tr>
                   <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

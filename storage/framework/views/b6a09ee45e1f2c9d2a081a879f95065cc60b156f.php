@@ -13,7 +13,7 @@
         <link href="<?php echo e(asset('css/styles.css')); ?>" rel="stylesheet">
         <link href="<?php echo e(asset('css/unselectable.css')); ?>" rel="stylesheet">
         <script type="text/javascript" src="<?php echo e(asset('js/dropdown.js')); ?>"></script>
-        <title>Consulta 2</title>
+        <title>Consulta 3</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
@@ -28,40 +28,36 @@
                 <thead>
                     <tr>
                         <th>Estatus</th>
+                        <th>Nro de guia</th>
                         <th>Tipo</th>
                         <th>Precio</th>
                         <th>Peso</th>
-                        <th>Descripción</th>
                         <th>Altura</th>
                         <th>Anchura</th>
                         <th>Profundidad</th>
                         <th>Fecha de envío</th>
-                        <th>Fecha de entrega estimada</th>
                         <th>Cliente emisor</th>
                         <th>Destinatario</th>
-                        <th>FKFR1</th>
                         <th>Sucursal origen</th>
                         <th>Sucursal destino</th>
                     </tr>
                 </thead>
                 <tbody>
-                  <?php $__currentLoopData = $envios; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $envio): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                  <?php $__currentLoopData = $consulta; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $envio): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                   <tr>
                     <td><?php echo e($envio->che_estatus); ?></td>
+                    <td><?php echo e($envio->en_clave); ?></td>
                     <td><?php echo e($envio->ti_nombre); ?></td>
                     <td><?php echo e($envio->en_precio); ?></td>
                     <td><?php echo e($envio->en_peso); ?></td>
-                    <td><?php echo e($envio->en_descripcion); ?></td>
                     <td><?php echo e($envio->en_altura); ?></td>
                     <td><?php echo e($envio->en_anchura); ?></td>
                     <td><?php echo e($envio->en_profundidad); ?></td>
                     <td><?php echo e($envio->en_fecha_envio); ?></td>
-                    <td><?php echo e($envio->en_fecha_entrega_estimada); ?></td>
-                    <td><?php echo e($envio->cli_cedula); ?></td>
+                    <td><?php echo e($envio->cli_nacionalidad); ?> <?php echo e($envio->cli_cedula); ?></td>
                     <td><?php echo e($envio->des_cedula); ?></td>
-                    <td><?php echo e($envio->fk_flota_ruta_1); ?></td>
-                    <td><?php echo e($envio->so_nombre); ?></td>
-                    <td><?php echo e($envio->su_nombre); ?></td>            
+                    <td><?php echo e($envio->so); ?></td>
+                    <td><?php echo e($envio->sd); ?></td>            
                   </tr>
                   <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>

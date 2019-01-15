@@ -27,18 +27,16 @@
             <table class="table table-bordered" width="80%" id="users-table">
                 <thead>
                     <tr>
-                        <th>Nombre del cliente</th>
                         <th>Sucursal</th>
-                        
+                        <th>Nombre del cliente</th>
                         <th>Cedula del cliente</th>
                     </tr>
                 </thead>
                 <tbody>
                   @foreach ($consulta as $a)
                   <tr>
+                    <td>{{$a->su_nombre}} </td>
                     <td>{{$a->cli_nombre}} {{$a->cli_apellido}}</td>
-                  	<td>{{$a->su_nombre}} </td>
-                  	
                     <td>{{$a->cli_nacionalidad}} {{$a->cli_cedula}}</td>
                   </tr>
                   @endforeach

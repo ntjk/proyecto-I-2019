@@ -166,7 +166,12 @@ Route::get('consulta11','ConsultasClienteController@vipPorOfic');
 Route::get('consulta12', function(){
   $paraDiferenciar = 12;
   return view('buscadorFecha')->with(compact('paraDiferenciar')); });
-Route::get('filtrarFecha_3{rango}','ConsultasEnvioController@clasificacionPaquetesPorOficina');
+Route::get('filtrarFecha_3{rango}','ConsultasEnvioController@clasificacionPaquetesPorOficinaCantidad');
+
+Route::get('consulta13', function(){
+  $paraDiferenciar = 13;
+  return view('buscadorFecha')->with(compact('paraDiferenciar')); });
+Route::get('filtrarFecha_4{rango}','ConsultasEnvioController@clasificacionPaquetesPorOficina');
 
 Route::get('consulta14', 'ConsultasEmpleadoController@inasistenciasEmpleados');
 Route::get('consulta15', 'ConsultasEmpleadoController@inasistenciasEmpleadosSinHorario');
