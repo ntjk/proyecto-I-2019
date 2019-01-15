@@ -12,7 +12,7 @@
     <meta name="csrf-token" content="{!! csrf_token() !!}" />
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
     <script type="text/javascript" src="{{ asset('js/dropdown.js') }}"></script>
-    <title>Empleados de una Sucursal - LogUCAB</title>
+    <title>Promedio de envios {{$mensaje}} de la Sucursal {{$sucursal}} - LogUCAB</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
@@ -22,51 +22,43 @@
   <body>
     @include('header')
     <div class="container">
-    <h1 class="text-center">Empleados de la sucursal {{$sucursal->su_nombre}}</h1>
+    <br/>
+    <h1 class="text-center">Promedio de envios {{$mensaje}} de la Sucursal {{$sucursal}}</h1>
     <br/>
     <form method="post" id="user_form">
-      <label>Fecha</label>
-      <input type="date" name="inputid" id="inputid" class="form-control" />
+      <label class="labelDestacado">Seleccione la Sucursal</label>
+      <select name="fk_sucursal_origen" id="inputid" class="form-control">
+        @foreach($sucursales as $s)
+        <option value="{{$s->su_clave}}">{{$s->su_nombre}}</option>
+        @endforeach
+      </select>
       <br /><br/>
-      <a type="reset" onclick="navigate2(this,'{{$sucursal->su_clave}}','inputid')">Crear Nomina</a>
-    </form>
+      <a type="reset" onclick="navigate(this,'inputid')">Edit</a>
       <script>
-        function navigate2(link, sucursal, inputid){
-          var url = "{{url('/sucursal')}}" + sucursal +'-'+ document.getElementById(inputid).value;
+        function navigate(link, inputid){
+          var url = "{{url('/consulta20-')}}" + document.getElementById(inputid).value;
           window.location.href = url; //navigates to the given url, disabled for demo
           //alert(url);
         }
       </script>
+    </form>
     <table class="table table-bordered" id="users-table">
         <thead>
             <tr>
-              <th>Empleado</th>
-              <th>Salario Semanal (Incluyendo Inasistencias)</th>
-              <th>Accion</th>
+              <th>Semana</th>
+              <th>Costo</th>
             </tr>
         </thead>
         <tbody>
-          @foreach ($empleados as $em)
+          @foreach ($costo as $c)
           <tr>
-            <td>{{$em->em_nombre}}</td>
-            <td>{{$em->salario}}</td>
-            <td><button class="btn btn-info btn-detail factura" id=".{{$em->em_clave}}." value=".{{$em->em_clave}}." onclick="navigate(this,'{{$em->em_clave}}','{{$monday}}','{{$sucursal->su_clave}}')" name="recibo">Recibo</button></td>
+            <td>Desde {{$c->start}} hasta {{$c->end}}</td>
+            <td>{{$c->salario}}</td>
           </tr>
           @endforeach
         </tbody>
     </table>
-  </br>
-  <h2>Total: {{$total}}</h2>
 </div>
-    <script>
-    function navigate(link, inputid, time, sucursal){
-      //alert(document.getElementById(inputid).value)
-      var date = time.split(' ')[0];
-      var url = "{{url('/empleado')}}" + inputid + "-" + date + "-" + sucursal;
-      window.location.href = url; //navigates to the given url, disabled for demo
-      //alert(url);
-    }
-    </script>
 <script src="//code.jquery.com/jquery.js"></script>
 <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>

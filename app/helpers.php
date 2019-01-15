@@ -25,7 +25,7 @@ use App\Usuario;
         }
     }
 
-    function validarUsuario(){
+  /*  function validarUsuario(){
         if(isset($_COOKIE['usuario']) && isset($_COOKIE['password']))
         {
             $nombreUsuario=$_COOKIE['usuario'];
@@ -36,4 +36,4 @@ use App\Usuario;
             else
                 return 0;
         }
-    }
+    }*/

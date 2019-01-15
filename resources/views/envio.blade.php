@@ -67,6 +67,7 @@
                     <td name="hidden3">
                       <button class="btn btn-warning btn-detail update" id="{{$envio->en_clave}}" value="{{$envio->en_clave}}" name="Update">Update</button>
                       <button class="btn btn-danger btn-delete delete" id="{{$envio->en_clave}}" value="{{$envio->en_clave}}" name="delete">Delete</button>
+                      <button class="btn btn-info btn-detail factura" id=".{{$envio->en_clave}}." value=".{{$envio->en_clave}}." onclick="navigate(this,'{{$envio->en_clave}}')" name="factura">Factura</button>
                     </td>
                   </tr>
                   @endforeach
@@ -74,7 +75,14 @@
 
             </table>
         </div>
-
+        <script>
+          function navigate(link, inputid){
+            //alert(document.getElementById(inputid).value)
+            var url = "{{url('/envio')}}" + inputid;
+            window.location.href = url; //navigates to the given url, disabled for demo
+            //alert(url);
+          }
+        </script>
         <div id="userModal" class="modal fade">
  <div class="modal-dialog">
   <form method="post" id="user_form" enctype="multipart/form-data">
@@ -187,21 +195,21 @@
             $(".delete").hide();
             $(".update").hide();
             $('#add_button').hide();
-            $('#hidden2').hide();    
-            $('#hidden3').hide();    
+            $('#hidden2').hide();
+            $('#hidden3').hide();
 
             var eliminar = '{!! verificarPermisosHelper("eliminar envios"); !!}';
             var modificar = '{!! verificarPermisosHelper("modificar envios"); !!}';
             var insertar = '{!! verificarPermisosHelper("insertar envios"); !!}';
 
             if(eliminar || modificar){
-              $('#hidden2').show();    
+              $('#hidden2').show();
               $('#hidden3').show();
             }
             if(eliminar)
               $(".delete").show();
             if(modificar)
-              $(".update").show();              
+              $(".update").show();
             if(insertar)
               $('#add_button').show();
 

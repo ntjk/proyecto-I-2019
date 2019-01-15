@@ -61,7 +61,9 @@
       <br/>
       <a href="consulta19">Flota terrestre nacional e internacional ordenado por serial de motor</a>
       <br/>
-      <a href="consulta20-1-60">Promedio de paquetes de una oficina en un periodo de tiempo</a>
+      <a href="consulta20-1-30">Promedio de paquetes de una oficina en un periodo de tiempo</a>
+      <br/>
+      <a href="consulta70-1">Listado de Nominas Semanales por Sucursal</a>
       <br/>
       <a href="falla">Listado de fallas (todas las flotas).</a>
       <br/>

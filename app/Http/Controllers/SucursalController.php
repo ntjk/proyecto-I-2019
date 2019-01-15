@@ -87,6 +87,6 @@ class SucursalController extends Controller
       }
 
       $sucursal = Sucursal::find($id);
-      return view('sucursalNomina')->with(compact('empleados'))->with(compact('sucursal'))->with(compact('total'));
+      return view('sucursalNomina')->with(compact('empleados'))->with(compact('sucursal'))->with(compact('total'))->with(compact('monday'));
     }
 }

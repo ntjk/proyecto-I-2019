@@ -50,7 +50,7 @@
           <tr>
             <td><?php echo e($em->em_nombre); ?></td>
             <td><?php echo e($em->salario); ?></td>
-            <td><button class="btn btn-info btn-detail factura" id=".<?php echo e($em->em_clave); ?>." value=".<?php echo e($em->em_clave); ?>." onclick="navigate(this,'<?php echo e($em->em_clave); ?>')" name="factura">Factura</button></td>
+            <td><button class="btn btn-info btn-detail factura" id=".<?php echo e($em->em_clave); ?>." value=".<?php echo e($em->em_clave); ?>." onclick="navigate(this,'<?php echo e($em->em_clave); ?>','<?php echo e($monday); ?>','<?php echo e($sucursal->su_clave); ?>')" name="recibo">Recibo</button></td>
           </tr>
           <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </tbody>
@@ -59,11 +59,12 @@
   <h2>Total: <?php echo e($total); ?></h2>
 </div>
     <script>
-    function navigate(link, inputid){
+    function navigate(link, inputid, time, sucursal){
       //alert(document.getElementById(inputid).value)
-      var url = "<?php echo e(url('/empleado')); ?>" + inputid;
-      //window.location.href = url; //navigates to the given url, disabled for demo
-      alert(url);
+      var date = time.split(' ')[0];
+      var url = "<?php echo e(url('/empleado')); ?>" + inputid + "-" + date + "-" + sucursal;
+      window.location.href = url; //navigates to the given url, disabled for demo
+      //alert(url);
     }
     </script>
 <script src="//code.jquery.com/jquery.js"></script>

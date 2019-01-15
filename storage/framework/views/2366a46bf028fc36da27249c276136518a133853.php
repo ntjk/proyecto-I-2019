@@ -12,7 +12,7 @@
     <meta name="csrf-token" content="<?php echo csrf_token(); ?>" />
     <link href="<?php echo e(asset('css/styles.css')); ?>" rel="stylesheet">
     <script type="text/javascript" src="<?php echo e(asset('js/dropdown.js')); ?>"></script>
-    <title>template - LogUCAB</title>
+    <title>Promedio de envios <?php echo e($mensaje); ?> de la Sucursal <?php echo e($sucursal); ?> - LogUCAB</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">

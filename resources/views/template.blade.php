@@ -21,6 +21,9 @@
   </head>
   <body>
     @include('header')
+    <div class="container">
+
+    </div>
     @stack('scripts')
     @include('footer')
   </body>

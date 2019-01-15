@@ -36,9 +36,9 @@
               <input id="password" type="password" class="form-control inputLogin" name="password" placeholder="Contraseña">
             </div>
             <br/><br/><br/>
-            <div > 
+            <div >
              <a type="reset" class="btn btn-info btn-lg entra" >Entrar</a>
-           
+
             </div>
             <br/><br/><br/>
           </form>
@@ -50,18 +50,9 @@
 
           $('#users-table').DataTable({
           })
-            /*  var usuario = $('#uss').val();
-            var password = $('#password').val();
-
-              document.cookie = "usuario=" + usuario;
-              document.cookie = "password=" + password;
-              var validar = '<?php echo validarUsuario();; ?>';
-              var validar2 = '<?php echo verificarPermisosHelper("ver envios");; ?>';
-              console.log("prim " + validar);
-              console.log("prim " +validar2);*/
 
           $(document).on('click','.entra',function(){
-            
+
             var usuario = $('#uss').val();
             var password = $('#password').val();
             console.log(usuario);
@@ -74,24 +65,6 @@
               console.log("los que valida "+document.cookie);
               var url = "<?php echo e(url('/welcome')); ?>";
               window.location = url;
-              /*var validar = '<?php echo validarUsuario(); ?>';
-              console.log("v1 "+validar);
-              if(validar==1){
-                //var url = "<?php echo e(url('/welcome')); ?>";
-                var url = "<?php echo e(url('/sesion2')); ?>";
-                console.log("antes "+document.cookie);
-                document.cookie = "usuario=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
-                document.cookie = "password=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
-                console.log("antes de asignar cookie "+document.cookie);
-                document.cookie = "usuario=" + usuario;
-                document.cookie = "password=" + password;
-                console.log(document.cookie);
-                //window.location = url;
-              }else{
-                alert("Datos incorrectos");
-                document.cookie = "usuario=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
-                document.cookie = "password=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
-              }*/
             }
           });
         });
