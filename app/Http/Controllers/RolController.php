@@ -12,10 +12,10 @@ class RolController extends Controller
 {
   public function index()
   {
-    $roles = Rol::select(['rol_clave','rol_nombre','rol_descripcion'])->orderBy('rol_clave')->get();
+    $roles = Rol::select(['rol_clave','rol_nombre','rol_descripcion'])
+    ->orderBy('rol_clave')->get();
     return view('rol')->with(compact('roles'));
   }
-
 
   public function store(Request $request)
   {
@@ -31,7 +31,6 @@ class RolController extends Controller
     }
     return ['success' => true, 'message' => 'Saved !!'];
   }
-
 
   public function getOne(Request $request){
       return $rol = Rol::find($request->rol_clave);

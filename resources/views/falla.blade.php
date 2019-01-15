@@ -23,7 +23,7 @@
             @include('header')
             <div class="container">
             <br/>
-            <h1 class="text-center">Histórico de Fallas</h1>
+            <h1 class="text-center">Histórico total de fallas</h1>
             <br/>
             <table class="table table-bordered" id="users-table">
                 <thead>
@@ -37,10 +37,10 @@
                 <tbody>
                   @foreach ($fallas as $falla)
                   <tr>
-                    <td>{{$falla->fa_descripcion}}</td>
-                    <td>{{$falla->ta_nombre}}</td>
-                    <td>{{$falla->flo_tipo}}</td>
-                    <td>Entrada: {{$falla->rev_fecha_entrada}} - Salida: {{$falla->rev_fecha_real_salida}}</td>
+                    <td>{{$falla->falla}}</td>
+                    <td>{{$falla->taller}}</td>
+                    <td>{{$falla->flota}}</td>
+                    <td>{{$falla->duracion}}</td>
                   </tr>
                   @endforeach
                 </tbody>
@@ -65,3 +65,4 @@
       </div>
     </body>
 </html>
+

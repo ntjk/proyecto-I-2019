@@ -25,69 +25,81 @@
             <br/>
             <h1 class="text-center">Puertos</h1>
             <br/>
-            <button type="button" id="add_button" data-toggle="modal" data-target="#userModal" class="btn btn-info btn-lg">Add</button>
+            <!--<button type="button" id="add_button" data-toggle="modal" data-target="#userModal" class="btn btn-info btn-lg">Add</button>-->
             <table class="table table-bordered" id="users-table">
                 <thead>
                     <tr>
-                        <th>Clave</th>
+                        <th>Nombre</th>
                         <th>Cant. Puestos</th>
                         <th>Cant. Muelles</th>
                         <th>Longitud</th>
                         <th>Ancho</th>
                         <th>Calado</th>
                         <th>Uso</th>
-                        <th>Nombre</th>
-                        <th>Flota</th>
-                        <th>Accion</th>
+                        <th>Tipo Flota</th>
+                        <th>Sucursal</th>
+                        <!--<th>Accion</th>-->
                     </tr>
                 </thead>
             </table>
         </div>
-        <div id="userModal" class="modal fade">
- <div class="modal-dialog">
-  <form method="post" id="user_form" enctype="multipart/form-data">
-   <div class="modal-content">
-    <div class="modal-header">
-     <button type="button" class="close" data-dismiss="modal">&times;</button>
-     <h4 class="modal-title">Añadir Puerto</h4>
-    </div>
-    <div class="modal-body">
-     <label># Puestos</label>
-     <input type="number" name="puer_cantidad_puestos" id="puer_cantidad_puestos" class="form-control" />
-     <br />
-     <label># Muelles</label>
-     <input type="number" name="puer_cantidad_muelles" id="puer_cantidad_muelles" class="form-control" />
-     <br />
-     <label>Longitud</label>
-     <input type="number" name="puer_longitud" id="puer_longitud" class="form-control" />
-     <br />
-     <label>Ancho</label>
-     <input type="number" name="puer_ancho" id="puer_ancho" class="form-control" />
-     <br />
-     <label>Calado</label>
-     <input type="number" name="puer_calado" id="puer_calado" class="form-control" />
-     <br />
-     <label>Uso</label>
-     <input type="text" name="puer_uso" id="puer_uso" class="form-control" />
-     <br />
-     <label>Nombre</label>
-     <input type="text" name="puer_nombre" id="puer_nombre" class="form-control" />
-     <br />
-    <!--FLOTA HERE-->
-     <label>Flota</label>
-     <input type="number" name="fk_flota" id="fk_flota" class="form-control" />
-     <br />
-    </div>
-    <div class="modal-footer">
-     <input type="hidden" name="puer_clave" id="puer_clave" />
-     <input type="hidden" name="operation" id="operation" />
-     <input type="submit" name="action" id="action" class="btn btn-success" value="Add" />
-     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-    </div>
+<!--
+<div id="userModal" class="modal fade">
+<div class="modal-dialog">
+ <form method="post" id="user_form" enctype="multipart/form-data">
+  <div class="modal-content">
+   <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+    <h4 class="modal-title">Añadir Puerto</h4>
    </div>
-  </form>
- </div>
+   <div class="modal-body">
+    <label>Nombre</label>
+    <input type="text" name="puer_nombre" id="puer_nombre" class="form-control" />
+    <br />
+    <label>Cantidad de puestos</label>
+    <input type="number" name="puer_cantidad_puestos" id="puer_cantidad_puestos" class="form-control" />
+    <br />
+    <label>Cantidad de muelles</label>
+    <input type="number" name="puer_cantidad_muelles" id="puer_cantidad_muelles" class="form-control" />
+    <br />
+    <label>Longitud</label>
+    <input type="number" name="puer_longitud" id="puer_longitud" class="form-control" />
+    <br />
+    <label>Ancho</label>
+    <input type="number" name="puer_ancho" id="puer_ancho" class="form-control" />
+    <br />
+    <label>Calado</label>
+    <input type="number" name="puer_calado" id="puer_calado" class="form-control" />
+    <br />
+    <label>Uso</label>
+    <input type="text" name="puer_uso" id="puer_uso" class="form-control" />
+    <br />
+    <label>Flota</label>
+    <select class="form-control" name="fk_flota" id="fk_flota">
+        @foreach($flotas as $floma)
+        <option value="{{$floma->flo_clave}}">{{$floma->flo_tipo}}</option>
+        @endforeach
+        <option value=""> Null </option>
+    </select>
+    <label>Sucursal</label>
+    <select class="form-control" name="fk_sucursal" id="fk_sucursal">
+        @foreach($sucursales as $sucursal)
+        <option value="{{$sucursal->su_clave}}">{{$sucursal->su_nombre}}</option>
+        @endforeach
+        <option value=""> Null </option>
+    </select>
+    </div>
+   <div class="modal-footer">
+    <input type="hidden" name="puer_clave" id="puer_clave" />
+    <input type="hidden" name="operation" id="operation" />
+    <input type="submit" name="action" id="action" class="btn btn-success" value="Add" />
+    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+   </div>
+  </div>
+ </form>
 </div>
+</div>-->
+
         <script src="//code.jquery.com/jquery.js"></script>
         <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
@@ -97,102 +109,103 @@
                 serverSide: true,
                 ajax: '{!! route('puerto_getData') !!}',
                 columns: [
-                    { data: 'puer_clave', name: 'puer_clave' },
+                    //{ data: 'puer_clave', name: 'puer_clave' },
+                    { data: 'puer_nombre', name: 'puer_nombre' },
                     { data: 'puer_cantidad_puestos', name: 'puer_cantidad_puestos' },
                     { data: 'puer_cantidad_muelles', name: 'puer_cantidad_muelles' },
                     { data: 'puer_longitud', name: 'puer_longitud' },
                     { data: 'puer_ancho', name: 'puer_ancho' },
                     { data: 'puer_calado', name: 'puer_calado' },
                     { data: 'puer_uso', name: 'puer_uso' },
-                    { data: 'puer_nombre', name: 'puer_nombre' },
                     { data: 'fk_flota', name: 'fk_flota' },
-                    {data: 'action', name: 'action', orderable: false, searchable: false}
+                    { data: 'fk_sucursal', name: 'fk_sucursal' },
+                    //{data: 'action', name: 'action', orderable: false, searchable: false}
                 ]
             })
+            
+            // $(document).on('submit', '#user_form', function(event){
+            // event.preventDefault();
+            // var puer_nombre = $('#puer_nombre').val();
+            // var puer_cantidad_puestos = $('#puer_cantidad_puestos').val();
+            // var puer_cantidad_muelles = $('#puer_cantidad_muelles').val();
+            // var puer_longitud = $('#puer_longitud').val();
+            // var puer_ancho = $('#puer_ancho').val();
+            // var puer_calado = $('#puer_calado').val();
+            // var puer_uso = $('#puer_uso').val();
+            // var fk_flota = $('#fk_flota').val();
+            // var fk_sucursal = $('#fk_sucursal').val();
 
-            $(document).on('submit', '#user_form', function(event){
-            event.preventDefault();
-            var puer_cantidad_puestos = $('#puer_cantidad_puestos').val();
-            var puer_cantidad_muelles = $('#puer_cantidad_muelles').val();
-            var puer_longitud = $('#puer_longitud').val();
-            var puer_ancho = $('#puer_ancho').val();
-            var puer_calado = $('#puer_calado').val();
-            var puer_uso = $('#puer_uso').val();
-            var puer_nombre = $('#puer_nombre').val();
-            var fk_flota = $('#fk_flota').val();
+            // if(puer_nombre != '' &&
+            // puer_cantidad_puestos != '' &&
+            // puer_cantidad_muelles != '' &&
+            // puer_longitud != '' &&
+            // puer_ancho != '')
+            // {
+            //     $.ajax({
+            //     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            //     url:"puerto",
+            //     method:'POST',
+            //     data: new FormData(this),
+            //     contentType:false,
+            //     processData:false,
+            //     success:function(data)
+            //     {
+            //         alert(data.message);
+            //         $('#user_form')[0].reset();
+            //         $('#users-table').dataTable().ajax.reload(null, false);
+            //     }
+            //     });
+            // }
+            // else
+            // {
+            //     alert("Both Fields are Required");
+            // }
+            // });
+            // $(document).on('click', '.update', function(){
+            // var puer_clave = $(this).attr("id");
+            // $.ajax({
+            //     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            //     url:"puerto/getOne",
+            //     method:"POST",
+            //     data:{puer_clave:puer_clave},
+            //     dataType:"json",
+            //     success:function(data){
+            //     $('#userModal').modal('show');
+            //     $('#puer_clave').val(puer_clave);
+            //     $('#puer_nombre').val(data.puer_nombre);
+            //     $('#puer_cantidad_puestos').val(data.puer_cantidad_puestos);
+            //     $('#puer_cantidad_muelles').val(data.puer_cantidad_muelles);
+            //     $('#puer_longitud').val(data.puer_longitud);
+            //     $('#puer_ancho').val(data.puer_ancho);
+            //     $('#puer_calado').val(data.puer_calado);
+            //     $('#puer_uso').val(data.puer_uso);
+            //     $('#fk_flota').val(data.fk_flota);
+            //     $('#fk_sucursal').val(data.fk_sucursal);
+            //     $('#action').val("Edit");
+            //     $('.modal-title').text("Edit puerto");
+            //     $('#operation').val("Edit");
+            //     }
+            // })
+            // });
 
-            if(puer_cantidad_puestos != '' && 
-            puer_cantidad_muelles != '' && 
-            puer_longitud != '' && 
-            puer_ancho != '' && 
-            puer_calado != '' && 
-            puer_uso != '' && 
-            puer_nombre != '' && 
-            fk_flota != '')
-            {
-              $.ajax({
-                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                url:"puerto",
-                method:'POST',
-                data: new FormData(this),
-                contentType:false,
-                processData:false,
-                success:function(data)
-                {
-                  alert(data.message);
-                  $('#user_form')[0].reset();
-                  $('#users-table').dataTable().ajax.reload(null, false);
-                }
-              });
-            }
-            else
-            {
-              alert("Both Fields are Required");
-            }
-          });
-          $(document).on('click', '.update', function(){
-            var puer_clave = $(this).attr("id");
-            $.ajax({
-              headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-              url:"puerto/getOne",
-              method:"POST",
-              data:{puer_clave:puer_clave},
-              dataType:"json",
-              success:function(data){
-                $('#userModal').modal('show');
-                $('#puer_cantidad_puestos').val(data.puer_cantidad_puestos);
-                $('#puer_cantidad_muelles').val(data.puer_cantidad_muelles);
-                $('#puer_longitud').val(data.puer_longitud);
-                $('#puer_ancho').val(data.puer_ancho);
-                $('#puer_calado').val(data.puer_calado);
-                $('#puer_uso').val(data.puer_uso);
-                $('#puer_nombre').val(data.puer_nombre);
-                $('#fk_flota').val(data.fk_flota);
-                $('.modal-title').text("Edit puerto");
-                $('#puer_clave').val(puer_clave);
-                $('#action').val("Edit");
-                $('#operation').val("Edit");
-              }
-            })
-          });
-          $(document).on('click','.delete',function(){
-            var puer_clave = $(this).attr("id");
-            if(confirm("¿Estás seguro de que quieres borrar esta información?")){
-              $.ajax({
-                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                url:"puerto/"+puer_clave,
-                type:"DELETE",
-                data:{puer_clave:puer_clave},
-                success:function(data){
-                  alert(data.message);
-                  $('#users-table').dataTable().ajax.reload(null, false);
-                }
-              })
-            }
-            else {
-              return false;
-            }
-          });
+            // $(document).on('click','.delete',function(){
+            // var puer_clave = $(this).attr("id");
+            // if(confirm("¿Estás seguro de que quieres borrar esta información?")){
+            //     $.ajax({
+            //     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            //     url:"puerto/"+puer_clave,
+            //     type:"DELETE",
+            //     data:{puer_clave:puer_clave},
+            //     success:function(data){
+            //         alert(data.message);
+            //         $('#users-table').dataTable().ajax.reload(null, false);
+            //     }
+            //     })
+            // }
+            // else {
+            //     return false;
+            // }
+            // });
         });
         </script>
         @stack('scripts')

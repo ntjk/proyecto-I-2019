@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property float $puer_calado
  * @property string $puer_uso
  * @property string $puer_nombre
+ * @property int $fk_sucursal
  * @property Flotum $flotum
  * @property Area[] $areas
  */
@@ -37,7 +38,7 @@ class Puerto extends Model
     /**
      * @var array
      */
-    protected $fillable = ['fk_flota', 'puer_cantidad_puestos', 'puer_cantidad_muelles', 'puer_longitud', 'puer_ancho', 'puer_calado', 'puer_uso', 'puer_nombre'];
+    protected $fillable = ['fk_flota', 'puer_cantidad_puestos', 'puer_cantidad_muelles', 'puer_longitud', 'puer_ancho', 'puer_calado', 'puer_uso', 'puer_nombre', 'fk_sucursal'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

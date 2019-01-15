@@ -49,6 +49,7 @@
                 </tbody>
             </table>
         </div>
+        
         <div id="userModal" class="modal fade">
  <div class="modal-dialog">
   <form method="post" id="user_form" enctype="multipart/form-data">
@@ -110,6 +111,7 @@
               alert("Both Fields are Required");
             }
           });
+
           $(document).on('click', '.update', function(){
             var rol_clave = $(this).attr("id");
             $.ajax({
@@ -129,11 +131,13 @@
               }
             })
           });
+
           $(document).on('click', '.verPermisos', function(){
             var rol_clave = $(this).attr("id");
             var url = "{{url('/rolper')}}" + rol_clave;
             window.location.href = url;
           });
+          
           $(document).on('click','.delete',function(){
             var rol_clave = $(this).attr("id");
             if(confirm("¿Estás seguro de que quieres borrar esta información?")){

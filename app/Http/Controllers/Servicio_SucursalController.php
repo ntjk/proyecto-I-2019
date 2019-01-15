@@ -50,10 +50,12 @@ class Servicio_SucursalController extends Controller
       return $servicio_sucursal = Servicio_Sucursal::find($request->fk_servicio);
     }
 
-    // public function destroy(Request $request){
-    //   $sucursal = Sucursal::find($request->su_clave);
-    //   $sucursal->delete();
-    //   return ['success' => true, 'message' => 'Deleted !!'];
-    // }
+    // $ss= DB::select(DB::raw('
+    // select su.su_nombre, ser.ser_tipo
+    // from sucursal su, servicio ser, servicio_sucursal ss
+    // where ss.fk_sucursal=su.su_clave and ss.fk_servicio=ser.ser_clave
+    // group by su.su_nombre, ser.ser_tipo        
+    // '));
+    // return view('')->with(compact('ss'));
 
 }

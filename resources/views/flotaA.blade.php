@@ -12,7 +12,7 @@
         <meta name="csrf-token" content="{!! csrf_token() !!}" />
         <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
         <script type="text/javascript" src="{{ asset('js/dropdown.js') }}"></script>
-        <title>Transporte - LogUCAB</title>
+        <title>Aéreo - LogUCAB</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
@@ -23,7 +23,7 @@
             @include('header')
             <div class="container">
             <br/>
-            <h1 class="text-center">Transportes Aereos</h1>
+            <h1 class="text-center">Transportes Aéreos</h1>
             <br/>
             <button type="button" id="add_button" data-toggle="modal" data-target="#userModal" class="btn btn-info btn-lg">Add</button>
             <table class="table table-bordered" id="users-table">
@@ -54,6 +54,39 @@
                         <th>Accion</th>
                     </tr>
                 </thead>
+                <tbody>
+                  @foreach ($flotas as $floa)
+                  <tr>
+                    <td>{{$floa->flo_clave}}</td>
+                    <td>{{$floa->flo_subtipo}}</td>
+                    <td>{{$floa->flo_tipo}}</td>
+                    <td>{{$floa->flo_peso}}</td>
+                    <td>{{$floa->flo_placa}}</td>
+                    <td>{{$floa->flo_descripcion}}</td>
+                    <td>{{$floa->flo_combustible_por_hora}}</td>
+                    <td>{{$floa->flo_serial_carroceria}}</td>
+                    <td>{{$floa->flo_capacidad_carga}}</td>
+                    <td>{{$floa->mod_nombre}}</td>
+                    <td>{{$floa->su_nombre}}</td>
+                    <td>{{$floa->flo_año}}</td>
+                    <td>{{$floa->flo_a_longitud}}</td>
+                    <td>{{$floa->flo_a_envergadura}}</td>
+                    <td>{{$floa->flo_a_area}}</td>
+                    <td>{{$floa->flo_a_altura}}</td>
+                    <td>{{$floa->flo_a_ancho_cabina_interna}}</td>
+                    <td>{{$floa->flo_a_diametro_fuselaje}}</td>
+                    <td>{{$floa->flo_a_peso_vacio}}</td>
+                    <td>{{$floa->flo_a_peso_maximo_despegue}}</td>
+                    <td>{{$floa->flo_a_carrera_de_despegue}}</td>
+                    <td>{{$floa->flo_a_velocidad_maxima}}</td>
+                    <td>
+                      <button class="btn btn-warning btn-detail update" id="{{$floa->flo_clave}}" value="{{$floa->flo_clave}}" name="Update">Update</button>
+                      <button class="btn btn-danger btn-delete delete" id="{{$floa->flo_clave}}" value="{{$floa->flo_clave}}" name="delete">Delete</button>
+                      <button class="btn btn-primary verHistorico" id="{{$floa->flo_clave}}" value="{{$floa->flo_clave}}" name="verHistorico">Histórico</button>
+                    </td>
+                  </tr>
+                  @endforeach
+                </tbody>
             </table>
         </div>
         <div id="userModal" class="modal fade">
@@ -62,14 +95,12 @@
    <div class="modal-content">
     <div class="modal-header">
      <button type="button" class="close" data-dismiss="modal">&times;</button>
-     <h4 class="modal-title">Añadir Flota</h4>
+     <h4 class="modal-title">Añadir Flota Aérea</h4>
     </div>
     <div class="modal-body">
      <label>Subtipo</label>
      <select class="form-control" name="flo_subtipo" id="flo_subtipo">
        <option value="aerea" selected>aerea</option>
-    <!--  <option value="marítima">marítima</option>
-       <option value="terrestre">terrestre</option>-->
      </select>
      <br />
      <label>Tipo</label>
@@ -139,7 +170,6 @@
      <label>Velocidad de Despegue</label>
      <input type="number" step="0.01" name="flo_a_velocidad_maxima" id="flo_a_velocidad_maxima" class="form-control" />
      <br />
-
     </div>
     <div class="modal-footer">
      <input type="hidden" name="flo_clave" id="flo_clave" />
@@ -156,34 +186,6 @@
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script>$(function() {
             $('#users-table').DataTable({
-                processing: true,
-                serverSide: true,
-                ajax: '{!! route('transporteA_getData') !!}',
-                columns: [
-                    { data: 'flo_clave', name: 'flota.flo_clave' },
-                    { data: 'flo_subtipo', name: 'flota.flo_subtipo' },
-                    { data: 'flo_tipo', name: 'flota.flo_tipo' },
-                    { data: 'flo_peso', name: 'flota.flo_peso' },
-                    { data: 'flo_placa', name: 'flota.flo_placa' },
-                    { data: 'flo_descripcion', name: 'flota.flo_descripcion' },
-                    { data: 'flo_combustible_por_hora', name: 'flota.flo_combustible_por_hora' },
-                    { data: 'flo_serial_carroceria', name: 'flota.flo_serial_carroceria' },
-                    { data: 'flo_capacidad_carga', name: 'flota.flo_capacidad_carga' },
-                    { data: 'mod_nombre', name: 'modelo.mod_nombre' },
-                    { data: 'su_nombre', name: 'sucursal.su_nombre' },
-                    { data: 'flo_año', name: 'flota.flo_año' },
-                    { data: 'flo_a_longitud', name: 'flota.flo_a_longitud' },
-                    { data: 'flo_a_envergadura', name: 'flota.flo_a_envergadura' },
-                    { data: 'flo_a_area', name: 'flota.flo_a_area' },
-                    { data: 'flo_a_altura', name: 'flota.flo_a_altura' },
-                    { data: 'flo_a_ancho_cabina_interna', name: 'flota.flo_a_ancho_cabina_interna' },
-                    { data: 'flo_a_diametro_fuselaje', name: 'flota.flo_a_diametro_fuselaje' },
-                    { data: 'flo_a_peso_vacio', name: 'flota.flo_a_peso_vacio' },
-                    { data: 'flo_a_peso_maximo_despegue', name: 'flota.flo_a_peso_maximo_despegue' },
-                    { data: 'flo_a_carrera_de_despegue', name: 'flota.flo_a_carrera_de_despegue' },
-                    { data: 'flo_a_velocidad_maxima', name: 'flota.flo_a_velocidad_maxima' },
-                    {data: 'action', name: 'action', orderable: false, searchable: false}
-                ]
             })
 
             $(document).on('submit', '#user_form', function(event){
@@ -287,6 +289,14 @@
               return false;
             }
           });
+
+          $(document).on('click', '.verHistorico', function(){
+            var flo_clave = $(this).attr("id");
+            var url = "{{url('/historicoF')}}" + flo_clave;
+            window.location.href = url;
+          });
+
+
         });
         </script>
         @stack('scripts')

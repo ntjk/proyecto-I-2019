@@ -25,28 +25,29 @@
             <br/>
             <h1 class="text-center">Talleres</h1>
             <br/>
-            <button type="button" id="add_button" data-toggle="modal" data-target="#userModal" class="btn btn-info btn-lg">Add</button>
+            <!--<button type="button" id="add_button" data-toggle="modal" data-target="#userModal" class="btn btn-info btn-lg">Add</button>-->
             <div class="table-container">
             <table class="table table-bordered special-table" id="users-table">
                 <thead>
                     <tr>
-                        <th>Clave</th>
+                        <!--<th>Clave</th>-->
                         <th>Nombre</th>
                         <th>Email</th>
                         <th>Contacto</th>
                         <th>Página Web</th>
                         <th>Lugar</th>
-                        <th>Accion</th>
-                    </tr>
+                        <!--<th>Accion</th>-->
+                       </tr>
                 </thead>
             </table>
           </div>
         </div>
-        <div id="userModal" class="modal fade">
+<!--
+ <div id="userModal" class="modal fade">
  <div class="modal-dialog">
   <form method="post" id="user_form" enctype="multipart/form-data">
    <div class="modal-content">
-    <div class="modal-header">
+    <div class="modal-header">  
      <button type="button" class="close" data-dismiss="modal">&times;</button>
      <h4 class="modal-title">Añadir Taller</h4>
     </div>
@@ -84,6 +85,7 @@
   </form>
  </div>
 </div>
+-->
         <script src="//code.jquery.com/jquery.js"></script>
         <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
@@ -93,105 +95,106 @@
                 serverSide: true,
                 ajax: '{!! route('taller_getData') !!}',
                 columns: [
-                    { data: 'ta_clave', name: 'taller.ta_clave' },
+                    //{ data: 'ta_clave', name: 'taller.ta_clave' },
                     { data: 'ta_nombre', name: 'taller.ta_nombre' },
                     { data: 'ta_email', name: 'taller.ta_email' },
                     { data: 'ta_contacto', name: 'taller.ta_contacto' },
                     { data: 'ta_pagina_web', name: 'taller.ta_pagina_web' },
                     { data: 'lu_nombre', name: 'lugar.lu_nombre' },
-                    {data: 'action', name: 'action', orderable: false, searchable: false}
+                    //{ data: 'action', name: 'action', orderable: false, searchable: false}
                 ]
             })
-            $(document).on('change','#estado',function(){
-              var estado = $(this).val();
-              $.ajax({
-                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                type: "POST",
-                url: "taller/updateSelect",
-                data:{ estado: estado},
-                success: function(data){
-                    var options = '';
-                    $.each(data, function(i, item) {
-                      options += '<option value="' + item.lu_clave + '">' + item.lu_nombre + '</option>';
-                    });
-                    $('#fk_lugar').empty().html(options);
-                }
-              });
-            });
+
+          //   $(document).on('change','#estado',function(){
+          //     var estado = $(this).val();
+          //     $.ajax({
+          //       headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+          //       type: "POST",
+          //       url: "taller/updateSelect",
+          //       data:{ estado: estado},
+          //       success: function(data){
+          //           var options = '';
+          //           $.each(data, function(i, item) {
+          //             options += '<option value="' + item.lu_clave + '">' + item.lu_nombre + '</option>';
+          //           });
+          //           $('#fk_lugar').empty().html(options);
+          //       }
+          //     });
+          //   });
          
-            $(document).on('submit', '#user_form', function(event){
-            event.preventDefault();
-            var ta_clave = $('#ta_clave').val();
-            var ta_nombre = $('#ta_nombre').val();
-            var ta_email = $('#ta_email').val();
-            var ta_contacto = $('#ta_contacto').val();
-            var ta_pagina_web = $('#ta_pagina_web').val();
-            var fk_lugar = $('#fk_lugar').val();
-            if(ta_nombre != '' 
-            && ta_email != '' 
-            && ta_contacto != '' 
-            && ta_pagina_web != '')
-            {
-              $.ajax({
-                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                url:"taller",
-                method:'POST',
-                data: new FormData(this),
-                contentType:false,
-                processData:false,
-                success:function(data)
-                {
-                  alert(data.message);
-                  $('#user_form')[0].reset();
-                  $('#users-table').dataTable().ajax.reload(null, false);
-                }
-              });
-            }
-            else
-            {
-              alert("Required Fields are not Filled.");
-            }
-          });
-          $(document).on('click', '.update', function(){
-            var ta_clave = $(this).attr("id");
-            $.ajax({
-              headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-              url:"taller/getOne",
-              method:"POST",
-              data:{ta_clave:ta_clave},
-              dataType:"json",
-              success:function(data){
-                $('#userModal').modal('show');
-                $('.modal-title').text("Edit taller");
-                $('#ta_nombre').val(data.ta_nombre);
-                $('#ta_email').val(data.ta_email);
-                $('#ta_contacto').val(data.ta_contacto);
-                $('#ta_clave').val(ta_clave);
-                $('#ta_pagina_web').val(data.ta_pagina_web);
-                $('#fk_lugar').val(data.fk_lugar);
-                $('#action').val("Edit");
-                $('#operation').val("Edit");
-              }
-            })
-          });
-          $(document).on('click','.delete',function(){
-            var ta_clave = $(this).attr("id");
-            if(confirm("¿Estás seguro de que quieres borrar esta información?")){
-              $.ajax({
-                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                url:"taller/"+ta_clave,
-                type:"DELETE",
-                data:{ta_clave:ta_clave},
-                success:function(data){
-                  alert(data.message);
-                  $('#users-table').dataTable().ajax.reload(null, false);
-                }
-              })
-            }
-            else {
-              return false;
-            }
-          });
+          //   $(document).on('submit', '#user_form', function(event){
+          //   event.preventDefault();
+          //   var ta_clave = $('#ta_clave').val();
+          //   var ta_nombre = $('#ta_nombre').val();
+          //   var ta_email = $('#ta_email').val();
+          //   var ta_contacto = $('#ta_contacto').val();
+          //   var ta_pagina_web = $('#ta_pagina_web').val();
+          //   var fk_lugar = $('#fk_lugar').val();
+          //   if(ta_nombre != '' 
+          //   && ta_email != '' 
+          //   && ta_contacto != '' 
+          //   && ta_pagina_web != '')
+          //   {
+          //     $.ajax({
+          //       headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+          //       url:"taller",
+          //       method:'POST',
+          //       data: new FormData(this),
+          //       contentType:false,
+          //       processData:false,
+          //       success:function(data)
+          //       {
+          //         alert(data.message);
+          //         $('#user_form')[0].reset();
+          //         $('#users-table').dataTable().ajax.reload(null, false);
+          //       }
+          //     });
+          //   }
+          //   else
+          //   {
+          //     alert("Required Fields are not Filled.");
+          //   }
+          // });
+          // $(document).on('click', '.update', function(){
+          //   var ta_clave = $(this).attr("id");
+          //   $.ajax({
+          //     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+          //     url:"taller/getOne",
+          //     method:"POST",
+          //     data:{ta_clave:ta_clave},
+          //     dataType:"json",
+          //     success:function(data){
+          //       $('#userModal').modal('show');
+          //       $('.modal-title').text("Edit taller");
+          //       $('#ta_nombre').val(data.ta_nombre);
+          //       $('#ta_email').val(data.ta_email);
+          //       $('#ta_contacto').val(data.ta_contacto);
+          //       $('#ta_clave').val(ta_clave);
+          //       $('#ta_pagina_web').val(data.ta_pagina_web);
+          //       $('#fk_lugar').val(data.fk_lugar);
+          //       $('#action').val("Edit");
+          //       $('#operation').val("Edit");
+          //     }
+          //   })
+          // });
+          // $(document).on('click','.delete',function(){
+          //   var ta_clave = $(this).attr("id");
+          //   if(confirm("¿Estás seguro de que quieres borrar esta información?")){
+          //     $.ajax({
+          //       headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+          //       url:"taller/"+ta_clave,
+          //       type:"DELETE",
+          //       data:{ta_clave:ta_clave},
+          //       success:function(data){
+          //         alert(data.message);
+          //         $('#users-table').dataTable().ajax.reload(null, false);
+          //       }
+          //     })
+          //   }
+          //   else {
+          //     return false;
+          //   }
+          // });
         });
         </script>
         @stack('scripts')

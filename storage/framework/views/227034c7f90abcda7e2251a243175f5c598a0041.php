@@ -23,9 +23,9 @@
             <?php echo $__env->make('header', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
             <div class="container">
             <br/>
-            <h1 class="text-center">Servicios - Sucursales</h1>
+            <h1 class="text-center">Listado de Servicios por sucursales.</h1>
             <br/>
-            <table class="table table-bordered" id="users-table">
+            <table class="table table-bordered" style="width:20%" id="users-table">
                 <thead>
                     <tr>
                         <th>Sucursal</th>

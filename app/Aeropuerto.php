@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $ae_cantidad_pistas
  * @property int $ae_cantidad_terminales
  * @property string $ae_otro
+ * @property int $fk_sucursal
  * @property AereaAeropuerto[] $aereaAeropuertos
  */
 class Aeropuerto extends Model
@@ -33,7 +34,7 @@ class Aeropuerto extends Model
     /**
      * @var array
      */
-    protected $fillable = ['ae_nombre', 'ae_capacidad', 'ae_cantidad_pistas', 'ae_cantidad_terminales', 'ae_otro'];
+    protected $fillable = ['ae_nombre', 'ae_capacidad', 'ae_cantidad_pistas', 'ae_cantidad_terminales', 'ae_otro','fk_sucursal'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

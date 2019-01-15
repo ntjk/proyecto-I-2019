@@ -138,7 +138,6 @@ $resul=DB::select("select * from sucursal where su_clave = ?", [12]);
 
 /* Consultas */
 Route::get('consultas','ConsultasController@index');
-
 Route::get('consulta1','ConsultasEnvioController@calcularMesConMasEnvios');
 Route::get('consulta2','ConsultasEnvioController@pesoPromedioPorOficina');
 Route::get('consulta3','ConsultasEnvioController@enviosPorEstatus');
@@ -180,7 +179,6 @@ Route::post('rolper/getOne','RolperController@getOne');
 Route::post('rolper/updateSelect','RolperController@updateSelect');
 Route::get('rolper{id}', 'RolperController@show');
 
-
 /* Listado de puerto */
 Route::resource('puerto','PuertoController');
 Route::post('puerto/getOne','PuertoController@getOne');
@@ -209,12 +207,31 @@ Route::post('servicio_sucursal/updateSelect','Servicio_SucursalController@update
 Route::get('servicio_sucursal', 'Servicio_SucursalController@index');
 Route::get('servicio_sucursal-getData','Servicio_SucursalController@getData')->name('servicio_sucursal_getData');
 
-/* Listado de Fallas */
+/* Sucursales de puertos/aeropuertos */
+Route::get('consulta41','ConsultasEnvioController@sucursalesPuertosAeropuertos');
+
+/* Tabla de Fallas */
 Route::resource('falla','FallaController');
 Route::post('falla/getOne','FallaController@getOne');
 Route::post('falla/updateSelect','FallaController@updateSelect');
 Route::get('falla', 'FallaController@index');
 Route::get('falla-getData','FallaController@getData')->name('falla_getData');
+
+/* Histórico de Fallas por consulta */
+//Route::get('consultaHistorico','ConsultasEnvioController@historicoFalla');
+Route::get('historicoF{id}','ConsultasEnvioController@historicoFalla');
+
+/* Consulta 42: Talleres agrupados por zona */
+Route::get('consulta42','ConsultasEnvioController@consulta42');
+
+/* Consulta 43: Listado de flotas con su última fecha de revisión y próxima fecha por oficina */
+Route::get('consulta43','ConsultasEnvioController@consulta43');
+
+/* Consulta 44: Ingreso y egresos por oficina por mes */
+Route::get('consulta44','ConsultasEnvioController@consulta44');
+
+/* Consulta 45: Total de gastos generados por revisión de flotas por mes y por sucursal */
+Route::get('consulta45','ConsultasEnvioController@consulta45');
 
 Route::get('sesion', 'ConsultasEnvioController@verificarPermisos');
 Route::get('sesion2', 'ConsultasEnvioController@validarUsuario2');

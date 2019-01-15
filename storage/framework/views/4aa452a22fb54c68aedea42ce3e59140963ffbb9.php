@@ -23,7 +23,7 @@
             <?php echo $__env->make('header', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
             <div class="container">
             <br/>
-            <h1 class="text-center">Histórico de Fallas</h1>
+            <h1 class="text-center">Histórico total de fallas</h1>
             <br/>
             <table class="table table-bordered" id="users-table">
                 <thead>
@@ -37,10 +37,10 @@
                 <tbody>
                   <?php $__currentLoopData = $fallas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $falla): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                   <tr>
-                    <td><?php echo e($falla->fa_descripcion); ?></td>
-                    <td><?php echo e($falla->ta_nombre); ?></td>
-                    <td><?php echo e($falla->flo_tipo); ?></td>
-                    <td>Entrada: <?php echo e($falla->rev_fecha_entrada); ?> - Salida: <?php echo e($falla->rev_fecha_real_salida); ?></td>
+                    <td><?php echo e($falla->falla); ?></td>
+                    <td><?php echo e($falla->taller); ?></td>
+                    <td><?php echo e($falla->flota); ?></td>
+                    <td><?php echo e($falla->duracion); ?></td>
                   </tr>
                   <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>
@@ -65,3 +65,4 @@
       </div>
     </body>
 </html>
+

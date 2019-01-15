@@ -43,7 +43,7 @@
                         <th>FKFR1</th>
                         <th>Sucursal origen</th>
                         <th>Sucursal destino</th>
-                        <th>Accion</th>
+                        <th id="hidden2">Accion</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -64,7 +64,7 @@
                     <td><?php echo e($envio->fk_flota_ruta_1); ?></td>
                     <td><?php echo e($envio->so_nombre); ?></td>
                     <td><?php echo e($envio->sd_nombre); ?></td>
-                    <td>
+                    <td name="hidden3">
                       <button class="btn btn-warning btn-detail update" id="<?php echo e($envio->en_clave); ?>" value="<?php echo e($envio->en_clave); ?>" name="Update">Update</button>
                       <button class="btn btn-danger btn-delete delete" id="<?php echo e($envio->en_clave); ?>" value="<?php echo e($envio->en_clave); ?>" name="delete">Delete</button>
                     </td>
@@ -84,7 +84,6 @@
      <h4 class="modal-title">Añadir envio</h4>
     </div>
   <div class="modal-body">
-     <!--<input value=<?php echo e($mesConMasEnvios); ?>> </input>-->
      <label>Descripción</label>
      <input type="text" name="en_descripcion" id="en_descripcion" class="form-control" />
      <br />
@@ -184,6 +183,27 @@
         <script>$(function() {
             $('#users-table').DataTable({
             })
+
+            $(".delete").hide();
+            $(".update").hide();
+            $('#add_button').hide();
+            $('#hidden2').hide();    
+            $('#hidden3').hide();    
+
+            var eliminar = '<?php echo verificarPermisosHelper("eliminar envios");; ?>';
+            var modificar = '<?php echo verificarPermisosHelper("modificar envios");; ?>';
+            var insertar = '<?php echo verificarPermisosHelper("insertar envios");; ?>';
+
+            if(eliminar || modificar){
+              $('#hidden2').show();    
+              $('#hidden3').show();
+            }
+            if(eliminar)
+              $(".delete").show();
+            if(modificar)
+              $(".update").show();              
+            if(insertar)
+              $('#add_button').show();
 
 
             $(document).on('submit', '#user_form', function(event){
