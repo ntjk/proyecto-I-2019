@@ -25,26 +25,25 @@
             <br/>
             <h1 class="text-center">Sucursales de puertos y aeropuertos</h1>
             <br/>
-            <table class="table table-bordered" style="width:10%" id="users-table">
+            <table class="table table-bordered" style="width:70%" id="users-table">
                 <thead>
                     <tr>
+                        <th>Tipo</th>
                         <th>Nombre</th>
+                        <th>Sucursal</th>
                     </tr>
                 </thead>
                 <tbody>
-                  @foreach ($spa as $spaBeta)
-                  <tr>
-                    <td class="text-center">{{$spaBeta->nombre}}</td>
+                  @foreach ($consultas as $spa)
+                  <tr class="text-center">
+                    <td >{{$spa->tipo}}</td>
+                    <td >{{$spa->nombre}}</td>
+                    <td >{{$spa->sucu}}</td>
                   </tr>
                   @endforeach
                 </tbody>
             </table>
-        </div>
-    </div>
-   </div>
-  </form>
- </div>
-</div>
+        
         <script src="//code.jquery.com/jquery.js"></script>
         <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>

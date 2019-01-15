@@ -13,9 +13,9 @@ class Servicio_SucursalController extends Controller
 
   public function index()
     {
-        $sucursales= Sucursal::orderBy('su_nombre')->get();
-        $servicios= Servicio::orderBy('ser_tipo')->get();
-        return view("servicio_sucursal",compact(''),compact(''));
+        // $sucursales= Sucursal::orderBy('su_nombre')->get();
+        // $servicios= Servicio::orderBy('ser_tipo')->get();
+        return view("servicio_sucursal");
     }
 
     public function getData()
@@ -25,6 +25,7 @@ class Servicio_SucursalController extends Controller
         ->select([
             'sucursal.su_nombre',
             'servicio.ser_tipo',
+            'servicio.ser_descripcion',
         ]);
         return Datatables::of($servicio_sucursal)->addColumn('action', function ($servicio_sucursal) {
             return '<button class="btn btn-warning btn-detail update" id="'.$servicio_sucursal->fk_servicio.'" value="'.$servicio_sucursal->fk_servicio.'" name="Update">Update</button>

@@ -34,7 +34,7 @@
                 </thead>
                 <tbody>
                   <?php $__currentLoopData = $talleres; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tz): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                  <tr class="text-center">
+                  <tr>
                     <td><?php echo e($tz->zona); ?></td>
                     <td><?php echo e($tz->nombre); ?></td>
                   </tr>

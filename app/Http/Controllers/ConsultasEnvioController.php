@@ -194,12 +194,17 @@ class ConsultasEnvioController extends Controller
     /////////////////////////// AQUI ///////////////////////////////
     public function sucursalesPuertosAeropuertos(){
         
-        $spa=DB::select(DB::raw('
-            select distinct(su.su_nombre) as nombre
-            from sucursal su, puerto pu, aeropuerto ae
-            where su.su_clave = pu.fk_sucursal or su.su_clave = ae.fk_sucursal
+        $consultas=DB::select(DB::raw('
+        select \'Aeropuerto\' as tipo, ae_nombre as nombre, su_nombre as sucu
+        from aeropuerto, sucursal
+        where fk_sucursal = su_clave
+        union
+        select \'Puerto\' as tipo, puer_nombre as nombre, su_nombre as sucu
+        from puerto, sucursal
+        where fk_sucursal = su_clave
+        order by sucu
         '));
-        return view('consulta41')->with(compact('spa'));
+        return view('consulta41')->with(compact('consultas'));
     }
 
     public function historicoFalla($id){
@@ -236,10 +241,11 @@ class ConsultasEnvioController extends Controller
 
     public function consulta43(){
         $consultas= DB::select(DB::raw('
-        select rev.fk_flota as flota, rev.rev_fecha_real_salida::date as revf, rev.rev_fecha_proxima_revision::date as revp
-        from revision rev, (select fk_flota, max(rev_fecha_real_salida)::date as ultima_revision from revision group by fk_flota) as aux
-        where rev.fk_flota = aux.fk_flota and rev_fecha_real_salida= aux.ultima_revision
-        order by rev.fk_flota desc
+            select su.su_nombre as sucu, flo.flo_tipo as flota, rev.rev_fecha_real_salida::date as revf, rev.rev_fecha_proxima_revision::date as revp
+            from revision rev, sucursal su, flota flo, (select fk_flota, max(rev_fecha_real_salida)::date as ultima_revision from revision group by fk_flota) as aux
+            where rev.fk_flota = aux.fk_flota and rev_fecha_real_salida= aux.ultima_revision
+            and rev.fk_flota = flo.flo_clave and flo.fk_sucursal = su.su_clave
+            order by su.su_nombre
         '));
         return view('consulta43')->with(compact('consultas'));
     }
@@ -253,6 +259,16 @@ class ConsultasEnvioController extends Controller
         '));
         return view('consulta44')->with(compact('consultas'));
     }
+
+    // public function consulta44(){
+    //     $consultas= DB::select(DB::raw('
+    //     select su.su_nombre as nombre, extract(month from rc.re_fecha) as mes ,rc.re_egreso as egreso, rc.re_ingreso as ingreso
+    //     from registro_contable rc, sucursal su
+    //     where rc.fk_servicio_sucursal_1 = su.su_clave
+    //     order by su.su_nombre,  rc.re_fecha
+    //     '));
+    //     return view('consulta44')->with(compact('consultas'));
+    // }
 
     
     public function index() {  }

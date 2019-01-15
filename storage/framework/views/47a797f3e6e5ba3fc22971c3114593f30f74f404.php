@@ -57,23 +57,25 @@
       <br/>
       <a href="consulta15">Listado de medios de transportes, agrupados por tipo</a>
       <br/>
-      <a href="falla">Listado de fallas (todas las flotas).</a>
-      <br/>
       <a href="puerto">Listado de puertos.</a>
       <br/>
       <a href="aeropuerto">Listado de aeropuertos.</a>
       <br/>
       <a href="consulta41">Sucursales de puertos y aeropuertos.</a>
       <br/>
-      <a href="taller">Listado de talleres.</a>
-      <br/>
       <a href="consulta42">Listado de talleres agrupados por zona.</a>
       <br/>
-      <a href="servicio_sucursal">Listado de Servicios por sucursales.</a>
+      <a href="servicio_sucursal">Listado de servicios por sucursales.</a>
+      <br/>
+      <a href="falla">Listado de fallas (todas las flotas).</a>
+      <br/>
+      <a href="taller">Listado de talleres.</a>
       <br/>
       <a href="consulta43">Listado de flotas con su última fecha de revisión y próxima fecha por oficina.</a>
       <br/>
       <a href="consulta44">Ingresos y egresos por oficina por mes.</a>
+      <br/>
+      <a href="consulta45">Total de gastos generados por revisión de flotas por mes y por sucursal.</a>
       <br/>
     </div>
     <?php echo $__env->yieldPushContent('scripts'); ?>

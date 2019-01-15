@@ -34,7 +34,7 @@
                 </thead>
                 <tbody>
                   @foreach ($talleres as $tz)
-                  <tr class="text-center">
+                  <tr>
                     <td>{{$tz->zona}}</td>
                     <td>{{$tz->nombre}}</td>
                   </tr>

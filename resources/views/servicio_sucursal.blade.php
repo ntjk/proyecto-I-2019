@@ -23,13 +23,14 @@
             @include('header')
             <div class="container">
             <br/>
-            <h1 class="text-center">Listado de Servicios por sucursales.</h1>
+            <h1 class="text-center">Listado de servicios por sucursales.</h1>
             <br/>
             <table class="table table-bordered" style="width:20%" id="users-table">
                 <thead>
                     <tr>
-                        <th>Sucursal</th>
                         <th>Servicio</th>
+                        <th>Proveedor</th>
+                        <th>Sucursal</th>
                     </tr>
                 </thead>
             </table>
@@ -44,8 +45,9 @@
                 serverSide: true,
                 ajax: '{!! route('servicio_sucursal_getData') !!}',
                 columns: [
-                    { data: 'su_nombre', name: 'sucursal.su_nombre' },
                     { data: 'ser_tipo', name: 'servicio.ser_tipo' },
+                    { data: 'ser_descripcion', name: 'servicio.ser_descripcion' },
+                    { data: 'su_nombre', name: 'sucursal.su_nombre' },
                 ]
             })
         });
