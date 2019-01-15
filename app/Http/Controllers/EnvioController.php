@@ -159,8 +159,29 @@ select su_nombre, ru_clave from ruta, sucursal where fk_sucursal_1=su_clave and 
         return ['success' => true, 'message' => 'Saved !!', 'value' => Envio::where('fk_cliente',$request->input('fk_cliente'))->count()];
     }
 
-    public function getOne(Request $request){
-      return $envio = Envio::find($request->en_clave);
+    public function updateRuta(Request $request){
+      //cuantas florus tienen esa fk como destino
+      /*$destino=$request->sd;
+      $sql=DB::select(DB::raw('select count (*) from (select * from flota_ruta where fk_ruta_3= ?) as t1'));
+      $cantidadRutas = DB::select(DB::raw($sql), [$destino]);
+      
+      $sql2=DB::select(DB::raw('select distinct flo_ruta from flota_ruta where flo_ruta in (select flo_ruta from flota_ruta where fk_ruta_3= ?)'));
+      $cadaRuta=DB::select(DB::raw($sql2), [$destino]);
+      //por cada floru, recorrer todos los registros de esa ruta Nro. tal
+      for ($i=0; $i < $cantidadRutas; $i++) {
+        $param3 = $cadaRuta[$i];
+        $sql3=DB::select(DB::raw('select so.su_nombre as so, flo_ru_clave from flota_ruta, sucursal as so where fk_ruta_2=so.su_clave and flo_ruta = ?'));;
+        $sucursalesDeEsaRuta=DB::select(DB::raw($sql3), [$param3]);
+
+      }*/
+      $destino=$request->sd;
+      $origen=$request->so;
+      //$sql="select so.su_nombre as so, sd.su_nombre as sd, flo_ruta, flo_ru_clave from flota_ruta, sucursal as so, sucursal as sd where fk_ruta_2=so.su_clave and fk_ruta_3=sd.su_clave and flo_ruta in (select flo_ruta from flota_ruta where fk_ruta_3= ? ) order by flo_ru_clave";
+      $sql="select so.su_nombre as so, sd.su_nombre as sd, flo_ruta, flo_ru_clave from flota_ruta, sucursal as so, sucursal as sd where fk_ruta_2=so.su_clave and fk_ruta_3=sd.su_clave and flo_ruta in (select flo_ruta from flota_ruta where fk_ruta_3= ? ) and flo_ruta in (select flo_ruta from flota_ruta where fk_ruta_2= ? ) order by flo_ru_clave";
+      $rutas= DB::select(DB::raw($sql), [$destino, $origen]);
+      //bien pero ahora falta asegurar que el origen sea el primer registro de la flota_ruta, ajuro usar for
+      //porque no sabes cuantos registros debas devolver...
+      return $rutas;
     }
 
     public function destroy($id){

@@ -32,7 +32,9 @@
                         <th>Ruta nro</th>
                         <th>Sucursal origen</th>
                         <th>Sucursal destino</th>
-                        <th>Sucursales de parada</th>
+                        <th>Flota</th>
+                        <th>Costo</th>
+                        <th>Duracion</th>
                         <th>Accion</th>
                     </tr>
                 </thead>
@@ -42,12 +44,14 @@
                     <td>{{$r->flo_ruta}}</td>
                     <td>{{$r->su_nombre}}</td>
                     <td>{{$r->sd_nombre}}</td>
-                    <td></td>
+                    <td>{{$r->mod_nombre}}</td>
+                    <td>{{$r->flo_ru_costo}}</td>
+                    <td>{{$r->flo_ru_duracion_hrs}}</td>
                     <td>                      
                       <button class="btn btn-warning btn-detail update" id="{{$r->flo_ru_clave}}" value="{{$r->flo_ru_clave}}" name="Update">Update</button>
                       <button class="btn btn-danger btn-delete delete" id="{{$r->flo_ru_clave}}" value="{{$r->flo_ru_clave}}" name="delete">Delete</button>
-                      <button class="btn btn-primary " id="{{$r->flo_ru_clave}}" data-toggle="modal" data-target="#userModal_2"  value="{{$r->flo_ru_clave}}" name="delete">Agregar nodo</button>
-                      <button class="btn btn-primary borrarNodo" id="{{$r->flo_ru_clave}}" data-toggle="modal" data-target="#userModal_2"   value="{{$r->flo_ru_clave}}" name="delete">Borrar nodo</button>
+                      <button class="btn btn-primary agregarNodoBtn" id="{{$r->flo_ru_clave}}" data-toggle="modal" data-target="#userModal_2" value="{{$r->flo_ru_clave}}" name="delete">Agregar nodo</button>
+                      <!--<button class="btn btn-primary borrarNodo" id="{{$r->flo_ru_clave}}" data-toggle="modal" data-target="#userModal_2" value="{{$r->flo_ru_clave}}" name="delete">Borrar nodo</button>-->
                     </td>
                   </tr>
                   @endforeach
@@ -131,6 +135,7 @@
     <div class="modal-footer">
      <!--<input type="hidden" name="ru_clave" id="ru_clave" />
      <input type="hidden" name="operation" id="operation" />-->
+     <input type="hidden" name="flo_ru_clave_nodo" id="flo_ru_clave_nodo" />
      <input type="submit" name="action_2" id="action_2" class="btn btn-success agregarNodo" value="Add" />
      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
     </div>
@@ -168,7 +173,7 @@
                 data: { 
                   fk_sucursal_1:fk_sucursal_1,
                   fk_sucursal_2:fk_sucursal_2,
-                  fk_flota:fk_flota;
+                  fk_flota:fk_flota,
                   flo_ru_duracion:flo_ru_duracion,
                   flo_ru_precio:flo_ru_precio
                 },
@@ -186,29 +191,44 @@
             }
           });
 
+          $(document).on('click', '.agregarNodoBtn', function(){
+            var flo_ru_clave = $(this).attr("id");
+            $('#flo_ru_clave_nodo').val(flo_ru_clave);
+          });
+
           $(document).on('click', '.agregarNodo', function(){
-            var fk_sucursal_1 = $('#fk_sucursal_1').val();
-            var fk_sucursal_2 = $('#fk_sucursal_2').val();
-            if(fk_sucursal_1 != fk_sucursal_2)
+            event.preventDefault();
+            var flo_ru_clave = $('#flo_ru_clave_nodo').val();
+            var fk_sucursal_2 = $('#fk_sucursal_2_2').val();
+            var fk_flota = $('#fk_flota_2').val();
+            var flo_ru_precio = $('#flo_ru_precio_2').val();
+            var flo_ru_duracion = $('#flo_ru_duracion_2').val();
+            console.log(flo_ru_clave);
+
+            if(fk_sucursal_2 != "" && flo_ru_precio != "")
             {
               $.ajax({
                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                url:"floru",
-                method:'POST',
-                data: new FormData(this),
-                contentType:false,
-                processData:false,
+                type: "POST",
+                url:"floru/agregarNodo",
+                data: {
+                  flo_ru_clave:flo_ru_clave,
+                  fk_sucursal_2:fk_sucursal_2,
+                  fk_flota:fk_flota,
+                  flo_ru_duracion:flo_ru_duracion,
+                  flo_ru_precio:flo_ru_precio
+                },
                 success:function(data)
                 {
                   alert(data.message);
-                  $('#user_form_2')[0].reset();
-                  $('#users-table').dataTable().ajax.reload(null, false);
+                  //$('#user_form')[0].reset();
+                  //$('#users-table').dataTable().ajax.reload(null, false);
                 }
               });
             }
             else
             {
-              alert("Origen y Destino no pueden ser igual");
+              alert("Falta campos por llenar");
             }
           });
 
@@ -232,13 +252,13 @@
             })
           });
           $(document).on('click','.delete',function(){
-            var ru_clave = $(this).attr("id");
-            if(confirm("¿Estás seguro de que quieres borrar esta información?")){
+            var flo_ru_clave = $(this).attr("id");
+            if(confirm("ALERTA: borraría TODA la ruta de la cual forma parte este nodo, desea continuar?")){
               $.ajax({
                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                url:"ruta/"+ru_clave,
+                url:"floru/"+flo_ru_clave,
                 type:"DELETE",
-                data:{ru_clave:ru_clave},
+                data:{flo_ru_clave:flo_ru_clave},
                 success:function(data){
                   alert(data.message);
                   $('#users-table').dataTable().ajax.reload(null, false);

@@ -28,7 +28,7 @@
             <table class="table table-bordered" id="users-table">
                 <thead>
                     <tr>
-                        <th>Clave</th>
+                        <th>Nro. de guia</th>
                         <th>Tipo</th>
                         <th>Precio</th>
                         <th>Peso</th>
@@ -40,7 +40,7 @@
                         <th>Fecha de entrega estimada</th>
                         <th>Cliente emisor</th>
                         <th>Destinatario</th>
-                        <th>FKFR1</th>
+                        <th>Ruta</th>
                         <th>Sucursal origen</th>
                         <th>Sucursal destino</th>
                         <th id="hidden2">Accion</th>
@@ -87,6 +87,22 @@
      <label>Descripción</label>
      <input type="text" name="en_descripcion" id="en_descripcion" class="form-control" />
      <br />
+     <div id="rutaCalculo">
+     <label>Sucursal origen</label>
+     <select name="fk_sucursal_origen" id="fk_sucursal_origen" class="form-control">
+        @foreach($sucursales as $sucursal)
+        <option value="{{$sucursal->su_clave}}">{{$sucursal->su_nombre}}</option>
+        @endforeach
+      </select>
+      <br />
+     <label>Sucursal destino</label>
+     <select name="fk_sucursal_destino" id="fk_sucursal_destino" class="form-control">
+        @foreach($sucursales as $sucursal)
+        <option value="{{$sucursal->su_clave}}">{{$sucursal->su_nombre}}</option>
+        @endforeach
+      </select>
+     <br />
+     </div>
      <div id="precioCalculo">
      <label>Tipo</label>
       <select name="fk_tipo" id="fk_tipo" class="form-control">
@@ -109,9 +125,6 @@
      <br />
      <label>Ruta (flota-ruta) </label>
       <select name="fk_flota_ruta_1" id="fk_flota_ruta_1" class="form-control">
-        @foreach($florus as $flor)
-        <option value="{{$flor->flo_ru_clave}}">{{$flor->flo_ru_clave}}</option>
-        @endforeach
       </select>
     <br />
      <label>Precio</label>
@@ -126,20 +139,6 @@
      <br />
      <label>Fecha de entrega estimada</label>
      <input type="date" name="en_fecha_entrega_estimada" id="en_fecha_entrega_estimada" class="form-control" />
-     <br />
-     <label>Sucursal origen</label>
-     <select name="fk_sucursal_origen" id="fk_sucursal_origen" class="form-control">
-        @foreach($sucursales as $sucursal)
-        <option value="{{$sucursal->su_clave}}">{{$sucursal->su_nombre}}</option>
-        @endforeach
-      </select>
-      <br />
-     <label>Sucursal destino</label>
-     <select name="fk_sucursal_destino" id="fk_sucursal_destino" class="form-control">
-        @foreach($sucursales as $sucursal)
-        <option value="{{$sucursal->su_clave}}">{{$sucursal->su_nombre}}</option>
-        @endforeach
-      </select>
      <br />
      <label>Cliente emisor</label>
      <select name="fk_cliente" id="fk_cliente" class="form-control">
@@ -270,6 +269,27 @@
               },
               success: function(data){
                 $('#en_precio').val(data);
+              }
+            });
+          });
+          $(document).on('change','#rutaCalculo',function(event){
+            var so = $('#fk_sucursal_origen').val();
+            var sd = $('#fk_sucursal_destino').val();
+            console.log(sd);
+            $.ajax({
+              headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+              type: "POST",
+              url: "envio/updateRuta",
+              data:{
+                sd:sd,
+                so:so
+              },//hay que seguir dandole aqui, no es como precio que llena un campo fijo sino como municipio que llena todo un select asi que ojo con eso, ya tienes la ruta, haz el metodo en el controlador y devuelve el succes correcto por aqui y ya
+              success: function(data){
+                var options = '';
+                    $.each(data, function(i, item) {
+                      options += '<option value="' + item.flo_ru_clave + '">' + "Ruta "+ item.flo_ruta + ": "+ item.so +" a " +item.sd  + '</option>';
+                    });
+                    $('#fk_flota_ruta_1').empty().html(options);
               }
             });
           });

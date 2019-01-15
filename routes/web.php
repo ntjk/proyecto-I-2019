@@ -108,13 +108,16 @@ Route::post('envio/updateSelect','EnvioController@updateSelect');
 Route::post('envio/updatePrecio','EnvioController@updatePrecio');
 Route::get('envio', 'EnvioController@index');
 Route::get('envio-getData','EnvioController@getData')->name('envio_getData');
+Route::post('envio/updateRuta','EnvioController@updateRuta');
 
 /* ruta */
 //Route::resource('floru','FloruController');
 Route::get('floru', function(){
   return view('floru');
 });
+Route::resource('floru','FloruController');
 Route::post('floru/agregarRuta','FloruController@guardarRuta');
+Route::post('floru/agregarNodo','FloruController@guardarNodo');
 Route::post('floru/getOne','FloruController@getOne');
 Route::post('floru/updateSelect','FloruController@updateSelect');
 Route::get('floru','FloruController@index');

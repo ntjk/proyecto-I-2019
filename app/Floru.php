@@ -23,6 +23,8 @@ class Floru extends Model
      */
     protected $table = 'flota_ruta';
     protected $primaryKey ='flo_ru_clave';
+    public $timestamps = false;
+
 
     /**
      * @var array
