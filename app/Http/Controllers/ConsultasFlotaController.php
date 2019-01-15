@@ -18,7 +18,6 @@ use App\Modelo;
 
 class ConsultasFlotaController extends Controller
 {
-
     public function flotaPorOfic(){
         $consulta= DB::select(DB::raw('select flo_clave, su_nombre, flo_año, mod_nombre,  flo_subtipo, flo_tipo, flo_placa, flo_serial_carroceria, flo_capacidad_carga from flota, sucursal, modelo where fk_modelo=mod_clave and fk_sucursal=su_clave group by su_nombre, flo_clave, flo_año, mod_nombre, flo_subtipo,  flo_tipo, flo_placa, flo_serial_carroceria, flo_capacidad_carga order by su_nombre'));
     return view('consulta16')->with(compact('consulta'));

@@ -110,7 +110,8 @@
 #51 C:\\xampp\\htdocs\\version6ene\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #52 {main}
 "} 
-[2019-01-08 00:03:50] local.ERROR: Undefined variable: zona (View: C:\xampp\htdocs\version6ene\resources\views\chequeo.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined variable: zona (View: C:\\xampp\\htdocs\\version6ene\esources\\views\\chequeo.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\b54774776df28be040964db047fe193152dac936.php:72, ErrorException(code: 0): Undefined variable: zona at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\b54774776df28be040964db047fe193152dac936.php:72)
+[2019-01-08 00:03:50] local.ERROR: Undefined variable: zona (View: C:\xampp\htdocs\version6ene\resources\views\chequeo.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined variable: zona (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\\chequeo.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\b54774776df28be040964db047fe193152dac936.php:72, ErrorException(code: 0): Undefined variable: zona at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\b54774776df28be040964db047fe193152dac936.php:72)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(45): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(ErrorException), 1)
 #1 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('C:\\\\xampp\\\\htdocs...', Array)
@@ -209,7 +210,8 @@
 #35 C:\\xampp\\htdocs\\version6ene\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #36 {main}
 "} 
-[2019-01-08 00:05:20] local.ERROR: Undefined variable: mesConMasEnvios (View: C:\xampp\htdocs\version6ene\resources\views\envio.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined variable: mesConMasEnvios (View: C:\\xampp\\htdocs\\version6ene\esources\\views\\envio.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\d978d7c69eb07f42234f4523d3176853ea663308.php:87, ErrorException(code: 0): Undefined variable: mesConMasEnvios at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\d978d7c69eb07f42234f4523d3176853ea663308.php:87)
+[2019-01-08 00:05:20] local.ERROR: Undefined variable: mesConMasEnvios (View: C:\xampp\htdocs\version6ene\resources\views\envio.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined variable: mesConMasEnvios (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\\envio.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\d978d7c69eb07f42234f4523d3176853ea663308.php:87, ErrorException(code: 0): Undefined variable: mesConMasEnvios at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\d978d7c69eb07f42234f4523d3176853ea663308.php:87)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(45): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(ErrorException), 1)
 #1 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('C:\\\\xampp\\\\htdocs...', Array)
@@ -268,7 +270,8 @@
 #54 C:\\xampp\\htdocs\\version6ene\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #55 {main}
 "} 
-[2019-01-08 00:05:39] local.ERROR: Undefined variable: mesConMasEnvios (View: C:\xampp\htdocs\version6ene\resources\views\envio.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined variable: mesConMasEnvios (View: C:\\xampp\\htdocs\\version6ene\esources\\views\\envio.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\d978d7c69eb07f42234f4523d3176853ea663308.php:87, ErrorException(code: 0): Undefined variable: mesConMasEnvios at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\d978d7c69eb07f42234f4523d3176853ea663308.php:87)
+[2019-01-08 00:05:39] local.ERROR: Undefined variable: mesConMasEnvios (View: C:\xampp\htdocs\version6ene\resources\views\envio.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined variable: mesConMasEnvios (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\\envio.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\d978d7c69eb07f42234f4523d3176853ea663308.php:87, ErrorException(code: 0): Undefined variable: mesConMasEnvios at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\d978d7c69eb07f42234f4523d3176853ea663308.php:87)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(45): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(ErrorException), 1)
 #1 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('C:\\\\xampp\\\\htdocs...', Array)
@@ -1087,7 +1090,8 @@
 #51 C:\\xampp\\htdocs\\version6ene\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #52 {main}
 "} 
-[2019-01-08 00:24:28] local.ERROR: Undefined variable: zonas (View: C:\xampp\htdocs\version6ene\resources\views\chequeo.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined variable: zonas (View: C:\\xampp\\htdocs\\version6ene\esources\\views\\chequeo.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\b54774776df28be040964db047fe193152dac936.php:72, ErrorException(code: 0): Undefined variable: zonas at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\b54774776df28be040964db047fe193152dac936.php:72)
+[2019-01-08 00:24:28] local.ERROR: Undefined variable: zonas (View: C:\xampp\htdocs\version6ene\resources\views\chequeo.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined variable: zonas (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\\chequeo.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\b54774776df28be040964db047fe193152dac936.php:72, ErrorException(code: 0): Undefined variable: zonas at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\b54774776df28be040964db047fe193152dac936.php:72)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(45): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(ErrorException), 1)
 #1 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('C:\\\\xampp\\\\htdocs...', Array)
@@ -1648,7 +1652,8 @@ LINE 1: ...ct \"su_nombre\", \"cli_nacionalidad\", \"cli_cedula\", \"cli_nombr..
 #35 C:\\xampp\\htdocs\\version6ene\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #36 {main}
 "} 
-[2019-01-08 06:10:30] local.ERROR: Undefined variable: paraDiferenciar (View: C:\xampp\htdocs\version6ene\resources\views\consulta6.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined variable: paraDiferenciar (View: C:\\xampp\\htdocs\\version6ene\esources\\views\\consulta6.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\635630ae255f9abdca5199951e92dc24b9387aa9.php:16, ErrorException(code: 0): Undefined variable: paraDiferenciar at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\635630ae255f9abdca5199951e92dc24b9387aa9.php:16)
+[2019-01-08 06:10:30] local.ERROR: Undefined variable: paraDiferenciar (View: C:\xampp\htdocs\version6ene\resources\views\consulta6.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined variable: paraDiferenciar (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\\consulta6.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\635630ae255f9abdca5199951e92dc24b9387aa9.php:16, ErrorException(code: 0): Undefined variable: paraDiferenciar at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\635630ae255f9abdca5199951e92dc24b9387aa9.php:16)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(45): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(ErrorException), 1)
 #1 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('C:\\\\xampp\\\\htdocs...', Array)
@@ -1707,7 +1712,8 @@ LINE 1: ...ct \"su_nombre\", \"cli_nacionalidad\", \"cli_cedula\", \"cli_nombr..
 #54 C:\\xampp\\htdocs\\version6ene\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #55 {main}
 "} 
-[2019-01-08 06:10:54] local.ERROR: Undefined variable: paraDiferenciar (View: C:\xampp\htdocs\version6ene\resources\views\consulta6.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined variable: paraDiferenciar (View: C:\\xampp\\htdocs\\version6ene\esources\\views\\consulta6.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\635630ae255f9abdca5199951e92dc24b9387aa9.php:16, ErrorException(code: 0): Undefined variable: paraDiferenciar at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\635630ae255f9abdca5199951e92dc24b9387aa9.php:16)
+[2019-01-08 06:10:54] local.ERROR: Undefined variable: paraDiferenciar (View: C:\xampp\htdocs\version6ene\resources\views\consulta6.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined variable: paraDiferenciar (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\\consulta6.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\635630ae255f9abdca5199951e92dc24b9387aa9.php:16, ErrorException(code: 0): Undefined variable: paraDiferenciar at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\635630ae255f9abdca5199951e92dc24b9387aa9.php:16)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(45): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(ErrorException), 1)
 #1 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('C:\\\\xampp\\\\htdocs...', Array)
@@ -1766,7 +1772,8 @@ LINE 1: ...ct \"su_nombre\", \"cli_nacionalidad\", \"cli_cedula\", \"cli_nombr..
 #54 C:\\xampp\\htdocs\\version6ene\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #55 {main}
 "} 
-[2019-01-08 06:10:59] local.ERROR: Undefined variable: paraDiferenciar (View: C:\xampp\htdocs\version6ene\resources\views\consulta6.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined variable: paraDiferenciar (View: C:\\xampp\\htdocs\\version6ene\esources\\views\\consulta6.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\635630ae255f9abdca5199951e92dc24b9387aa9.php:16, ErrorException(code: 0): Undefined variable: paraDiferenciar at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\635630ae255f9abdca5199951e92dc24b9387aa9.php:16)
+[2019-01-08 06:10:59] local.ERROR: Undefined variable: paraDiferenciar (View: C:\xampp\htdocs\version6ene\resources\views\consulta6.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined variable: paraDiferenciar (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\\consulta6.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\635630ae255f9abdca5199951e92dc24b9387aa9.php:16, ErrorException(code: 0): Undefined variable: paraDiferenciar at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\635630ae255f9abdca5199951e92dc24b9387aa9.php:16)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(45): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(ErrorException), 1)
 #1 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('C:\\\\xampp\\\\htdocs...', Array)
@@ -1825,7 +1832,8 @@ LINE 1: ...ct \"su_nombre\", \"cli_nacionalidad\", \"cli_cedula\", \"cli_nombr..
 #54 C:\\xampp\\htdocs\\version6ene\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #55 {main}
 "} 
-[2019-01-08 06:11:11] local.ERROR: Undefined variable: paraDiferenciar (View: C:\xampp\htdocs\version6ene\resources\views\consulta6.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined variable: paraDiferenciar (View: C:\\xampp\\htdocs\\version6ene\esources\\views\\consulta6.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\635630ae255f9abdca5199951e92dc24b9387aa9.php:16, ErrorException(code: 0): Undefined variable: paraDiferenciar at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\635630ae255f9abdca5199951e92dc24b9387aa9.php:16)
+[2019-01-08 06:11:11] local.ERROR: Undefined variable: paraDiferenciar (View: C:\xampp\htdocs\version6ene\resources\views\consulta6.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined variable: paraDiferenciar (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\\consulta6.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\635630ae255f9abdca5199951e92dc24b9387aa9.php:16, ErrorException(code: 0): Undefined variable: paraDiferenciar at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\635630ae255f9abdca5199951e92dc24b9387aa9.php:16)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(45): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(ErrorException), 1)
 #1 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('C:\\\\xampp\\\\htdocs...', Array)

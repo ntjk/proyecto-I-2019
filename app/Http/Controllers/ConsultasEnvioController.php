@@ -10,7 +10,6 @@ use App\Cliente;
 use App\Sucursal;
 use App\Floru;
 use App\Ruta;
-use App\Flota;
 use App\Destinatario;
 use App\Telefono;
 use App\Tipo;
@@ -18,6 +17,10 @@ use App\Chequeo;
 use App\Permiso;
 use App\Rolper;
 use App\Usuario;
+use App\Falla;
+use App\Flota;
+use App\Taller;
+use App\Revision;
 
 class ConsultasEnvioController extends Controller
 {
@@ -42,7 +45,7 @@ class ConsultasEnvioController extends Controller
         return $descripcionPermisos;
     }
 
-   public    function validarUsuario2(){
+   public function validarUsuario2(){
         if(isset($_COOKIE['usuario']) && isset($_COOKIE['password']))
         {
             $nombreUsuario=$_COOKIE['usuario'];
@@ -133,12 +136,11 @@ class ConsultasEnvioController extends Controller
     }
 
     public function origenDestinoMaxPaquetes(){
-        $origenMaxPaquetes=Envio::join('sucursal','sucursal.su_clave','=','envio.fk_sucursal_origen')->select(DB::raw('count(*) as mo, su_nombre as so'))->groupBy('so')->orderBy('mo','desc')->first();
-        $destinoMaxPaquetes=Envio::join('sucursal','sucursal.su_clave','=','envio.fk_sucursal_destino')->select(DB::raw('count(*) as md, su_nombre as sd'))->groupBy('sd')->orderBy('md','desc')->first();
+       $origenMaxPaquetes=Envio::join('sucursal','sucursal.su_clave','=','envio.fk_sucursal_origen')->select(DB::raw('count(*) as mo, su_nombre as so'))->groupBy('so')->orderBy('mo','desc')->first();
+       $destinoMaxPaquetes=Envio::join('sucursal','sucursal.su_clave','=','envio.fk_sucursal_destino')->select(DB::raw('count(*) as md, su_nombre as sd'))->groupBy('sd')->orderBy('md','desc')->first();
        return view('consulta4')->with(compact('origenMaxPaquetes'))->with(compact('destinoMaxPaquetes'));
        /*select count(*) as mo, su_nombre as so from sucursal, envio where fk_sucursal_origen=su_clave group by so order by mo desc limit 1 select count(*) as mo, su_nombre as so from sucursal, envio where fk_sucursal_destino=su_clave group by so order by mo desc limit 1 */
     }
-
 
     public function consulta6($fecha)
     {
@@ -190,11 +192,74 @@ class ConsultasEnvioController extends Controller
         //return $consulta->count();
     }
 
+
+    /////////////////////////// AQUI ///////////////////////////////
+    public function sucursalesPuertosAeropuertos(){
+        
+        $spa=DB::select(DB::raw('
+            select distinct(su.su_nombre) as nombre
+            from sucursal su, puerto pu, aeropuerto ae
+            where su.su_clave = pu.fk_sucursal or su.su_clave = ae.fk_sucursal
+        '));
+        return view('consulta41')->with(compact('spa'));
+    }
+
+    public function historicoFalla($id){
+
+        // $historicos=DB::select(DB::raw('
+        //     select fa.fa_descripcion as falla, ta.ta_nombre as taller, flo.flo_tipo flota ,re.rev_fecha_real_salida - re.rev_fecha_entrada as duracion 
+        //     from falla fa, revision re, taller ta, flota flo
+        //     where fa.fk_revision_1 = re.rev_clave and fa.fk_revision_2 = flo.flo_clave and fa.fk_revision_3 = ta.ta_clave
+        // '));
+        // return view('historico')->with(compact('historicos'));
+
+        $revisiones= Revision::orderBy('rev_clave')->get();
+        $flotas= Flota::orderby('flo_clave')->get();
+        $talleres= Taller::orderby('ta_nombre')->get();
+        $fallas = Falla::join('revision','revision.rev_clave','=','falla.fk_revision_1')
+        ->join('flota','flota.flo_clave','=','falla.fk_revision_2')
+        ->join('taller','taller.ta_clave','=','falla.fk_revision_3')
+        ->select(DB::raw('falla.fa_descripcion as falla, taller.ta_nombre as taller, flota.flo_tipo flota ,
+        revision.rev_fecha_real_salida - revision.rev_fecha_entrada as duracion'))
+        ->where('flota.flo_clave', '=', $id)
+        //->orderBy('duracion')
+        ->get();
+        return view('historico')->with(compact('id'))->with(compact('revisiones'))->with(compact('flotas'))->with(compact('talleres'))->with(compact('fallas'));
+    }
+    
+    public function consulta42(){
+        $talleres= DB::select(DB::raw('
+        select lu.lu_nombre as zona, ta.ta_nombre as nombre
+        from taller ta, lugar lu
+        where ta.fk_lugar = lu.lu_clave
+        group by lu.lu_nombre, ta.ta_nombre'));
+        return view('consulta42')->with(compact('talleres'));
+    }
+
+    public function consulta43(){
+        $consultas= DB::select(DB::raw('
+        select rev.fk_flota as flota, rev.rev_fecha_real_salida::date as revf, rev.rev_fecha_proxima_revision::date as revp
+        from revision rev, (select fk_flota, max(rev_fecha_real_salida)::date as ultima_revision from revision group by fk_flota) as aux
+        where rev.fk_flota = aux.fk_flota and rev_fecha_real_salida= aux.ultima_revision
+        order by rev.fk_flota desc
+        '));
+        return view('consulta43')->with(compact('consultas'));
+    }
+
+    public function consulta44(){
+        $consultas= DB::select(DB::raw('
+        select su.su_nombre as nombre, extract(month from rc.re_fecha) as mes ,rc.re_egreso as egreso, rc.re_ingreso as ingreso
+        from registro_contable rc, sucursal su
+        where rc.fk_servicio_sucursal_1 = su.su_clave
+        order by su.su_nombre,  rc.re_fecha
+        '));
+        return view('consulta44')->with(compact('consultas'));
+    }
+
+    
     public function index() {  }
 
-
     public function create() { }
-
 
     public function store(Request $request) { }
 

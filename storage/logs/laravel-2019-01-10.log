@@ -1,4 +1,5 @@
-[2019-01-10 00:00:04] local.ERROR: Undefined variable: empleados (View: C:\xampp\htdocs\version6ene\resources\views\asistencia.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined variable: empleados (View: C:\\xampp\\htdocs\\version6ene\esources\\views\\asistencia.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\f2f124b30db5a4661e317001ff33c3e1b3479596.php:59, ErrorException(code: 0): Undefined variable: empleados at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\f2f124b30db5a4661e317001ff33c3e1b3479596.php:59)
+[2019-01-10 00:00:04] local.ERROR: Undefined variable: empleados (View: C:\xampp\htdocs\version6ene\resources\views\asistencia.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined variable: empleados (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\\asistencia.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\f2f124b30db5a4661e317001ff33c3e1b3479596.php:59, ErrorException(code: 0): Undefined variable: empleados at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\f2f124b30db5a4661e317001ff33c3e1b3479596.php:59)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(45): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(ErrorException), 1)
 #1 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('C:\\\\xampp\\\\htdocs...', Array)
@@ -57,7 +58,8 @@
 #54 C:\\xampp\\htdocs\\version6ene\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #55 {main}
 "} 
-[2019-01-10 00:02:34] local.ERROR: Undefined variable: empleados (View: C:\xampp\htdocs\version6ene\resources\views\asistencia.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined variable: empleados (View: C:\\xampp\\htdocs\\version6ene\esources\\views\\asistencia.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\f2f124b30db5a4661e317001ff33c3e1b3479596.php:59, ErrorException(code: 0): Undefined variable: empleados at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\f2f124b30db5a4661e317001ff33c3e1b3479596.php:59)
+[2019-01-10 00:02:34] local.ERROR: Undefined variable: empleados (View: C:\xampp\htdocs\version6ene\resources\views\asistencia.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined variable: empleados (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\\asistencia.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\f2f124b30db5a4661e317001ff33c3e1b3479596.php:59, ErrorException(code: 0): Undefined variable: empleados at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\f2f124b30db5a4661e317001ff33c3e1b3479596.php:59)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(45): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(ErrorException), 1)
 #1 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('C:\\\\xampp\\\\htdocs...', Array)
@@ -2121,7 +2123,9 @@ DETAIL:  La fila que falla contiene (14741, 2019-01-09, null, null, null, null, 
 #53 C:\\xampp\\htdocs\\version6ene\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #54 {main}
 "} 
-[2019-01-10 19:14:47] local.ERROR: Trying to get property 'rol_nombre' of non-object (View: C:\xampp\htdocs\version6ene\resources\views\rolper.blade.php) {"exception":"[object] (ErrorException(code: 0): Trying to get property 'rol_nombre' of non-object (View: C:\\xampp\\htdocs\\version6ene\esources\\views\olper.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:26, ErrorException(code: 0): Trying to get property 'rol_nombre' of non-object at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:26)
+[2019-01-10 19:14:47] local.ERROR: Trying to get property 'rol_nombre' of non-object (View: C:\xampp\htdocs\version6ene\resources\views\rolper.blade.php) {"exception":"[object] (ErrorException(code: 0): Trying to get property 'rol_nombre' of non-object (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\
+olper.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:26, ErrorException(code: 0): Trying to get property 'rol_nombre' of non-object at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:26)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(45): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(ErrorException), 1)
 #1 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('C:\\\\xampp\\\\htdocs...', Array)
@@ -2180,7 +2184,9 @@ DETAIL:  La fila que falla contiene (14741, 2019-01-09, null, null, null, null, 
 #54 C:\\xampp\\htdocs\\version6ene\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #55 {main}
 "} 
-[2019-01-10 19:15:52] local.ERROR: Property [rol_nombre] does not exist on this collection instance. (View: C:\xampp\htdocs\version6ene\resources\views\rolper.blade.php) {"exception":"[object] (ErrorException(code: 0): Property [rol_nombre] does not exist on this collection instance. (View: C:\\xampp\\htdocs\\version6ene\esources\\views\olper.blade.php) at C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Collection.php:1984, Exception(code: 0): Property [rol_nombre] does not exist on this collection instance. at C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Collection.php:1984)
+[2019-01-10 19:15:52] local.ERROR: Property [rol_nombre] does not exist on this collection instance. (View: C:\xampp\htdocs\version6ene\resources\views\rolper.blade.php) {"exception":"[object] (ErrorException(code: 0): Property [rol_nombre] does not exist on this collection instance. (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\
+olper.blade.php) at C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Collection.php:1984, Exception(code: 0): Property [rol_nombre] does not exist on this collection instance. at C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Collection.php:1984)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(45): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(Exception), 1)
 #1 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('C:\\\\xampp\\\\htdocs...', Array)
@@ -2463,7 +2469,9 @@ DETAIL:  La fila que falla contiene (14741, 2019-01-09, null, null, null, null, 
 #51 C:\\xampp\\htdocs\\version6ene\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #52 {main}
 "} 
-[2019-01-10 19:56:05] local.ERROR: syntax error, unexpected '<' (View: C:\xampp\htdocs\version6ene\resources\views\rolper.blade.php) {"exception":"[object] (ErrorException(code: 0): syntax error, unexpected '<' (View: C:\\xampp\\htdocs\\version6ene\esources\\views\olper.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:41, Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): syntax error, unexpected '<' at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:41)
+[2019-01-10 19:56:05] local.ERROR: syntax error, unexpected '<' (View: C:\xampp\htdocs\version6ene\resources\views\rolper.blade.php) {"exception":"[object] (ErrorException(code: 0): syntax error, unexpected '<' (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\
+olper.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:41, Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): syntax error, unexpected '<' at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:41)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(47): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(Symfony\\Component\\Debug\\Exception\\FatalThrowableError), 1)
 #1 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('C:\\\\xampp\\\\htdocs...', Array)
@@ -2522,7 +2530,9 @@ DETAIL:  La fila que falla contiene (14741, 2019-01-09, null, null, null, null, 
 #54 C:\\xampp\\htdocs\\version6ene\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #55 {main}
 "} 
-[2019-01-10 19:56:32] local.ERROR: in_array() expects parameter 2 to be array, object given (View: C:\xampp\htdocs\version6ene\resources\views\rolper.blade.php) {"exception":"[object] (ErrorException(code: 0): in_array() expects parameter 2 to be array, object given (View: C:\\xampp\\htdocs\\version6ene\esources\\views\olper.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:41, ErrorException(code: 0): in_array() expects parameter 2 to be array, object given at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:41)
+[2019-01-10 19:56:32] local.ERROR: in_array() expects parameter 2 to be array, object given (View: C:\xampp\htdocs\version6ene\resources\views\rolper.blade.php) {"exception":"[object] (ErrorException(code: 0): in_array() expects parameter 2 to be array, object given (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\
+olper.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:41, ErrorException(code: 0): in_array() expects parameter 2 to be array, object given at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:41)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(45): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(ErrorException), 1)
 #1 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('C:\\\\xampp\\\\htdocs...', Array)
@@ -2581,7 +2591,9 @@ DETAIL:  La fila que falla contiene (14741, 2019-01-09, null, null, null, null, 
 #54 C:\\xampp\\htdocs\\version6ene\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #55 {main}
 "} 
-[2019-01-10 20:07:36] local.ERROR: syntax error, unexpected ':', expecting '(' (View: C:\xampp\htdocs\version6ene\resources\views\rolper.blade.php) {"exception":"[object] (ErrorException(code: 0): syntax error, unexpected ':', expecting '(' (View: C:\\xampp\\htdocs\\version6ene\esources\\views\olper.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:41, Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): syntax error, unexpected ':', expecting '(' at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:41)
+[2019-01-10 20:07:36] local.ERROR: syntax error, unexpected ':', expecting '(' (View: C:\xampp\htdocs\version6ene\resources\views\rolper.blade.php) {"exception":"[object] (ErrorException(code: 0): syntax error, unexpected ':', expecting '(' (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\
+olper.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:41, Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): syntax error, unexpected ':', expecting '(' at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:41)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(47): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(Symfony\\Component\\Debug\\Exception\\FatalThrowableError), 1)
 #1 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('C:\\\\xampp\\\\htdocs...', Array)
@@ -2640,7 +2652,9 @@ DETAIL:  La fila que falla contiene (14741, 2019-01-09, null, null, null, null, 
 #54 C:\\xampp\\htdocs\\version6ene\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #55 {main}
 "} 
-[2019-01-10 20:09:29] local.ERROR: syntax error, unexpected ':', expecting '(' (View: C:\xampp\htdocs\version6ene\resources\views\rolper.blade.php) {"exception":"[object] (ErrorException(code: 0): syntax error, unexpected ':', expecting '(' (View: C:\\xampp\\htdocs\\version6ene\esources\\views\olper.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:41, Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): syntax error, unexpected ':', expecting '(' at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:41)
+[2019-01-10 20:09:29] local.ERROR: syntax error, unexpected ':', expecting '(' (View: C:\xampp\htdocs\version6ene\resources\views\rolper.blade.php) {"exception":"[object] (ErrorException(code: 0): syntax error, unexpected ':', expecting '(' (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\
+olper.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:41, Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): syntax error, unexpected ':', expecting '(' at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:41)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(47): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(Symfony\\Component\\Debug\\Exception\\FatalThrowableError), 1)
 #1 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('C:\\\\xampp\\\\htdocs...', Array)
@@ -2699,7 +2713,9 @@ DETAIL:  La fila que falla contiene (14741, 2019-01-09, null, null, null, null, 
 #54 C:\\xampp\\htdocs\\version6ene\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #55 {main}
 "} 
-[2019-01-10 20:10:36] local.ERROR: syntax error, unexpected ':', expecting '(' (View: C:\xampp\htdocs\version6ene\resources\views\rolper.blade.php) {"exception":"[object] (ErrorException(code: 0): syntax error, unexpected ':', expecting '(' (View: C:\\xampp\\htdocs\\version6ene\esources\\views\olper.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:41, Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): syntax error, unexpected ':', expecting '(' at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:41)
+[2019-01-10 20:10:36] local.ERROR: syntax error, unexpected ':', expecting '(' (View: C:\xampp\htdocs\version6ene\resources\views\rolper.blade.php) {"exception":"[object] (ErrorException(code: 0): syntax error, unexpected ':', expecting '(' (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\
+olper.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:41, Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): syntax error, unexpected ':', expecting '(' at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:41)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(47): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(Symfony\\Component\\Debug\\Exception\\FatalThrowableError), 1)
 #1 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('C:\\\\xampp\\\\htdocs...', Array)
@@ -2758,7 +2774,9 @@ DETAIL:  La fila que falla contiene (14741, 2019-01-09, null, null, null, null, 
 #54 C:\\xampp\\htdocs\\version6ene\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #55 {main}
 "} 
-[2019-01-10 20:10:55] local.ERROR: syntax error, unexpected ':', expecting '(' (View: C:\xampp\htdocs\version6ene\resources\views\rolper.blade.php) {"exception":"[object] (ErrorException(code: 0): syntax error, unexpected ':', expecting '(' (View: C:\\xampp\\htdocs\\version6ene\esources\\views\olper.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:41, Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): syntax error, unexpected ':', expecting '(' at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:41)
+[2019-01-10 20:10:55] local.ERROR: syntax error, unexpected ':', expecting '(' (View: C:\xampp\htdocs\version6ene\resources\views\rolper.blade.php) {"exception":"[object] (ErrorException(code: 0): syntax error, unexpected ':', expecting '(' (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\
+olper.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:41, Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): syntax error, unexpected ':', expecting '(' at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:41)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(47): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(Symfony\\Component\\Debug\\Exception\\FatalThrowableError), 1)
 #1 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('C:\\\\xampp\\\\htdocs...', Array)
@@ -2817,7 +2835,9 @@ DETAIL:  La fila que falla contiene (14741, 2019-01-09, null, null, null, null, 
 #54 C:\\xampp\\htdocs\\version6ene\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #55 {main}
 "} 
-[2019-01-10 20:11:31] local.ERROR: syntax error, unexpected 'endforeach' (T_ENDFOREACH), expecting elseif (T_ELSEIF) or else (T_ELSE) or endif (T_ENDIF) (View: C:\xampp\htdocs\version6ene\resources\views\rolper.blade.php) {"exception":"[object] (ErrorException(code: 0): syntax error, unexpected 'endforeach' (T_ENDFOREACH), expecting elseif (T_ELSEIF) or else (T_ELSE) or endif (T_ENDIF) (View: C:\\xampp\\htdocs\\version6ene\esources\\views\olper.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:46, Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): syntax error, unexpected 'endforeach' (T_ENDFOREACH), expecting elseif (T_ELSEIF) or else (T_ELSE) or endif (T_ENDIF) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:46)
+[2019-01-10 20:11:31] local.ERROR: syntax error, unexpected 'endforeach' (T_ENDFOREACH), expecting elseif (T_ELSEIF) or else (T_ELSE) or endif (T_ENDIF) (View: C:\xampp\htdocs\version6ene\resources\views\rolper.blade.php) {"exception":"[object] (ErrorException(code: 0): syntax error, unexpected 'endforeach' (T_ENDFOREACH), expecting elseif (T_ELSEIF) or else (T_ELSE) or endif (T_ENDIF) (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\
+olper.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:46, Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): syntax error, unexpected 'endforeach' (T_ENDFOREACH), expecting elseif (T_ELSEIF) or else (T_ELSE) or endif (T_ENDIF) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:46)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(47): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(Symfony\\Component\\Debug\\Exception\\FatalThrowableError), 1)
 #1 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('C:\\\\xampp\\\\htdocs...', Array)
@@ -2876,7 +2896,9 @@ DETAIL:  La fila que falla contiene (14741, 2019-01-09, null, null, null, null, 
 #54 C:\\xampp\\htdocs\\version6ene\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #55 {main}
 "} 
-[2019-01-10 20:12:53] local.ERROR: Trying to get property 'per_tipo' of non-object (View: C:\xampp\htdocs\version6ene\resources\views\rolper.blade.php) {"exception":"[object] (ErrorException(code: 0): Trying to get property 'per_tipo' of non-object (View: C:\\xampp\\htdocs\\version6ene\esources\\views\olper.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:39, ErrorException(code: 0): Trying to get property 'per_tipo' of non-object at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:39)
+[2019-01-10 20:12:53] local.ERROR: Trying to get property 'per_tipo' of non-object (View: C:\xampp\htdocs\version6ene\resources\views\rolper.blade.php) {"exception":"[object] (ErrorException(code: 0): Trying to get property 'per_tipo' of non-object (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\
+olper.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:39, ErrorException(code: 0): Trying to get property 'per_tipo' of non-object at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:39)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(45): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(ErrorException), 1)
 #1 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('C:\\\\xampp\\\\htdocs...', Array)
@@ -3215,7 +3237,9 @@ DETAIL:  La fila que falla contiene (14741, 2019-01-09, null, null, null, null, 
 #51 C:\\xampp\\htdocs\\version6ene\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #52 {main}
 "} 
-[2019-01-10 20:42:26] local.ERROR: Undefined variable: p (View: C:\xampp\htdocs\version6ene\resources\views\rolper.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined variable: p (View: C:\\xampp\\htdocs\\version6ene\esources\\views\olper.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:41, ErrorException(code: 0): Undefined variable: p at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:41)
+[2019-01-10 20:42:26] local.ERROR: Undefined variable: p (View: C:\xampp\htdocs\version6ene\resources\views\rolper.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined variable: p (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\
+olper.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:41, ErrorException(code: 0): Undefined variable: p at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:41)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(45): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(ErrorException), 1)
 #1 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('C:\\\\xampp\\\\htdocs...', Array)
@@ -3330,7 +3354,9 @@ DETAIL:  La fila que falla contiene (14741, 2019-01-09, null, null, null, null, 
 #51 C:\\xampp\\htdocs\\version6ene\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #52 {main}
 "} 
-[2019-01-10 20:47:21] local.ERROR: syntax error, unexpected 'endforeach' (T_ENDFOREACH), expecting end of file (View: C:\xampp\htdocs\version6ene\resources\views\rolper.blade.php) {"exception":"[object] (ErrorException(code: 0): syntax error, unexpected 'endforeach' (T_ENDFOREACH), expecting end of file (View: C:\\xampp\\htdocs\\version6ene\esources\\views\olper.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:50, Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): syntax error, unexpected 'endforeach' (T_ENDFOREACH), expecting end of file at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:50)
+[2019-01-10 20:47:21] local.ERROR: syntax error, unexpected 'endforeach' (T_ENDFOREACH), expecting end of file (View: C:\xampp\htdocs\version6ene\resources\views\rolper.blade.php) {"exception":"[object] (ErrorException(code: 0): syntax error, unexpected 'endforeach' (T_ENDFOREACH), expecting end of file (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\
+olper.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:50, Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): syntax error, unexpected 'endforeach' (T_ENDFOREACH), expecting end of file at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:50)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(47): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(Symfony\\Component\\Debug\\Exception\\FatalThrowableError), 1)
 #1 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('C:\\\\xampp\\\\htdocs...', Array)
@@ -3389,7 +3415,9 @@ DETAIL:  La fila que falla contiene (14741, 2019-01-09, null, null, null, null, 
 #54 C:\\xampp\\htdocs\\version6ene\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #55 {main}
 "} 
-[2019-01-10 20:48:49] local.ERROR: syntax error, unexpected 'endforeach' (T_ENDFOREACH), expecting end of file (View: C:\xampp\htdocs\version6ene\resources\views\rolper.blade.php) {"exception":"[object] (ErrorException(code: 0): syntax error, unexpected 'endforeach' (T_ENDFOREACH), expecting end of file (View: C:\\xampp\\htdocs\\version6ene\esources\\views\olper.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:50, Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): syntax error, unexpected 'endforeach' (T_ENDFOREACH), expecting end of file at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:50)
+[2019-01-10 20:48:49] local.ERROR: syntax error, unexpected 'endforeach' (T_ENDFOREACH), expecting end of file (View: C:\xampp\htdocs\version6ene\resources\views\rolper.blade.php) {"exception":"[object] (ErrorException(code: 0): syntax error, unexpected 'endforeach' (T_ENDFOREACH), expecting end of file (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\
+olper.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:50, Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): syntax error, unexpected 'endforeach' (T_ENDFOREACH), expecting end of file at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:50)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(47): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(Symfony\\Component\\Debug\\Exception\\FatalThrowableError), 1)
 #1 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('C:\\\\xampp\\\\htdocs...', Array)
@@ -3448,7 +3476,9 @@ DETAIL:  La fila que falla contiene (14741, 2019-01-09, null, null, null, null, 
 #54 C:\\xampp\\htdocs\\version6ene\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #55 {main}
 "} 
-[2019-01-10 20:50:02] local.ERROR: syntax error, unexpected 'endforeach' (T_ENDFOREACH), expecting end of file (View: C:\xampp\htdocs\version6ene\resources\views\rolper.blade.php) {"exception":"[object] (ErrorException(code: 0): syntax error, unexpected 'endforeach' (T_ENDFOREACH), expecting end of file (View: C:\\xampp\\htdocs\\version6ene\esources\\views\olper.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:53, Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): syntax error, unexpected 'endforeach' (T_ENDFOREACH), expecting end of file at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:53)
+[2019-01-10 20:50:02] local.ERROR: syntax error, unexpected 'endforeach' (T_ENDFOREACH), expecting end of file (View: C:\xampp\htdocs\version6ene\resources\views\rolper.blade.php) {"exception":"[object] (ErrorException(code: 0): syntax error, unexpected 'endforeach' (T_ENDFOREACH), expecting end of file (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\
+olper.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:53, Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): syntax error, unexpected 'endforeach' (T_ENDFOREACH), expecting end of file at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:53)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(47): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(Symfony\\Component\\Debug\\Exception\\FatalThrowableError), 1)
 #1 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('C:\\\\xampp\\\\htdocs...', Array)
@@ -3507,7 +3537,9 @@ DETAIL:  La fila que falla contiene (14741, 2019-01-09, null, null, null, null, 
 #54 C:\\xampp\\htdocs\\version6ene\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #55 {main}
 "} 
-[2019-01-10 20:50:14] local.ERROR: syntax error, unexpected 'endforeach' (T_ENDFOREACH), expecting end of file (View: C:\xampp\htdocs\version6ene\resources\views\rolper.blade.php) {"exception":"[object] (ErrorException(code: 0): syntax error, unexpected 'endforeach' (T_ENDFOREACH), expecting end of file (View: C:\\xampp\\htdocs\\version6ene\esources\\views\olper.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:51, Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): syntax error, unexpected 'endforeach' (T_ENDFOREACH), expecting end of file at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:51)
+[2019-01-10 20:50:14] local.ERROR: syntax error, unexpected 'endforeach' (T_ENDFOREACH), expecting end of file (View: C:\xampp\htdocs\version6ene\resources\views\rolper.blade.php) {"exception":"[object] (ErrorException(code: 0): syntax error, unexpected 'endforeach' (T_ENDFOREACH), expecting end of file (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\
+olper.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:51, Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): syntax error, unexpected 'endforeach' (T_ENDFOREACH), expecting end of file at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:51)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(47): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(Symfony\\Component\\Debug\\Exception\\FatalThrowableError), 1)
 #1 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('C:\\\\xampp\\\\htdocs...', Array)
@@ -3566,7 +3598,9 @@ DETAIL:  La fila que falla contiene (14741, 2019-01-09, null, null, null, null, 
 #54 C:\\xampp\\htdocs\\version6ene\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #55 {main}
 "} 
-[2019-01-10 20:53:40] local.ERROR: Undefined variable: envio (View: C:\xampp\htdocs\version6ene\resources\views\rolper.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined variable: envio (View: C:\\xampp\\htdocs\\version6ene\esources\\views\olper.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:41, ErrorException(code: 0): Undefined variable: envio at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:41)
+[2019-01-10 20:53:40] local.ERROR: Undefined variable: envio (View: C:\xampp\htdocs\version6ene\resources\views\rolper.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined variable: envio (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\
+olper.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:41, ErrorException(code: 0): Undefined variable: envio at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:41)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(45): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(ErrorException), 1)
 #1 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('C:\\\\xampp\\\\htdocs...', Array)
@@ -3625,7 +3659,9 @@ DETAIL:  La fila que falla contiene (14741, 2019-01-09, null, null, null, null, 
 #54 C:\\xampp\\htdocs\\version6ene\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #55 {main}
 "} 
-[2019-01-10 21:06:41] local.ERROR: Undefined variable: rol (View: C:\xampp\htdocs\version6ene\resources\views\rolper.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined variable: rol (View: C:\\xampp\\htdocs\\version6ene\esources\\views\olper.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:26, ErrorException(code: 0): Undefined variable: rol at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:26)
+[2019-01-10 21:06:41] local.ERROR: Undefined variable: rol (View: C:\xampp\htdocs\version6ene\resources\views\rolper.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined variable: rol (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\
+olper.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:26, ErrorException(code: 0): Undefined variable: rol at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\8b36061056f8921a1b9f0aa80a3b43c9bd861e91.php:26)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(45): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(ErrorException), 1)
 #1 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('C:\\\\xampp\\\\htdocs...', Array)
@@ -4476,7 +4512,9 @@ LINE 1: ...iso\" (\"fk_permiso\", \"fk_rol\") values ($1, $2) returning \"id\"
 #50 C:\\xampp\\htdocs\\version6ene\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #51 {main}
 "} 
-[2019-01-10 22:36:28] local.ERROR: syntax error, unexpected ')', expecting '[' (View: C:\xampp\htdocs\version6ene\resources\views\rol.blade.php) {"exception":"[object] (ErrorException(code: 0): syntax error, unexpected ')', expecting '[' (View: C:\\xampp\\htdocs\\version6ene\esources\\views\ol.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\e04c9280d6a3367a49b4e37ba27ae76bdd453fce.php:38, Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): syntax error, unexpected ')', expecting '[' at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\e04c9280d6a3367a49b4e37ba27ae76bdd453fce.php:38)
+[2019-01-10 22:36:28] local.ERROR: syntax error, unexpected ')', expecting '[' (View: C:\xampp\htdocs\version6ene\resources\views\rol.blade.php) {"exception":"[object] (ErrorException(code: 0): syntax error, unexpected ')', expecting '[' (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\
+ol.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\e04c9280d6a3367a49b4e37ba27ae76bdd453fce.php:38, Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): syntax error, unexpected ')', expecting '[' at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\e04c9280d6a3367a49b4e37ba27ae76bdd453fce.php:38)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(47): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(Symfony\\Component\\Debug\\Exception\\FatalThrowableError), 1)
 #1 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('C:\\\\xampp\\\\htdocs...', Array)
@@ -4535,7 +4573,9 @@ LINE 1: ...iso\" (\"fk_permiso\", \"fk_rol\") values ($1, $2) returning \"id\"
 #54 C:\\xampp\\htdocs\\version6ene\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #55 {main}
 "} 
-[2019-01-10 22:36:40] local.ERROR: syntax error, unexpected ')', expecting '[' (View: C:\xampp\htdocs\version6ene\resources\views\rol.blade.php) {"exception":"[object] (ErrorException(code: 0): syntax error, unexpected ')', expecting '[' (View: C:\\xampp\\htdocs\\version6ene\esources\\views\ol.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\e04c9280d6a3367a49b4e37ba27ae76bdd453fce.php:38, Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): syntax error, unexpected ')', expecting '[' at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\e04c9280d6a3367a49b4e37ba27ae76bdd453fce.php:38)
+[2019-01-10 22:36:40] local.ERROR: syntax error, unexpected ')', expecting '[' (View: C:\xampp\htdocs\version6ene\resources\views\rol.blade.php) {"exception":"[object] (ErrorException(code: 0): syntax error, unexpected ')', expecting '[' (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\
+ol.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\e04c9280d6a3367a49b4e37ba27ae76bdd453fce.php:38, Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): syntax error, unexpected ')', expecting '[' at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\e04c9280d6a3367a49b4e37ba27ae76bdd453fce.php:38)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(47): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(Symfony\\Component\\Debug\\Exception\\FatalThrowableError), 1)
 #1 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('C:\\\\xampp\\\\htdocs...', Array)

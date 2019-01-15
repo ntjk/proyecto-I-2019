@@ -157,12 +157,12 @@
               dataType:"json",
               success:function(data){
                 $('#userModal').modal('show');
+                $('#u_id').val(u_id);
                 $('#u_nombre').val(data.u_nombre);
                 $('#u_contraseña').val(data.u_contraseña);
-                $('.modal-title').text("Edit Usuario");
-                $('#u_id').val(u_id);
                 $('#fk_rol').val(data.fk_rol);
                 $('#fk_empleado').val(data.fk_empleado);
+                $('.modal-title').text("Edit Usuario");
                 $('#action').val("Edit");
                 $('#operation').val("Edit");
               }

@@ -18,21 +18,12 @@ use App\Asistencia;
 class SucursalController extends Controller
 {
 
-	/**
-     * Displays front end view
-     *
-     * @return \Illuminate\View\View
-     */
-    public function index()
+  public function index()
     {
       $estados= Lugar::where('lu_tipo','estado')->orderBy('lu_nombre')->get();
     	return view("sucursal",compact('estados'));
     }
-    /**
-     * Process ajax request.
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
+
     public function getData()
     {
       $sucursales = Sucursal::join('lugar','lugar.lu_clave','=','sucursal.fk_lugar')->select(['sucursal.su_nombre','sucursal.su_clave','sucursal.su_email','sucursal.su_capacidad','lugar.lu_nombre']);
@@ -84,7 +75,7 @@ class SucursalController extends Controller
         $monday = Carbon::create($year,$month,$day)->startOfWeek();
         $sunday = Carbon::create($year,$month,$day)->endOfWeek();
       }
-      
+
       $total=0;
 
       foreach ($empleados as $em) {

@@ -85,9 +85,5 @@ class ChequeoController extends Controller
      return $zonas= Zona::where('zona.fk_sucursal', $request->sucursal)->orderBy('zo_nombre')->distinct()->get();
 
     }
-
-
-	
-
  }
     

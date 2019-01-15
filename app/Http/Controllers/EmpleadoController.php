@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
-
-
 use App\Empleado;
 use App\Lugar;
 
@@ -43,6 +41,7 @@ class EmpleadoController extends Controller
        'em_fecha_nacimiento' => 'date',
        'em_nacionalidad' => 'required',
    ]);
+   
    if ($request->operation == "Edit"){
      $empleado = Empleado::find($request->em_clave);
      $empleado->fill($request->all());

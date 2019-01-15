@@ -381,7 +381,8 @@
 #51 C:\\xampp\\htdocs\\version6ene\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #52 {main}
 "} 
-[2019-01-11 02:39:22] local.ERROR: Undefined variable: usuarios (View: C:\xampp\htdocs\version6ene\resources\views\usuario.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined variable: usuarios (View: C:\\xampp\\htdocs\\version6ene\esources\\views\\usuario.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\e518909c7d6d9fcf7ec22926704404df16cb9514.php:40, ErrorException(code: 0): Undefined variable: usuarios at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\e518909c7d6d9fcf7ec22926704404df16cb9514.php:40)
+[2019-01-11 02:39:22] local.ERROR: Undefined variable: usuarios (View: C:\xampp\htdocs\version6ene\resources\views\usuario.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined variable: usuarios (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\\usuario.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\e518909c7d6d9fcf7ec22926704404df16cb9514.php:40, ErrorException(code: 0): Undefined variable: usuarios at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\e518909c7d6d9fcf7ec22926704404df16cb9514.php:40)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(45): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(ErrorException), 1)
 #1 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('C:\\\\xampp\\\\htdocs...', Array)
@@ -440,7 +441,8 @@
 #54 C:\\xampp\\htdocs\\version6ene\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #55 {main}
 "} 
-[2019-01-11 03:16:23] local.ERROR: Class 'InicioSesion' not found (View: C:\xampp\htdocs\version6ene\resources\views\welcome.blade.php) {"exception":"[object] (ErrorException(code: 0): Class 'InicioSesion' not found (View: C:\\xampp\\htdocs\\version6ene\esources\\views\\welcome.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\1576b886772bd14346bdc8c92dd263515e6a6d37.php:64, Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): Class 'InicioSesion' not found at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\1576b886772bd14346bdc8c92dd263515e6a6d37.php:64)
+[2019-01-11 03:16:23] local.ERROR: Class 'InicioSesion' not found (View: C:\xampp\htdocs\version6ene\resources\views\welcome.blade.php) {"exception":"[object] (ErrorException(code: 0): Class 'InicioSesion' not found (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\\welcome.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\1576b886772bd14346bdc8c92dd263515e6a6d37.php:64, Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): Class 'InicioSesion' not found at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\1576b886772bd14346bdc8c92dd263515e6a6d37.php:64)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(47): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(Symfony\\Component\\Debug\\Exception\\FatalThrowableError), 1)
 #1 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('C:\\\\xampp\\\\htdocs...', Array)
@@ -499,7 +501,8 @@
 #54 C:\\xampp\\htdocs\\version6ene\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #55 {main}
 "} 
-[2019-01-11 03:17:08] local.ERROR: syntax error, unexpected 'use' (T_USE) (View: C:\xampp\htdocs\version6ene\resources\views\welcome.blade.php) {"exception":"[object] (ErrorException(code: 0): syntax error, unexpected 'use' (T_USE) (View: C:\\xampp\\htdocs\\version6ene\esources\\views\\welcome.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\1576b886772bd14346bdc8c92dd263515e6a6d37.php:64, Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): syntax error, unexpected 'use' (T_USE) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\1576b886772bd14346bdc8c92dd263515e6a6d37.php:64)
+[2019-01-11 03:17:08] local.ERROR: syntax error, unexpected 'use' (T_USE) (View: C:\xampp\htdocs\version6ene\resources\views\welcome.blade.php) {"exception":"[object] (ErrorException(code: 0): syntax error, unexpected 'use' (T_USE) (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\\welcome.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\1576b886772bd14346bdc8c92dd263515e6a6d37.php:64, Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): syntax error, unexpected 'use' (T_USE) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\1576b886772bd14346bdc8c92dd263515e6a6d37.php:64)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(47): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(Symfony\\Component\\Debug\\Exception\\FatalThrowableError), 1)
 #1 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('C:\\\\xampp\\\\htdocs...', Array)
@@ -558,7 +561,8 @@
 #54 C:\\xampp\\htdocs\\version6ene\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #55 {main}
 "} 
-[2019-01-11 03:17:35] local.ERROR: Class 'InicioSesionController' not found (View: C:\xampp\htdocs\version6ene\resources\views\welcome.blade.php) {"exception":"[object] (ErrorException(code: 0): Class 'InicioSesionController' not found (View: C:\\xampp\\htdocs\\version6ene\esources\\views\\welcome.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\1576b886772bd14346bdc8c92dd263515e6a6d37.php:64, Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): Class 'InicioSesionController' not found at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\1576b886772bd14346bdc8c92dd263515e6a6d37.php:64)
+[2019-01-11 03:17:35] local.ERROR: Class 'InicioSesionController' not found (View: C:\xampp\htdocs\version6ene\resources\views\welcome.blade.php) {"exception":"[object] (ErrorException(code: 0): Class 'InicioSesionController' not found (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\\welcome.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\1576b886772bd14346bdc8c92dd263515e6a6d37.php:64, Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): Class 'InicioSesionController' not found at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\1576b886772bd14346bdc8c92dd263515e6a6d37.php:64)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(47): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(Symfony\\Component\\Debug\\Exception\\FatalThrowableError), 1)
 #1 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('C:\\\\xampp\\\\htdocs...', Array)
@@ -617,7 +621,8 @@
 #54 C:\\xampp\\htdocs\\version6ene\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #55 {main}
 "} 
-[2019-01-11 03:17:56] local.ERROR: Use of undefined constant InicioSesionController - assumed 'InicioSesionController' (this will throw an Error in a future version of PHP) (View: C:\xampp\htdocs\version6ene\resources\views\welcome.blade.php) {"exception":"[object] (ErrorException(code: 0): Use of undefined constant InicioSesionController - assumed 'InicioSesionController' (this will throw an Error in a future version of PHP) (View: C:\\xampp\\htdocs\\version6ene\esources\\views\\welcome.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\1576b886772bd14346bdc8c92dd263515e6a6d37.php:64, ErrorException(code: 0): Use of undefined constant InicioSesionController - assumed 'InicioSesionController' (this will throw an Error in a future version of PHP) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\1576b886772bd14346bdc8c92dd263515e6a6d37.php:64)
+[2019-01-11 03:17:56] local.ERROR: Use of undefined constant InicioSesionController - assumed 'InicioSesionController' (this will throw an Error in a future version of PHP) (View: C:\xampp\htdocs\version6ene\resources\views\welcome.blade.php) {"exception":"[object] (ErrorException(code: 0): Use of undefined constant InicioSesionController - assumed 'InicioSesionController' (this will throw an Error in a future version of PHP) (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\\welcome.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\1576b886772bd14346bdc8c92dd263515e6a6d37.php:64, ErrorException(code: 0): Use of undefined constant InicioSesionController - assumed 'InicioSesionController' (this will throw an Error in a future version of PHP) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\1576b886772bd14346bdc8c92dd263515e6a6d37.php:64)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(45): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(ErrorException), 1)
 #1 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('C:\\\\xampp\\\\htdocs...', Array)
@@ -676,7 +681,8 @@
 #54 C:\\xampp\\htdocs\\version6ene\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #55 {main}
 "} 
-[2019-01-11 03:24:33] local.ERROR: syntax error, unexpected ';', expecting ',' or ')' (View: C:\xampp\htdocs\version6ene\resources\views\welcome.blade.php) {"exception":"[object] (ErrorException(code: 0): syntax error, unexpected ';', expecting ',' or ')' (View: C:\\xampp\\htdocs\\version6ene\esources\\views\\welcome.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\1576b886772bd14346bdc8c92dd263515e6a6d37.php:64, Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): syntax error, unexpected ';', expecting ',' or ')' at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\1576b886772bd14346bdc8c92dd263515e6a6d37.php:64)
+[2019-01-11 03:24:33] local.ERROR: syntax error, unexpected ';', expecting ',' or ')' (View: C:\xampp\htdocs\version6ene\resources\views\welcome.blade.php) {"exception":"[object] (ErrorException(code: 0): syntax error, unexpected ';', expecting ',' or ')' (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\\welcome.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\1576b886772bd14346bdc8c92dd263515e6a6d37.php:64, Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): syntax error, unexpected ';', expecting ',' or ')' at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\1576b886772bd14346bdc8c92dd263515e6a6d37.php:64)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(47): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(Symfony\\Component\\Debug\\Exception\\FatalThrowableError), 1)
 #1 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('C:\\\\xampp\\\\htdocs...', Array)
@@ -735,7 +741,8 @@
 #54 C:\\xampp\\htdocs\\version6ene\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #55 {main}
 "} 
-[2019-01-11 03:24:41] local.ERROR: syntax error, unexpected ';', expecting ',' or ')' (View: C:\xampp\htdocs\version6ene\resources\views\welcome.blade.php) {"exception":"[object] (ErrorException(code: 0): syntax error, unexpected ';', expecting ',' or ')' (View: C:\\xampp\\htdocs\\version6ene\esources\\views\\welcome.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\1576b886772bd14346bdc8c92dd263515e6a6d37.php:64, Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): syntax error, unexpected ';', expecting ',' or ')' at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\1576b886772bd14346bdc8c92dd263515e6a6d37.php:64)
+[2019-01-11 03:24:41] local.ERROR: syntax error, unexpected ';', expecting ',' or ')' (View: C:\xampp\htdocs\version6ene\resources\views\welcome.blade.php) {"exception":"[object] (ErrorException(code: 0): syntax error, unexpected ';', expecting ',' or ')' (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\\welcome.blade.php) at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\1576b886772bd14346bdc8c92dd263515e6a6d37.php:64, Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): syntax error, unexpected ';', expecting ',' or ')' at C:\\xampp\\htdocs\\version6ene\\storage\\framework\\views\\1576b886772bd14346bdc8c92dd263515e6a6d37.php:64)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(47): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(Symfony\\Component\\Debug\\Exception\\FatalThrowableError), 1)
 #1 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('C:\\\\xampp\\\\htdocs...', Array)
@@ -794,7 +801,8 @@
 #54 C:\\xampp\\htdocs\\version6ene\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #55 {main}
 "} 
-[2019-01-11 03:25:47] local.ERROR: Class 'Usuario' not found (View: C:\xampp\htdocs\version6ene\resources\views\welcome.blade.php) {"exception":"[object] (ErrorException(code: 0): Class 'Usuario' not found (View: C:\\xampp\\htdocs\\version6ene\esources\\views\\welcome.blade.php) at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:8, Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): Class 'Usuario' not found at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:8)
+[2019-01-11 03:25:47] local.ERROR: Class 'Usuario' not found (View: C:\xampp\htdocs\version6ene\resources\views\welcome.blade.php) {"exception":"[object] (ErrorException(code: 0): Class 'Usuario' not found (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\\welcome.blade.php) at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:8, Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): Class 'Usuario' not found at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:8)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(47): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(Symfony\\Component\\Debug\\Exception\\FatalThrowableError), 1)
 #1 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('C:\\\\xampp\\\\htdocs...', Array)
@@ -853,7 +861,8 @@
 #54 C:\\xampp\\htdocs\\version6ene\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #55 {main}
 "} 
-[2019-01-11 04:28:30] local.ERROR: Use of undefined constant contra - assumed 'contra' (this will throw an Error in a future version of PHP) (View: C:\xampp\htdocs\version6ene\resources\views\inicioSesion.blade.php) {"exception":"[object] (ErrorException(code: 0): Use of undefined constant contra - assumed 'contra' (this will throw an Error in a future version of PHP) (View: C:\\xampp\\htdocs\\version6ene\esources\\views\\inicioSesion.blade.php) at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:32, ErrorException(code: 0): Use of undefined constant contra - assumed 'contra' (this will throw an Error in a future version of PHP) at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:32)
+[2019-01-11 04:28:30] local.ERROR: Use of undefined constant contra - assumed 'contra' (this will throw an Error in a future version of PHP) (View: C:\xampp\htdocs\version6ene\resources\views\inicioSesion.blade.php) {"exception":"[object] (ErrorException(code: 0): Use of undefined constant contra - assumed 'contra' (this will throw an Error in a future version of PHP) (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\\inicioSesion.blade.php) at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:32, ErrorException(code: 0): Use of undefined constant contra - assumed 'contra' (this will throw an Error in a future version of PHP) at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:32)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(45): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(ErrorException), 1)
 #1 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('C:\\\\xampp\\\\htdocs...', Array)
@@ -912,7 +921,10 @@
 #54 C:\\xampp\\htdocs\\version6ene\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #55 {main}
 "} 
-[2019-01-11 04:41:55] local.ERROR: Trying to get property 'fk_rol' of non-object (View: C:\xampp\htdocs\version6ene\resources\views\header.blade.php) (View: C:\xampp\htdocs\version6ene\resources\views\header.blade.php) {"exception":"[object] (ErrorException(code: 0): Trying to get property 'fk_rol' of non-object (View: C:\\xampp\\htdocs\\version6ene\esources\\views\\header.blade.php) (View: C:\\xampp\\htdocs\\version6ene\esources\\views\\header.blade.php) at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:16, ErrorException(code: 0): Trying to get property 'fk_rol' of non-object (View: C:\\xampp\\htdocs\\version6ene\esources\\views\\header.blade.php) at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:16, ErrorException(code: 0): Trying to get property 'fk_rol' of non-object at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:16)
+[2019-01-11 04:41:55] local.ERROR: Trying to get property 'fk_rol' of non-object (View: C:\xampp\htdocs\version6ene\resources\views\header.blade.php) (View: C:\xampp\htdocs\version6ene\resources\views\header.blade.php) {"exception":"[object] (ErrorException(code: 0): Trying to get property 'fk_rol' of non-object (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\\header.blade.php) (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\\header.blade.php) at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:16, ErrorException(code: 0): Trying to get property 'fk_rol' of non-object (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\\header.blade.php) at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:16, ErrorException(code: 0): Trying to get property 'fk_rol' of non-object at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:16)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(45): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(ErrorException), 1)
 #1 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('C:\\\\xampp\\\\htdocs...', Array)
@@ -971,7 +983,10 @@
 #54 C:\\xampp\\htdocs\\version6ene\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #55 {main}
 "} 
-[2019-01-11 04:42:52] local.ERROR: Trying to get property 'fk_rol' of non-object (View: C:\xampp\htdocs\version6ene\resources\views\header.blade.php) (View: C:\xampp\htdocs\version6ene\resources\views\header.blade.php) {"exception":"[object] (ErrorException(code: 0): Trying to get property 'fk_rol' of non-object (View: C:\\xampp\\htdocs\\version6ene\esources\\views\\header.blade.php) (View: C:\\xampp\\htdocs\\version6ene\esources\\views\\header.blade.php) at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:16, ErrorException(code: 0): Trying to get property 'fk_rol' of non-object (View: C:\\xampp\\htdocs\\version6ene\esources\\views\\header.blade.php) at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:16, ErrorException(code: 0): Trying to get property 'fk_rol' of non-object at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:16)
+[2019-01-11 04:42:52] local.ERROR: Trying to get property 'fk_rol' of non-object (View: C:\xampp\htdocs\version6ene\resources\views\header.blade.php) (View: C:\xampp\htdocs\version6ene\resources\views\header.blade.php) {"exception":"[object] (ErrorException(code: 0): Trying to get property 'fk_rol' of non-object (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\\header.blade.php) (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\\header.blade.php) at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:16, ErrorException(code: 0): Trying to get property 'fk_rol' of non-object (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\\header.blade.php) at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:16, ErrorException(code: 0): Trying to get property 'fk_rol' of non-object at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:16)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(45): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(ErrorException), 1)
 #1 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('C:\\\\xampp\\\\htdocs...', Array)
@@ -1030,7 +1045,10 @@
 #54 C:\\xampp\\htdocs\\version6ene\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #55 {main}
 "} 
-[2019-01-11 04:46:02] local.ERROR: Trying to get property 'fk_rol' of non-object (View: C:\xampp\htdocs\version6ene\resources\views\header.blade.php) (View: C:\xampp\htdocs\version6ene\resources\views\header.blade.php) {"exception":"[object] (ErrorException(code: 0): Trying to get property 'fk_rol' of non-object (View: C:\\xampp\\htdocs\\version6ene\esources\\views\\header.blade.php) (View: C:\\xampp\\htdocs\\version6ene\esources\\views\\header.blade.php) at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:17, ErrorException(code: 0): Trying to get property 'fk_rol' of non-object (View: C:\\xampp\\htdocs\\version6ene\esources\\views\\header.blade.php) at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:17, ErrorException(code: 0): Trying to get property 'fk_rol' of non-object at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:17)
+[2019-01-11 04:46:02] local.ERROR: Trying to get property 'fk_rol' of non-object (View: C:\xampp\htdocs\version6ene\resources\views\header.blade.php) (View: C:\xampp\htdocs\version6ene\resources\views\header.blade.php) {"exception":"[object] (ErrorException(code: 0): Trying to get property 'fk_rol' of non-object (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\\header.blade.php) (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\\header.blade.php) at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:17, ErrorException(code: 0): Trying to get property 'fk_rol' of non-object (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\\header.blade.php) at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:17, ErrorException(code: 0): Trying to get property 'fk_rol' of non-object at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:17)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(45): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(ErrorException), 1)
 #1 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('C:\\\\xampp\\\\htdocs...', Array)
@@ -1089,7 +1107,10 @@
 #54 C:\\xampp\\htdocs\\version6ene\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #55 {main}
 "} 
-[2019-01-11 04:46:32] local.ERROR: Trying to get property 'fk_rol' of non-object (View: C:\xampp\htdocs\version6ene\resources\views\header.blade.php) (View: C:\xampp\htdocs\version6ene\resources\views\header.blade.php) {"exception":"[object] (ErrorException(code: 0): Trying to get property 'fk_rol' of non-object (View: C:\\xampp\\htdocs\\version6ene\esources\\views\\header.blade.php) (View: C:\\xampp\\htdocs\\version6ene\esources\\views\\header.blade.php) at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:17, ErrorException(code: 0): Trying to get property 'fk_rol' of non-object (View: C:\\xampp\\htdocs\\version6ene\esources\\views\\header.blade.php) at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:17, ErrorException(code: 0): Trying to get property 'fk_rol' of non-object at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:17)
+[2019-01-11 04:46:32] local.ERROR: Trying to get property 'fk_rol' of non-object (View: C:\xampp\htdocs\version6ene\resources\views\header.blade.php) (View: C:\xampp\htdocs\version6ene\resources\views\header.blade.php) {"exception":"[object] (ErrorException(code: 0): Trying to get property 'fk_rol' of non-object (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\\header.blade.php) (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\\header.blade.php) at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:17, ErrorException(code: 0): Trying to get property 'fk_rol' of non-object (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\\header.blade.php) at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:17, ErrorException(code: 0): Trying to get property 'fk_rol' of non-object at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:17)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(45): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(ErrorException), 1)
 #1 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('C:\\\\xampp\\\\htdocs...', Array)
@@ -1148,7 +1169,10 @@
 #54 C:\\xampp\\htdocs\\version6ene\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #55 {main}
 "} 
-[2019-01-11 04:47:02] local.ERROR: Trying to get property 'fk_rol' of non-object (View: C:\xampp\htdocs\version6ene\resources\views\header.blade.php) (View: C:\xampp\htdocs\version6ene\resources\views\header.blade.php) {"exception":"[object] (ErrorException(code: 0): Trying to get property 'fk_rol' of non-object (View: C:\\xampp\\htdocs\\version6ene\esources\\views\\header.blade.php) (View: C:\\xampp\\htdocs\\version6ene\esources\\views\\header.blade.php) at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:17, ErrorException(code: 0): Trying to get property 'fk_rol' of non-object (View: C:\\xampp\\htdocs\\version6ene\esources\\views\\header.blade.php) at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:17, ErrorException(code: 0): Trying to get property 'fk_rol' of non-object at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:17)
+[2019-01-11 04:47:02] local.ERROR: Trying to get property 'fk_rol' of non-object (View: C:\xampp\htdocs\version6ene\resources\views\header.blade.php) (View: C:\xampp\htdocs\version6ene\resources\views\header.blade.php) {"exception":"[object] (ErrorException(code: 0): Trying to get property 'fk_rol' of non-object (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\\header.blade.php) (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\\header.blade.php) at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:17, ErrorException(code: 0): Trying to get property 'fk_rol' of non-object (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\\header.blade.php) at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:17, ErrorException(code: 0): Trying to get property 'fk_rol' of non-object at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:17)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(45): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(ErrorException), 1)
 #1 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('C:\\\\xampp\\\\htdocs...', Array)
@@ -1207,7 +1231,10 @@
 #54 C:\\xampp\\htdocs\\version6ene\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #55 {main}
 "} 
-[2019-01-11 04:50:40] local.ERROR: Trying to get property 'fk_rol' of non-object (View: C:\xampp\htdocs\version6ene\resources\views\header.blade.php) (View: C:\xampp\htdocs\version6ene\resources\views\header.blade.php) {"exception":"[object] (ErrorException(code: 0): Trying to get property 'fk_rol' of non-object (View: C:\\xampp\\htdocs\\version6ene\esources\\views\\header.blade.php) (View: C:\\xampp\\htdocs\\version6ene\esources\\views\\header.blade.php) at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:18, ErrorException(code: 0): Trying to get property 'fk_rol' of non-object (View: C:\\xampp\\htdocs\\version6ene\esources\\views\\header.blade.php) at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:18, ErrorException(code: 0): Trying to get property 'fk_rol' of non-object at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:18)
+[2019-01-11 04:50:40] local.ERROR: Trying to get property 'fk_rol' of non-object (View: C:\xampp\htdocs\version6ene\resources\views\header.blade.php) (View: C:\xampp\htdocs\version6ene\resources\views\header.blade.php) {"exception":"[object] (ErrorException(code: 0): Trying to get property 'fk_rol' of non-object (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\\header.blade.php) (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\\header.blade.php) at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:18, ErrorException(code: 0): Trying to get property 'fk_rol' of non-object (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\\header.blade.php) at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:18, ErrorException(code: 0): Trying to get property 'fk_rol' of non-object at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:18)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(45): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(ErrorException), 1)
 #1 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('C:\\\\xampp\\\\htdocs...', Array)
@@ -1266,7 +1293,10 @@
 #54 C:\\xampp\\htdocs\\version6ene\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #55 {main}
 "} 
-[2019-01-11 04:51:17] local.ERROR: Undefined variable: descripcionPermisos (View: C:\xampp\htdocs\version6ene\resources\views\header.blade.php) (View: C:\xampp\htdocs\version6ene\resources\views\header.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined variable: descripcionPermisos (View: C:\\xampp\\htdocs\\version6ene\esources\\views\\header.blade.php) (View: C:\\xampp\\htdocs\\version6ene\esources\\views\\header.blade.php) at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:22, ErrorException(code: 0): Undefined variable: descripcionPermisos (View: C:\\xampp\\htdocs\\version6ene\esources\\views\\header.blade.php) at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:22, ErrorException(code: 0): Undefined variable: descripcionPermisos at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:22)
+[2019-01-11 04:51:17] local.ERROR: Undefined variable: descripcionPermisos (View: C:\xampp\htdocs\version6ene\resources\views\header.blade.php) (View: C:\xampp\htdocs\version6ene\resources\views\header.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined variable: descripcionPermisos (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\\header.blade.php) (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\\header.blade.php) at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:22, ErrorException(code: 0): Undefined variable: descripcionPermisos (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\\header.blade.php) at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:22, ErrorException(code: 0): Undefined variable: descripcionPermisos at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:22)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(45): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(ErrorException), 1)
 #1 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('C:\\\\xampp\\\\htdocs...', Array)
@@ -1325,7 +1355,8 @@
 #54 C:\\xampp\\htdocs\\version6ene\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #55 {main}
 "} 
-[2019-01-11 04:51:35] local.ERROR: Trying to get property 'password' of non-object (View: C:\xampp\htdocs\version6ene\resources\views\inicioSesion.blade.php) {"exception":"[object] (ErrorException(code: 0): Trying to get property 'password' of non-object (View: C:\\xampp\\htdocs\\version6ene\esources\\views\\inicioSesion.blade.php) at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:32, ErrorException(code: 0): Trying to get property 'password' of non-object at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:32)
+[2019-01-11 04:51:35] local.ERROR: Trying to get property 'password' of non-object (View: C:\xampp\htdocs\version6ene\resources\views\inicioSesion.blade.php) {"exception":"[object] (ErrorException(code: 0): Trying to get property 'password' of non-object (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\\inicioSesion.blade.php) at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:32, ErrorException(code: 0): Trying to get property 'password' of non-object at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:32)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(45): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(ErrorException), 1)
 #1 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('C:\\\\xampp\\\\htdocs...', Array)
@@ -1384,7 +1415,8 @@
 #54 C:\\xampp\\htdocs\\version6ene\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #55 {main}
 "} 
-[2019-01-11 05:06:25] local.ERROR: Trying to get property 'password' of non-object (View: C:\xampp\htdocs\version6ene\resources\views\inicioSesion.blade.php) {"exception":"[object] (ErrorException(code: 0): Trying to get property 'password' of non-object (View: C:\\xampp\\htdocs\\version6ene\esources\\views\\inicioSesion.blade.php) at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:28, ErrorException(code: 0): Trying to get property 'password' of non-object at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:28)
+[2019-01-11 05:06:25] local.ERROR: Trying to get property 'password' of non-object (View: C:\xampp\htdocs\version6ene\resources\views\inicioSesion.blade.php) {"exception":"[object] (ErrorException(code: 0): Trying to get property 'password' of non-object (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\\inicioSesion.blade.php) at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:28, ErrorException(code: 0): Trying to get property 'password' of non-object at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:28)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(45): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(ErrorException), 1)
 #1 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('C:\\\\xampp\\\\htdocs...', Array)
@@ -1731,7 +1763,10 @@ esbot\\carbon\\src\\Carbon\\Laravel\\ServiceProvider.php:11)
 [stacktrace]
 #0 {main}
 "} 
-[2019-01-11 16:50:52] local.ERROR: Undefined index: usuario (View: C:\xampp\htdocs\version6ene\resources\views\header.blade.php) (View: C:\xampp\htdocs\version6ene\resources\views\header.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined index: usuario (View: C:\\xampp\\htdocs\\version6ene\esources\\views\\header.blade.php) (View: C:\\xampp\\htdocs\\version6ene\esources\\views\\header.blade.php) at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:12, ErrorException(code: 0): Undefined index: usuario (View: C:\\xampp\\htdocs\\version6ene\esources\\views\\header.blade.php) at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:12, ErrorException(code: 0): Undefined index: usuario at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:12)
+[2019-01-11 16:50:52] local.ERROR: Undefined index: usuario (View: C:\xampp\htdocs\version6ene\resources\views\header.blade.php) (View: C:\xampp\htdocs\version6ene\resources\views\header.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined index: usuario (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\\header.blade.php) (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\\header.blade.php) at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:12, ErrorException(code: 0): Undefined index: usuario (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\\header.blade.php) at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:12, ErrorException(code: 0): Undefined index: usuario at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:12)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(45): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(ErrorException), 1)
 #1 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('C:\\\\xampp\\\\htdocs...', Array)
@@ -1790,7 +1825,10 @@ esbot\\carbon\\src\\Carbon\\Laravel\\ServiceProvider.php:11)
 #54 C:\\xampp\\htdocs\\version6ene\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #55 {main}
 "} 
-[2019-01-11 16:51:27] local.ERROR: Undefined index: usuario (View: C:\xampp\htdocs\version6ene\resources\views\header.blade.php) (View: C:\xampp\htdocs\version6ene\resources\views\header.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined index: usuario (View: C:\\xampp\\htdocs\\version6ene\esources\\views\\header.blade.php) (View: C:\\xampp\\htdocs\\version6ene\esources\\views\\header.blade.php) at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:12, ErrorException(code: 0): Undefined index: usuario (View: C:\\xampp\\htdocs\\version6ene\esources\\views\\header.blade.php) at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:12, ErrorException(code: 0): Undefined index: usuario at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:12)
+[2019-01-11 16:51:27] local.ERROR: Undefined index: usuario (View: C:\xampp\htdocs\version6ene\resources\views\header.blade.php) (View: C:\xampp\htdocs\version6ene\resources\views\header.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined index: usuario (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\\header.blade.php) (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\\header.blade.php) at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:12, ErrorException(code: 0): Undefined index: usuario (View: C:\\xampp\\htdocs\\version6ene\
+esources\\views\\header.blade.php) at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:12, ErrorException(code: 0): Undefined index: usuario at C:\\xampp\\htdocs\\version6ene\\app\\helpers.php:12)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(45): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(ErrorException), 1)
 #1 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\CompilerEngine.php(59): Illuminate\\View\\Engines\\PhpEngine->evaluatePath('C:\\\\xampp\\\\htdocs...', Array)
