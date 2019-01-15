@@ -33,7 +33,7 @@
         <a type="reset" class="btn btn-info btn-lg" onclick="navigate(this,'fk_envio')">Buscar</a>
         <script>
         function navigate(link, inputid){
-          var url = "http://localhost:8080/version6ene/public/chequeo" + document.getElementById(inputid).value;
+          var url = "<?php echo e(url('/chequeo')); ?>" + document.getElementById(inputid).value;
           window.location.href = url; //navigates to the given url, disabled for demo
           //alert(url);
         }

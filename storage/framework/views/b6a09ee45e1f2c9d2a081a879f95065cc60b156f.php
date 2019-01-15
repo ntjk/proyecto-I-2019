@@ -13,7 +13,7 @@
         <link href="<?php echo e(asset('css/styles.css')); ?>" rel="stylesheet">
         <link href="<?php echo e(asset('css/unselectable.css')); ?>" rel="stylesheet">
         <script type="text/javascript" src="<?php echo e(asset('js/dropdown.js')); ?>"></script>
-        <title>Consulta 15</title>
+        <title>Consulta 3</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
@@ -22,22 +22,42 @@
     </head>
     <body>
             <?php echo $__env->make('header', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-            <h1 class="text-center">Listado de empleados con las inasistencias</h1>
+            <h1 class="text-center">Envios por estatus</h1>
             <br/>
             <table class="table table-bordered" width="80%" id="users-table">
                 <thead>
                     <tr>
-                      <th>Empleado</th>  
-                      <th>Fecha</th>
-                      <th>Check</th>
+                        <th>Estatus</th>
+                        <th>Nro de guia</th>
+                        <th>Tipo</th>
+                        <th>Precio</th>
+                        <th>Peso</th>
+                        <th>Altura</th>
+                        <th>Anchura</th>
+                        <th>Profundidad</th>
+                        <th>Fecha de envío</th>
+                        <th>Cliente emisor</th>
+                        <th>Destinatario</th>
+                        <th>Sucursal origen</th>
+                        <th>Sucursal destino</th>
                     </tr>
                 </thead>
                 <tbody>
-                  <?php $__currentLoopData = $consulta; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $b): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                  <?php $__currentLoopData = $consulta; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $envio): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                   <tr>
-                    <td><?php echo e($b->em_nombre); ?> <?php echo e($b->em_apellido); ?>, <?php echo e($b->em_nacionalidad); ?> <?php echo e($b->em_cedula); ?></td>
-                    <td><?php echo e($b->a_fecha); ?></td>
-                    <td><?php echo e($b->a_check); ?></td>
+                    <td><?php echo e($envio->che_estatus); ?></td>
+                    <td><?php echo e($envio->en_clave); ?></td>
+                    <td><?php echo e($envio->ti_nombre); ?></td>
+                    <td><?php echo e($envio->en_precio); ?></td>
+                    <td><?php echo e($envio->en_peso); ?></td>
+                    <td><?php echo e($envio->en_altura); ?></td>
+                    <td><?php echo e($envio->en_anchura); ?></td>
+                    <td><?php echo e($envio->en_profundidad); ?></td>
+                    <td><?php echo e($envio->en_fecha_envio); ?></td>
+                    <td><?php echo e($envio->cli_nacionalidad); ?> <?php echo e($envio->cli_cedula); ?></td>
+                    <td><?php echo e($envio->des_cedula); ?></td>
+                    <td><?php echo e($envio->so); ?></td>
+                    <td><?php echo e($envio->sd); ?></td>            
                   </tr>
                   <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>
@@ -51,9 +71,9 @@
         <script>$(function() {
             $('#users-table').DataTable({
             })
-            $(document).on('click', '.update', function(){
-              var en_clave = $(this).attr("id");
-            });
+          	$(document).on('click', '.update', function(){
+            	var en_clave = $(this).attr("id");
+          	});
         });
         </script>
         <?php echo $__env->yieldPushContent('scripts'); ?>

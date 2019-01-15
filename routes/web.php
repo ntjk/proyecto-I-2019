@@ -112,7 +112,11 @@ Route::get('envio-getData','EnvioController@getData')->name('envio_getData');
 Route::get('envio{id}','EnvioController@showFactura');
 
 /* ruta */
-Route::resource('floru','FloruController');
+//Route::resource('floru','FloruController');
+Route::get('floru', function(){
+  return view('floru');
+});
+Route::post('floru/agregarRuta','FloruController@guardarRuta');
 Route::post('floru/getOne','FloruController@getOne');
 Route::post('floru/updateSelect','FloruController@updateSelect');
 Route::get('floru','FloruController@index');
@@ -147,16 +151,14 @@ Route::get('consulta2','ConsultasEnvioController@pesoPromedioPorOficina');
 Route::get('consulta3','ConsultasEnvioController@enviosPorEstatus');
 Route::get('consulta4','ConsultasEnvioController@origenDestinoMaxPaquetes');
 Route::get('consulta5','ConsultasEnvioController@calcularMesConMasEnvios2');
-Route::get('consulta101','ConsultasEnvioController@calcularMesConMasEnvios3');
 
 Route::get('consulta6', function(){
   $paraDiferenciar = 6;
   return view('buscadorFecha')->with(compact('paraDiferenciar')); });
 Route::get('filtrarFecha_1{f}','ConsultasEnvioController@consulta6');
-
-Route::get('consulta7', 'ConsultasEnvioController@promedioPaquetesDiarios');
 Route::get('filtrarFecha_2{rango}','ConsultasEnvioController@consulta6_2');
 
+Route::get('consulta7', 'ConsultasEnvioController@promedioPaquetesDiarios');
 Route::get('consulta8','ConsultasEnvioController@paquetesConMedios');
 Route::get('consulta9','ConsultasEnvioController@promedioEstanciaZonas');
 Route::get('consulta10','ConsultasClienteController@masEnviosPorOfic');
@@ -165,7 +167,12 @@ Route::get('consulta11','ConsultasClienteController@vipPorOfic');
 Route::get('consulta12', function(){
   $paraDiferenciar = 12;
   return view('buscadorFecha')->with(compact('paraDiferenciar')); });
-Route::get('filtrarFecha_3{rango}','ConsultasEnvioController@clasificacionPaquetesPorOficina');
+Route::get('filtrarFecha_3{rango}','ConsultasEnvioController@clasificacionPaquetesPorOficinaCantidad');
+
+Route::get('consulta13', function(){
+  $paraDiferenciar = 13;
+  return view('buscadorFecha')->with(compact('paraDiferenciar')); });
+Route::get('filtrarFecha_4{rango}','ConsultasEnvioController@clasificacionPaquetesPorOficina');
 
 Route::get('consulta14', 'ConsultasEmpleadoController@inasistenciasEmpleados');
 Route::get('consulta15', 'ConsultasEmpleadoController@inasistenciasEmpleadosSinHorario');
@@ -174,8 +181,13 @@ Route::get('consulta17', 'ConsultasFlotaController@flotaPorSubtipo');
 Route::get('consulta18', 'ConsultasFlotaController@flotaPorTipo');
 Route::get('consulta19', 'ConsultasFlotaController@flotaTerrestre');
 Route::get('consulta20-{id}-{tiempo}', 'ConsultasSucursalController@avgEnviosSucursales');
+Route::get('consulta21', 'ConsultasSucursalController@oficPorEstado');
+Route::get('consulta22', 'ConsultasSucursalController@oficYZonaPorEstado');
+Route::get('consulta23', 'ConsultasSucursalController@oficInternacionales');
+Route::get('consulta24', 'ConsultasEmpleadoController@empleadosFechaIngreso');
+Route::get('consulta25', 'ConsultasEmpleadoController@empleadosFechaEgreso');
+Route::get('consulta26', 'ConsultasEmpleadoController@horarioEmpleados');
 Route::get('consulta70-{id}', 'ConsultasSucursalController@showNominas');
-
 
 /*Asistencias*/
 Route::resource('asistencia','AsistenciaController');

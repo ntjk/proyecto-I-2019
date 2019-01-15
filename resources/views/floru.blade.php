@@ -25,20 +25,36 @@
             <br/>
             <h1 class="text-center">Rutas</h1>
             <br/>
-            <button type="button" id="add_button" data-toggle="modal" data-target="#userModal" class="btn btn-info btn-lg">Add</button>
+            <button type="button" data-toggle="modal" data-target="#userModal" class="btn btn-info btn-lg">Add</button>
             <table class="table table-bordered" id="users-table">
                 <thead>
                     <tr>
-                        <th>Clave</th>
+                        <th>Ruta nro</th>
                         <th>Sucursal origen</th>
                         <th>Sucursal destino</th>
                         <th>Sucursales de parada</th>
                         <th>Accion</th>
                     </tr>
                 </thead>
+                <tbody>
+                  @foreach($rutas as $r)
+                  <tr>
+                    <td>{{$r->flo_ruta}}</td>
+                    <td>{{$r->su_nombre}}</td>
+                    <td>{{$r->sd_nombre}}</td>
+                    <td></td>
+                    <td>                      
+                      <button class="btn btn-warning btn-detail update" id="{{$r->flo_ru_clave}}" value="{{$r->flo_ru_clave}}" name="Update">Update</button>
+                      <button class="btn btn-danger btn-delete delete" id="{{$r->flo_ru_clave}}" value="{{$r->flo_ru_clave}}" name="delete">Delete</button>
+                      <button class="btn btn-primary " id="{{$r->flo_ru_clave}}" data-toggle="modal" data-target="#userModal_2"  value="{{$r->flo_ru_clave}}" name="delete">Agregar nodo</button>
+                      <button class="btn btn-primary borrarNodo" id="{{$r->flo_ru_clave}}" data-toggle="modal" data-target="#userModal_2"   value="{{$r->flo_ru_clave}}" name="delete">Borrar nodo</button>
+                    </td>
+                  </tr>
+                  @endforeach
+                </tbody>
             </table>
         </div>
-        <div id="userModal" class="modal fade">
+<div id="userModal" class="modal fade">
  <div class="modal-dialog">
   <form method="post" id="user_form" enctype="multipart/form-data">
    <div class="modal-content">
@@ -53,36 +69,17 @@
         <option value="{{$sucursal->su_clave}}">{{$sucursal->su_nombre}}</option>
         @endforeach
       </select>
-     <br />
-      <label>Nodo 1 (Sucursal intermedia)</label>
-      <select class="form-control" name="fk_sucursal_1" id="fk_sucursal_1">
-        @foreach($sucursales as $sucursal)
-        <option value="{{$sucursal->su_clave}}">{{$sucursal->su_nombre}}</option>
-        @endforeach
+      <br/>
+      <label>Medio de transporte :: origen - destino</label>
+      <select class="form-control" name="fk_flota" id="fk_flota">
+        @foreach($flotas as $flota)
+        <option value="{{$flota->flo_clave}}">{{$flota->flo_clave}}</option>
+        @endforeach        
       </select>
-      <label>Medio de transporte :: origen - nodo 1</label>
-      <select class="form-control" name="fk_sucursal_1" id="fk_sucursal_1">
-        <option value="1">Marítimo</option>
-        <option value="2">Aéreo</option>
-        <option value="7">Terrestre</option>
-      </select>
-      <label>Precio :: origen - nodo 1</label>
-      <input type="number" step="0.01" name="flo_ru_precio" id="en_precio" class="form-control"/>
+      <label>Precio :: origen - destino</label>
+      <input type="number" step="0.01" name="flo_ru_precio" id="flo_ru_precio" class="form-control"/>
       <label>Duración en horas :: origen - nodo 1</label>
-      <input type="number" step="0.01" name="en_peso" id="en_peso" class="form-control" />
-     <br />
-      <label>Nodo 2 (Sucursal intermedia)</label>
-      <select class="form-control" name="fk_sucursal_1" id="fk_sucursal_1">
-        @foreach($sucursales as $sucursal)
-        <option value="{{$sucursal->su_clave}}">{{$sucursal->su_nombre}}</option>
-        @endforeach
-      </select>
-      <label>Medio de transporte: nodo1 - nodo 2</label>
-      <select class="form-control" name="fk_sucursal_1" id="fk_sucursal_1">
-        <option value="1">Marítimo</option>
-        <option value="2">Aéreo</option>
-        <option value="7">Terrestre</option>
-      </select>
+      <input type="number" step="0.01" name="flo_ru_duracion" id="flo_ru_duracion" class="form-control" />
      <br />
       <label>Sucursal Destino</label>
       <select class="form-control" name="fk_sucursal_2" id="fk_sucursal_2">
@@ -95,7 +92,46 @@
     <div class="modal-footer">
      <input type="hidden" name="ru_clave" id="ru_clave" />
      <input type="hidden" name="operation" id="operation" />
-     <input type="submit" name="action" id="action" class="btn btn-success" value="Add" />
+     <input type="submit" name="action" id="action" class="btn btn-success agregarRuta" value="Add" />
+     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+   </div>
+  </form>
+ </div>
+</div>
+
+
+<div id="userModal_2" class="modal fade">
+ <div class="modal-dialog">
+  <form method="post" id="user_form_2" enctype="multipart/form-data">
+   <div class="modal-content">
+    <div class="modal-header">
+     <button type="button" class="close" data-dismiss="modal">&times;</button>
+     <h4 class="modal-title">Añadir Sucursal intermedia</h4>
+    </div>
+    <div class="modal-body">
+      <label>Nodo (Sucursal intermedia)</label>
+      <select class="form-control" name="fk_sucursal_2_2" id="fk_sucursal_2_2">
+        @foreach($sucursales as $sucursal)
+        <option value="{{$sucursal->su_clave}}">{{$sucursal->su_nombre}}</option>
+        @endforeach
+      </select>
+       <label>Medio de transporte :: desde la sucursal anterior a este nodo</label>
+      <select class="form-control" name="fk_flota_2" id="fk_flota_2">
+        @foreach($flotas as $flota)
+        <option value="{{$flota->flo_clave}}">{{$flota->flo_clave}}</option>
+        @endforeach        
+      </select>
+      <label>Precio :: desde la sucursal anterior a este nodo</label>
+      <input type="number" step="0.01" name="flo_ru_precio_2" id="flo_ru_precio_2" class="form-control"/>
+      <label>Duración en horas :: origen - nodo 1</label>
+      <input type="number" step="0.01" name="flo_ru_duracion_2" id="flo_ru_duracion_2" class="form-control" />
+     <br />
+    </div>
+    <div class="modal-footer">
+     <!--<input type="hidden" name="ru_clave" id="ru_clave" />
+     <input type="hidden" name="operation" id="operation" />-->
+     <input type="submit" name="action_2" id="action_2" class="btn btn-success agregarNodo" value="Add" />
      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
     </div>
    </div>
@@ -108,26 +144,56 @@
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script>$(function() {
             $('#users-table').DataTable({
-                processing: true,
-                serverSide: true,
-                ajax: '{!! route('ruta_getData') !!}',
-                columns: [
-                    { data: 'ru_clave', name: 'ruta.ru_clave' },
-                    { data: 'su_nombre', name: 'sucursal.su_nombre' },
-                    { data: 'fk_sucursal_2', name: 'ruta.fk_sucursal_2' },
-                    {data: 'action', name: 'action', orderable: false, searchable: false}
-                ]
-            })
+            }) 
 
-            $(document).on('submit', '#user_form', function(event){
+            $(document).on('click', '.agregarRuta', function(event){
             event.preventDefault();
+            var fk_sucursal_1 = $('#fk_sucursal_1').val();
+            var fk_sucursal_2 = $('#fk_sucursal_2').val();
+            var fk_flota = $('#fk_flota').val();
+            var flo_ru_precio = $('#flo_ru_precio').val();
+            var flo_ru_duracion = $('#flo_ru_duracion').val();
+            console.log(fk_sucursal_1);
+            console.log(fk_sucursal_2);
+            console.log(fk_flota);
+            console.log(flo_ru_precio);
+            console.log(flo_ru_duracion);
+
+            if(fk_sucursal_1 != "" && fk_sucursal_2 != "" && flo_ru_precio != "")
+            {
+              $.ajax({
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                type: "POST",
+                url:"floru/agregarRuta",
+                data: { 
+                  fk_sucursal_1:fk_sucursal_1,
+                  fk_sucursal_2:fk_sucursal_2,
+                  fk_flota:fk_flota;
+                  flo_ru_duracion:flo_ru_duracion,
+                  flo_ru_precio:flo_ru_precio
+                },
+                success:function(data)
+                {
+                  alert(data.message);
+                  $('#user_form')[0].reset();
+                  //$('#users-table').dataTable().ajax.reload(null, false);
+                }
+              });
+            }
+            else
+            {
+              alert("Falta campos por llenar");
+            }
+          });
+
+          $(document).on('click', '.agregarNodo', function(){
             var fk_sucursal_1 = $('#fk_sucursal_1').val();
             var fk_sucursal_2 = $('#fk_sucursal_2').val();
             if(fk_sucursal_1 != fk_sucursal_2)
             {
               $.ajax({
                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                url:"ruta",
+                url:"floru",
                 method:'POST',
                 data: new FormData(this),
                 contentType:false,
@@ -135,7 +201,7 @@
                 success:function(data)
                 {
                   alert(data.message);
-                  $('#user_form')[0].reset();
+                  $('#user_form_2')[0].reset();
                   $('#users-table').dataTable().ajax.reload(null, false);
                 }
               });
@@ -145,6 +211,7 @@
               alert("Origen y Destino no pueden ser igual");
             }
           });
+
           $(document).on('click', '.update', function(){
             var ru_clave = $(this).attr("id");
             $.ajax({

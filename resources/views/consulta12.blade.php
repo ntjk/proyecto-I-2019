@@ -13,7 +13,7 @@
         <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
         <link href="{{ asset('css/unselectable.css') }}" rel="stylesheet">
         <script type="text/javascript" src="{{ asset('js/dropdown.js') }}"></script>
-        <title>Consulta 10</title>
+        <title>Consulta 12</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
@@ -22,7 +22,7 @@
     </head>
     <body>
             @include('header')
-            <h1 class="text-center">Listado de paquetes por clasificación y por oficina <br/> entre {{$rangoi}} y {{$rangof}}</h1>
+            <h1 class="text-center">Cantidad de paquetes por clasificación y por oficina <br/> entre {{$rangoi}} y {{$rangof}}</h1>
             <br/>
             <table class="table table-bordered" width="80%" id="users-table">
                 <thead>

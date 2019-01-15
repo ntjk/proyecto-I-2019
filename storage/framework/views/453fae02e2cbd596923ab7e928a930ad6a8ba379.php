@@ -1,4 +1,4 @@
- <!doctype html>
+<!doctype html>
 <html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>">
     <head>
         <meta charset="utf-8">
@@ -12,7 +12,7 @@
         <meta name="csrf-token" content="<?php echo csrf_token(); ?>" />
         <link href="<?php echo e(asset('css/styles.css')); ?>" rel="stylesheet">
         <script type="text/javascript" src="<?php echo e(asset('js/dropdown.js')); ?>"></script>
-        <title>Sucursal - LogUCAB</title>
+        <title>Ruta - LogUCAB</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
@@ -23,17 +23,15 @@
             <?php echo $__env->make('header', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
             <div class="container">
             <br/>
-            <h1 class="text-center">Sucursales</h1>
+            <h1 class="text-center">Rutas</h1>
             <br/>
             <button type="button" id="add_button" data-toggle="modal" data-target="#userModal" class="btn btn-info btn-lg">Add</button>
             <table class="table table-bordered" id="users-table">
                 <thead>
                     <tr>
                         <th>Clave</th>
-                        <th>Nombre</th>
-                        <th>Email</th>
-                        <th>Capacidad</th>>
-                        <th>Lugar</th>
+                        <th>Sucursal Origen</th>
+                        <th>Sucursal Destino</th>
                         <th>Accion</th>
                     </tr>
                 </thead>
@@ -45,49 +43,35 @@
    <div class="modal-content">
     <div class="modal-header">
      <button type="button" class="close" data-dismiss="modal">&times;</button>
-     <h4 class="modal-title">Añadir Sucursal</h4>
+     <h4 class="modal-title">Añadir Ruta</h4>
     </div>
     <div class="modal-body">
-     <label>Nombre</label>
-     <input type="text" name="su_nombre" id="su_nombre" class="form-control"/>
-     <br />
-     <label>Email</label>
-     <input type="text" name="su_email" id="su_email" class="form-control" />
-     <br />
-     <label>Capacidad</label>
-     <input type="number" step="0.01" name="su_capacidad" id="su_capacidad" class="form-control" />
-     <br />
-     <label>Estado</label>
-     <select class="form-control" name="estado" id="estado">
-        <?php $__currentLoopData = $estados; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $estado): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><!-- Busca de cada estado, el nombre, busca de cada
-        Para usar variables del controlador usar llave para que lo lea, value es como un id-->
-        <option value="<?php echo e($estado->lu_clave); ?>"><?php echo e($estado->lu_nombre); ?></option>
+     <label>Sucursal Origen</label>
+     <select class="form-control" name="fk_sucursal_1" id="fk_sucursal_1">
+        <?php $__currentLoopData = $sucursales; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sucursal): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+        <option value="<?php echo e($sucursal->su_clave); ?>"><?php echo e($sucursal->su_nombre); ?></option>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
       </select>
+     <br />
+
+      <label>Sucursal Destino</label>
+      <select class="form-control" name="fk_sucursal_2" id="fk_sucursal_2">
+         <?php $__currentLoopData = $sucursales; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sucursal): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+         <option value="<?php echo e($sucursal->su_clave); ?>"><?php echo e($sucursal->su_nombre); ?></option>
+         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+       </select>
       <br />
-      <label>Municipio</label>
-      <select class="form-control" name="fk_lugar" id="fk_lugar">
-      </select>
     </div>
     <div class="modal-footer">
-     <input type="hidden" name="su_clave" id="su_clave" />
+     <input type="hidden" name="ru_clave" id="ru_clave" />
      <input type="hidden" name="operation" id="operation" />
-     <input type="submit" name="action" id="action" class="btn btn-success" value="Add"/>
+     <input type="submit" name="action" id="action" class="btn btn-success" value="Add" />
      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
     </div>
    </div>
   </form>
  </div>
 </div>
-<script>
-
-function navigate(link, inputid){
-  //alert(document.getElementById(inputid).value)
-  var url = "<?php echo e(url('/sucursal')); ?>" + document.getElementById(inputid).value + '-0-0-0';
-  window.location.href = url; //navigates to the given url, disabled for demo
-  //alert(url);
-}
-</script>
         <script src="//code.jquery.com/jquery.js"></script>
         <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
@@ -95,44 +79,24 @@ function navigate(link, inputid){
             $('#users-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: '<?php echo route('sucursal_getData'); ?>',
+                ajax: '<?php echo route('ruta_getData'); ?>',
                 columns: [
-                    { data: 'su_clave', name: 'sucursal.su_clave' },
+                    { data: 'ru_clave', name: 'ruta.ru_clave' },
                     { data: 'su_nombre', name: 'sucursal.su_nombre' },
-                    { data: 'su_email', name: 'sucursal.su_email' },
-                    { data: 'su_capacidad', name: 'sucursal.su_capacidad' },
-                    { data: 'lu_nombre', name: 'lugar.lu_nombre' },
+                    { data: 'fk_sucursal_2', name: 'ruta.fk_sucursal_2' },
                     {data: 'action', name: 'action', orderable: false, searchable: false}
                 ]
             })
-            $(document).on('change','#estado',function(){
-              var estado = $(this).val();
-              $.ajax({
-                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                type: "POST",
-                url: "sucursal/updateSelect",
-                data:{ estado: estado},
-                success: function(data){
-                    var options = '';
-                    $.each(data, function(i, item) {
-                      options += '<option value="' + item.lu_clave + '">' + item.lu_nombre + '</option>';
-                    });
-                    $('#fk_lugar').empty().html(options);
-                }
-              });
-            });
 
             $(document).on('submit', '#user_form', function(event){
             event.preventDefault();
-            var su_nombre = $('#su_nombre').val();
-            var su_email = $('#su_email').val();
-            var su_capacidad = $('#su_capacidad').val();
-            var fk_lugar = $('#fk_lugar').val();
-            if(su_nombre != '' && su_email != '')
+            var fk_sucursal_1 = $('#fk_sucursal_1').val();
+            var fk_sucursal_2 = $('#fk_sucursal_2').val();
+            if(fk_sucursal_1 != fk_sucursal_2)
             {
               $.ajax({
                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                url:"sucursal",
+                url:"ruta",
                 method:'POST',
                 data: new FormData(this),
                 contentType:false,
@@ -147,39 +111,36 @@ function navigate(link, inputid){
             }
             else
             {
-              alert("Both Fields are Required");
+              alert("Origen y Destino no pueden ser igual");
             }
           });
           $(document).on('click', '.update', function(){
-            var su_clave = $(this).attr("id");
+            var ru_clave = $(this).attr("id");
             $.ajax({
               headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-              url:"sucursal/getOne",
+              url:"ruta/getOne",
               method:"POST",
-              data:{su_clave:su_clave},
+              data:{ru_clave:ru_clave},
               dataType:"json",
               success:function(data){
                 $('#userModal').modal('show');
-                $('#su_nombre').val(data.su_nombre);
-                $('#su_email').val(data.su_email);
-                $('#su_capacidad').val(data.su_capacidad);
-                $('.modal-title').text("Edit Sucursal");
-                $('#su_clave').val(su_clave);
-                $('#fk_lugar').val(data.fk_lugar);
+                $('#fk_sucursal_1').val(data.fk_sucursal_1);
+                $('#fk_sucursal_2').val(data.fk_sucursal_2);
+                $('.modal-title').text("Edit Ruta");
+                $('#ru_clave').val(ru_clave);
                 $('#action').val("Edit");
                 $('#operation').val("Edit");
               }
             })
           });
           $(document).on('click','.delete',function(){
-            var su_clave = $(this).attr("id");
-            console.log(su_clave);
+            var ru_clave = $(this).attr("id");
             if(confirm("¿Estás seguro de que quieres borrar esta información?")){
               $.ajax({
                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                url:"sucursal/"+su_clave,
+                url:"ruta/"+ru_clave,
                 type:"DELETE",
-                data:{su_clave:su_clave},
+                data:{ru_clave:ru_clave},
                 success:function(data){
                   alert(data.message);
                   $('#users-table').dataTable().ajax.reload(null, false);

@@ -21,7 +21,7 @@ class ConsultasClienteController extends Controller
     }
 
     public function vipPorOfic(){
-    	$consulta = Cliente::join('sucursal', 'su_clave', 'cliente.fk_sucursal')->where('cli_vip','=', true)->groupBy('su_nombre', 'cli_nacionalidad', 'cli_cedula', 'cli_nombre', 'cli_apellido')->select('su_nombre', 'cli_nacionalidad', 'cli_cedula', 'cli_nombre', 'cli_apellido')->orderBy('cli_nombre')->get();
+    	$consulta= DB::select(DB::raw('select su_nombre, cli_nombre, cli_apellido, cli_nacionalidad, cli_cedula from cliente, sucursal where fk_sucursal = su_clave and cli_vip = true order by su_nombre, cli_nombre'));
     	return view('consulta11')->with(compact('consulta'));
-    }// NOTA: seria fino agregarle que tambien se vea su cantidad de envios pero nah
+    }
 }

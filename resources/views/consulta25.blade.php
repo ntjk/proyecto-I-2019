@@ -13,7 +13,7 @@
         <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
         <link href="{{ asset('css/unselectable.css') }}" rel="stylesheet">
         <script type="text/javascript" src="{{ asset('js/dropdown.js') }}"></script>
-        <title>Consulta 3</title>
+        <title>Consulta 24</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
@@ -22,44 +22,54 @@
     </head>
     <body>
             @include('header')
-            <h1 class="text-center">Envios por estatus</h1>
+            <h1 class="text-center">Lista de empleados activos, indicando su información básica, cargo que ocupa y fecha de ingreso a la compañía</h1>
             <br/>
             <table class="table table-bordered" width="80%" id="users-table">
                 <thead>
                     <tr>
-                        <th>Estatus</th>
-                        <th>Nro de guia</th>
-                        <th>Tipo</th>
-                        <th>Precio</th>
-                        <th>Peso</th>
-                        <th>Altura</th>
-                        <th>Anchura</th>
-                        <th>Profundidad</th>
-                        <th>Fecha de envío</th>
-                        <th>Cliente emisor</th>
-                        <th>Destinatario</th>
-                        <th>Sucursal origen</th>
-                        <th>Sucursal destino</th>
+                      <th>Fecha de egreso</th>
+                      <th>Fecha de ingreso</th>
+                      <th>Datos basicos del empleado</th>
+                      <th>Estado civil</th>  
+                      <th>Fecha de nacimiento</th>
+                      <th>Salario base</th>
+                      <th>Correo laboral</th>
+                      <th>Cargo</th>
                     </tr>
                 </thead>
                 <tbody>
-                  @foreach ($consulta as $envio)
+                  @foreach ($consulta as $b)
                   <tr>
-                    <td>{{$envio->che_estatus}}</td>
-                    <td>{{$envio->en_clave}}</td>
-                    <td>{{$envio->ti_nombre}}</td>
-                    <td>{{$envio->en_precio}}</td>
-                    <td>{{$envio->en_peso}}</td>
-                    <td>{{$envio->en_altura}}</td>
-                    <td>{{$envio->en_anchura}}</td>
-                    <td>{{$envio->en_profundidad}}</td>
-                    <td>{{$envio->en_fecha_envio}}</td>
-                    <td>{{$envio->cli_nacionalidad}} {{$envio->cli_cedula}}</td>
-                    <td>{{$envio->des_cedula}}</td>
-                    <td>{{$envio->so}}</td>
-                    <td>{{$envio->sd}}</td>            
+                    <td>{{$b->em_fecha_egreso}}</td>
+                    <td>{{$b->em_fecha_ingreso}}</td>
+                    <td>{{$b->em_nombre}} {{$b->em_apellido}}, {{$b->em_nacionalidad}} {{$b->em_cedula}}</td>
+                    <td>{{$b->em_estado_civil}}</td>
+                    <td>{{$b->em_fecha_nacimiento}}</td>
+                    <td>{{$b->em_salario_base}}</td>
+                    <td>{{$b->em_email_empresa}}</td>
+                    <td>{{$b->em_profesion}}</td>
                   </tr>
                   @endforeach
+                  <tr>
+                  	<td>Reportes</td>
+                  	<td></td>
+                  	<td></td>
+                  	<td></td>
+                  	<td></td>
+                  	<td></td>
+                    <td>Total de activos</td>
+                    <td>{{$activos[0]->cant}}</td>
+                  </tr>
+                  <tr>
+                  	<td>Reportes</td>
+                  	<td></td>
+                  	<td></td>
+                  	<td></td>
+                  	<td></td>
+                  	<td></td>
+                    <td>Total de inactivos</td>
+                    <td>{{$inactivos[0]->cant}}</td>
+                  </tr>
                 </tbody>
             </table>
         </div>
@@ -71,9 +81,9 @@
         <script>$(function() {
             $('#users-table').DataTable({
             })
-          	$(document).on('click', '.update', function(){
-            	var en_clave = $(this).attr("id");
-          	});
+            $(document).on('click', '.update', function(){
+              var en_clave = $(this).attr("id");
+            });
         });
         </script>
         @stack('scripts')

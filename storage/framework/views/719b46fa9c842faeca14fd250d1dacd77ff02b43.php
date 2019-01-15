@@ -13,7 +13,7 @@
         <link href="<?php echo e(asset('css/styles.css')); ?>" rel="stylesheet">
         <link href="<?php echo e(asset('css/unselectable.css')); ?>" rel="stylesheet">
         <script type="text/javascript" src="<?php echo e(asset('js/dropdown.js')); ?>"></script>
-        <title>Consulta 15</title>
+        <title>Consulta 21</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
@@ -22,22 +22,22 @@
     </head>
     <body>
             <?php echo $__env->make('header', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-            <h1 class="text-center">Listado de empleados con las inasistencias</h1>
+            <h1 class="text-center">Listado de Oficinas por Estado ordenadas alfabéticamente.</h1>
             <br/>
-            <table class="table table-bordered" width="80%" id="users-table">
+            <table class="table table-bordered" width="60%" id="users-table">
                 <thead>
                     <tr>
-                      <th>Empleado</th>  
-                      <th>Fecha</th>
-                      <th>Check</th>
+                      <th>Estado</th>  
+                      <th>Sucursal</th>
+                      <th>Zona</th>
                     </tr>
                 </thead>
                 <tbody>
                   <?php $__currentLoopData = $consulta; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $b): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                   <tr>
-                    <td><?php echo e($b->em_nombre); ?> <?php echo e($b->em_apellido); ?>, <?php echo e($b->em_nacionalidad); ?> <?php echo e($b->em_cedula); ?></td>
-                    <td><?php echo e($b->a_fecha); ?></td>
-                    <td><?php echo e($b->a_check); ?></td>
+                    <td><?php echo e($b->lu_nombre); ?></td>
+                    <td><?php echo e($b->su_nombre); ?></td>
+                    <td><?php echo e($b->zo_nombre); ?></td>
                   </tr>
                   <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>
