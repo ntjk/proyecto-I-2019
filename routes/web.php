@@ -175,6 +175,7 @@ Route::get('consulta17', 'ConsultasFlotaController@flotaPorSubtipo');
 Route::get('consulta18', 'ConsultasFlotaController@flotaPorTipo');
 Route::get('consulta19', 'ConsultasFlotaController@flotaTerrestre');
 Route::get('consulta20-{id}-{tiempo}', 'ConsultasSucursalController@avgEnviosSucursales');
+Route::get('consulta70-{id}', 'ConsultasSucursalController@showNominas');
 
 
 /*Asistencias*/

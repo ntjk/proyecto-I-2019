@@ -5,9 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 use App\Envio;
 use App\Sucursal;
+use App\Asistencia;
+use App\Zoemho;
+use App\Empleado;
 
 class ConsultasSucursalController extends Controller
 {
@@ -46,7 +50,16 @@ class ConsultasSucursalController extends Controller
       return view('consulta20')->with(compact('avgES'))->with(compact('sucursal'))->with(compact('sucursales'))->with(compact('mensaje'));
     }
 
-    public function listadoRegion(){
+    public function showNominas($id){
+      $sucursales=Sucursal::orderBy('su_nombre')->get();
 
+      $start=Carbon::parse('first day of January 2018')->startOfWeek();
+      $end=Carbon::parse('first day of January 2018')->endOfWeek();
+
+      $
+
+      return view('consulta70')
+      ->with(compact('costo'))
+      ->with(compact('sucursales'));
     }
 }
