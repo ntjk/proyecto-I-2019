@@ -28,7 +28,8 @@
             <table class="table table-bordered" style="width:40%" id="users-table" >
                 <thead>
                     <tr >
-                        <th>Nombre</th>
+                        <th>Tipo</th>
+                        <th>Sucursal</th>
                         <th>Mes</th>
                         <th>Egreso</th>
                         <th>Ingreso</th>
@@ -37,20 +38,16 @@
                 <tbody>
                   @foreach ($consultas as $c44)
                   <tr class="text-center">
-                    <td>{{$c44->nombre}}</td>
-                    <td>{{$c44->mes}}</td>
+                    <td>{{$c44->tipo}}</td>
+                    <td>{{$c44->sucu}}</td>
+                    <td>{{$c44->fecha}}</td>
                     <td>{{$c44->egreso}}</td>
                     <td>{{$c44->ingreso}}</td>
                   </tr>
                   @endforeach
                 </tbody>
             </table>
-        </div>
-    </div>
-   </div>
-  </form>
- </div>
-</div>
+        
         <script src="//code.jquery.com/jquery.js"></script>
         <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
@@ -65,4 +62,3 @@
       </div>
     </body>
 </html>
-
