@@ -21,8 +21,6 @@ use App\Falla;
 use App\Flota;
 use App\Taller;
 use App\Revision;
-use App\Servicio;
-use App\Servicio_Sucursal;
 
 class ConsultasEnvioController extends Controller
 {
@@ -243,54 +241,36 @@ class ConsultasEnvioController extends Controller
 
     public function consulta43(){
         $consultas= DB::select(DB::raw('
-            select su.su_nombre as nombre, flo.flo_tipo as flo, rev.rev_fecha_real_salida as revf, rev.rev_fecha_proxima_revision as revp
-            from revision rev, flota flo, sucursal su, (select fk_flota, max(rev_fecha_real_salida) from revision group by fk_flota) as tabla
-            where rev.fk_flota = flo.flo_clave and flo.fk_sucursal = su.su_clave
-            and rev.rev_fecha_real_salida = tabla.max 
-            and flo.flo_clave = tabla.fk_flota  
+            select su.su_nombre as sucu, flo.flo_tipo as flota, rev.rev_fecha_real_salida::date as revf, rev.rev_fecha_proxima_revision::date as revp
+            from revision rev, sucursal su, flota flo, (select fk_flota, max(rev_fecha_real_salida)::date as ultima_revision from revision group by fk_flota) as aux
+            where rev.fk_flota = aux.fk_flota and rev_fecha_real_salida= aux.ultima_revision
+            and rev.fk_flota = flo.flo_clave and flo.fk_sucursal = su.su_clave
+            order by su.su_nombre
         '));
         return view('consulta43')->with(compact('consultas'));
     }
 
     public function consulta44(){
         $consultas= DB::select(DB::raw('
-            select \'Envío\' as tipo, null as egreso, en.en_precio as ingreso, su_nombre as sucu, en.en_fecha_envio::date as fecha
-            from envio en, sucursal su
-            where en.fk_sucursal_origen = su.su_clave
-            union
-            select \'Revisión\' as tipo, rev.rev_monto_pagar as egreso, null as ingreso, su.su_nombre as sucu, rev.rev_fecha_real_salida::date as fecha
-            from revision rev, flota flo, sucursal su
-            where rev.fk_flota = flo.flo_clave
-            and flo.fk_sucursal = su.su_clave
-            union
-            select \'Salario\' as tipo, em.em_salario_base as egreso,null as ingreso, su_nombre as sucu, null as fecha
-            from empleado em, zona zo, zona_empleado ze, sucursal su
-            where em.em_clave = ze.fk_empleado 
-            and ze.fk_zona_2 = zo.fk_sucursal
-            and zo.fk_sucursal = su.su_clave
-            order by tipo desc, sucu, fecha
+        select su.su_nombre as nombre, extract(month from rc.re_fecha) as mes ,rc.re_egreso as egreso, rc.re_ingreso as ingreso
+        from registro_contable rc, sucursal su
+        where rc.fk_servicio_sucursal_1 = su.su_clave
+        order by su.su_nombre,  rc.re_fecha
         '));
         return view('consulta44')->with(compact('consultas'));
     }
 
+    // public function consulta44(){
+    //     $consultas= DB::select(DB::raw('
+    //     select su.su_nombre as nombre, extract(month from rc.re_fecha) as mes ,rc.re_egreso as egreso, rc.re_ingreso as ingreso
+    //     from registro_contable rc, sucursal su
+    //     where rc.fk_servicio_sucursal_1 = su.su_clave
+    //     order by su.su_nombre,  rc.re_fecha
+    //     '));
+    //     return view('consulta44')->with(compact('consultas'));
+    // }
+
     
-    public function consulta45(){
-        // $consultas45 = Revision::join('flota','flota.flo_clave','=','revision.fk_flota')
-        // ->join('sucursal', 'sucursal.su_clave', '=', 'flota.fk_sucursal')
-        // ->select(DB::raw('sucursal.su_nombre as nombre, extract(month from revision.rev_fecha_real_salida) as mes, sum(revision.rev_monto_pagar) as total'))
-        // ->groupBy('mes','nombre')->get();
-        
-        $cons45= DB::select(DB::raw('
-            select su.su_nombre as nombre, extract(month from rev.rev_fecha_real_salida) as mes, sum(rev.rev_monto_pagar) as total
-            from revision rev, flota flo, sucursal su
-            where rev.fk_flota = flo.flo_clave and flo.fk_sucursal = su.su_clave
-            group by extract(month from rev.rev_fecha_real_salida),su.su_nombre
-            order by nombre, mes
-        '));
-        return view('consulta45')->with(compact('cons45'));
-    }
- 
-  
     public function index() {  }
 
     public function create() { }
@@ -298,5 +278,6 @@ class ConsultasEnvioController extends Controller
     public function store(Request $request) { }
 
     public function show($id) { }
+
 
 }

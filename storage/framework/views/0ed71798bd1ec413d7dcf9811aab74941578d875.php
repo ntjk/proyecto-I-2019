@@ -37,8 +37,8 @@
                 <tbody>
                   <?php $__currentLoopData = $consultas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $c43): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                   <tr class="text-center">
-                    <td><?php echo e($c43->nombre); ?></td>
-                    <td><?php echo e($c43->flo); ?></td>
+                    <td><?php echo e($c43->sucu); ?></td>
+                    <td><?php echo e($c43->flota); ?></td>
                     <td><?php echo e($c43->revf); ?></td>
                     <td><?php echo e($c43->revp); ?></td>
                   </tr>

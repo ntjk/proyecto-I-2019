@@ -37,8 +37,8 @@
                 <tbody>
                   @foreach ($consultas as $c43)
                   <tr class="text-center">
-                    <td>{{$c43->nombre}}</td>
-                    <td>{{$c43->flo}}</td>
+                    <td>{{$c43->sucu}}</td>
+                    <td>{{$c43->flota}}</td>
                     <td>{{$c43->revf}}</td>
                     <td>{{$c43->revp}}</td>
                   </tr>

@@ -28,8 +28,7 @@
             <table class="table table-bordered" style="width:40%" id="users-table" >
                 <thead>
                     <tr >
-                        <th>Tipo</th>
-                        <th>Sucursal</th>
+                        <th>Nombre</th>
                         <th>Mes</th>
                         <th>Egreso</th>
                         <th>Ingreso</th>
@@ -38,16 +37,20 @@
                 <tbody>
                   <?php $__currentLoopData = $consultas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $c44): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                   <tr class="text-center">
-                    <td><?php echo e($c44->tipo); ?></td>
-                    <td><?php echo e($c44->sucu); ?></td>
-                    <td><?php echo e($c44->fecha); ?></td>
+                    <td><?php echo e($c44->nombre); ?></td>
+                    <td><?php echo e($c44->mes); ?></td>
                     <td><?php echo e($c44->egreso); ?></td>
                     <td><?php echo e($c44->ingreso); ?></td>
                   </tr>
                   <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>
             </table>
-        
+        </div>
+    </div>
+   </div>
+  </form>
+ </div>
+</div>
         <script src="//code.jquery.com/jquery.js"></script>
         <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
@@ -62,3 +65,4 @@
       </div>
     </body>
 </html>
+
