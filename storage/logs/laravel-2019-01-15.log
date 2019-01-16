@@ -56,7 +56,7 @@
 #53 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
 #54 C:\\xampp\\htdocs\\version6ene\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #55 {main}
-"} 
+"}
 [2019-01-15 01:00:06] local.ERROR: SQLSTATE[42803]: Grouping error: 7 ERROR:  la columna «envio.en_clave» debe aparecer en la cláusula GROUP BY o ser usada en una función de agregación
 LINE 1: select count(*) as mo, en_clave, su_nombre as so, tipo.ti_no...
                                ^ (SQL: select count(*) as mo, en_clave, su_nombre as so, tipo.ti_nombre as tipo from "envio" inner join "sucursal" on "sucursal"."su_clave" = "envio"."fk_sucursal_origen" inner join "tipo" on "tipo"."ti_clave" = "fk_tipo" where "en_fecha_envio" between 2018-11-01 and 2019-01-14 group by "tipo", "so") {"exception":"[object] (Illuminate\\Database\\QueryException(code: 42803): SQLSTATE[42803]: Grouping error: 7 ERROR:  la columna «envio.en_clave» debe aparecer en la cláusula GROUP BY o ser usada en una función de agregación
@@ -128,7 +128,7 @@ LINE 1: select count(*) as mo, en_clave, su_nombre as so, tipo.ti_no...
 #58 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
 #59 C:\\xampp\\htdocs\\version6ene\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #60 {main}
-"} 
+"}
 [2019-01-15 01:04:28] local.ERROR: Method App\Http\Controllers\ConsultasEnvioController::clasificacionPaquetesPorOficina does not exist. {"exception":"[object] (BadMethodCallException(code: 0): Method App\\Http\\Controllers\\ConsultasEnvioController::clasificacionPaquetesPorOficina does not exist. at C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Controller.php:68)
 [stacktrace]
 #0 [internal function]: Illuminate\\Routing\\Controller->__call('clasificacionPa...', Array)
@@ -183,8 +183,8 @@ LINE 1: select count(*) as mo, en_clave, su_nombre as so, tipo.ti_no...
 #49 C:\\xampp\\htdocs\\version6ene\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
 #50 C:\\xampp\\htdocs\\version6ene\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #51 {main}
-"} 
-[2019-01-15 02:33:14] local.ERROR: SQLSTATE[08006] [7] FATAL:  la autentificaci�n password fall� para el usuario �postgres� (SQL: select * from "lugar" where "lu_tipo" = estado order by "lu_nombre" asc)  
+"}
+[2019-01-15 02:33:14] local.ERROR: SQLSTATE[08006] [7] FATAL:  la autentificaci�n password fall� para el usuario �postgres� (SQL: select * from "lugar" where "lu_tipo" = estado order by "lu_nombre" asc)
 [2019-01-15 02:35:11] local.ERROR: compact(): Undefined variable: puertos {"exception":"[object] (ErrorException(code: 0): compact(): Undefined variable: puertos at C:\\xampp\\htdocs\\Proyecto\\app\\Http\\Controllers\\PuertoController.php:21)
 [stacktrace]
 #0 [internal function]: Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(8, 'compact(): Unde...', 'C:\\\\xampp\\\\htdocs...', 21, Array)
@@ -241,7 +241,7 @@ LINE 1: select count(*) as mo, en_clave, su_nombre as so, tipo.ti_no...
 #51 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
 #52 C:\\xampp\\htdocs\\Proyecto\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #53 {main}
-"} 
+"}
 [2019-01-15 02:41:44] local.ERROR: compact(): Undefined variable:  {"exception":"[object] (ErrorException(code: 0): compact(): Undefined variable:  at C:\\xampp\\htdocs\\Proyecto\\app\\Http\\Controllers\\Servicio_SucursalController.php:18)
 [stacktrace]
 #0 [internal function]: Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(8, 'compact(): Unde...', 'C:\\\\xampp\\\\htdocs...', 18, Array)
@@ -298,7 +298,7 @@ LINE 1: select count(*) as mo, en_clave, su_nombre as so, tipo.ti_no...
 #51 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
 #52 C:\\xampp\\htdocs\\Proyecto\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #53 {main}
-"} 
+"}
 [2019-01-15 02:52:50] local.ERROR: syntax error, unexpected 'return' (T_RETURN), expecting variable (T_VARIABLE) or '{' or '$' {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): syntax error, unexpected 'return' (T_RETURN), expecting variable (T_VARIABLE) or '{' or '$' at C:\\xampp\\htdocs\\Proyecto\\app\\Http\\Controllers\\ConsultasSucursalController.php:61)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\Proyecto\\vendor\\composer\\ClassLoader.php(322): Composer\\Autoload\\includeFile('C:\\\\xampp\\\\htdocs...')
@@ -338,7 +338,7 @@ LINE 1: select count(*) as mo, en_clave, su_nombre as so, tipo.ti_no...
 #34 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
 #35 C:\\xampp\\htdocs\\Proyecto\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #36 {main}
-"} 
+"}
 [2019-01-15 02:52:57] local.ERROR: syntax error, unexpected 'return' (T_RETURN), expecting variable (T_VARIABLE) or '{' or '$' {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): syntax error, unexpected 'return' (T_RETURN), expecting variable (T_VARIABLE) or '{' or '$' at C:\\xampp\\htdocs\\Proyecto\\app\\Http\\Controllers\\ConsultasSucursalController.php:61)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\Proyecto\\vendor\\composer\\ClassLoader.php(322): Composer\\Autoload\\includeFile('C:\\\\xampp\\\\htdocs...')
@@ -378,7 +378,7 @@ LINE 1: select count(*) as mo, en_clave, su_nombre as so, tipo.ti_no...
 #34 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
 #35 C:\\xampp\\htdocs\\Proyecto\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #36 {main}
-"} 
+"}
 [2019-01-15 02:53:05] local.ERROR: syntax error, unexpected 'return' (T_RETURN), expecting variable (T_VARIABLE) or '{' or '$' {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): syntax error, unexpected 'return' (T_RETURN), expecting variable (T_VARIABLE) or '{' or '$' at C:\\xampp\\htdocs\\Proyecto\\app\\Http\\Controllers\\ConsultasSucursalController.php:61)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\Proyecto\\vendor\\composer\\ClassLoader.php(322): Composer\\Autoload\\includeFile('C:\\\\xampp\\\\htdocs...')
@@ -418,7 +418,7 @@ LINE 1: select count(*) as mo, en_clave, su_nombre as so, tipo.ti_no...
 #34 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
 #35 C:\\xampp\\htdocs\\Proyecto\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #36 {main}
-"} 
+"}
 [2019-01-15 02:53:57] local.ERROR: syntax error, unexpected 'return' (T_RETURN), expecting variable (T_VARIABLE) or '{' or '$' {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): syntax error, unexpected 'return' (T_RETURN), expecting variable (T_VARIABLE) or '{' or '$' at C:\\xampp\\htdocs\\Proyecto\\app\\Http\\Controllers\\ConsultasSucursalController.php:61)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\Proyecto\\vendor\\composer\\ClassLoader.php(322): Composer\\Autoload\\includeFile('C:\\\\xampp\\\\htdocs...')
@@ -458,7 +458,7 @@ LINE 1: select count(*) as mo, en_clave, su_nombre as so, tipo.ti_no...
 #34 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
 #35 C:\\xampp\\htdocs\\Proyecto\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #36 {main}
-"} 
+"}
 [2019-01-15 03:25:50] local.ERROR: SQLSTATE[42P01]: Undefined table: 7 ERROR:  no existe la relación «rol_permiso»
 LINE 1: ... "per_nombre", "per_descripcion", "per_tipo" from "rol_permi...
                                                              ^ (SQL: select distinct "per_clave", "per_nombre", "per_descripcion", "per_tipo" from "rol_permiso" inner join "permiso" on "per_clave" = "rol_permiso"."fk_permiso" where "fk_rol" is null order by "per_tipo" asc) (View: C:\xampp\htdocs\Proyecto\resources\views\header.blade.php) (View: C:\xampp\htdocs\Proyecto\resources\views\header.blade.php) {"exception":"[object] (ErrorException(code: 0): SQLSTATE[42P01]: Undefined table: 7 ERROR:  no existe la relación «rol_permiso»
@@ -529,7 +529,7 @@ LINE 1: ... \"per_nombre\", \"per_descripcion\", \"per_tipo\" from \"rol_permi..
 #53 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
 #54 C:\\xampp\\htdocs\\Proyecto\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #55 {main}
-"} 
+"}
 [2019-01-15 03:52:13] local.ERROR: SQLSTATE[42703]: Undefined column: 7 ERROR:  no existe la columna «flo_ruta»
 LINE 1: select "flo_ru_clave", "flo_ruta", "flo_ru_costo", "flo_ru_d...
                                ^ (SQL: select "flo_ru_clave", "flo_ruta", "flo_ru_costo", "flo_ru_duracion_hrs", "sucursal"."su_nombre", "fk_flota", "fk_ruta_1", "fk_ruta_2", "fk_ruta_3" from "flota_ruta" inner join "sucursal" on "sucursal"."su_clave" = "fk_ruta_2") {"exception":"[object] (Illuminate\\Database\\QueryException(code: 42703): SQLSTATE[42703]: Undefined column: 7 ERROR:  no existe la columna «flo_ruta»
@@ -601,7 +601,7 @@ LINE 1: select \"flo_ru_clave\", \"flo_ruta\", \"flo_ru_costo\", \"flo_ru_d...
 #58 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
 #59 C:\\xampp\\htdocs\\Proyecto\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #60 {main}
-"} 
+"}
 [2019-01-15 04:04:20] local.ERROR: Call to a member function first() on int {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): Call to a member function first() on int at C:\\xampp\\htdocs\\Proyecto\\app\\Http\\Controllers\\FloruController.php:55)
 [stacktrace]
 #0 [internal function]: App\\Http\\Controllers\\FloruController->guardarRuta(Object(Illuminate\\Http\\Request))
@@ -656,7 +656,7 @@ LINE 1: select \"flo_ru_clave\", \"flo_ruta\", \"flo_ru_costo\", \"flo_ru_d...
 #49 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
 #50 C:\\xampp\\htdocs\\Proyecto\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #51 {main}
-"} 
+"}
 [2019-01-15 04:04:36] local.ERROR: Call to a member function first() on int {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): Call to a member function first() on int at C:\\xampp\\htdocs\\Proyecto\\app\\Http\\Controllers\\FloruController.php:55)
 [stacktrace]
 #0 [internal function]: App\\Http\\Controllers\\FloruController->guardarRuta(Object(Illuminate\\Http\\Request))
@@ -711,7 +711,7 @@ LINE 1: select \"flo_ru_clave\", \"flo_ruta\", \"flo_ru_costo\", \"flo_ru_d...
 #49 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
 #50 C:\\xampp\\htdocs\\Proyecto\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #51 {main}
-"} 
+"}
 [2019-01-15 04:04:36] local.ERROR: Call to a member function first() on int {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): Call to a member function first() on int at C:\\xampp\\htdocs\\Proyecto\\app\\Http\\Controllers\\FloruController.php:55)
 [stacktrace]
 #0 [internal function]: App\\Http\\Controllers\\FloruController->guardarRuta(Object(Illuminate\\Http\\Request))
@@ -766,7 +766,7 @@ LINE 1: select \"flo_ru_clave\", \"flo_ruta\", \"flo_ru_costo\", \"flo_ru_d...
 #49 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
 #50 C:\\xampp\\htdocs\\Proyecto\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #51 {main}
-"} 
+"}
 [2019-01-15 04:04:36] local.ERROR: Call to a member function first() on int {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): Call to a member function first() on int at C:\\xampp\\htdocs\\Proyecto\\app\\Http\\Controllers\\FloruController.php:55)
 [stacktrace]
 #0 [internal function]: App\\Http\\Controllers\\FloruController->guardarRuta(Object(Illuminate\\Http\\Request))
@@ -821,7 +821,7 @@ LINE 1: select \"flo_ru_clave\", \"flo_ruta\", \"flo_ru_costo\", \"flo_ru_d...
 #49 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
 #50 C:\\xampp\\htdocs\\Proyecto\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #51 {main}
-"} 
+"}
 [2019-01-15 04:06:18] local.ERROR: Call to a member function first() on int {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): Call to a member function first() on int at C:\\xampp\\htdocs\\Proyecto\\app\\Http\\Controllers\\FloruController.php:55)
 [stacktrace]
 #0 [internal function]: App\\Http\\Controllers\\FloruController->guardarRuta(Object(Illuminate\\Http\\Request))
@@ -876,4 +876,4 @@ LINE 1: select \"flo_ru_clave\", \"flo_ruta\", \"flo_ru_costo\", \"flo_ru_d...
 #49 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
 #50 C:\\xampp\\htdocs\\Proyecto\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #51 {main}
-"} 
+"}

@@ -36,8 +36,14 @@ class ConsultasFlotaController extends Controller
     public function flotaTerrestre(){
         $terrestre="terrestre";
         $consulta=Flota::join('modelo','fk_modelo','=','mod_clave')->join('sucursal','fk_sucursal','=','su_clave')->select('flo_te_nacional', 'flo_tipo', 'su_nombre', 'flo_año', 'mod_nombre', 'flo_placa', 'flo_te_serial_motor')->groupBy('flo_te_nacional', 'flo_tipo', 'su_nombre', 'flo_año', 'mod_nombre', 'flo_placa', 'flo_te_serial_motor')->where('flo_subtipo','=',$terrestre)->orderBy('flo_te_serial_motor')->get();
-    return view('consulta19')->with(compact('consulta'));
-        //eturn $consulta;
+        return view('consulta19')->with(compact('consulta'));
     }
+
+    public function cantFlotaTerrestre(){
+        $sql= "select count(*) as cant, flo_te_nacional, flo_tipo, case when flo_te_nacional=true then ? when flo_te_nacional=false then ? end from flota group by flo_te_nacional, flo_tipo";
+        $consulta = DB::select(DB::raw($sql), ["nacional", "internacional"]);
+        return view('consulta27')->with(compact('consulta'));
+    }
+    
 
 }

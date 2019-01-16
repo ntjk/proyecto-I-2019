@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,11 +9,11 @@
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-        <meta name="csrf-token" content="<?php echo csrf_token(); ?>" />
-        <link href="<?php echo e(asset('css/styles.css')); ?>" rel="stylesheet">
-        <link href="<?php echo e(asset('css/unselectable.css')); ?>" rel="stylesheet">
-        <script type="text/javascript" src="<?php echo e(asset('js/dropdown.js')); ?>"></script>
-        <title>Consulta 22</title>
+        <meta name="csrf-token" content="{!! csrf_token() !!}" />
+        <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/unselectable.css') }}" rel="stylesheet">
+        <script type="text/javascript" src="{{ asset('js/dropdown.js') }}"></script>
+        <title>Consulta 29</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
@@ -21,25 +21,29 @@
         <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     </head>
     <body>
-            <?php echo $__env->make('header', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-            <h1 class="text-center">Oficinas y sus zonas por estado</h1>
+            @include('header')
+            <h1 class="text-center">Oficina es la más amplia por estado, municipio y parroquia</h1>
             <br/>
             <table class="table table-bordered" width="60%" id="users-table">
                 <thead>
                     <tr>
-                      <th>Estado</th>  
+                      <th>Estado</th>
+                      <th>Municipio</th>
+                      <th>Parroquia</th>  
                       <th>Sucursal</th>
-                      <th>Zona</th>
+                      <th>Capacidad</th>
                     </tr>
                 </thead>
                 <tbody>
-                  <?php $__currentLoopData = $consulta; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $b): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                  @foreach ($consulta as $b)
                   <tr>
-                    <td><?php echo e($b->lu_nombre); ?></td>
-                    <td><?php echo e($b->su_nombre); ?></td>
-                    <td><?php echo e($b->zo_nombre); ?></td>
+                    <td>{{$b->estado}}</td>
+                    <td>{{$b->municipio}}</td>
+                    <td>{{$b->parroquia}}</td>
+                    <td>{{$b->su_nombre}}</td>
+                    <td>{{$b->capac}}</td>
                   </tr>
-                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                  @endforeach
                 </tbody>
             </table>
         </div>
@@ -56,8 +60,8 @@
             });
         });
         </script>
-        <?php echo $__env->yieldPushContent('scripts'); ?>
-        <?php echo $__env->make('footer', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+        @stack('scripts')
+        @include('footer')
               </div>
         </div>
       </div>

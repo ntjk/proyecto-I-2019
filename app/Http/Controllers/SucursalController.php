@@ -80,8 +80,11 @@ class SucursalController extends Controller
 
       foreach ($empleados as $em) {
         $em->salario = Sucursal::join('zona_empleado_horario','fk_zona_empleado_1','=','sucursal.su_clave')->join('empleado','empleado.em_clave','=','fk_zona_empleado_3')
-        ->join('asistencia','asistencia.fk_zo_em_ho_3','=','em_clave')
+        ->join('asistencia','asistencia.fk_zo_em_ho_5','=','zo_em_ho_clave')
         ->where('su_clave','=',$id)->where('a_check','!=',null)->where('em_clave','=',$em->em_clave)->whereBetween('a_fecha',array($monday, $sunday))->sum('em_salario_base');
+        /*$em->salario = Sucursal::join('zona_empleado_horario','fk_zona_empleado_1','=','sucursal.su_clave')->join('empleado','empleado.em_clave','=','fk_zona_empleado_3')
+        ->join('asistencia','asistencia.fk_zo_em_ho_3','=','em_clave')
+        ->where('su_clave','=',$id)->where('a_check','!=',null)->where('em_clave','=',$em->em_clave)->whereBetween('a_fecha',array($monday, $sunday))->sum('em_salario_base');*/
 
         $total+=$em->salario;
       }

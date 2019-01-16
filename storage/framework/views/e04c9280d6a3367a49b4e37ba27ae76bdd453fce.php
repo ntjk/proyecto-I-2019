@@ -31,7 +31,7 @@
                     <tr>
                         <th>Nombre</th>
                         <th>Descripcion</th>
-                        <th>Accion</th> 
+                        <th id="hidden2">Accion</th> 
                     </tr>
                 </thead>
                 <tbody>
@@ -39,7 +39,7 @@
                   <tr>
                     <td><?php echo e($rol->rol_nombre); ?></td>
                     <td><?php echo e($rol->rol_descripcion); ?></td>
-                    <td>
+                    <td id="hidden3">
                       <button class="btn btn-warning btn-detail update" id="<?php echo e($rol->rol_clave); ?>" value="<?php echo e($rol->rol_clave); ?>" name="Update">Update</button>
                       <button class="btn btn-danger btn-delete delete" id="<?php echo e($rol->rol_clave); ?>" value="<?php echo e($rol->rol_clave); ?>" name="delete">Delete</button>
                       <button class="btn btn-primary verPermisos" id="<?php echo e($rol->rol_clave); ?>" value="<?php echo e($rol->rol_clave); ?>" name="verPermisos">Permisos</button>
@@ -82,7 +82,26 @@
             $('#users-table').DataTable({
             })
 
-            //$('#add_button').hide();
+            $(".delete").hide();
+            $(".update").hide();
+            $('#add_button').hide();
+            $('#hidden2').hide();    
+            $('#hidden3').hide();    
+
+            var eliminar = '<?php echo verificarPermisosHelper("eliminar roles");; ?>';
+            var modificar = '<?php echo verificarPermisosHelper("modificar roles");; ?>';
+            var insertar = '<?php echo verificarPermisosHelper("insertar roles");; ?>';
+
+            if(eliminar || modificar){
+              $('#hidden2').show();    
+              $('#hidden3').show();
+            }
+            if(eliminar)
+              $(".delete").show();
+            if(modificar)
+              $(".update").show();              
+            if(insertar)
+              $('#add_button').show();
 
             $(document).on('submit', '#user_form', function(event){
             event.preventDefault();

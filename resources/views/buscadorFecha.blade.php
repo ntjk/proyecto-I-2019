@@ -81,6 +81,12 @@
                             window.location.href = url; 
                         }
                     }
+                    if($('#paraDiferenciar').val() == 25){
+                        if ($("input[name=parametro]:checked").val() == "rango") {
+                            var url = "{{url('/filtrarFecha_5')}}" + document.getElementById(rangoi).value + document.getElementById(rangof).value;
+                            window.location.href = url; 
+                        }
+                    }
                 }
                 </script>
 

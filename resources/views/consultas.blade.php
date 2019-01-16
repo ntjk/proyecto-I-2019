@@ -143,6 +143,15 @@
                   <tr>
                     <td><a href="consulta45">Total de gastos generados por revisión de flotas por mes y por sucursal.</a></td>
                   </tr>
+                  <tr>
+                    <td><a href="consulta27">Cantidad de flota terrestre nacional e internacional, agrupado por tipo de ubicación tipo de vehículo</a></td>
+                  </tr>
+                  <tr>
+                    <td><a href="consulta28">Sucursales indicando estado, municipio y parroquia</a></td>
+                  </tr>
+                  <tr>
+                    <td><a href="consulta29">Oficina es la más amplia por estado, municipio y parroquia</a></td>
+                  </tr>
                 </tbody>
             </table>
         </div>

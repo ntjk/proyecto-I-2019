@@ -13,7 +13,7 @@
         <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
         <link href="{{ asset('css/unselectable.css') }}" rel="stylesheet">
         <script type="text/javascript" src="{{ asset('js/dropdown.js') }}"></script>
-        <title>Consulta 21</title>
+        <title>Consulta 22</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
@@ -22,7 +22,7 @@
     </head>
     <body>
             @include('header')
-            <h1 class="text-center">Listado de Oficinas por Estado ordenadas alfabéticamente.</h1>
+            <h1 class="text-center">Oficinas y sus zonas por estado</h1>
             <br/>
             <table class="table table-bordered" width="60%" id="users-table">
                 <thead>

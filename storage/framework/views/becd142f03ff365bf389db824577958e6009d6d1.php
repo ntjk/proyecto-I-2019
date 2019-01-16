@@ -13,24 +13,23 @@
   <div class="nav">
     <div class="links">
         <a href="quienes_somos">¿Quienes Somos?</a>
-        <a href="consultas">Consultas</a>
+        <a id="consultas" href="consultas">Consultas</a>
         <a href="buscadorChequeo">Rastreo de envíos</a>
         <a href="inicioSesion">Empleados</a>
         <div class="dropdown">
           <a onclick="myFunction()" class="dropbtn">Tablas</a>
           <div id="myDropdown" class="dropdown-content">
             <a id="usuario" href="usuario">Usuarios</a>
-            <a href="rol">Roles</a>
-            <a href="sucursal">Sucursales</a>
-            <a href="transporte">Transportes T</a>
-            <a href="transporteM">Transportes M</a>
-            <a href="transporteA">Transportes A</a>
-            <a href="cliente">Clientes</a>
-            <a href="empleado">Empleados</a>
-            <a href="ruta">Rutas</a>
+            <a id="rol" href="rol">Roles</a>
+            <a id="sucursal" href="sucursal">Sucursales</a>
+            <a id="transporte" href="transporte">Transportes T</a>
+            <a id="transporteM" href="transporteM">Transportes M</a>
+            <a id="transporteA" href="transporteA">Transportes A</a>
+            <a id="cliente" href="cliente">Clientes</a>
+            <a id="empleado" href="empleado">Empleados</a>
+            <a id="ruta" href="floru">Rutas</a>
             <a id="envio" href="envio">Envios</a>
-            <a href="tipo">Tipos de Paquete</a>
-            <a href="asistencia">Asistencias</a>
+            <a id="asistencia" href="asistencia">Asistencias</a>
           </div>
         <a id="cerrarSesion" class="sale">Cerrar sesión</a>
         </div>
@@ -39,15 +38,52 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <script>  
       $(document).ready(function () {
-      //function leerUsuario() {
+   
         $('#envio').hide();
         $('#usuario').hide(); 
-        var ver = '<?php echo verificarPermisosHelper("ver envios");; ?>';
+        $('#rol').hide();
+        $('#sucursal').hide();
+        $('#transporte').hide();
+        $('#transporteM').hide(); 
+        $('#transporteA').hide();
+        $('#cliente').hide(); 
+        $('#empleado').hide();
+        $('#ruta').hide(); 
+        $('#asistencia').hide();
+        $('#consultas').hide();
+        var envios = '<?php echo verificarPermisosHelper("ver envios");; ?>';
         var usuario = '<?php echo verificarPermisosHelper("ver usuarios");; ?>';
-        if(ver)
+        var rol = '<?php echo verificarPermisosHelper("ver roles");; ?>';
+        var sucursal = '<?php echo verificarPermisosHelper("ver sucursales");; ?>';
+        var flota = '<?php echo verificarPermisosHelper("ver flotas");; ?>';
+        var cliente = '<?php echo verificarPermisosHelper("ver clientes");; ?>';
+        var empleado = '<?php echo verificarPermisosHelper("ver empleados");; ?>';
+        var ruta = '<?php echo verificarPermisosHelper("ver rutas");; ?>';
+        var asistencia = '<?php echo verificarPermisosHelper("ver asistencias");; ?>';
+        var consultas = '<?php echo verificarPermisosHelper("ver reportes");; ?>';
+        if(envios)
           $('#envio').show();
         if(usuario)
           $('#usuario').show();
+        if(rol)
+          $('#rol').show();
+        if(sucursal)
+          $('#sucursal').show();
+        if(flota){
+          $('#transporte').show();
+          $('#transporteM').show(); 
+          $('#transporteA').show();
+        }
+        if(cliente)
+          $('#cliente').show();
+        if(empleado)
+          $('#empleado').show();
+        if(ruta)
+          $('#ruta').show();
+        if(asistencia)
+          $('#asistencia').show();
+        if(consultas)
+          $('#consultas').show();
 
 
          $(document).on('click','.sale',function(){
