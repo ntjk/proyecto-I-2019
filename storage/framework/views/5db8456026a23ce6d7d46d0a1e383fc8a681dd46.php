@@ -12,7 +12,7 @@
         <meta name="csrf-token" content="<?php echo csrf_token(); ?>" />
         <link href="<?php echo e(asset('css/styles.css')); ?>" rel="stylesheet">
         <script type="text/javascript" src="<?php echo e(asset('js/dropdown.js')); ?>"></script>
-        <title>Consulta43 - LogUCAB</title>
+        <title>Consulta45 - LogUCAB</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
@@ -23,34 +23,27 @@
             <?php echo $__env->make('header', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
             <div class="container">
             <br/>
-            <h1 class="text-center">Listado de flotas con su última fecha de revisión y próxima fecha por oficina</h1>
+            <h1 class="text-center">Total de gastos generados por revisión de flotas por mes y por sucursal.</h1>
             <br/>
             <table class="table table-bordered" style="width:40%" id="users-table" >
                 <thead>
                     <tr >
                         <th>Sucursal</th>
-                        <th>Flota</th>
-                        <th>Fecha de la última revisión</th>
-                        <th>Fecha de la próxima revisión</th>
+                        <th>Mes</th>
+                        <th>Total de gastos</th>
                     </tr>
                 </thead>
                 <tbody>
-                  <?php $__currentLoopData = $consultas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $c43): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                  <?php $__currentLoopData = $cons45; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $c45): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                   <tr class="text-center">
-                    <td><?php echo e($c43->nombre); ?></td>
-                    <td><?php echo e($c43->flo); ?></td>
-                    <td><?php echo e($c43->revf); ?></td>
-                    <td><?php echo e($c43->revp); ?></td>
+                    <td><?php echo e($c45->nombre); ?></td>
+                    <td><?php echo e($c45->mes); ?></td>
+                    <td><?php echo e($c45->total); ?></td>
                   </tr>
                   <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>
             </table>
-        </div>
-    </div>
-   </div>
-  </form>
- </div>
-</div>
+        
         <script src="//code.jquery.com/jquery.js"></script>
         <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
