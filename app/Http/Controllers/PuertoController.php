@@ -18,9 +18,9 @@ class PuertoController extends Controller
     {
       $flotas=Flota::where('flota.flo_subtipo','marítima')->orderBy('flo_clave')->get();
       $sucursales=Sucursal::orderBy('su_nombre')->get();
-      return view('puerto')->with(compact('puertos'))->with(compact('sucursales'))->with(compact('flotas'));
+      return view('puerto')->with(compact('sucursales'))->with(compact('flotas'));
     }
-  
+
     // $puertos= DB::select(DB::raw('
     // select pu.puer_nombre as nombre, pu.puer_cantidad_puestos as cp, pu.puer_cantidad_muelles as cm, pu.puer_longitud as long, pu.puer_ancho as ancho, pu.puer_calado as calado, pu.puer_uso as uso, flo.flo_tipo as flota, su.su_nombre as sucursal
     // from puerto pu, flota flo, sucursal su
@@ -33,7 +33,7 @@ class PuertoController extends Controller
               return '<button class="btn btn-warning btn-detail update" id="'.$puerto->puer_clave.'" value="'.$puerto->puer_clave.'" name="Update">Update</button>
             <button class="btn btn-danger btn-delete delete" id="'.$puerto->puer_clave.'" value="'.$puerto->puer_clave.'" name="delete">Delete</button>'; })->make(true);
     }
-  
+
     public function store(Request $request)
     {
       if ($request->operation == "Edit"){
@@ -54,12 +54,12 @@ class PuertoController extends Controller
       }
       return ['success' => true, 'message' => 'Saved !!'];
     }
-  
-  
+
+
     public function getOne(Request $request){
         return $puerto = Puerto::find($request->puer_clave);
     }
-  
+
     public function destroy(Request $request){
       $puerto = Puerto::find($request->puer_clave);
       $puerto->delete();

@@ -6,13 +6,13 @@
 </div>
 <div class="motto-container">
   <div class="motto">
-      Mayor empresa de envios en venezuela.
+      Mayor empresa de envíos en Venezuela.
   </div>
 </div>
 </div>
   <div class="nav">
     <div class="links">
-        <a href="quienes_somos">¿Quienes Somos?</a>
+        <a href="quienes_somos">¿Quiénes Somos?</a>
         <a href="consultas">Consultas</a>
         <a href="buscadorChequeo">Rastreo de envíos</a>
         <a href="inicioSesion">Empleados</a>
@@ -28,10 +28,11 @@
             <a href="cliente">Clientes</a>
             <a href="empleado">Empleados</a>
             <a href="ruta">Rutas</a>
-            <a id="envio" href="envio">Envios</a>
+            <a href="envio">Envíos</a>
             <a href="tipo">Tipos de Paquete</a>
             <a href="asistencia">Asistencias</a>
           </div>
+        <a id="cerrarSesion" class="sale">Cerrar sesión</a>
         </div>
       </div>
     </div>
@@ -47,6 +48,16 @@
           $('#envio').show();
         if(usuario)
           $('#usuario').show();
+
+
+         $(document).on('click','.sale',function(){
+            document.cookie = "usuario=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+            document.cookie = "password=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+            document.cookie = "usuario=" + " ";  
+            var url = "<?php echo e(url('/inicioSesion')); ?>";
+            window.location = url;
+         });
+
       });
     </script>
 

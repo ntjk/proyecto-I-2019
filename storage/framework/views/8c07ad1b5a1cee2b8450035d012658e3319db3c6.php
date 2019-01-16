@@ -13,7 +13,7 @@
         <link href="<?php echo e(asset('css/styles.css')); ?>" rel="stylesheet">
         <link href="<?php echo e(asset('css/unselectable.css')); ?>" rel="stylesheet">
         <script type="text/javascript" src="<?php echo e(asset('js/dropdown.js')); ?>"></script>
-        <title>Consulta 2</title>
+        <title>Consulta 23</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
@@ -22,27 +22,22 @@
     </head>
     <body>
             <?php echo $__env->make('header', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-            <h1 class="text-center">Mes con más envíos por año</h1>
+            <h1 class="text-center">Oficinas internacionales</h1>
             <br/>
-            <table class="table table-bordered" width="80%" id="users-table">
+            <table class="table table-bordered" width="60%" id="users-table">
                 <thead>
-                    <tr>
-                        <th>Año</th>
-                        <th>Mes</th>
-                        <th>Cantidad de envíos</th>
+                    <tr> 
+                      <th>Sucursal</th>
                     </tr>
                 </thead>
                 <tbody>
-                  <?php $__currentLoopData = $mesMasEnvios; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $a): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                  <?php $__currentLoopData = $consulta; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $b): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                   <tr>
-                  	<td><?php echo e($a->yy); ?></td>
-                    <td><?php echo e($a->mes); ?></td>
-                    <td><?php echo e($a->max); ?></td>
+                    <td><?php echo e($b->su_nombre); ?></td>
                   </tr>
                   <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>
             </table>
-            <br/>
         </div>
         <div id="userModal" class="modal fade">
         <script src="//code.jquery.com/jquery.js"></script>
@@ -52,9 +47,9 @@
         <script>$(function() {
             $('#users-table').DataTable({
             })
-          	$(document).on('click', '.update', function(){
-            	var en_clave = $(this).attr("id");
-          	});
+            $(document).on('click', '.update', function(){
+              var en_clave = $(this).attr("id");
+            });
         });
         </script>
         <?php echo $__env->yieldPushContent('scripts'); ?>

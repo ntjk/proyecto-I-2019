@@ -71,8 +71,7 @@
 
         </div>
         <div class="fatter descripcion half white">
-          Peso: <?php echo e($envio->en_peso); ?>
-
+          Peso: <?php echo e($envio->en_peso); ?> Kg.
         </div>
       </div>
       <div class="container">
@@ -83,8 +82,7 @@
       </div>
       <div class="container">
         <div class="fatter full white">
-          Monto: <?php echo e($envio->en_precio); ?>
-
+          Monto: <?php echo e($envio->en_precio); ?> Bs.
         </div>
       </div>
 

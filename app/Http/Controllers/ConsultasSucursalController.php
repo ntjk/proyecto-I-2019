@@ -56,8 +56,6 @@ class ConsultasSucursalController extends Controller
       $start=Carbon::parse('first day of January 2018')->startOfWeek();
       $end=Carbon::parse('first day of January 2018')->endOfWeek();
 
-      $
-
       return view('consulta70')
       ->with(compact('costo'))
       ->with(compact('sucursales'));

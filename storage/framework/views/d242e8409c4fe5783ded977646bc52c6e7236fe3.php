@@ -13,7 +13,7 @@
         <link href="<?php echo e(asset('css/styles.css')); ?>" rel="stylesheet">
         <link href="<?php echo e(asset('css/unselectable.css')); ?>" rel="stylesheet">
         <script type="text/javascript" src="<?php echo e(asset('js/dropdown.js')); ?>"></script>
-        <title>Consulta 2</title>
+        <title>Consulta 16</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
@@ -22,22 +22,32 @@
     </head>
     <body>
             <?php echo $__env->make('header', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-            <h1 class="text-center">Mes con más envíos por año</h1>
+            <h1 class="text-center">Listado de vehículos por oficina base</h1>
             <br/>
             <table class="table table-bordered" width="80%" id="users-table">
                 <thead>
                     <tr>
+                        <th>Sucursal base</th>
+                        <th>Placa</th>
                         <th>Año</th>
-                        <th>Mes</th>
-                        <th>Cantidad de envíos</th>
+                        <th>Tipo</th>
+                        <th>Clasificación</th>
+                        <th>Modelo</th>
+                        <th>Serial</th>
+                        <th>Capac. de carga</th>
                     </tr>
                 </thead>
                 <tbody>
-                  <?php $__currentLoopData = $mesMasEnvios; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $a): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                  <?php $__currentLoopData = $consulta; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $a): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                   <tr>
-                  	<td><?php echo e($a->yy); ?></td>
-                    <td><?php echo e($a->mes); ?></td>
-                    <td><?php echo e($a->max); ?></td>
+                    <td><?php echo e($a->su_nombre); ?></td>
+                    <td><?php echo e($a->flo_placa); ?></td>
+                    <td><?php echo e($a->flo_año); ?></td>
+                    <td><?php echo e($a->flo_subtipo); ?></td>
+                    <td><?php echo e($a->flo_tipo); ?></td>
+                    <td><?php echo e($a->mod_nombre); ?></td>
+                    <td><?php echo e($a->flo_serial_carroceria); ?></td>
+                    <td><?php echo e($a->flo_capacidad_carga); ?></td>
                   </tr>
                   <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>
@@ -52,9 +62,6 @@
         <script>$(function() {
             $('#users-table').DataTable({
             })
-          	$(document).on('click', '.update', function(){
-            	var en_clave = $(this).attr("id");
-          	});
         });
         </script>
         <?php echo $__env->yieldPushContent('scripts'); ?>

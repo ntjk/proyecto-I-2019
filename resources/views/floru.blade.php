@@ -43,7 +43,7 @@
                     <td>{{$r->su_nombre}}</td>
                     <td>{{$r->sd_nombre}}</td>
                     <td></td>
-                    <td>                      
+                    <td>
                       <button class="btn btn-warning btn-detail update" id="{{$r->flo_ru_clave}}" value="{{$r->flo_ru_clave}}" name="Update">Update</button>
                       <button class="btn btn-danger btn-delete delete" id="{{$r->flo_ru_clave}}" value="{{$r->flo_ru_clave}}" name="delete">Delete</button>
                       <button class="btn btn-primary " id="{{$r->flo_ru_clave}}" data-toggle="modal" data-target="#userModal_2"  value="{{$r->flo_ru_clave}}" name="delete">Agregar nodo</button>
@@ -74,7 +74,7 @@
       <select class="form-control" name="fk_flota" id="fk_flota">
         @foreach($flotas as $flota)
         <option value="{{$flota->flo_clave}}">{{$flota->flo_clave}}</option>
-        @endforeach        
+        @endforeach
       </select>
       <label>Precio :: origen - destino</label>
       <input type="number" step="0.01" name="flo_ru_precio" id="flo_ru_precio" class="form-control"/>
@@ -120,7 +120,7 @@
       <select class="form-control" name="fk_flota_2" id="fk_flota_2">
         @foreach($flotas as $flota)
         <option value="{{$flota->flo_clave}}">{{$flota->flo_clave}}</option>
-        @endforeach        
+        @endforeach
       </select>
       <label>Precio :: desde la sucursal anterior a este nodo</label>
       <input type="number" step="0.01" name="flo_ru_precio_2" id="flo_ru_precio_2" class="form-control"/>
@@ -144,9 +144,9 @@
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script>$(function() {
             $('#users-table').DataTable({
-            }) 
+            })
 
-            $(document).on('click', '.agregarRuta', function(event){
+            $(document).on('submit', '#user_form', function(event){
             event.preventDefault();
             var fk_sucursal_1 = $('#fk_sucursal_1').val();
             var fk_sucursal_2 = $('#fk_sucursal_2').val();
@@ -163,12 +163,12 @@
             {
               $.ajax({
                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                type: "POST",
+                method: 'POST',
                 url:"floru/agregarRuta",
-                data: { 
+                data: {
                   fk_sucursal_1:fk_sucursal_1,
                   fk_sucursal_2:fk_sucursal_2,
-                  fk_flota:fk_flota;
+                  fk_flota:fk_flota,
                   flo_ru_duracion:flo_ru_duracion,
                   flo_ru_precio:flo_ru_precio
                 },
