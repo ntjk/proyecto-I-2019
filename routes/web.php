@@ -268,6 +268,12 @@ Route::get('consulta44','ConsultasEnvioController@consulta44');
 /* Consulta 45: Total de gastos generados por revisión de flotas por mes y por sucursal */
 Route::get('consulta45','ConsultasEnvioController@consulta45');
 
+/* Consulta 46: Ingreso y egresos por oficina por período de tiempo.*/
+// Route::get('consulta46', function(){
+//   $paraDiferenciar = 46;
+//   return view('buscadorFecha')->with(compact('paraDiferenciar')); });
+// Route::get('filtrarFecha_3{rango}','ConsultasEnvioController@consulta46');
+
 Route::get('sesion', 'ConsultasEnvioController@verificarPermisos');
 Route::get('sesion2', 'ConsultasEnvioController@validarUsuario2');
 //Route::post('envio/updatePrecio','EnvioController@updatePrecio');

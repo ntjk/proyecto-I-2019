@@ -12,7 +12,7 @@
         <meta name="csrf-token" content="{!! csrf_token() !!}" />
         <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
         <script type="text/javascript" src="{{ asset('js/dropdown.js') }}"></script>
-        <title>Talleres - LogUCAB</title>
+        <title>Consulta45 - LogUCAB</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
@@ -23,30 +23,27 @@
             @include('header')
             <div class="container">
             <br/>
-            <h1 class="text-center">Lista de talleres agrupados por zona</h1>
+            <h1 class="text-center">Total de gastos generados por revisión de flotas por mes y por sucursal.</h1>
             <br/>
-            <table class="table table-bordered" style="width:30%" id="users-table" >
+            <table class="table table-bordered" style="width:40%" id="users-table" >
                 <thead>
                     <tr >
-                        <th>Zona</th>
-                        <th>Taller</th>
+                        <th>Sucursal</th>
+                        <th>Mes</th>
+                        <th>Total de gastos</th>
                     </tr>
                 </thead>
                 <tbody>
-                  @foreach ($talleres as $tz)
-                  <tr>
-                    <td>{{$tz->zona}}</td>
-                    <td>{{$tz->nombre}}</td>
+                  @foreach ($cons45 as $c45)
+                  <tr class="text-center">
+                    <td>{{$c45->nombre}}</td>
+                    <td>{{$c45->mes}}</td>
+                    <td>{{$c45->total}}</td>
                   </tr>
                   @endforeach
                 </tbody>
             </table>
-        </div>
-    </div>
-   </div>
-  </form>
- </div>
-</div>
+        
         <script src="//code.jquery.com/jquery.js"></script>
         <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>

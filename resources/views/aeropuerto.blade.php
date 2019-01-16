@@ -38,70 +38,24 @@
                        <!--<th>Accion</th>-->
                    </tr>
                </thead>
+               <tbody>
+                  @foreach ($aeropuertos as $p)
+                  <tr>
+                    <td>{{$p->ae_nombre}}</td>
+                    <td>{{$p->capacidad}}</td>
+                    <td>{{$p->pistas}}</td>
+                    <td>{{$p->terminales}}</td>
+                    <td>{{$p->otros}}</td>
+                    <td>{{$p->sucursal}}</td>
+                  </tr>
+                  @endforeach
+                </tbody>
            </table>
-       </div>
-<!--
-<div id="userModal" class="modal fade">
-<div class="modal-dialog">
- <form method="post" id="user_form" enctype="multipart/form-data">
-  <div class="modal-content">
-   <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal">&times;</button>
-    <h4 class="modal-title">Añadir Aeropuerto</h4>
-   </div>
-   <div class="modal-body">
-    <label>Nombre</label>
-    <input type="text" name="ae_nombre" id="ae_nombre" class="form-control" />
-    <br />
-    <label>Capacidad</label>
-    <input type="number" name="ae_capacidad" id="ae_capacidad" class="form-control" />
-    <br />
-    <label>Cantidad de pistas</label>
-    <input type="number" name="ae_cantidad_pistas" id="ae_cantidad_pistas" class="form-control" />
-    <br />
-    <label>Cantida de terminales</label>
-    <input type="number" name="ae_cantidad_terminales" id="ae_cantidad_terminales" class="form-control" />
-    <br />
-    <label>Otros</label>
-    <input type="text" name="ae_otro" id="ae_otro" class="form-control" />
-    <br />
-    <label>Sucursal</label>
-    <select class="form-control" name="fk_sucursal" id="fk_sucursal">
-        @foreach($sucursales as $sucursal)
-        <option value="{{$sucursal->su_clave}}">{{$sucursal->su_nombre}}</option>
-        @endforeach
-        <option value=""> Null </option>
-    </select>
-    </div>
-   <div class="modal-footer">
-    <input type="hidden" name="ae_clave" id="ae_clave" />
-    <input type="hidden" name="operation" id="operation" />
-    <input type="submit" name="action" id="action" class="btn btn-success" value="Add" />
-    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-   </div>
-  </div>
- </form>
-</div>
-</div>
--->
        <script src="//code.jquery.com/jquery.js"></script>
        <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
        <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
        <script>$(function() {
            $('#users-table').DataTable({
-               processing: true,
-               serverSide: true,
-               ajax: '{!! route('aeropuerto_getData') !!}',
-               columns: [
-                   //{ data: 'ae_clave', name: 'ae_clave' },
-                   { data: 'ae_nombre', name: 'ae_nombre' },
-                   { data: 'ae_capacidad', name: 'ae_capacidad' },
-                   { data: 'ae_cantidad_pistas', name: 'ae_cantidad_pistas' },
-                   { data: 'ae_cantidad_terminales', name: 'ae_cantidad_terminales' },
-                   { data: 'ae_otro', name: 'ae_otro' },
-                   { data: 'fk_sucursal', name: 'fk_sucursal' },
-                   //{data: 'action', name: 'action', orderable: false, searchable: false}
-               ]
            })
 
         //    $(document).on('submit', '#user_form', function(event){

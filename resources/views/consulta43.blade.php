@@ -28,6 +28,7 @@
             <table class="table table-bordered" style="width:40%" id="users-table" >
                 <thead>
                     <tr >
+                        <th>Sucursal</th>
                         <th>Flota</th>
                         <th>Fecha de la última revisión</th>
                         <th>Fecha de la próxima revisión</th>
@@ -36,7 +37,8 @@
                 <tbody>
                   @foreach ($consultas as $c43)
                   <tr class="text-center">
-                    <td>{{$c43->flota}}</td>
+                    <td>{{$c43->nombre}}</td>
+                    <td>{{$c43->flo}}</td>
                     <td>{{$c43->revf}}</td>
                     <td>{{$c43->revp}}</td>
                   </tr>

@@ -25,7 +25,7 @@
             <br/>
             <h1 class="text-center">Histórico total de fallas</h1>
             <br/>
-            <table class="table table-bordered" id="users-table">
+            <table class="table table-bordered" id="users-table" style="width:60%">
                 <thead>
                     <tr>
                         <th>Falla</th>

@@ -25,26 +25,25 @@
             <br/>
             <h1 class="text-center">Sucursales de puertos y aeropuertos</h1>
             <br/>
-            <table class="table table-bordered" style="width:10%" id="users-table">
+            <table class="table table-bordered" style="width:70%" id="users-table">
                 <thead>
                     <tr>
+                        <th>Tipo</th>
                         <th>Nombre</th>
+                        <th>Sucursal</th>
                     </tr>
                 </thead>
                 <tbody>
-                  <?php $__currentLoopData = $spa; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $spaBeta): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                  <tr>
-                    <td class="text-center"><?php echo e($spaBeta->nombre); ?></td>
+                  <?php $__currentLoopData = $consultas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $spa): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                  <tr class="text-center">
+                    <td ><?php echo e($spa->tipo); ?></td>
+                    <td ><?php echo e($spa->nombre); ?></td>
+                    <td ><?php echo e($spa->sucu); ?></td>
                   </tr>
                   <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>
             </table>
-        </div>
-    </div>
-   </div>
-  </form>
- </div>
-</div>
+        
         <script src="//code.jquery.com/jquery.js"></script>
         <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>

@@ -16,24 +16,23 @@ class AeropuertoController extends Controller
 {
     public function index()
     {
+      $aeropuertos= DB::select(DB::raw('
+      select ae.ae_clave, ae.ae_nombre, ae.ae_capacidad as capacidad, ae.ae_cantidad_pistas as pistas, ae.ae_cantidad_terminales as terminales, ae.ae_otro as otros, su.su_nombre as sucursal
+      from aeropuerto ae, sucursal su
+      where ae.fk_sucursal = su.su_clave'));
+      return view('aeropuerto')->with(compact('aeropuertos'));
       
-      // $aeropuertos= DB::select(DB::raw('
-      // select ae.ae_clave, ae.ae_nombre, ae.ae_capacidad as capacidad, ae.ae_cantidad_pistas as pistas, ae.ae_cantidad_terminales as terminales, ae.ae_otro as otros, ae.fk_sucursal as sucursal
-      // from aeropuerto ae, sucursal su
-      // where ae.fk_sucursal = su.su_clave'));
-      // return view('aeropuerto')->with(compact('aeropuertos'));
-      
-      $sucursales=Sucursal::orderBy('su_nombre')->get();
-      return view('aeropuerto',compact('aeropuertos'),compact('sucursales'));
+      // $sucursales=Sucursal::orderBy('su_nombre')->get();
+      // return view('aeropuerto',compact('aeropuertos'),compact('sucursales'));
     }
   
-    public function getData()
-    {
-      $aeropuerto = Aeropuerto::select(['ae_clave','ae_nombre','ae_capacidad','ae_cantidad_pistas','ae_cantidad_terminales','ae_otro','fk_sucursal']);
-      return Datatables::of(Aeropuerto::query())->addColumn('action', function ($aeropuerto) {
-              return '<button class="btn btn-warning btn-detail update" id="'.$aeropuerto->ae_clave.'" value="'.$aeropuerto->ae_clave.'" name="Update">Update</button>
-            <button class="btn btn-danger btn-delete delete" id="'.$aeropuerto->ae_clave.'" value="'.$aeropuerto->ae_clave.'" name="delete">Delete</button>'; })->make(true);
-    }
+    // public function getData()
+    // {
+    //   $aeropuerto = Aeropuerto::select(['ae_clave','ae_nombre','ae_capacidad','ae_cantidad_pistas','ae_cantidad_terminales','ae_otro','fk_sucursal']);
+    //   return Datatables::of(Aeropuerto::query())->addColumn('action', function ($aeropuerto) {
+    //           return '<button class="btn btn-warning btn-detail update" id="'.$aeropuerto->ae_clave.'" value="'.$aeropuerto->ae_clave.'" name="Update">Update</button>
+    //         <button class="btn btn-danger btn-delete delete" id="'.$aeropuerto->ae_clave.'" value="'.$aeropuerto->ae_clave.'" name="delete">Delete</button>'; })->make(true);
+    // }
   
     public function store(Request $request)
     {
