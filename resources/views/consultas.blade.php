@@ -110,6 +110,15 @@
                   <tr>
                     <td><a href="consulta26">Empleados con su horario y ubicación dentro de cada oficina</a></td>
                   </tr>
+                  <tr>
+                    <td><a href="consulta27">Cantidad de flota terrestre nacional e internacional, agrupado por tipo de ubicación tipo de vehículo</a></td>
+                  </tr>
+                  <tr>
+                    <td><a href="consulta28">Sucursales indicando estado, municipio y parroquia</a></td>
+                  </tr>
+                  <tr>
+                    <td><a href="consulta29">Oficina es la más amplia por estado, municipio y parroquia</a></td>
+                  </tr>
                 </tbody>
             </table>
         </div>

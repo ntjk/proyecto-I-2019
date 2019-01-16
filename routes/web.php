@@ -187,8 +187,16 @@ Route::get('consulta21', 'ConsultasSucursalController@oficPorEstado');
 Route::get('consulta22', 'ConsultasSucursalController@oficYZonaPorEstado');
 Route::get('consulta23', 'ConsultasSucursalController@oficInternacionales');
 Route::get('consulta24', 'ConsultasEmpleadoController@empleadosFechaIngreso');
-Route::get('consulta25', 'ConsultasEmpleadoController@empleadosFechaEgreso');
+
+Route::get('consulta25', function(){
+  $paraDiferenciar = 25;
+  return view('buscadorFecha')->with(compact('paraDiferenciar')); });
+Route::get('filtrarFecha_5{rango}','ConsultasEmpleadoController@empleadosFechaEgreso');
 Route::get('consulta26', 'ConsultasEmpleadoController@horarioEmpleados');
+Route::get('consulta27', 'ConsultasFlotaController@cantFlotaTerrestre');
+Route::get('consulta28', 'ConsultasSucursalController@oficConUbicacion');
+Route::get('consulta29', 'ConsultasSucursalController@masAmplia');
+Route::get('consulta30', 'ConsultasEnvioController@audi');
 
 /*Asistencias*/
 Route::resource('asistencia','AsistenciaController');

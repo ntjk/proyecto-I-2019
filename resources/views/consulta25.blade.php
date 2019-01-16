@@ -13,7 +13,7 @@
         <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
         <link href="{{ asset('css/unselectable.css') }}" rel="stylesheet">
         <script type="text/javascript" src="{{ asset('js/dropdown.js') }}"></script>
-        <title>Consulta 24</title>
+        <title>Consulta 25</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
@@ -22,7 +22,7 @@
     </head>
     <body>
             @include('header')
-            <h1 class="text-center">Lista de empleados activos, indicando su información básica, cargo que ocupa y fecha de ingreso a la compañía</h1>
+            <h1 class="text-center">Empleados (activos o no), total de cada grupo entre <br/> {{$rangoi}} y {{$rangof}} </h1>
             <br/>
             <table class="table table-bordered" width="80%" id="users-table">
                 <thead>
@@ -50,28 +50,15 @@
                     <td>{{$b->em_profesion}}</td>
                   </tr>
                   @endforeach
-                  <tr>
-                  	<td>Reportes</td>
-                  	<td></td>
-                  	<td></td>
-                  	<td></td>
-                  	<td></td>
-                  	<td></td>
-                    <td>Total de activos</td>
-                    <td>{{$activos[0]->cant}}</td>
-                  </tr>
-                  <tr>
-                  	<td>Reportes</td>
-                  	<td></td>
-                  	<td></td>
-                  	<td></td>
-                  	<td></td>
-                  	<td></td>
-                    <td>Total de inactivos</td>
-                    <td>{{$inactivos[0]->cant}}</td>
-                  </tr>
                 </tbody>
             </table>
+          </br>
+          <div align="center">
+          <h3>Total de empleados activos en ese periodo = {{$activos2[0]->cant}}</h3>
+          <h3>Total de empleados inactivos en ese periodo = {{$inactivos2[0]->cant}}</h3>
+          <h3>Total de empleados activos (sin rango de fechas) = {{$activos[0]->cant}}</h3>
+          <h3>Total de empleados inactivos (sin rango de fechas) = {{$inactivos[0]->cant}}</h3>
+          </div>
         </div>
         <div id="userModal" class="modal fade">
         <script src="//code.jquery.com/jquery.js"></script>

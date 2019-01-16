@@ -1,9 +1,11 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Permiso;
 use App\Rolper;
 use App\Usuario;
+use App\Accion;
 
     function verificarPermisosHelper($p){
         //se halla el rol del usuario
@@ -24,6 +26,35 @@ use App\Usuario;
             return false;
         }
     }
+
+    function alerta24(){
+        if(isset($_COOKIE['usuario']) && isset($_COOKIE['password']))
+        {
+            $nombreUsuario=$_COOKIE['usuario'];
+            $supervisor=Usuario::where('u_nombre','=',$nombreUsuario)->where('fk_rol','=',1)->exists();
+            $ahora=date("Y-m-d h:i:sa");
+            $d=mktime(24, 00, 00);
+            $24Horas=date("h:i:sa", $d);
+            if($supervisor){
+                $chequeosEnOrigen="select che_estatus, che_clave, en_clave, en_fecha_envio, en_fecha_entrega_estimada from envio, chequeo where che_clave =(select che_clave from chequeo where fk_envio=en_clave order by che_clave desc limit 1) and che_estatus=?";
+                $consulta = DB::select(DB::raw($chequeosEnOrigen), ["en oficina origen"]);
+                if($ahora-$consulta->en_fecha_envio >= $24Horas)
+                    return 1;
+                else
+                    return 0;
+            }
+        }
+    }
+
+  /*  function auditoria($ac_descrip){
+            $nombreUsuario=$_COOKIE['usuario'];
+            $accion = new Accion();
+            $accion -> ac_descripcion = $ac_descrip;
+            $accion -> ac_fecha = date("Y-m-d h:i:sa");
+            $idUsuario=Usuario::where('u_nombre','=',$nombreUsuario)->value('u_id');
+            $accion -> fk_usuario = $idUsuario;
+            $accion -> save();
+    }*/
 
     function validarUsuario(){
         if(isset($_COOKIE['usuario']) && isset($_COOKIE['password']))

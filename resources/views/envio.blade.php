@@ -287,7 +287,7 @@
               success: function(data){
                 var options = '';
                     $.each(data, function(i, item) {
-                      options += '<option value="' + item.flo_ru_clave + '">' + "Ruta "+ item.flo_ruta + ": "+ item.so +" a " +item.sd  + '</option>';
+                      options += '<option value="' + item.flo_ru_clave + '">' + "Ruta "+ item.flo_ruta + ": "+ item.so +" a " +item.sd  +" (" +item.flo_subtipo+")"  + '</option>';
                     });
                     $('#fk_flota_ruta_1').empty().html(options);
               }

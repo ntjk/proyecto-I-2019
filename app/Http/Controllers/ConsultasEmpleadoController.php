@@ -29,11 +29,18 @@ class ConsultasEmpleadoController extends Controller
         return view('consulta24')->with(compact('consulta'));
     }
 
-    public function empleadosFechaEgreso(){
-        $consulta=DB::select(DB::raw('select em_clave, em_nacionalidad, em_cedula, em_nombre, em_apellido, em_estado_civil, em_fecha_nacimiento, em_salario_base, em_email_empresa, em_email_personal , em_profesion, em_fecha_ingreso, em_fecha_egreso from empleado'));
+    public function empleadosFechaEgreso($rango){
+        $rangoi = substr($rango, 0, 10);
+        $rangof = substr($rango, 10);
+        $sql="select em_clave, em_nacionalidad, em_cedula, em_nombre, em_apellido, em_estado_civil, em_fecha_nacimiento, em_salario_base, em_email_empresa, em_email_personal , em_profesion, em_fecha_ingreso, em_fecha_egreso from empleado where em_fecha_ingreso between ? and ?";
+        $consulta = DB::select(DB::raw($sql), [$rangoi, $rangof]);
+        $sql2 = "select count(*) as cant from (select em_clave, em_nacionalidad, em_cedula, em_nombre, em_apellido, em_estado_civil, em_fecha_nacimiento, em_salario_base, em_email_empresa, em_email_personal , em_profesion, em_fecha_ingreso, em_fecha_egreso from empleado where em_fecha_ingreso between ? and ?) as t1 where em_fecha_egreso is null";
+        $activos2 = DB::select(DB::raw($sql2), [$rangoi, $rangof]);
+        $sql3 = "select count(*) as cant from (select em_clave, em_nacionalidad, em_cedula, em_nombre, em_apellido, em_estado_civil, em_fecha_nacimiento, em_salario_base, em_email_empresa, em_email_personal , em_profesion, em_fecha_ingreso, em_fecha_egreso from empleado where em_fecha_ingreso between ? and ?) as t1 where em_fecha_egreso is not null";
+        $inactivos2 = DB::select(DB::raw($sql3), [$rangoi, $rangof]);
         $activos = DB::select(DB::raw('select count(*) as cant from empleado where em_fecha_egreso is null'));
         $inactivos = DB::select(DB::raw('select count(*) as cant from empleado where em_fecha_egreso is not null'));
-        return view('consulta25')->with(compact('consulta'))->with(compact('activos'))->with(compact('inactivos'));
+        return view('consulta25')->with(compact('consulta'))->with(compact('activos'))->with(compact('inactivos'))->with(compact('rangoi'))->with(compact('rangof'))->with(compact('activos2'))->with(compact('inactivos2'));
     }
 
    public function horarioEmpleados(){

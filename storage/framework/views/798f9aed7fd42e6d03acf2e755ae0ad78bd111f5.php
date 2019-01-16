@@ -13,7 +13,7 @@
         <link href="<?php echo e(asset('css/styles.css')); ?>" rel="stylesheet">
         <link href="<?php echo e(asset('css/unselectable.css')); ?>" rel="stylesheet">
         <script type="text/javascript" src="<?php echo e(asset('js/dropdown.js')); ?>"></script>
-        <title>Consulta 25</title>
+        <title>Consulta 27</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
@@ -22,43 +22,27 @@
     </head>
     <body>
             <?php echo $__env->make('header', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-            <h1 class="text-center">Empleados (activos o no), total de cada grupo entre <br/> <?php echo e($rangoi); ?> y <?php echo e($rangof); ?> </h1>
+            <h1 class="text-center">Cantidad de flota terrestre nacional e internacional, agrupado por tipo de ubicación tipo de vehículo</h1>
             <br/>
             <table class="table table-bordered" width="80%" id="users-table">
                 <thead>
                     <tr>
-                      <th>Fecha de egreso</th>
-                      <th>Fecha de ingreso</th>
-                      <th>Datos basicos del empleado</th>
-                      <th>Estado civil</th>  
-                      <th>Fecha de nacimiento</th>
-                      <th>Salario base</th>
-                      <th>Correo laboral</th>
-                      <th>Cargo</th>
+                        <th>Tipo de ubicación</th>
+                        <th>Tipo</th>
+                        <th>Cantidad</th>
                     </tr>
                 </thead>
                 <tbody>
-                  <?php $__currentLoopData = $consulta; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $b): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                  <?php $__currentLoopData = $consulta; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $a): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                   <tr>
-                    <td><?php echo e($b->em_fecha_egreso); ?></td>
-                    <td><?php echo e($b->em_fecha_ingreso); ?></td>
-                    <td><?php echo e($b->em_nombre); ?> <?php echo e($b->em_apellido); ?>, <?php echo e($b->em_nacionalidad); ?> <?php echo e($b->em_cedula); ?></td>
-                    <td><?php echo e($b->em_estado_civil); ?></td>
-                    <td><?php echo e($b->em_fecha_nacimiento); ?></td>
-                    <td><?php echo e($b->em_salario_base); ?></td>
-                    <td><?php echo e($b->em_email_empresa); ?></td>
-                    <td><?php echo e($b->em_profesion); ?></td>
+                    <td><?php echo e($a->case); ?></td>
+                    <td><?php echo e($a->flo_tipo); ?></td>
+                  	<td><?php echo e($a->cant); ?></td>
                   </tr>
                   <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>
             </table>
-          </br>
-          <div align="center">
-          <h3>Total de empleados activos en ese periodo = <?php echo e($activos2[0]->cant); ?></h3>
-          <h3>Total de empleados inactivos en ese periodo = <?php echo e($inactivos2[0]->cant); ?></h3>
-          <h3>Total de empleados activos (sin rango de fechas) = <?php echo e($activos[0]->cant); ?></h3>
-          <h3>Total de empleados inactivos (sin rango de fechas) = <?php echo e($inactivos[0]->cant); ?></h3>
-          </div>
+            <br/>
         </div>
         <div id="userModal" class="modal fade">
         <script src="//code.jquery.com/jquery.js"></script>
@@ -68,9 +52,6 @@
         <script>$(function() {
             $('#users-table').DataTable({
             })
-            $(document).on('click', '.update', function(){
-              var en_clave = $(this).attr("id");
-            });
         });
         </script>
         <?php echo $__env->yieldPushContent('scripts'); ?>

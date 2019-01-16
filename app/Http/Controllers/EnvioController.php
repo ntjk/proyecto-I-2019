@@ -177,7 +177,7 @@ select su_nombre, ru_clave from ruta, sucursal where fk_sucursal_1=su_clave and 
       $destino=$request->sd;
       $origen=$request->so;
       //$sql="select so.su_nombre as so, sd.su_nombre as sd, flo_ruta, flo_ru_clave from flota_ruta, sucursal as so, sucursal as sd where fk_ruta_2=so.su_clave and fk_ruta_3=sd.su_clave and flo_ruta in (select flo_ruta from flota_ruta where fk_ruta_3= ? ) order by flo_ru_clave";
-      $sql="select so.su_nombre as so, sd.su_nombre as sd, flo_ruta, flo_ru_clave from flota_ruta, sucursal as so, sucursal as sd where fk_ruta_2=so.su_clave and fk_ruta_3=sd.su_clave and flo_ruta in (select flo_ruta from flota_ruta where fk_ruta_3= ? ) and flo_ruta in (select flo_ruta from flota_ruta where fk_ruta_2= ? ) order by flo_ru_clave";
+      $sql="select so.su_nombre as so, flo_subtipo, sd.su_nombre as sd, flo_ruta, flo_ru_clave from flota_ruta, sucursal as so, sucursal as sd, flota where fk_flota=flo_clave and fk_ruta_2=so.su_clave and fk_ruta_3=sd.su_clave and flo_ruta in (select flo_ruta from flota_ruta where fk_ruta_3= ? ) and flo_ruta in (select flo_ruta from flota_ruta where fk_ruta_2= ? ) order by flo_ru_clave";
       $rutas= DB::select(DB::raw($sql), [$destino, $origen]);
       //bien pero ahora falta asegurar que el origen sea el primer registro de la flota_ruta, ajuro usar for
       //porque no sabes cuantos registros debas devolver...

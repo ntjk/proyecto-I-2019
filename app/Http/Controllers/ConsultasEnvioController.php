@@ -56,7 +56,12 @@ class ConsultasEnvioController extends Controller
             return $r;
         }
     }
-
+       public    function audi(){
+        if(isset($_COOKIE['usuario']) && isset($_COOKIE['password']))
+        { $nombreUsuario=$_COOKIE['usuario'];
+            return //$nombreUsuario;
+Usuario::where('u_nombre','=',$nombreUsuario)->value('u_id');
+    }}
     public function pesoPromedioPorOficina(){
         $pesoPromedioEnvio = DB::select(DB::raw('select round(avg(en_peso),2) as peso, su_nombre as so from sucursal, envio where su_clave=fk_sucursal_origen group by su_nombre'));
         return view('consulta2')->with(compact('pesoPromedioEnvio'));
@@ -75,6 +80,7 @@ class ConsultasEnvioController extends Controller
     }
 
     public function origenDestinoMaxPaquetes(){
+        /*select mo, su_nombre as so from (select su_nombre, count(e.*) as mo from sucursal , envio e where fk_sucursal_origen =su_clave group by su_nombre) as t1 where mo = (select max(mo) from (select su_nombre, count(e.*) as mo from sucursal , envio e where fk_sucursal_origen =su_clave group by su_nombre) as t1)*/
         $origenMaxPaquetes=Envio::join('sucursal','sucursal.su_clave','=','envio.fk_sucursal_origen')->select(DB::raw('count(*) as mo, su_nombre as so'))->groupBy('so')->orderBy('mo','desc')->first();
         $destinoMaxPaquetes=Envio::join('sucursal','sucursal.su_clave','=','envio.fk_sucursal_destino')->select(DB::raw('count(*) as md, su_nombre as sd'))->groupBy('sd')->orderBy('md','desc')->first();
        return view('consulta4')->with(compact('origenMaxPaquetes'))->with(compact('destinoMaxPaquetes'));

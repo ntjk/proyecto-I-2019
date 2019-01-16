@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $che_descripcion
  * @property string $che_fecha_entrada
  * @property string $che_fecha_salida
+ * @property string $che_fecha_registro
  * @property int $fk_zona
  * @property int $fk_sucursal
  * @property int $fk_envio
@@ -32,6 +33,6 @@ class Chequeo extends Model
     /**
      * @var array
      */
-    protected $fillable = ['che_estatus', 'che_descripcion', 'che_fecha_entrada', 'che_fecha_salida', 'fk_zona', 'fk_envio', 'fk_sucursal'];
+    protected $fillable = ['che_estatus', 'che_descripcion', 'che_fecha_entrada', 'che_fecha_salida', 'fk_zona', 'fk_envio', 'fk_sucursal', 'che_fecha_registro'];
 
 }

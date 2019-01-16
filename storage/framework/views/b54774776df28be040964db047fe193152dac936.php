@@ -30,6 +30,7 @@
                 <thead>
                     <tr>
                       <th>Fecha</th>
+                      <th>Fecha de registro</th>
                       <th>Descripcion</th>
                       <th>Sucursal</th>
                       <th>Zona de la sucursal</th>
@@ -41,10 +42,10 @@
                   <?php $__currentLoopData = $chequeosFk; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $c): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                   <tr>
                     <td><?php echo e($c->che_fecha_entrada); ?></td>
+                    <td><?php echo e($c->che_fecha_registro); ?></td>
                     <td><?php echo e($c->che_descripcion); ?></td>
-                    <td><?php echo e($c->su_nombre); ?>
-
-                    <td><?php echo e($c->zo_nombre); ?></td>
+                    <td><?php echo e($c->su_nombre); ?></td>
+                    <td><?php echo e($c->case); ?></td>
                     <td><?php echo e($c->che_estatus); ?></td>
                     <td>
                       <button class="btn btn-warning btn-detail update" id="<?php echo e($c->che_clave); ?>" value="<?php echo e($c->che_clave); ?>" name="Update">Update</button>
@@ -66,11 +67,11 @@
     <div class="modal-body">
      <br />
      <label>Fecha</label>
-     <input name="che_fecha_entrada" disabled=true id="che_fecha_entrada" class="form-control"/>
+     <input name="che_fecha_entrada" type="date" id="che_fecha_entrada" class="form-control"/>
      <br />
        <script>
         var f = new Date();
-        document.getElementById("che_fecha_entrada").value = f;
+       // document.getElementById("che_fecha_entrada").value = f;
        </script>
      <label>Descripcion</label>
      <input type="text" name="che_descripcion" id="che_descripcion" class="form-control" />
@@ -117,6 +118,7 @@
 
             $(document).on('submit', '#user_form', function(event){
             event.preventDefault();
+            var che_fecha_entrada = $('#che_fecha_entrada').val();
             var che_descripcion = $('#che_descripcion').val();
             var che_estatus = $('#che_estatus').val();
             var fk_sucursal = $('#fk_sucursal').val();

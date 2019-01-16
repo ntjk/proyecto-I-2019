@@ -44,7 +44,7 @@
                     <td>{{$r->flo_ruta}}</td>
                     <td>{{$r->su_nombre}}</td>
                     <td>{{$r->sd_nombre}}</td>
-                    <td>{{$r->mod_nombre}}</td>
+                    <td>{{$r->mod_nombre}} {{$r->flo_año}}, {{$r->flo_subtipo}}</td>
                     <td>{{$r->flo_ru_costo}}</td>
                     <td>{{$r->flo_ru_duracion_hrs}}</td>
                     <td>                      
@@ -77,7 +77,7 @@
       <label>Medio de transporte :: origen - destino</label>
       <select class="form-control" name="fk_flota" id="fk_flota">
         @foreach($flotas as $flota)
-        <option value="{{$flota->flo_clave}}">{{$flota->flo_clave}}</option>
+        <option value="{{$flota->flo_clave}}">{{$flota->mod_nombre}} {{$flota->flo_año}}, {{$flota->flo_subtipo}}</option>
         @endforeach        
       </select>
       <label>Precio :: origen - destino</label>
@@ -94,7 +94,7 @@
       <br />
     </div>
     <div class="modal-footer">
-     <input type="hidden" name="ru_clave" id="ru_clave" />
+     <input type="hidden" name="flo_ru_clave" id="flo_ru_clave" />
      <input type="hidden" name="operation" id="operation" />
      <input type="submit" name="action" id="action" class="btn btn-success agregarRuta" value="Add" />
      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -123,7 +123,7 @@
        <label>Medio de transporte :: desde la sucursal anterior a este nodo</label>
       <select class="form-control" name="fk_flota_2" id="fk_flota_2">
         @foreach($flotas as $flota)
-        <option value="{{$flota->flo_clave}}">{{$flota->flo_clave}}</option>
+        <option value="{{$flota->flo_clave}}">{{$flota->mod_nombre}} {{$flota->flo_año}}, {{$flota->flo_subtipo}}</option>
         @endforeach        
       </select>
       <label>Precio :: desde la sucursal anterior a este nodo</label>
@@ -133,8 +133,6 @@
      <br />
     </div>
     <div class="modal-footer">
-     <!--<input type="hidden" name="ru_clave" id="ru_clave" />
-     <input type="hidden" name="operation" id="operation" />-->
      <input type="hidden" name="flo_ru_clave_nodo" id="flo_ru_clave_nodo" />
      <input type="submit" name="action_2" id="action_2" class="btn btn-success agregarNodo" value="Add" />
      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -233,19 +231,24 @@
           });
 
           $(document).on('click', '.update', function(){
-            var ru_clave = $(this).attr("id");
+            var flo_ru_clave = $(this).attr("id");
+            var operation="Edit";
             $.ajax({
               headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-              url:"ruta/getOne",
+              url:"floru/getOne",
               method:"POST",
-              data:{ru_clave:ru_clave},
+              data:{flo_ru_clave:flo_ru_clave,
+                operation:operation},
               dataType:"json",
               success:function(data){
                 $('#userModal').modal('show');
-                $('#fk_sucursal_1').val(data.fk_sucursal_1);
-                $('#fk_sucursal_2').val(data.fk_sucursal_2);
+                $('#fk_sucursal_1').val(data.fk_ruta_2);
+                $('#fk_sucursal_2').val(data.fk_ruta_3);
+                $('#fk_flota').val(data.fk_flota);
+                $('#flo_ru_precio').val(data.flo_ru_costo);
+                $('#flo_ru_duracion').val(data.flo_ru_duracion_hrs);
                 $('.modal-title').text("Edit Ruta");
-                $('#ru_clave').val(ru_clave);
+                $('#flo_ru_clave').val(flo_ru_clave);
                 $('#action').val("Edit");
                 $('#operation').val("Edit");
               }

@@ -10,6 +10,7 @@ use App\Sucursal;
 use App\Envio;
 use App\Floru;
 use App\Flota;
+use App\Modelo;
 
 class FloruController extends Controller
 {
@@ -23,8 +24,8 @@ class FloruController extends Controller
         $sucursales = Floru::join('sucursal','sucursal.su_clave','=','fk_ruta_3')->orderBy('flo_ru_clave')
         ->select(['sucursal.su_clave', 'sucursal.su_nombre'])->get();
         $rutas = Floru::join('sucursal','sucursal.su_clave','=','fk_ruta_2')->join('flota','flo_clave','=','flota_ruta.fk_flota')->join('modelo','mod_clave', '=', 'flota.fk_modelo')
-        ->select(['mod_nombre','flo_ru_clave','flo_ruta','flo_ru_costo','flo_subtipo','flo_ru_duracion_hrs','sucursal.su_nombre','fk_flota','fk_ruta_1','fk_ruta_2','fk_ruta_3'])->orderBy('flo_ru_clave')->get();
-        $flotas = Flota::get();
+        ->select(['mod_nombre','flo_ru_clave','flo_año','flo_ruta','flo_ru_costo','flo_subtipo','flo_ru_duracion_hrs','sucursal.su_nombre','fk_flota','fk_ruta_1','fk_ruta_2','fk_ruta_3'])->orderBy('flo_ru_clave')->get();
+        $flotas = Flota::join('modelo','mod_clave', '=', 'flota.fk_modelo')->select('mod_nombre','flo_clave','flo_subtipo', 'flo_año')->get();
         /*select mod_nombre, flo_ru_clave, flo_ruta, flo_ru_costo, flo_año, flo_subtipo, flo_ru_duracion_hrs, so.su_nombre as so, sd.su_nombre as sd, fk_flota, fk_ruta_1, fk_ruta_2, fk_ruta_3 from flota, sucursal as so, sucursal as sd, modelo, flota_ruta where fk_modelo = mod_clave and fk_flota=flo_clave and fk_ruta_2=so.su_clave and fk_ruta_3=sd.su_clave order by flo_ruta*/
 
     $i=0;
@@ -39,9 +40,9 @@ class FloruController extends Controller
 
     public function guardarRuta(Request $request){
         if ($request->operation == "Edit"){
-          //$ruta = Ruta::find($request->ru_clave);
-          //$ruta->fill($request->all());
-          $ruta->save();
+          $floru = Floru::find($request->flo_ru_clave);
+          $floru->fill($request->all());
+          $floru->save();
         } else {
             $rut = Ruta::where('fk_sucursal_1','=', $request->input('fk_sucursal_1'))->where('fk_sucursal_2','=', $request->input('fk_sucursal_2'))->exists();
 
@@ -67,6 +68,10 @@ class FloruController extends Controller
           //  }
           }
           return ['success' => true, 'message' => 'Saved !!'];
+    }
+
+    public function getOne(Request $request){
+      return $floru = Floru::find($request->flo_ru_clave);
     }
 
     public function guardarNodo(Request $request){

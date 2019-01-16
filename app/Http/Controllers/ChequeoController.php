@@ -26,20 +26,11 @@ class ChequeoController extends Controller
 
 	public function show($id)
     {
-    	$sucursales=Sucursal::orderBy('su_nombre')->get();
     	//$chequeosFk=Chequeo::where('fk_envio', '=', $id)->get(); //linea con la que se obtienen los chequeos de ESE envio
-    	$envio=$id;    
-      $chequeosSinZona=Chequeo::select('che_clave', 'che_estatus', 'che_descripcion', 'che_fecha_entrada', 'che_fecha_salida', 'fk_zona', 'chequeo.fk_sucursal','fk_envio')->distinct()->where('fk_envio', '=', $id)->get();
-      $i=0;
-        foreach($chequeosSinZona as $csz){
-          $csz->setAttribute("zo_nombre",null);
-          $csz->setAttribute("su_nombre",null);
-          $i++;
-        }
-      $chequeosConZona=Chequeo::join('sucursal','sucursal.su_clave','=','chequeo.fk_sucursal')->join('zona','zona.zo_clave', '=', 'chequeo.fk_sucursal')->select(
-         'che_clave', 'che_estatus', 'che_descripcion', 'che_fecha_entrada', 'che_fecha_salida', 'fk_zona', 'chequeo.fk_sucursal','fk_envio','su_nombre','zo_nombre')->distinct()->where('fk_envio', '=', $id)->orderBy('che_clave')->get();
-      $chequeosFk = $chequeosConZona->union($chequeosSinZona);
-      //return $chequeosFk;
+      $sql="select che_clave, che_estatus, che_descripcion, che_fecha_entrada, che_fecha_registro, su_nombre, che_fecha_salida, fk_envio, fk_zona, case when fk_zona=1 then 'deposito a' when fk_zona=2 then 'deposito B' when fk_zona=3 then 'deposito C' when fk_zona=4 then 'zona de carga C1' when fk_zona=5 then 'zona de carga C2' when fk_zona=6 then 'zona administrativa' when fk_zona=7 then 'zona para clientes' end   from chequeo left outer join sucursal on chequeo.fk_sucursal = su_clave where fk_envio= ? ";
+        $chequeosFk = DB::select(DB::raw($sql), [$id]);
+      $envio=$id;
+      $sucursales=Sucursal::orderBy('su_nombre')->get();
       return view('chequeo')->with(compact('sucursales'))->with(compact('chequeosFk'))->with(compact('envio'));
     }
 
@@ -51,9 +42,11 @@ class ChequeoController extends Controller
         $chequeo->save();
       } else {
           $chequeo = new Chequeo();
-          $chequeo -> che_fecha_entrada = date("Y-m-d h:i:sa");
+          $chequeo -> che_fecha_entrada = $request->input('che_fecha_entrada');
+          $chequeo -> che_fecha_registro = date("Y-m-d h:i:sa");
           $chequeo -> che_descripcion = $request->input('che_descripcion');
           $chequeo -> che_estatus = $request->input('che_estatus');
+          $chequeo -> fk_sucursal = $request->input('fk_sucursal');
           $chequeo -> fk_zona = $request->input('fk_zona');
           $chequeo -> fk_envio = $request->fk_envio;
           $chequeoAnterior = Chequeo::where('fk_envio','=',$request->fk_envio)->orderBy('che_clave','desc')->first();
