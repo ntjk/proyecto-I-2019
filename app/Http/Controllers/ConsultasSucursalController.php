@@ -53,8 +53,9 @@ class ConsultasSucursalController extends Controller
     public function showNominas($id){
       $sucursales=Sucursal::orderBy('su_nombre')->get();
 
-      $costo=Asistencia::join('sucursal','su_clave','=','fk_zo_em_ho_2')
-      ->join('empleado','em_clave','=','fk_zo_em_ho_3')
+      $costo=Zoemho::join('sucursal','su_clave','=','fk_zona_empleado_1')
+      ->join('empleado','em_clave','=','fk_zona_empleado_3')
+      ->join('asistencia','fk_zo_em_ho_5','=','zo_em_ho_clave')
       ->select(DB::raw("date_trunc('week',a_fecha) as semana, sum(em_salario_base) as salario"))
       ->where('su_clave','=',$id)
       ->groupBy("semana")
@@ -63,17 +64,21 @@ class ConsultasSucursalController extends Controller
 
       $sucursal=Sucursal::find($id);
 
-      /*select date_part("week",a_fecha), sum(em_salario_base)
-        from asistencia, empleado, sucursal
-        where fk_zo_em_ho_2=su_clave
-        and fk_zo_em_ho_3=em_clave
-        and su_clave=$id
-        group by date_part("week",a_fecha)
-        having sum(em_salario_base)>0*/
+      /*select date_trunc('week',a_fecha), sum(em_salario_base)
+        from asistencia, empleado, sucursal, zona_empleado_horario
+        where fk_zo_em_ho_5=zo_em_ho_clave
+        and fk_zona_empleado_3=em_clave
+        and fk_zona_empleado_1=su_clave
+        and su_clave=1
+        group by date_trunc('week',a_fecha)
+        having sum(em_salario_base)>0
+        */
+
         $total=0;
         foreach ($costo as $c) {
           $total+=$c->salario;
         }
+        
         return view('consulta70')
         ->with(compact('sucursales'))
         ->with(compact('sucursal'))
