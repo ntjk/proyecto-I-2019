@@ -253,25 +253,29 @@ class ConsultasEnvioController extends Controller
     }
 
     public function consulta44(){
-        $consultas= DB::select(DB::raw('
-            select \'Envío\' as tipo, null as egreso, en.en_precio as ingreso, su_nombre as sucu, en.en_fecha_envio::date as fecha
-            from envio en, sucursal su
-            where en.fk_sucursal_origen = su.su_clave
-            union
-            select \'Revisión\' as tipo, rev.rev_monto_pagar as egreso, null as ingreso, su.su_nombre as sucu, rev.rev_fecha_real_salida::date as fecha
-            from revision rev, flota flo, sucursal su
-            where rev.fk_flota = flo.flo_clave
-            and flo.fk_sucursal = su.su_clave
-            union
-            select \'Salario\' as tipo, em.em_salario_base as egreso,null as ingreso, su_nombre as sucu, null as fecha
-            from empleado em, zona zo, zona_empleado ze, sucursal su
-            where em.em_clave = ze.fk_empleado
-            and ze.fk_zona_2 = zo.fk_sucursal
-            and zo.fk_sucursal = su.su_clave
-            order by tipo desc, sucu, fecha
-        '));
+        $consultas= Sucursal::join('servicio_sucursal','servicio_sucursal.fk_sucursal','=','su_clave','left outer')
+        ->join('zona_empleado_horario','fk_zona_empleado_1','=','su_clave')
+        ->join('empleado','em_clave','=','fk_zona_empleado_3')
+        ->join('asistencia','fk_zo_em_ho_5','=','zo_em_ho_clave')
+        ->join('flota','flota.fk_sucursal','=','su_clave')
+        ->join('revision','fk_flota','=','flo_clave','left outer')
+        ->join('envio','fk_sucursal_origen','=','su_clave')
+        ->select(DB::raw("sum(em_salario_base)+sum(rev_monto_pagar) as egreso, sum(en_precio) as ingreso, date_trunc('month',en_fecha_envio) as mes, su_nombre, su_clave"))
+        ->groupBy('mes','su_clave','su_nombre')
+        ->get();
         return view('consulta44')->with(compact('consultas'));
     }
+
+    /*select sum(em_salario_base)+sum(rev_monto_pagar) as egreso, sum(en_precio) as ingreso, date_trunc('month',en_fecha_envio) as mes, su_nombre, su_clave
+      from zona_empleado_horario, empleado, asistencia, envio,
+      sucursal left outer join servicio_sucursal on servicio_sucursal.fk_sucursal = sucursal.su_clave,
+      flota left outer join revision on fk_flota = flo_clave
+      where fk_zona_empleado_1 = su_clave
+      and em_clave = fk_zona_empleado_3
+      and fk_zo_em_ho_5 = zo_em_ho_clave
+      and flota.fk_sucursal = su_clave
+      and fk_sucursal_origen = su_clave
+      group by mes, su_clave, su_nombre*/
 
 
     public function consulta45(){
