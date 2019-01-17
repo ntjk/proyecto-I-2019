@@ -12,7 +12,7 @@
         <meta name="csrf-token" content="<?php echo csrf_token(); ?>" />
         <link href="<?php echo e(asset('css/styles.css')); ?>" rel="stylesheet">
         <script type="text/javascript" src="<?php echo e(asset('js/dropdown.js')); ?>"></script>
-        <title>Consulta46 - LogUCAB</title>
+        <title>Puertos - LogUCAB</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
@@ -23,31 +23,40 @@
             <?php echo $__env->make('header', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
             <div class="container">
             <br/>
-            <h1 class="text-center">Ingreso y egresos por oficina entre: <?php echo e($rangoi); ?> - <?php echo e($rangof); ?>.</h1>
+            <h1 class="text-center">Puertos</h1>
             <br/>
-            <table class="table table-bordered" style="width:40%" id="users-table" >
+            <!--<button type="button" id="add_button" data-toggle="modal" data-target="#userModal" class="btn btn-info btn-lg">Add</button>-->
+            <table class="table table-bordered" id="users-table">
                 <thead>
-                    <tr >
-                        <th>Tipo</th>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Cant. Puestos</th>
+                        <th>Cant. Muelles</th>
+                        <th>Longitud</th>
+                        <th>Ancho</th>
+                        <th>Calado</th>
+                        <th>Uso</th>
+                        <th>Tipo Flota</th>
                         <th>Sucursal</th>
-                        <th>Egreso</th>
-                        <th>Ingreso</th>
-                        <th>Fecha</th>
+                        <!--<th>Accion</th>-->
                     </tr>
                 </thead>
                 <tbody>
-                  <?php $__currentLoopData = $unionfinal; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $unionF): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                  <tr class="text-center">
-                    <td><?php echo e($unionF->tipo); ?></td>
-                    <td><?php echo e($unionF->sucu); ?></td>
-                    <td><?php echo e($unionF->egreso); ?></td>
-                    <td><?php echo e($unionF->ingreso); ?></td>
-                    <td><?php echo e($unionF->fecha); ?></td>
+                  <?php $__currentLoopData = $puertos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $p): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                  <tr>
+                    <td><?php echo e($p->nombre); ?></td>
+                    <td><?php echo e($p->cp); ?></td>
+                    <td><?php echo e($p->cm); ?></td>
+                    <td><?php echo e($p->long); ?></td>
+                    <td><?php echo e($p->ancho); ?></td>
+                    <td><?php echo e($p->calado); ?></td>
+                    <td><?php echo e($p->uso); ?></td>
+                    <td><?php echo e($p->flota); ?></td>
+                    <td><?php echo e($p->sucursal); ?></td>
                   </tr>
                   <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>
             </table>
-        
         <script src="//code.jquery.com/jquery.js"></script>
         <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
@@ -58,8 +67,5 @@
         </script>
         <?php echo $__env->yieldPushContent('scripts'); ?>
         <?php echo $__env->make('footer', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-        </div>
-      </div>
     </body>
 </html>
-

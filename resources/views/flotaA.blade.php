@@ -29,6 +29,8 @@
             <table class="table table-bordered" id="users-table">
                 <thead>
                     <tr>
+                        <th>Clave</th>
+                        <th>Suptipo</th>
                         <th>Tipo</th>
                         <th>Peso</th>
                         <th>Placa</th>

@@ -11,9 +11,8 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <meta name="csrf-token" content="<?php echo csrf_token(); ?>" />
         <link href="<?php echo e(asset('css/styles.css')); ?>" rel="stylesheet">
-        <link href="<?php echo e(asset('css/unselectable.css')); ?>" rel="stylesheet">
         <script type="text/javascript" src="<?php echo e(asset('js/dropdown.js')); ?>"></script>
-        <title>Consulta 10</title>
+        <title>Consulta43 - LogUCAB</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
@@ -22,45 +21,48 @@
     </head>
     <body>
             <?php echo $__env->make('header', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-            <h1 class="text-center">Listado de paquetes por clasificación y por oficina <br/> entre <?php echo e($rangoi); ?> y <?php echo e($rangof); ?></h1>
+            <div class="container">
             <br/>
-            <table class="table table-bordered" width="80%" id="users-table">
+            <h1 class="text-center">Listado de flotas con su última fecha de revisión y próxima fecha por oficina</h1>
+            <br/>
+            <table class="table table-bordered" style="width:40%" id="users-table" >
                 <thead>
-                    <tr>
-                        <th>Sucursal de origen</th>
-                        <th>Tipo de paquete</th>
-                        <th>Cantidad</th>
+                    <tr >
+                        <th>Sucursal</th>
+                        <th>Flota</th>
+                        <th>Fecha de la última revisión</th>
+                        <th>Fecha de la próxima revisión</th>
                     </tr>
                 </thead>
                 <tbody>
-                  <?php $__currentLoopData = $consulta; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $a): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                  <tr>
-                  	<td><?php echo e($a->so); ?></td>
-                    <td><?php echo e($a->tipo); ?></td>
-                    <td><?php echo e($a->mo); ?></td>
+                  <?php $__currentLoopData = $consultas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $c43): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                  <tr class="text-center">
+                    <td><?php echo e($c43->nombre); ?></td>
+                    <td><?php echo e($c43->flo); ?></td>
+                    <td><?php echo e($c43->revf); ?></td>
+                    <td><?php echo e($c43->revp); ?></td>
                   </tr>
                   <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>
             </table>
-            <br/>
         </div>
-        <div id="userModal" class="modal fade">
+    </div>
+   </div>
+  </form>
+ </div>
+</div>
         <script src="//code.jquery.com/jquery.js"></script>
         <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
         <script>$(function() {
             $('#users-table').DataTable({
             })
-          	$(document).on('click', '.update', function(){
-            	var en_clave = $(this).attr("id");
-          	});
         });
         </script>
         <?php echo $__env->yieldPushContent('scripts'); ?>
         <?php echo $__env->make('footer', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-              </div>
         </div>
       </div>
     </body>
 </html>
+

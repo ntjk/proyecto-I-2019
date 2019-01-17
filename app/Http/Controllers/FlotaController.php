@@ -86,7 +86,7 @@ class FlotaController extends Controller
         ])->where('flota.flo_subtipo','marítima')->orderBy('flo_clave')->get();
         return view('flotaM')->with(compact('sucursales'))->with(compact('modelos'))->with(compact('flotas'));
     }
-
+    
     public function indexA()
     {
         $sucursales= Sucursal::orderBy('su_nombre')->get();
@@ -122,6 +122,7 @@ class FlotaController extends Controller
         ])->where('flota.flo_subtipo','aerea')->orderBy('flo_clave')->get();
         return view('flotaA')->with(compact('sucursales'))->with(compact('modelos'))->with(compact('flotas'));
     }
+   
 
     public function store(Request $request){
       if ($request->operation == "Edit"){
