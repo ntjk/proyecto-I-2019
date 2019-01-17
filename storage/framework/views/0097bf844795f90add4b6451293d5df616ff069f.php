@@ -33,7 +33,7 @@
           </div>
         <a id="alerta" href="#" class="notification">
           <span>Alertas</span>
-          <span class="badge" >1</span>
+          <span class="badge" id="badge">1</span>
         </a>
         <a id="cerrarSesion" class="sale">Cerrar sesión</a>
         </div>
@@ -55,7 +55,8 @@
         $('#ruta').hide();
         $('#asistencia').hide();
         $('#consultas').hide();
-        $('#alerta').hide(); 
+        $('#alerta').hide();
+        $('#badge').hide();
         var envios = '<?php echo verificarPermisosHelper("ver envios");; ?>';
         var usuario = '<?php echo verificarPermisosHelper("ver usuarios");; ?>';
         var rol = '<?php echo verificarPermisosHelper("ver roles");; ?>';
@@ -66,10 +67,15 @@
         var ruta = '<?php echo verificarPermisosHelper("ver rutas");; ?>';
         var asistencia = '<?php echo verificarPermisosHelper("ver asistencias");; ?>';
         var consultas = '<?php echo verificarPermisosHelper("ver reportes");; ?>';
-        var alertas = '<?php echo verificarPermisosHelper("ver revisiones");; ?>';
+        var alertas = '<?php echo verificarPermisosHelper("ver alertas");; ?>';
         var alerta = '<?php echo alerta24();; ?>';
-        if(alerta)
+        console.log(alerta);
+        if(alertas){
           $('#alerta').show();
+        }
+        if(alerta==1 && alertas==1){
+          $('#badge').show();
+        }
         if(envios)
           $('#envio').show();
         if(envios)

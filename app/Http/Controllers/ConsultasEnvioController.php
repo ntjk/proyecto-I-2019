@@ -335,8 +335,6 @@ class ConsultasEnvioController extends Controller
         return view('consulta47')->with(compact('cons47'));
     }
 
-    public function index() {  }
-
     public function create() { }
 
     public function store(Request $request) { }

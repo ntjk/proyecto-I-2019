@@ -33,7 +33,7 @@
           </div>
         <a id="alerta" href="#" class="notification">
           <span>Alertas</span>
-          <span class="badge" >1</span>
+          <span class="badge" id="badge">1</span>
         </a>
         <a id="cerrarSesion" class="sale">Cerrar sesión</a>
         </div>
@@ -55,7 +55,8 @@
         $('#ruta').hide();
         $('#asistencia').hide();
         $('#consultas').hide();
-        $('#alerta').hide(); 
+        $('#alerta').hide();
+        $('#badge').hide();
         var envios = '{!! verificarPermisosHelper("ver envios"); !!}';
         var usuario = '{!! verificarPermisosHelper("ver usuarios"); !!}';
         var rol = '{!! verificarPermisosHelper("ver roles"); !!}';
@@ -66,10 +67,15 @@
         var ruta = '{!! verificarPermisosHelper("ver rutas"); !!}';
         var asistencia = '{!! verificarPermisosHelper("ver asistencias"); !!}';
         var consultas = '{!! verificarPermisosHelper("ver reportes"); !!}';
-        var alertas = '{!! verificarPermisosHelper("ver revisiones"); !!}';
+        var alertas = '{!! verificarPermisosHelper("ver alertas"); !!}';
         var alerta = '{!! alerta24(); !!}';
-        if(alerta)
+        console.log(alerta);
+        if(alertas){
           $('#alerta').show();
+        }
+        if(alerta==1 && alertas==1){
+          $('#badge').show();
+        }
         if(envios)
           $('#envio').show();
         if(envios)
