@@ -49,7 +49,7 @@
                         <th>Peso máximo de despegue</th>
                         <th>Carrera de despegue</th>
                         <th>Velocidad máxima</th>
-                        <th>Accion</th>
+                        <th id="hidden2">Accion</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -77,7 +77,7 @@
                     <td>{{$floa->flo_a_peso_maximo_despegue}}</td>
                     <td>{{$floa->flo_a_carrera_de_despegue}}</td>
                     <td>{{$floa->flo_a_velocidad_maxima}}</td>
-                    <td>
+                    <td name="hidden3">
                       <button class="btn btn-warning btn-detail update" id="{{$floa->flo_clave}}" value="{{$floa->flo_clave}}" name="Update">Update</button>
                       <button class="btn btn-danger btn-delete delete" id="{{$floa->flo_clave}}" value="{{$floa->flo_clave}}" name="delete">Delete</button>
                       <button class="btn btn-primary verHistorico" id="{{$floa->flo_clave}}" value="{{$floa->flo_clave}}" name="verHistorico">Histórico</button>
@@ -185,6 +185,29 @@
         <script>$(function() {
             $('#users-table').DataTable({
             })
+
+            $(".delete").hide();
+            $(".update").hide();
+            $('#add_button').hide();
+            $('#hidden2').hide();
+            $('#hidden3').hide();
+            $('.verHistorico').hide();
+
+            var eliminar = '{!! verificarPermisosHelper("eliminar flotas"); !!}';
+            var modificar = '{!! verificarPermisosHelper("modificar flotas"); !!}';
+            var insertar = '{!! verificarPermisosHelper("insertar flotas"); !!}';
+
+            if(eliminar || modificar){
+              $('#hidden2').show();
+              $('#hidden3').show();
+              $('.verHistorico').show();
+            }
+            if(eliminar)
+              $(".delete").show();
+            if(modificar)
+              $(".update").show();
+            if(insertar)
+              $('#add_button').show();
 
             $(document).on('submit', '#user_form', function(event){
             event.preventDefault();

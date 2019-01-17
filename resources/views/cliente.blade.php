@@ -38,7 +38,7 @@
                         <th>Fecha de Nacimiento</th>
                         <th>VIP</th>
                         <th>Fk_Lugar</th>
-                        <th id="hd1" name="hd1">Accion</th>
+                        <th id="hidden2" name="hd1">Accion</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -53,7 +53,7 @@
                     <td>{{$c->cli_fecha_nacimiento}}</td>
                     <td>{{$c->cli_vip}}</td>
                     <td>{{$c->lu_nombre}}</td>
-                    <td>
+                    <td name="hidden3">
                     <button class="btn btn-warning btn-detail update" id="{{$c->cli_clave}}" value="{{$c->cli_clave}}" name="Update">Update</button>
                     <button class="btn btn-danger btn-delete delete" id="{{$c->cli_clave}}" value="{{$c->cli_clave}}" name="delete">Delete</button>
                     <button class="btn btn-info btn-detail carnet" id="{{$c->cli_clave}}" value="{{$c->cli_clave}}" onclick="navigate(this,'{{$c->cli_clave}}')" name="Carnet">Carnet</button>
@@ -155,6 +155,29 @@ function navigate(link, inputid){
 
             $('#users-table').DataTable({
             })
+
+            $(".delete").hide();
+            $(".update").hide();
+            $('#add_button').hide();
+            $('#hidden2').hide();
+            $('#hidden3').hide();
+
+            var eliminar = '{!! verificarPermisosHelper("eliminar clientes"); !!}';
+            var modificar = '{!! verificarPermisosHelper("modificar clientes"); !!}';
+            var insertar = '{!! verificarPermisosHelper("insertar clientes"); !!}';
+
+            if(eliminar || modificar){
+              $('#hidden2').show();
+              $('#hidden3').show();
+            }
+            if(eliminar)
+              $(".delete").show();
+            if(modificar)
+              $(".update").show();
+            if(insertar)
+              $('#add_button').show();
+
+
             $(document).on('change','#estado',function(){
               var estado = $(this).val();
               $.ajax({

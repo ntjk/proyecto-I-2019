@@ -43,7 +43,7 @@
                       <th>Año</th>
                       <th>Nacional</th>
                       <th>Serial Motor</th>
-                      <th>Acción</th>
+                      <th id="hidden2">Acción</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -63,7 +63,7 @@
                     <td>{{$flote->flo_año}}</td>
                     <td>{{$flote->flo_te_nacional}}</td>
                     <td>{{$flote->flo_te_serial_motor}}</td>
-                    <td>
+                    <td name="hidden3">
                       <button class="btn btn-warning btn-detail update" id="{{$flote->flo_clave}}" value="{{$flote->flo_clave}}" name="Update">Update</button>
                       <button class="btn btn-danger btn-delete delete" id="{{$flote->flo_clave}}" value="{{$flote->flo_clave}}" name="delete">Delete</button>
                       <button class="btn btn-primary verHistorico" id="{{$flote->flo_clave}}" value="{{$flote->flo_clave}}" name="verHistorico">Histórico</button>
@@ -150,6 +150,29 @@
         <script>$(function() {
             $('#users-table').DataTable({
             })
+
+            $(".delete").hide();
+            $(".update").hide();
+            $('#add_button').hide();
+            $('#hidden2').hide();
+            $('#hidden3').hide();
+            $('.verHistorico').hide();
+
+            var eliminar = '{!! verificarPermisosHelper("eliminar flotas"); !!}';
+            var modificar = '{!! verificarPermisosHelper("modificar flotas"); !!}';
+            var insertar = '{!! verificarPermisosHelper("insertar flotas"); !!}';
+
+            if(eliminar || modificar){
+              $('#hidden2').show();
+              $('#hidden3').show();
+              $('.verHistorico').show();
+            }
+            if(eliminar)
+              $(".delete").show();
+            if(modificar)
+              $(".update").show();
+            if(insertar)
+              $('#add_button').show();
 
             $(document).on('submit', '#user_form', function(event){
             event.preventDefault();
