@@ -90,9 +90,6 @@
                     <td><a href="consulta19">Flota terrestre nacional e internacional ordenado por serial de motor</a></td>
                   </tr>
                   <tr>
-                    <td><a href="consulta20-1-60">Promedio de paquetes de una oficina en un periodo de tiempo</a></td>
-                  </tr>
-                  <tr>
                     <td><a href="consulta21">Listado de Oficinas por Estado ordenadas alfabéticamente</a></td>
                   </tr>
                   <tr>

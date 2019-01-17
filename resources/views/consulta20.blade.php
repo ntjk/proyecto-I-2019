@@ -23,32 +23,32 @@
     @include('header')
     <div class="container">
     <br/>
-    <h1 class="text-center">Promedio de envios {{$mensaje}} de la Sucursal {{$sucursal}}</h1>
+    <h1 class="text-center">Promedio de envios Mensuales de la Sucursal {{$sucursal}}</h1>
     <br/>
     <form method="post" id="user_form">
-      <label class="labelDestacado">Seleccione la Sucursal</label>
-      <select name="fk_sucursal_origen" id="inputid1" class="form-control">
-        @foreach($sucursales as $s)
-        <option value="{{$s->su_clave}}">{{$s->su_nombre}}</option>
-        @endforeach
-      </select>
-      <br /><br/>
-      <label class="labelDestacado">Seleccione el Periodo</label>
-      <select name="tiempo" id="inputid2" class="form-control">
-          <option value="30">Mensual</option>
-          <option value="60">Bimestral</option>
-          <option value="90">Trimestral</option>
-          <option value="180">Semestral</option>
-      </select>
-      <br /><br/>
-      <a type="reset" onclick="navigate(this,'inputid1','inputid2')">Edit</a>
-      <script>
-        function navigate(link, inputid1, inputid2){
-          var url = "{{url('/consulta20-')}}" + document.getElementById(inputid1).value +"-"+document.getElementById(inputid2).value;
-          window.location.href = url; //navigates to the given url, disabled for demo
-          //alert(url);
-        }
-      </script>
+         <form method="post" id="user_form">
+          <label>Fecha de Inicio</label>
+          <input type="date" name="inputid1" id="inputid1" class="form-control" />
+          <br /><br/>
+          <label>Fecha Fin</label>
+          <input type="date" name="inputid2" id="inputid2" class="form-control" />
+          <br /><br/>
+          <label>Sucursal</label>
+          <select name="inputid3" id="inputid3" class="form-control">
+            @foreach($sucursales as $s)
+            <option value="{{$s->su_clave}}">{{$s->su_nombre}}</option>
+            @endforeach
+          </select>
+          <br /><br/>
+          <a type="reset" onclick="navigate2(this,'inputid1','inputid2','inputid3')">Crear Reporte</a>
+        </form>
+          <script>
+            function navigate2(link, fechainicio, fechafin, sucursal){
+              var url = "{{url('/consulta20-')}}" + document.getElementById(sucursal).value +'-'+ document.getElementById(fechainicio).value+'-'+ document.getElementById(fechafin).value;
+              window.location.href = url; //navigates to the given url, disabled for demo
+              //alert(url);
+            }
+          </script>
     </form>
     <table class="table table-bordered" id="users-table">
         <thead>

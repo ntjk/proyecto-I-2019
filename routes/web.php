@@ -185,7 +185,7 @@ Route::get('consulta16', 'ConsultasFlotaController@flotaPorOfic');
 Route::get('consulta17', 'ConsultasFlotaController@flotaPorSubtipo');
 Route::get('consulta18', 'ConsultasFlotaController@flotaPorTipo');
 Route::get('consulta19', 'ConsultasFlotaController@flotaTerrestre');
-Route::get('consulta20-{id}-{tiempo}', 'ConsultasSucursalController@avgEnviosSucursales');
+Route::get('consulta20-{id}-{yi}-{mi}-{di}-{yf}-{mf}-{df}', 'ConsultasSucursalController@avgEnviosSucursales');
 Route::get('consulta21', 'ConsultasSucursalController@oficPorEstado');
 Route::get('consulta22', 'ConsultasSucursalController@oficYZonaPorEstado');
 Route::get('consulta23', 'ConsultasSucursalController@oficInternacionales');
