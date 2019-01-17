@@ -289,7 +289,7 @@ class ConsultasEnvioController extends Controller
             from revision rev, flota flo, sucursal su
             where rev.fk_flota = flo.flo_clave and flo.fk_sucursal = su.su_clave
             group by extract(month from rev.rev_fecha_real_salida),su.su_nombre
-            order by nombre, mes
+            order by mes, nombre
         '));
         return view('consulta45')->with(compact('cons45'));
     }
