@@ -196,7 +196,9 @@ Route::get('consulta26', 'ConsultasEmpleadoController@horarioEmpleados');
 Route::get('consulta27', 'ConsultasFlotaController@cantFlotaTerrestre');
 Route::get('consulta28', 'ConsultasSucursalController@oficConUbicacion');
 Route::get('consulta29', 'ConsultasSucursalController@masAmplia');
-Route::get('consulta30', 'ConsultasEnvioController@audi');
+Route::get('consulta30', 'ConsultasEnvioController@rutaMasUsada');
+Route::get('consulta31', 'ConsultasEnvioController@medioMasUsado');
+//Route::get('consulta32', 'ConsultasEnvioController@alerta242');
 
 /*Asistencias*/
 Route::resource('asistencia','AsistenciaController');

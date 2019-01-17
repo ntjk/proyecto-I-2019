@@ -29,14 +29,28 @@
             <table class="table table-bordered" id="users-table">
                 <thead>
                     <tr>
-                        <th>Clave</th>
                         <th>Nombre</th>
                         <th>Email</th>
                         <th>Capacidad</th>>
                         <th>Lugar</th>
-                        <th>Accion</th>
+                        <th id="hidden2">Accion</th>
                     </tr>
                 </thead>
+                <tbody>
+                  <?php $__currentLoopData = $sucursales; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $s): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                  <tr>
+                    <td><?php echo e($s->su_nombre); ?></td>
+                    <td><?php echo e($s->su_email); ?></td>
+                    <td><?php echo e($s->su_capacidad); ?></td>
+                    <td><?php echo e($s->lu_nombre); ?></td>
+                    <td id="hidden3">
+                      <button class="btn btn-warning btn-detail update" id="<?php echo e($s->su_clave); ?>" value="<?php echo e($s->su_clave); ?>" name="Update">Update</button>
+                      <button class="btn btn-danger btn-delete delete" id="<?php echo e($s->su_clave); ?>" value="'<?php echo e($s->su_clave); ?>" name="delete">Delete</button>
+                      <button class="btn btn-info btn-detail nomina" id="<?php echo e($s->su_clave); ?>" value="<?php echo e($s->su_clave); ?>" onclick="navigate(this,'<?php echo e($s->su_clave); ?>')" name="Nomina">Nomina</button>
+                    </td>
+                  </tr>
+                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </tbody>>
             </table>
         </div>
         <div id="userModal" class="modal fade">
@@ -93,18 +107,31 @@ function navigate(link, inputid){
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script>$(function() {
             $('#users-table').DataTable({
-                processing: true,
-                serverSide: true,
-                ajax: '<?php echo route('sucursal_getData'); ?>',
-                columns: [
-                    { data: 'su_clave', name: 'sucursal.su_clave' },
-                    { data: 'su_nombre', name: 'sucursal.su_nombre' },
-                    { data: 'su_email', name: 'sucursal.su_email' },
-                    { data: 'su_capacidad', name: 'sucursal.su_capacidad' },
-                    { data: 'lu_nombre', name: 'lugar.lu_nombre' },
-                    {data: 'action', name: 'action', orderable: false, searchable: false}
-                ]
             })
+
+            $(".nomina").hide();
+            $(".delete").hide();
+            $(".update").hide();
+            $('#add_button').hide();
+            $('#hidden2').hide();    
+            $('#hidden3').hide();    
+
+            var eliminar = '<?php echo verificarPermisosHelper("eliminar sucursales");; ?>';
+            var modificar = '<?php echo verificarPermisosHelper("modificar sucursales");; ?>';
+            var insertar = '<?php echo verificarPermisosHelper("insertar sucursales");; ?>';
+
+            if(eliminar || modificar){
+              $('#hidden2').show();    
+              $('#hidden3').show();
+              $('.nomina').show();
+            }
+            if(eliminar)
+              $(".delete").show();
+            if(modificar)
+              $(".update").show();              
+            if(insertar)
+              $('#add_button').show();
+
             $(document).on('change','#estado',function(){
               var estado = $(this).val();
               $.ajax({

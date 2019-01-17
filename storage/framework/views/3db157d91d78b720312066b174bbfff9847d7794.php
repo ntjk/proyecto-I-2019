@@ -119,6 +119,12 @@
                   <tr>
                     <td><a href="consulta29">Oficina es la más amplia por estado, municipio y parroquia</a></td>
                   </tr>
+                  <tr>
+                    <td><a href="consulta30">Ruta más utilizada</a></td>
+                  </tr>
+                  <tr>
+                    <td><a href="consulta31">Medio de transporte más utilizado</a></td>
+                  </tr>                   
                 </tbody>
             </table>
         </div>

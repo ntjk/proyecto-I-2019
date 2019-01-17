@@ -31,6 +31,10 @@
             <a id="envio" href="envio">Envios</a>
             <a id="asistencia" href="asistencia">Asistencias</a>
           </div>
+        <a id="alerta" href="#" class="notification">
+          <span>Alertas</span>
+          <span class="badge" >1</span>
+        </a>
         <a id="cerrarSesion" class="sale">Cerrar sesión</a>
         </div>
       </div>
@@ -51,6 +55,7 @@
         $('#ruta').hide(); 
         $('#asistencia').hide();
         $('#consultas').hide();
+        $('#alerta').hide(); 
         var envios = '{!! verificarPermisosHelper("ver envios"); !!}';
         var usuario = '{!! verificarPermisosHelper("ver usuarios"); !!}';
         var rol = '{!! verificarPermisosHelper("ver roles"); !!}';
@@ -61,6 +66,12 @@
         var ruta = '{!! verificarPermisosHelper("ver rutas"); !!}';
         var asistencia = '{!! verificarPermisosHelper("ver asistencias"); !!}';
         var consultas = '{!! verificarPermisosHelper("ver reportes"); !!}';
+        var alertas = '{!! verificarPermisosHelper("ver revisiones"); !!}';
+        var alerta = '{!! alerta24(); !!}';
+        if(alerta)
+          $('#alerta').show();
+        if(envios)
+          $('#envio').show();
         if(envios)
           $('#envio').show();
         if(usuario)
@@ -92,6 +103,10 @@
             document.cookie = "usuario=" + " ";  
             var url = "{{url('/inicioSesion')}}";
             window.location = url;
+         });
+
+         $(document).on('click','.notification',function(){
+            alert("Hay paquetes en la oficina origen con más de 24 horas");
          });
 
       });

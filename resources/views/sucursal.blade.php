@@ -29,14 +29,28 @@
             <table class="table table-bordered" id="users-table">
                 <thead>
                     <tr>
-                        <th>Clave</th>
                         <th>Nombre</th>
                         <th>Email</th>
                         <th>Capacidad</th>>
                         <th>Lugar</th>
-                        <th>Accion</th>
+                        <th id="hidden2">Accion</th>
                     </tr>
                 </thead>
+                <tbody>
+                  @foreach($sucursales as $s)
+                  <tr>
+                    <td>{{$s->su_nombre}}</td>
+                    <td>{{$s->su_email}}</td>
+                    <td>{{$s->su_capacidad}}</td>
+                    <td>{{$s->lu_nombre}}</td>
+                    <td id="hidden3">
+                      <button class="btn btn-warning btn-detail update" id="{{$s->su_clave}}" value="{{$s->su_clave}}" name="Update">Update</button>
+                      <button class="btn btn-danger btn-delete delete" id="{{$s->su_clave}}" value="'{{$s->su_clave}}" name="delete">Delete</button>
+                      <button class="btn btn-info btn-detail nomina" id="{{$s->su_clave}}" value="{{$s->su_clave}}" onclick="navigate(this,'{{$s->su_clave}}')" name="Nomina">Nomina</button>
+                    </td>
+                  </tr>
+                  @endforeach
+                </tbody>>
             </table>
         </div>
         <div id="userModal" class="modal fade">
@@ -93,18 +107,31 @@ function navigate(link, inputid){
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script>$(function() {
             $('#users-table').DataTable({
-                processing: true,
-                serverSide: true,
-                ajax: '{!! route('sucursal_getData') !!}',
-                columns: [
-                    { data: 'su_clave', name: 'sucursal.su_clave' },
-                    { data: 'su_nombre', name: 'sucursal.su_nombre' },
-                    { data: 'su_email', name: 'sucursal.su_email' },
-                    { data: 'su_capacidad', name: 'sucursal.su_capacidad' },
-                    { data: 'lu_nombre', name: 'lugar.lu_nombre' },
-                    {data: 'action', name: 'action', orderable: false, searchable: false}
-                ]
             })
+
+            $(".nomina").hide();
+            $(".delete").hide();
+            $(".update").hide();
+            $('#add_button').hide();
+            $('#hidden2').hide();    
+            $('#hidden3').hide();    
+
+            var eliminar = '{!! verificarPermisosHelper("eliminar sucursales"); !!}';
+            var modificar = '{!! verificarPermisosHelper("modificar sucursales"); !!}';
+            var insertar = '{!! verificarPermisosHelper("insertar sucursales"); !!}';
+
+            if(eliminar || modificar){
+              $('#hidden2').show();    
+              $('#hidden3').show();
+              $('.nomina').show();
+            }
+            if(eliminar)
+              $(".delete").show();
+            if(modificar)
+              $(".update").show();              
+            if(insertar)
+              $('#add_button').show();
+
             $(document).on('change','#estado',function(){
               var estado = $(this).val();
               $.ajax({

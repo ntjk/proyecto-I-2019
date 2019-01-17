@@ -26,42 +26,7 @@ class ConsultasEnvioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function verificarPermisos(){
-        //se halla el rol del usuario
-        //$rolFk=Usuario::where('u_nombre','=',$nombre)->first();
-       $permisoConsulta="ver envios"; //va a revisar si en los permisos tiene este string
-        $nombreUsuario=$_COOKIE['usuario'];
-         $usuario=Usuario::where('u_nombre','=',$nombreUsuario)->first();
-        //y con el rol se ven los permisos
-        $permisosFk=Rolper::join('permiso','per_clave','=','rol_permiso.fk_permiso')->select(
-         'per_clave', 'per_nombre', 'per_descripcion', 'per_tipo')->orderBy('per_tipo')->distinct()->where('fk_rol', '=', $usuario->fk_rol)->get();
-        $descripcionPermisos=Rolper::join('permiso','per_clave','=','rol_permiso.fk_permiso')->select(
-         'per_clave', 'per_nombre', 'per_descripcion', 'per_tipo')->orderBy('per_tipo')->distinct()->where('fk_rol', '=', $usuario->fk_rol)->pluck('per_descripcion');
-        if($descripcionPermisos->contains($permisoConsulta))
-            return "ajaaaa". $descripcionPermisos. " si tiene ".$permisoConsulta;
-        return $descripcionPermisos;
-    }
-
-   public    function validarUsuario2(){
-        if(isset($_COOKIE['usuario']) && isset($_COOKIE['password']))
-        {
-            $nombreUsuario=$_COOKIE['usuario'];
-            $contra=$_COOKIE['password'];
-            $password=Usuario::where('u_nombre','=',$nombreUsuario)->pluck('u_contraseña')[0];
-            if($password==$contra)
-                 $r=1;
-            else
-            $r=0;
-            // ."contra es ".$password." y pasaste ". $contra. "usu es ". $nombreUsuario;
-            return $r;
-        }
-    }
-       public    function audi(){
-        if(isset($_COOKIE['usuario']) && isset($_COOKIE['password']))
-        { $nombreUsuario=$_COOKIE['usuario'];
-            return //$nombreUsuario;
-Usuario::where('u_nombre','=',$nombreUsuario)->value('u_id');
-    }}
+   
     public function pesoPromedioPorOficina(){
         $pesoPromedioEnvio = DB::select(DB::raw('select round(avg(en_peso),2) as peso, su_nombre as so from sucursal, envio where su_clave=fk_sucursal_origen group by su_nombre'));
         return view('consulta2')->with(compact('pesoPromedioEnvio'));
@@ -154,6 +119,71 @@ Usuario::where('u_nombre','=',$nombreUsuario)->value('u_id');
         $consulta = Envio::join('sucursal','sucursal.su_clave','=','envio.fk_sucursal_origen')->join('tipo', 'tipo.ti_clave', '=', 'fk_tipo')->select(DB::raw('count(*) as mo, su_nombre as so, tipo.ti_nombre as tipo'))->groupBy('tipo','so')->whereBetween('en_fecha_envio', [$rangoi, $rangof])->get();
         return view('consulta12')->with(compact('consulta'))->with(compact('rangoi'))->with(compact('rangof'));
         /*select count(*) as mo, su_nombre as so, ti_nombre as tipo from sucursal, tipo, envio where fk_sucursal_origen=su_clave and fk_tipo = ti_clave and en_fecha_envio between '01-11-2018' and '01-01-2019' group by tipo, so */
+    }
+
+    public function rutaMasUsada(){
+        $consulta= DB::select(DB::raw('select count(*) as cant, so.su_nombre as so, sd.su_nombre as sd, flo.flo_subtipo, e.fk_flota_ruta_1, f.flo_ruta, f.flo_ru_costo,  f.flo_ru_duracion_hrs from flota_ruta as f, flota as flo, sucursal as so, sucursal as sd, envio as e where sd.su_clave=f.fk_ruta_3 and so.su_clave=f.fk_ruta_2 and flo.flo_clave=f.fk_flota and e.fk_flota_ruta_1=f.flo_ru_clave group by e.fk_flota_ruta_1, so.su_nombre, sd.su_nombre, flo.flo_subtipo, f.flo_ruta, f.flo_ru_costo, f.flo_ru_duracion_hrs having count(*) = (select max(cou) from (select distinct count(*) as cou from envio group by fk_flota_ruta_1) as t1)'));
+        return view('consulta30')->with(compact('consulta'));
+        /*select count(*) as cant, so.su_nombre, sd.su_nombre, flo.flo_subtipo, e.fk_flota_ruta_1, f.flo_ruta, f.flo_ru_costo, f.flo_ru_duracion_hrs, f.fk_flota, f.fk_ruta_1, f.fk_ruta_2, f.fk_ruta_3 from flota_ruta as f, flota as flo, sucursal as so, sucursal as sd, envio as e where sd.su_clave=f.fk_ruta_3 and so.su_clave=f.fk_ruta_2 and flo.flo_clave=f.fk_flota and e.fk_flota_ruta_1=f.flo_ru_clave group by e.fk_flota_ruta_1, so.su_nombre, sd.su_nombre, flo.flo_subtipo, f.flo_ruta, f.flo_ru_costo, f.flo_ru_duracion_hrs, f.fk_flota, f.fk_ruta_1, f.fk_ruta_2, f.fk_ruta_3 having count(*) >all (select count(*) from flota_ruta where flo_ru_clave=e.fk_flota_ruta_1 group by flo_ruta)*/
+    }
+
+    public function medioMasUsado(){
+        $consulta= DB::select(DB::raw('select count(*) as cant, flo.flo_tipo, flo.flo_subtipo, flo.flo_año, md.mod_nombre, e.fk_flota_ruta_1, f.flo_ruta, f.fk_flota from modelo as md, flota_ruta as f, flota as flo, envio as e where md.mod_clave=flo.fk_modelo and flo.flo_clave=f.fk_flota and e.fk_flota_ruta_1=f.flo_ru_clave group by e.fk_flota_ruta_1, flo.flo_subtipo, flo.flo_tipo, f.flo_ruta, f.fk_flota,flo.flo_año, md.mod_nombre  having count(*) = (select distinct max(cou) from (select count(*) as cou from envio group by fk_flota_ruta_1) as t1)'));
+        return view('consulta31')->with(compact('consulta'));
+    }
+
+    public function alerta242(){
+        if(isset($_COOKIE['usuario']) && isset($_COOKIE['password']))
+        {
+            $nombreUsuario=$_COOKIE['usuario'];
+            $supervisor=Usuario::where('u_nombre','=',$nombreUsuario)->where('fk_rol','=',1)->exists();
+            $ahora=date("Y-m-d h:i:sa");
+            if($supervisor){
+                $chequeosEnOrigen="select che_estatus, che_clave, en_clave, en_fecha_envio +? as dife, en_fecha_entrega_estimada from envio, chequeo where che_clave =(select che_clave from chequeo where fk_envio=en_clave order by che_clave desc limit 1) and che_estatus=?";
+                $consulta = DB::select(DB::raw($chequeosEnOrigen), ['24 hours',"en oficina origen"]);
+                $cantidad=count($consulta);
+                if($consulta[0]->dife<=$ahora)
+                    return 1;
+                else
+                    return 0;
+            }
+            else
+                return 0;
+        }
+        else
+            return 0;
+    }
+
+     public function verificarPermisos(){
+        //se halla el rol del usuario
+        //$rolFk=Usuario::where('u_nombre','=',$nombre)->first();
+       $permisoConsulta="ver envios"; //va a revisar si en los permisos tiene este string
+        $nombreUsuario=$_COOKIE['usuario'];
+         $usuario=Usuario::where('u_nombre','=',$nombreUsuario)->first();
+        //y con el rol se ven los permisos
+        $permisosFk=Rolper::join('permiso','per_clave','=','rol_permiso.fk_permiso')->select(
+         'per_clave', 'per_nombre', 'per_descripcion', 'per_tipo')->orderBy('per_tipo')->distinct()->where('fk_rol', '=', $usuario->fk_rol)->get();
+        $descripcionPermisos=Rolper::join('permiso','per_clave','=','rol_permiso.fk_permiso')->select(
+         'per_clave', 'per_nombre', 'per_descripcion', 'per_tipo')->orderBy('per_tipo')->distinct()->where('fk_rol', '=', $usuario->fk_rol)->pluck('per_descripcion');
+        if($descripcionPermisos->contains($permisoConsulta))
+            return "ajaaaa". $descripcionPermisos. " si tiene ".$permisoConsulta;
+        return $descripcionPermisos;
+    }
+
+
+   public    function validarUsuario2(){
+      /*  if(isset($_COOKIE['usuario']) && isset($_COOKIE['password']))
+        {
+            $nombreUsuario=$_COOKIE['usuario'];
+            $contra=$_COOKIE['password'];
+            $password=Usuario::where('u_nombre','=',$nombreUsuario)->pluck('u_contraseña')[0];
+            if($password==$contra)
+                 $r=1;
+            else
+            $r=0;
+            // ."contra es ".$password." y pasaste ". $contra. "usu es ". $nombreUsuario;
+            return $r;
+        }*/
     }
 
     public function index() {  }
