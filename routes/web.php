@@ -38,6 +38,7 @@ Route::get('inicioSesion', function(){
 Route::resource('sucursal','SucursalController');
 Route::post('sucursal/getOne','SucursalController@getOne');
 Route::post('sucursal/updateSelect','SucursalController@updateSelect');
+Route::post('sucursal/updateSelect2','SucursalController@updateSelect2');
 Route::get('sucursal', 'SucursalController@index');
 Route::get('sucursal-getData','SucursalController@getData')->name('sucursal_getData');
 Route::get('sucursal{id}-{year}-{month}-{day}','SucursalController@showNomina');

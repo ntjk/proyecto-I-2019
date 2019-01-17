@@ -66,6 +66,10 @@
       </select>
       <br />
       <label>Municipio</label>
+      <select class="form-control" name="municipio" id="municipio">
+      </select>
+      <br />
+      <label>Parroquia</label>
       <select class="form-control" name="fk_lugar" id="fk_lugar">
       </select>
     </div>
@@ -112,6 +116,22 @@ function navigate(link, inputid){
                 type: "POST",
                 url: "sucursal/updateSelect",
                 data:{ estado: estado},
+                success: function(data){
+                    var options = '';
+                    $.each(data, function(i, item) {
+                      options += '<option value="' + item.lu_clave + '">' + item.lu_nombre + '</option>';
+                    });
+                    $('#municipio').empty().html(options);
+                }
+              });
+            });
+            $(document).on('change','#municipio',function(){
+              var municipio = $(this).val();
+              $.ajax({
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                type: "POST",
+                url: "sucursal/updateSelect2",
+                data:{ municipio: municipio},
                 success: function(data){
                     var options = '';
                     $.each(data, function(i, item) {

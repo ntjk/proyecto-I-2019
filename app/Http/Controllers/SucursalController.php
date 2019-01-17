@@ -63,6 +63,10 @@ class SucursalController extends Controller
       return $lugares= Lugar::where('fk_lugar',$request->estado)->orderBy('lu_nombre')->get();
     }
 
+    public function updateSelect2(Request $request){
+      return $lugares= Lugar::where('fk_lugar',$request->municipio)->orderBy('lu_nombre')->get();
+    }
+
     public function showNomina($id,$year,$month,$day){
       $empleados = Sucursal::join('zona_empleado_horario','fk_zona_empleado_1','=','sucursal.su_clave')->join('empleado','empleado.em_clave','=','fk_zona_empleado_3')
       ->select('em_clave','em_nombre','em_salario_base')->where('su_clave','=',$id)->get();
