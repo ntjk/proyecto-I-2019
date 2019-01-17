@@ -135,6 +135,13 @@
       <select name="fk_flota_ruta_1" id="fk_flota_ruta_1" class="form-control">
       </select>
     <br />
+    <label>Cliente emisor</label>
+    <select name="fk_cliente" id="fk_cliente" class="form-control">
+       @foreach($clientes as $cliente)
+       <option value="{{$cliente->cli_clave}}">{{$cliente->cli_nacionalidad}} {{$cliente->cli_cedula}}</option>
+       @endforeach
+     </select>
+    <br />
      <label>Precio</label>
      <input name="en_precio" id="en_precio" class="form-control" type="number" step="0.01"/>
      <script>
@@ -147,13 +154,6 @@
      <br />
      <label>Fecha de entrega estimada</label>
      <input type="date" name="en_fecha_entrega_estimada" id="en_fecha_entrega_estimada" class="form-control" />
-     <br />
-     <label>Cliente emisor</label>
-     <select name="fk_cliente" id="fk_cliente" class="form-control">
-        @foreach($clientes as $cliente)
-        <option value="{{$cliente->cli_clave}}">{{$cliente->cli_nacionalidad}} {{$cliente->cli_cedula}}</option>
-        @endforeach
-      </select>
      <br />
     <label>Nombre del destinatario</label>
     <input type="text" name="des_nombre" id="des_nombre" class="form-control" />
@@ -263,6 +263,7 @@
             var peso = $('#en_peso').val();
             var tipo = $('#fk_tipo').val();
             var floru = $('#fk_flota_ruta_1').val();
+            var cliente = $('#fk_cliente').val();
             $.ajax({
               headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
               type: "POST",
@@ -273,7 +274,8 @@
                 profundidad: profundidad,
                 peso: peso,
                 tipo: tipo,
-                floru: floru
+                floru: floru,
+                cliente: cliente
               },
               success: function(data){
                 $('#en_precio').val(data);

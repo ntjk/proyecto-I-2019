@@ -15,40 +15,6 @@ use App\Empleado;
 
 class ConsultasSucursalController extends Controller
 {
-    public function avgEnviosSucursales($id,$tiempo){
-      if ($tiempo==30){
-        $mensaje='Mensual';
-        $avgES=Envio::join('sucursal','sucursal.su_clave','=','envio.fk_sucursal_origen')->select(DB::raw('round(count(*)/12.00,2) as promedio, su_nombre as so, extract(year from en_fecha_envio) as yy'))
-        ->where('fk_sucursal_origen','=',$id)->groupBy('yy','su_nombre')->get();
-        $sucursal=Sucursal::find($id)->su_nombre;
-        $sucursales=Sucursal::orderBy('su_nombre')->get();
-      } else if($tiempo==60) {
-        $mensaje='Bimestral';
-        $avgES=Envio::join('sucursal','sucursal.su_clave','=','envio.fk_sucursal_origen')->select(DB::raw('round(count(*)/6.00,2) as promedio, su_nombre as so, extract(year from en_fecha_envio) as yy'))
-        ->where('fk_sucursal_origen','=',$id)->groupBy('yy','su_nombre')->get();
-        $sucursal=Sucursal::find($id)->su_nombre;
-        $sucursales=Sucursal::orderBy('su_nombre')->get();
-      } else if($tiempo==90) {
-        $mensaje='Trimestral';
-        $avgES=Envio::join('sucursal','sucursal.su_clave','=','envio.fk_sucursal_origen')->select(DB::raw('round(count(*)/4.00,2) as promedio, su_nombre as so, extract(year from en_fecha_envio) as yy'))
-        ->where('fk_sucursal_origen','=',$id)->groupBy('yy','su_nombre')->get();
-        $sucursal=Sucursal::find($id)->su_nombre;
-        $sucursales=Sucursal::orderBy('su_nombre')->get();
-      } else if($tiempo==180) {
-        $mensaje='Semestral';
-        $avgES=Envio::join('sucursal','sucursal.su_clave','=','envio.fk_sucursal_origen')->select(DB::raw('round(count(*)/2.00,2) as promedio, su_nombre as so, extract(year from en_fecha_envio) as yy'))
-        ->where('fk_sucursal_origen','=',$id)->groupBy('yy','su_nombre')->get();
-        $sucursal=Sucursal::find($id)->su_nombre;
-        $sucursales=Sucursal::orderBy('su_nombre')->get();
-      } else {
-        $mensaje='Mensual';
-        $avgES=Envio::join('sucursal','sucursal.su_clave','=','envio.fk_sucursal_origen')->select(DB::raw('round(count(*)/12.00,2) as promedio, su_nombre as so, extract(year from en_fecha_envio) as yy'))
-        ->where('fk_sucursal_origen','=',$id)->groupBy('yy','su_nombre')->get();
-        $sucursal=Sucursal::find($id)->su_nombre;
-        $sucursales=Sucursal::orderBy('su_nombre')->get();
-      }
-      return view('consulta20')->with(compact('avgES'))->with(compact('sucursal'))->with(compact('sucursales'))->with(compact('mensaje'));
-    }
 
     public function showNominas($id){
       $sucursales=Sucursal::orderBy('su_nombre')->get();
@@ -78,12 +44,67 @@ class ConsultasSucursalController extends Controller
         foreach ($costo as $c) {
           $total+=$c->salario;
         }
-        
+
         return view('consulta70')
         ->with(compact('sucursales'))
         ->with(compact('sucursal'))
         ->with(compact('total'))
         ->with(compact('costo'));
+    }
+
+
+
+    public function showNominaPeriodo($id,$yi,$mi,$di,$yf,$mf,$df){
+      if ($yi==0 && $mi==0 && $di==0)
+      {
+        $inicio = Carbon::now()->startOfWeek();
+      } else {
+        $inicio = Carbon::create($yi,$mi,$di);
+      }
+      if ($yf==0 && $mf==0 && $df==0)
+      {
+        $fin = Carbon::now()->endOfWeek();
+      } else {
+        $fin = Carbon::create($yf,$mf,$df);
+      }
+
+      $sucursales=Sucursal::orderby('su_clave')->get();
+
+      $sucursal=Sucursal::find($id);
+
+      $nomina=Zoemho::join('sucursal','su_clave','=','fk_zona_empleado_1')
+      ->join('empleado','em_clave','=','fk_zona_empleado_3')
+      ->join('asistencia','fk_zo_em_ho_5','=','zo_em_ho_clave')
+      ->select(DB::raw('em_nombre, em_apellido, em_clave, sum(em_salario_base) as salario'))
+      ->whereBetween('a_fecha',array($inicio, $fin))
+      ->where('su_clave','=',$id)
+      ->where('a_check','!=',null)
+      ->groupBy('em_clave','em_apellido','em_nombre')
+      ->get();
+
+      /*
+      select em_nombre, em_apellido, em_clave, sum(em_salario_base)
+      from zona_empleado_horario
+      inner join sucursal on su_clave=fk_zona_empleado_1
+      inner join empleado on em_clave=fk_zona_empleado_3
+      inner join asistencia on fk_zo_em_ho_5=zo_em_ho_clave
+      where a_fecha between **FECHA INICIO and FECHA FINAL** '2018-11-1' and '2018-11-23'
+      and su_clave=**CLAVE** 20
+      and a_check is not null
+      group by em_clave, em_apellido, em_nombre
+      */
+
+
+      $total=0;
+      foreach ($nomina as $n) {
+        $total+=$n->salario;
+      }
+
+      return view('consulta71')
+      ->with(compact('sucursales'))
+      ->with(compact('sucursal'))
+      ->with(compact('nomina'))
+      ->with(compact('total'));
     }
 
 

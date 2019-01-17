@@ -172,7 +172,7 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => 'C:\\xampp\\htdocs\\Proyecto_logucab\\storage\\framework/cache/data',
+        'path' => 'C:\\xampp\\htdocs\\Proyecto\\storage\\framework/cache/data',
       ),
       'memcached' => 
       array (
@@ -223,7 +223,7 @@
         'port' => '5432',
         'database' => 'logucab',
         'username' => 'postgres',
-        'password' => '123456',
+        'password' => '1234',
         'unix_socket' => '',
         'charset' => 'utf8mb4',
         'collation' => 'utf8mb4_unicode_ci',
@@ -239,7 +239,7 @@
         'port' => '5432',
         'database' => 'logucab',
         'username' => 'postgres',
-        'password' => '123456',
+        'password' => '1234',
         'charset' => 'utf8',
         'prefix' => '',
         'prefix_indexes' => true,
@@ -252,7 +252,7 @@
         'port' => '5432',
         'database' => 'logucab',
         'username' => 'postgres',
-        'password' => '123456',
+        'password' => '1234',
         'charset' => 'utf8',
         'prefix' => '',
         'prefix_indexes' => true,
@@ -287,12 +287,12 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => 'C:\\xampp\\htdocs\\Proyecto_logucab\\storage\\app',
+        'root' => 'C:\\xampp\\htdocs\\Proyecto\\storage\\app',
       ),
       'public' => 
       array (
         'driver' => 'local',
-        'root' => 'C:\\xampp\\htdocs\\Proyecto_logucab\\storage\\app/public',
+        'root' => 'C:\\xampp\\htdocs\\Proyecto\\storage\\app/public',
         'url' => 'http://localhost/storage',
         'visibility' => 'public',
       ),
@@ -337,13 +337,13 @@
       'single' => 
       array (
         'driver' => 'single',
-        'path' => 'C:\\xampp\\htdocs\\Proyecto_logucab\\storage\\logs/laravel.log',
+        'path' => 'C:\\xampp\\htdocs\\Proyecto\\storage\\logs/laravel.log',
         'level' => 'debug',
       ),
       'daily' => 
       array (
         'driver' => 'daily',
-        'path' => 'C:\\xampp\\htdocs\\Proyecto_logucab\\storage\\logs/laravel.log',
+        'path' => 'C:\\xampp\\htdocs\\Proyecto\\storage\\logs/laravel.log',
         'level' => 'debug',
         'days' => 14,
       ),
@@ -406,7 +406,7 @@
       'theme' => 'default',
       'paths' => 
       array (
-        0 => 'C:\\xampp\\htdocs\\Proyecto_logucab\\resources\\views/vendor/mail',
+        0 => 'C:\\xampp\\htdocs\\Proyecto\\resources\\views/vendor/mail',
       ),
     ),
     'log_channel' => NULL,
@@ -494,7 +494,7 @@
     'lifetime' => '120',
     'expire_on_close' => false,
     'encrypt' => false,
-    'files' => 'C:\\xampp\\htdocs\\Proyecto_logucab\\storage\\framework/sessions',
+    'files' => 'C:\\xampp\\htdocs\\Proyecto\\storage\\framework/sessions',
     'connection' => NULL,
     'table' => 'sessions',
     'store' => NULL,
@@ -514,9 +514,9 @@
   array (
     'paths' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\Proyecto_logucab\\resources\\views',
+      0 => 'C:\\xampp\\htdocs\\Proyecto\\resources\\views',
     ),
-    'compiled' => 'C:\\xampp\\htdocs\\Proyecto_logucab\\storage\\framework\\views',
+    'compiled' => 'C:\\xampp\\htdocs\\Proyecto\\storage\\framework\\views',
   ),
   'debug-server' => 
   array (

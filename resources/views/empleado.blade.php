@@ -30,6 +30,7 @@
             <table class="table table-bordered special-table" id="users-table">
                 <thead>
                     <tr>
+                        <th>Nacionalidad</th>
                         <th>Cedula</th>
                         <th>Nombre</th>
                         <th>Apellido</th>
@@ -45,10 +46,35 @@
                         <th>Fecha (Ingreso)</th>
                         <th>Fecha (Nacimiento)</th>
                         <th>Parroquia</th>
-                        <th>Nacionalidad</th>
-                        <th id="hd1">Accion</th>
+                        <th id="hidden2">Accion</th>
                     </tr>
                 </thead>
+                <tbody>
+                @foreach ($empleados as $e)
+                  <tr>
+                    <td>{{$e->em_nacionalidad}}</td>
+                    <td>{{$e->em_cedula}}</td>
+                    <td>{{$e->em_nombre}}</td>
+                    <td>{{$e->em_apellido}}</td>
+                    <td>{{$e->em_profesion}}</td>
+                    <td>{{$e->em_estado_civil}}</td>
+                    <td>{{$e->em_salario_base}}</td>
+                    <td>{{$e->em_email_empresa}}</td>
+                    <td>{{$e->em_email_personal}}</td>
+                    <td>{{$e->em_nivel_academico}}</td>
+                    <td>{{$e->em_cantidad_hijos}}</td>
+                    <td>{{$e->em_descripcion_trabajo}}</td>
+                    <td>{{$e->em_fecha_egreso}}</td>
+                    <td>{{$e->em_fecha_ingreso}}</td>
+                    <td>{{$e->em_fecha_nacimiento}}</td>
+                    <td>{{$e->lu_nombre}}</td>
+                    <td name="hidden3">
+                      <button class="btn btn-warning btn-detail update" id="{{$e->em_clave}}" value="{{$e->em_clave}}" name="Update">Update</button>
+                      <button class="btn btn-danger btn-delete delete" id="{{$e->em_clave}}" value="{{$e->em_clave}}" name="delete">Delete</button>
+                    </td>
+                  </tr>
+                @endforeach
+                </tbody>
             </table>
           </div>
         </div>
@@ -153,34 +179,32 @@
         <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script>$(function() {
-            
+
             $("#em_fecha_egreso").attr("disabled", true);
 
             $('#users-table').DataTable({
-                processing: true,
-                serverSide: true,
-                ajax: '{!! route('empleado_getData') !!}',
-                columns: [
-                    { data: 'em_cedula', name: 'empleado.em_cedula' },
-                    { data: 'em_nombre', name: 'empleado.em_nombre' },
-                    { data: 'em_apellido', name: 'empleado.em_apellido' },
-                    { data: 'em_profesion', name: 'empleado.em_profesion' },
-                    { data: 'em_estado_civil', name: 'empleado.em_estado_civil' },
-                    { data: 'em_salario_base', name: 'empleado.em_salario_base' },
-                    { data: 'em_email_empresa', name: 'empleado.em_email_empresa' },
-                    { data: 'em_email_personal', name: 'empleado.em_email_personal' },
-                    { data: 'em_nivel_academico', name: 'empleado.em_nivel_academico' },
-                    { data: 'em_cantidad_hijos', name: 'empleado.em_cantidad_hijos' },
-                    { data: 'em_descripcion_trabajo', name: 'empleado.em_descripcion_trabajo' },
-                    { data: 'em_fecha_egreso', name: 'empleado.em_fecha_egreso' },
-                    { data: 'em_fecha_ingreso', name: 'empleado.em_fecha_ingreso' },
-                    { data: 'em_fecha_nacimiento', name: 'empleado.em_fecha_nacimiento' },
-                    { data: 'lu_nombre', name: 'lugar.lu_nombre' },
-                    { data: 'em_nacionalidad', name: 'em_nacionalidad' }
-                    ,
-                    {data: 'action', name: 'action', orderable: false, searchable: false}
-                ]
             })
+
+            $(".delete").hide();
+            $(".update").hide();
+            $('#add_button').hide();
+            $('#hidden2').hide();
+            $('#hidden3').hide();
+
+            var eliminar = '{!! verificarPermisosHelper("eliminar empleados"); !!}';
+            var modificar = '{!! verificarPermisosHelper("modificar empleados"); !!}';
+            var insertar = '{!! verificarPermisosHelper("insertar empleados"); !!}';
+
+            if(eliminar || modificar){
+              $('#hidden2').show();
+              $('#hidden3').show();
+            }
+            if(eliminar)
+              $(".delete").show();
+            if(modificar)
+              $(".update").show();
+            if(insertar)
+              $('#add_button').show();
 
             $(document).on('change','#estado',function(){
               var estado = $(this).val();

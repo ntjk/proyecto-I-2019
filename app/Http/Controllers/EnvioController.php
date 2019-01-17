@@ -124,12 +124,23 @@ select su_nombre, ru_clave from ruta, sucursal where fk_sucursal_1=su_clave and 
           $envio -> fk_sucursal_destino = $request->input('fk_sucursal_destino');
 
           $cliente = Cliente::find($request->input('fk_cliente'));
-          if (Envio::where('fk_cliente',$request->input('fk_cliente'))->count()>=5){
+          if (Envio::join('cliente','cli_clave','=','fk_cliente')
+          ->select(DB::raw("date_trunc('month',en_fecha_envio) as mes, cli_clave"))
+          ->where('cli_clave','=',$cliente->cli_clave)
+          ->groupBy('mes','cli_clave')
+          ->having('count(*)','>=','5')
+          ->exists()) {
             $cliente->cli_vip = 1;
           } else {
             $cliente->cli_vip = 0;
           }
           $cliente->save();
+
+          /*select date_trunc('month',en_fecha_envio) as mes, cli_nombre
+            from envio, cliente
+            where fk_cliente=cli_clave
+            group by mes, cli_nombre
+            having count(*)>5*/
 
           $ruta3 = Floru::where('flo_ru_clave','=', $request->input('fk_flota_ruta_1'))->first();
           $envio -> fk_flota_ruta_1 = $ruta3->flo_ru_clave;
@@ -164,7 +175,7 @@ select su_nombre, ru_clave from ruta, sucursal where fk_sucursal_1=su_clave and 
       /*$destino=$request->sd;
       $sql=DB::select(DB::raw('select count (*) from (select * from flota_ruta where fk_ruta_3= ?) as t1'));
       $cantidadRutas = DB::select(DB::raw($sql), [$destino]);
-      
+
       $sql2=DB::select(DB::raw('select distinct flo_ruta from flota_ruta where flo_ruta in (select flo_ruta from flota_ruta where fk_ruta_3= ?)'));
       $cadaRuta=DB::select(DB::raw($sql2), [$destino]);
       //por cada floru, recorrer todos los registros de esa ruta Nro. tal
@@ -195,11 +206,18 @@ select su_nombre, ru_clave from ruta, sucursal where fk_sucursal_1=su_clave and 
       //$tipoValor = $tipoF->ti_precio;
       $floruF = Floru::find($request->floru);
       //$floruValor = $floruF->flo_ru_costo;
+      $cliente=Cliente::find($request->cliente);
+
       if ($request->peso>=10){
         $precio=($tipoF->ti_precio_kg + $floruF->flo_ru_costo) * $request->altura * $request->anchura * $request->profundidad;
       }else{
         $precio=($tipoF->ti_precio_kg + $floruF->flo_ru_costo) * $request->peso;
       }
+
+      if ($cliente->cli_vip==true || $cliente->cli_vip==1){
+        $precio*=.90;
+      }
+
       return $precio;
     }
 

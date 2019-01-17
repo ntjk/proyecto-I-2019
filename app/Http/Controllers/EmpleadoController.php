@@ -20,16 +20,28 @@ class EmpleadoController extends Controller
 
  public function index()
  {
+   $empleados = Empleado::join('lugar','lugar.lu_clave','=','empleado.fk_lugar')
+   ->select(
+     'empleado.em_clave',
+     'empleado.em_cedula',
+     'empleado.em_nombre',
+     'empleado.em_apellido',
+     'empleado.em_profesion',
+     'empleado.em_estado_civil',
+     'empleado.em_salario_base',
+     'empleado.em_email_empresa',
+     'empleado.em_email_personal',
+     'empleado.em_nivel_academico',
+     'empleado.em_cantidad_hijos',
+     'empleado.em_descripcion_trabajo',
+     'empleado.em_fecha_egreso',
+     'empleado.em_fecha_ingreso',
+     'empleado.em_fecha_nacimiento',
+     'lugar.lu_nombre',
+     'empleado.em_nacionalidad')
+  ->get();
    $estados= Lugar::where('lu_tipo','estado')->orderBy('lu_nombre')->get();
-   return view('empleado',compact('estados'));
- }
-
- public function getData()
- {
-   $empleados = Empleado::join('lugar','lugar.lu_clave','=','empleado.fk_lugar')->select(['empleado.em_clave','empleado.em_cedula', 'empleado.em_nombre', 'empleado.em_apellido', 'empleado.em_profesion', 'empleado.em_estado_civil', 'empleado.em_salario_base', 'empleado.em_email_empresa', 'empleado.em_email_personal', 'empleado.em_nivel_academico', 'empleado.em_cantidad_hijos', 'empleado.em_descripcion_trabajo', 'empleado.em_fecha_egreso', 'empleado.em_fecha_ingreso', 'empleado.em_fecha_nacimiento', 'lugar.lu_nombre', 'empleado.em_nacionalidad']);
-     return Datatables::of($empleados)->addColumn('action', function ($empleados) {
-             return '<button class="btn btn-warning btn-detail update" id="'.$empleados->em_clave.'" value="'.$empleados->em_clave.'" name="Update">Update</button>
-           <button class="btn btn-danger btn-delete delete" id="'.$empleados->em_clave.'" value="'.$empleados->em_clave.'" name="delete">Delete</button>'; })->make(true);
+   return view('empleado')->with(compact('estados'))->with(compact('empleados'));
  }
 
  public function store(Request $request){
@@ -57,7 +69,7 @@ class EmpleadoController extends Controller
      $fecha_nac = $empleado -> em_fecha_nacimiento;
      $empleado->fill($request->all());
      $empleado -> em_fecha_ingreso = $fecha_ingreso;
-     $empleado -> em_fecha_nacimiento = $fecha_nac;     
+     $empleado -> em_fecha_nacimiento = $fecha_nac;
      $empleado->save();
    } else {
        $empleado = new Empleado();

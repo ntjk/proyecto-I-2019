@@ -32,42 +32,7 @@ class ConsultasEnvioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function verificarPermisos(){
-        //se halla el rol del usuario
-        //$rolFk=Usuario::where('u_nombre','=',$nombre)->first();
-       $permisoConsulta="ver envios"; //va a revisar si en los permisos tiene este string
-        $nombreUsuario=$_COOKIE['usuario'];
-         $usuario=Usuario::where('u_nombre','=',$nombreUsuario)->first();
-        //y con el rol se ven los permisos
-        $permisosFk=Rolper::join('permiso','per_clave','=','rol_permiso.fk_permiso')->select(
-         'per_clave', 'per_nombre', 'per_descripcion', 'per_tipo')->orderBy('per_tipo')->distinct()->where('fk_rol', '=', $usuario->fk_rol)->get();
-        $descripcionPermisos=Rolper::join('permiso','per_clave','=','rol_permiso.fk_permiso')->select(
-         'per_clave', 'per_nombre', 'per_descripcion', 'per_tipo')->orderBy('per_tipo')->distinct()->where('fk_rol', '=', $usuario->fk_rol)->pluck('per_descripcion');
-        if($descripcionPermisos->contains($permisoConsulta))
-            return "ajaaaa". $descripcionPermisos. " si tiene ".$permisoConsulta;
-        return $descripcionPermisos;
-    }
 
-   public function validarUsuario2(){
-        if(isset($_COOKIE['usuario']) && isset($_COOKIE['password']))
-        {
-            $nombreUsuario=$_COOKIE['usuario'];
-            $contra=$_COOKIE['password'];
-            $password=Usuario::where('u_nombre','=',$nombreUsuario)->pluck('u_contraseña')[0];
-            if($password==$contra)
-                 $r=1;
-            else
-            $r=0;
-            // ."contra es ".$password." y pasaste ". $contra. "usu es ". $nombreUsuario;
-            return $r;
-        }
-    }
-       public    function audi(){
-        if(isset($_COOKIE['usuario']) && isset($_COOKIE['password']))
-        { $nombreUsuario=$_COOKIE['usuario'];
-            return //$nombreUsuario;
-Usuario::where('u_nombre','=',$nombreUsuario)->value('u_id');
-    }}
     public function pesoPromedioPorOficina(){
         $pesoPromedioEnvio = DB::select(DB::raw('select round(avg(en_peso),2) as peso, su_nombre as so from sucursal, envio where su_clave=fk_sucursal_origen group by su_nombre'));
         return view('consulta2')->with(compact('pesoPromedioEnvio'));
@@ -162,6 +127,72 @@ Usuario::where('u_nombre','=',$nombreUsuario)->value('u_id');
         /*select count(*) as mo, su_nombre as so, ti_nombre as tipo from sucursal, tipo, envio where fk_sucursal_origen=su_clave and fk_tipo = ti_clave and en_fecha_envio between '01-11-2018' and '01-01-2019' group by tipo, so */
     }
 
+    public function rutaMasUsada(){
+        $consulta= DB::select(DB::raw('select count(*) as cant, so.su_nombre as so, sd.su_nombre as sd, flo.flo_subtipo, e.fk_flota_ruta_1, f.flo_ruta, f.flo_ru_costo,  f.flo_ru_duracion_hrs from flota_ruta as f, flota as flo, sucursal as so, sucursal as sd, envio as e where sd.su_clave=f.fk_ruta_3 and so.su_clave=f.fk_ruta_2 and flo.flo_clave=f.fk_flota and e.fk_flota_ruta_1=f.flo_ru_clave group by e.fk_flota_ruta_1, so.su_nombre, sd.su_nombre, flo.flo_subtipo, f.flo_ruta, f.flo_ru_costo, f.flo_ru_duracion_hrs having count(*) = (select max(cou) from (select distinct count(*) as cou from envio group by fk_flota_ruta_1) as t1)'));
+        return view('consulta30')->with(compact('consulta'));
+        /*select count(*) as cant, so.su_nombre, sd.su_nombre, flo.flo_subtipo, e.fk_flota_ruta_1, f.flo_ruta, f.flo_ru_costo, f.flo_ru_duracion_hrs, f.fk_flota, f.fk_ruta_1, f.fk_ruta_2, f.fk_ruta_3 from flota_ruta as f, flota as flo, sucursal as so, sucursal as sd, envio as e where sd.su_clave=f.fk_ruta_3 and so.su_clave=f.fk_ruta_2 and flo.flo_clave=f.fk_flota and e.fk_flota_ruta_1=f.flo_ru_clave group by e.fk_flota_ruta_1, so.su_nombre, sd.su_nombre, flo.flo_subtipo, f.flo_ruta, f.flo_ru_costo, f.flo_ru_duracion_hrs, f.fk_flota, f.fk_ruta_1, f.fk_ruta_2, f.fk_ruta_3 having count(*) >all (select count(*) from flota_ruta where flo_ru_clave=e.fk_flota_ruta_1 group by flo_ruta)*/
+    }
+
+    public function medioMasUsado(){
+        $consulta= DB::select(DB::raw('select count(*) as cant, flo.flo_tipo, flo.flo_subtipo, flo.flo_año, md.mod_nombre, e.fk_flota_ruta_1, f.flo_ruta, f.fk_flota from modelo as md, flota_ruta as f, flota as flo, envio as e where md.mod_clave=flo.fk_modelo and flo.flo_clave=f.fk_flota and e.fk_flota_ruta_1=f.flo_ru_clave group by e.fk_flota_ruta_1, flo.flo_subtipo, flo.flo_tipo, f.flo_ruta, f.fk_flota,flo.flo_año, md.mod_nombre  having count(*) = (select distinct max(cou) from (select count(*) as cou from envio group by fk_flota_ruta_1) as t1)'));
+        return view('consulta31')->with(compact('consulta'));
+    }
+
+    public function alerta242(){
+        if(isset($_COOKIE['usuario']) && isset($_COOKIE['password']))
+        {
+            $nombreUsuario=$_COOKIE['usuario'];
+            $supervisor=Usuario::where('u_nombre','=',$nombreUsuario)->where('fk_rol','=',1)->exists();
+            $ahora=date("Y-m-d h:i:sa");
+            if($supervisor){
+                $chequeosEnOrigen="select che_estatus, che_clave, en_clave, en_fecha_envio +? as dife, en_fecha_entrega_estimada from envio, chequeo where che_clave =(select che_clave from chequeo where fk_envio=en_clave order by che_clave desc limit 1) and che_estatus=?";
+                $consulta = DB::select(DB::raw($chequeosEnOrigen), ['24 hours',"en oficina origen"]);
+                $cantidad=count($consulta);
+                if($consulta[0]->dife<=$ahora)
+                    return 1;
+                else
+                    return 0;
+            }
+            else
+                return 0;
+        }
+        else
+            return 0;
+    }
+
+     public function verificarPermisos(){
+        //se halla el rol del usuario
+        //$rolFk=Usuario::where('u_nombre','=',$nombre)->first();
+       $permisoConsulta="ver envios"; //va a revisar si en los permisos tiene este string
+        $nombreUsuario=$_COOKIE['usuario'];
+         $usuario=Usuario::where('u_nombre','=',$nombreUsuario)->first();
+        //y con el rol se ven los permisos
+        $permisosFk=Rolper::join('permiso','per_clave','=','rol_permiso.fk_permiso')->select(
+         'per_clave', 'per_nombre', 'per_descripcion', 'per_tipo')->orderBy('per_tipo')->distinct()->where('fk_rol', '=', $usuario->fk_rol)->get();
+        $descripcionPermisos=Rolper::join('permiso','per_clave','=','rol_permiso.fk_permiso')->select(
+         'per_clave', 'per_nombre', 'per_descripcion', 'per_tipo')->orderBy('per_tipo')->distinct()->where('fk_rol', '=', $usuario->fk_rol)->pluck('per_descripcion');
+        if($descripcionPermisos->contains($permisoConsulta))
+            return "ajaaaa". $descripcionPermisos. " si tiene ".$permisoConsulta;
+        return $descripcionPermisos;
+    }
+
+
+   public    function validarUsuario2(){
+      /*  if(isset($_COOKIE['usuario']) && isset($_COOKIE['password']))
+        {
+            $nombreUsuario=$_COOKIE['usuario'];
+            $contra=$_COOKIE['password'];
+            $password=Usuario::where('u_nombre','=',$nombreUsuario)->pluck('u_contraseña')[0];
+            if($password==$contra)
+                 $r=1;
+            else
+            $r=0;
+            // ."contra es ".$password." y pasaste ". $contra. "usu es ". $nombreUsuario;
+            return $r;
+        }*/
+    }
+
+    public function index() {  }
 
     /////////////////////////// AQUI ///////////////////////////////
     public function sucursalesPuertosAeropuertos(){
@@ -223,25 +254,32 @@ Usuario::where('u_nombre','=',$nombreUsuario)->value('u_id');
     }
 
     public function consulta44(){
-        $consultas= DB::select(DB::raw('
-            select \'Envío\' as tipo, null as egreso, en.en_precio as ingreso, su_nombre as sucu, en.en_fecha_envio::date as fecha
-            from envio en, sucursal su
-            where en.fk_sucursal_origen = su.su_clave
-            union
-            select \'Revisión\' as tipo, rev.rev_monto_pagar as egreso, null as ingreso, su.su_nombre as sucu, rev.rev_fecha_real_salida::date as fecha
-            from revision rev, flota flo, sucursal su
-            where rev.fk_flota = flo.flo_clave
-            and flo.fk_sucursal = su.su_clave
-            union
-            select \'Salario\' as tipo, em.em_salario_base as egreso,null as ingreso, su_nombre as sucu, null as fecha
-            from empleado em, zona zo, zona_empleado ze, sucursal su
-            where em.em_clave = ze.fk_empleado
-            and ze.fk_zona_2 = zo.fk_sucursal
-            and zo.fk_sucursal = su.su_clave
-            order by tipo desc, sucu, fecha
-        '));
+        $consultas= Sucursal::join('servicio_sucursal','servicio_sucursal.fk_sucursal','=','su_clave','left outer')
+        ->join('zona_empleado_horario','fk_zona_empleado_1','=','su_clave')
+        ->join('empleado','em_clave','=','fk_zona_empleado_3')
+        ->join('asistencia','fk_zo_em_ho_5','=','zo_em_ho_clave')
+        ->join('flota','flota.fk_sucursal','=','su_clave')
+        ->join('revision','fk_flota','=','flo_clave','left outer')
+        ->join('envio','fk_sucursal_origen','=','su_clave')
+        ->select(DB::raw("sum(COALESCE(em_salario_base,0))+sum(COALESCE(rev_monto_pagar,0)) as egreso, sum(en_precio) as ingreso, date_trunc('month',en_fecha_envio) as mes, su_nombre, su_clave"))
+        ->where('a_check','!=',null)
+        ->groupBy('mes','su_clave','su_nombre')
+        ->get();
         return view('consulta44')->with(compact('consultas'));
     }
+
+    /*select sum(coalesce(em_salario_base,0))+sum(coalesce(rev_monto_pagar,0)) as egreso, sum(en_precio) as ingreso, date_trunc('month',en_fecha_envio) as mes, su_nombre, su_clave
+      from zona_empleado_horario, empleado, asistencia, envio,
+      sucursal left outer join servicio_sucursal on servicio_sucursal.fk_sucursal = sucursal.su_clave,
+      flota left outer join revision on fk_flota = flo_clave
+      where fk_zona_empleado_1 = su_clave
+      and em_clave = fk_zona_empleado_3
+      and fk_zo_em_ho_5 = zo_em_ho_clave
+      and flota.fk_sucursal = su_clave
+      and fk_sucursal_origen = su_clave
+      and a_check is not null
+      group by mes, su_clave, su_nombre*/
+
 
     public function consulta45(){
         // $consultas45 = Revision::join('flota','flota.flo_clave','=','revision.fk_flota')
@@ -254,14 +292,14 @@ Usuario::where('u_nombre','=',$nombreUsuario)->value('u_id');
             from revision rev, flota flo, sucursal su
             where rev.fk_flota = flo.flo_clave and flo.fk_sucursal = su.su_clave
             group by extract(month from rev.rev_fecha_real_salida),su.su_nombre
-            order by nombre, mes
+            order by mes, nombre
         '));
         return view('consulta45')->with(compact('cons45'));
     }
 
     public function consulta46($rango){
         $rangoi = substr($rango, 0, 10);
-        $rangof = substr($rango, 10); 
+        $rangof = substr($rango, 10);
 
         $envios = Envio::join('sucursal','sucursal.su_clave','=','envio.fk_sucursal_origen')
         ->select(DB::raw('\'Envío\' as tipo, null as egreso, envio.en_precio as ingreso, sucursal.su_nombre as sucu, envio.en_fecha_envio::date as fecha'))
@@ -271,7 +309,7 @@ Usuario::where('u_nombre','=',$nombreUsuario)->value('u_id');
         ->join('sucursal','sucursal.su_clave','=','flota.fk_sucursal')
         ->select(DB::raw('\'Revisión\' as tipo, revision.rev_monto_pagar as egreso, null as ingreso, sucursal.su_nombre as sucu, revision.rev_fecha_real_salida::date as fecha'))
         ->whereBetween('revision.rev_fecha_real_salida', [$rangoi, $rangof])->get();
-       
+
         $empleados = Empleado::join('zona_empleado','zona_empleado.fk_empleado','=','empleado.em_clave')
         ->join('zona','zona.fk_sucursal','=','zona_empleado.fk_zona_2')
         ->join('sucursal','sucursal.su_clave','=','zona.fk_sucursal')
@@ -283,7 +321,7 @@ Usuario::where('u_nombre','=',$nombreUsuario)->value('u_id');
         $unionfinal = $envios->union($revisiones);
         return view('consulta46')->with(compact('unionfinal'))->with(compact('rangoi'))->with(compact('rangof'));
     }
- 
+
     public function consulta47(){
 
         $cons47= DB::select(DB::raw('
@@ -292,12 +330,10 @@ Usuario::where('u_nombre','=',$nombreUsuario)->value('u_id');
             where rev.fk_flota = flo.flo_clave and flo.fk_sucursal = su.su_clave
             and em.em_clave = ze.fk_empleado and ze.fk_zona_2 = zo.fk_sucursal and zo.fk_sucursal = su.su_clave
             and su.fk_lugar = lu.lu_clave
-            group by su.su_clave, lu.lu_nombre        
+            group by su.su_clave, lu.lu_nombre
         '));
         return view('consulta47')->with(compact('cons47'));
     }
-  
-    public function index() {  }
 
     public function create() { }
 
