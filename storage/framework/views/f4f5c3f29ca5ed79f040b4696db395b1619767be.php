@@ -78,6 +78,9 @@
                     if($('#paraDiferenciar').val() == 46){
                         if ($("input[name=parametro]:checked").val() == "rango") {
                             var url = "<?php echo e(url('/filtrarFecha_46')); ?>" + document.getElementById(rangoi).value + document.getElementById(rangof).value;
+                            window.location.href = url; 
+                        }
+                    }
                     // Para la consulta 13
                     if($('#paraDiferenciar').val() == 13){
                         if ($("input[name=parametro]:checked").val() == "rango") {

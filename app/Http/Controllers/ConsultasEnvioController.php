@@ -243,7 +243,6 @@ Usuario::where('u_nombre','=',$nombreUsuario)->value('u_id');
         return view('consulta44')->with(compact('consultas'));
     }
 
-
     public function consulta45(){
         // $consultas45 = Revision::join('flota','flota.flo_clave','=','revision.fk_flota')
         // ->join('sucursal', 'sucursal.su_clave', '=', 'flota.fk_sucursal')
@@ -279,12 +278,24 @@ Usuario::where('u_nombre','=',$nombreUsuario)->value('u_id');
         ->select(DB::raw('\'Salario\' as tipo, empleado.em_salario_base as egreso,null as ingreso, sucursal.su_nombre as sucu, null as fecha'))->get();
         //->whereBetween('revision.rev_fecha_real_salida', [$rangoi, $rangof])->get();
 
-        //$union1 = $empleados->union($envios);
-        //$unionfinal = $union1->union($revisiones);
+        $union1 = $empleados->union($envios);
+        $unionfinal = $union1->union($revisiones);
         $unionfinal = $envios->union($revisiones);
         return view('consulta46')->with(compact('unionfinal'))->with(compact('rangoi'))->with(compact('rangof'));
     }
  
+    public function consulta47(){
+
+        $cons47= DB::select(DB::raw('
+            select su.su_nombre as sucu, sum(rev.rev_monto_pagar) + sum(em.em_salario_base) as egreso, lu.lu_nombre as lugar
+            from revision rev, flota flo, sucursal su, empleado em, zona zo, zona_empleado ze, lugar lu
+            where rev.fk_flota = flo.flo_clave and flo.fk_sucursal = su.su_clave
+            and em.em_clave = ze.fk_empleado and ze.fk_zona_2 = zo.fk_sucursal and zo.fk_sucursal = su.su_clave
+            and su.fk_lugar = lu.lu_clave
+            group by su.su_clave, lu.lu_nombre        
+        '));
+        return view('consulta47')->with(compact('cons47'));
+    }
   
     public function index() {  }
 

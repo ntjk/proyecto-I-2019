@@ -11,9 +11,8 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <meta name="csrf-token" content="{!! csrf_token() !!}" />
         <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/unselectable.css') }}" rel="stylesheet">
         <script type="text/javascript" src="{{ asset('js/dropdown.js') }}"></script>
-        <title>Consulta 46</title>
+        <title>Consulta46 - LogUCAB</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
@@ -22,49 +21,41 @@
     </head>
     <body>
             @include('header')
-            <h1 class="text-center">Ingreso y egresos por oficina entre: {{$rangoi}} - {{$rangof}}.</h1>
+            <div class="container">
             <br/>
-            <table class="table table-bordered" width="80%" id="users-table">
+            <h1 class="text-center">Oficinas más costosas</h1>
+            <br/>
+            <table class="table table-bordered" style="width:40%" id="users-table" >
                 <thead>
-                    <tr>
-                       <th>Tipo</th>
-                       <th>Sucursal</th>
-                       <th>Egreso</th>
-                       <th>Ingreso</th>
-                       <th>Fecha</th>
+                    <tr >
+                        <th>Sucursal</th>
+                        <th>Egreso</th>
+                        <th>Lugar</th>
                     </tr>
                 </thead>
                 <tbody>
-                  @foreach ($unionfinal as $unionF)
-                  <tr>
-                  <td>{{$unionF->tipo}}</td>
-                   <td>{{$unionF->sucu}}</td>
-                   <td>{{$unionF->egreso}}</td>
-                   <td>{{$unionF->ingreso}}</td>
-                   <td>{{$unionF->fecha}}</td>
+                  @foreach ($cons47 as $c47)
+                  <tr class="text-center">
+                    <td>{{$c47->sucu}}</td>
+                    <td>{{$c47->egreso}}</td>
+                    <td>{{$c47->lugar}}</td>
                   </tr>
                   @endforeach
                 </tbody>
             </table>
-            <br/>
-        </div>
-        <div id="userModal" class="modal fade">
+        
         <script src="//code.jquery.com/jquery.js"></script>
         <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
         <script>$(function() {
             $('#users-table').DataTable({
             })
-          	$(document).on('click', '.update', function(){
-            	var en_clave = $(this).attr("id");
-          	});
         });
         </script>
         @stack('scripts')
         @include('footer')
-              </div>
         </div>
       </div>
     </body>
 </html>
+

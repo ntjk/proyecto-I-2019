@@ -153,7 +153,10 @@
                     <td><a href="consulta29">Oficina es la más amplia por estado, municipio y parroquia</a></td>
                   </tr>
                   <tr>
-                    <td>      <a href="consulta46">Ingresos y egresos por oficina por período de tiempo.</a></td>
+                    <td><a href="consulta46">Ingresos y egresos por oficina por período de tiempo.</a></td>
+                  </tr>
+                  <tr>
+                    <td><a href="consulta47">Oficinas más costosas por estado .</a></td>
                   </tr>
                 </tbody>
             </table>
