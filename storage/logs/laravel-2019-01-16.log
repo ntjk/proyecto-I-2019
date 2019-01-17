@@ -2665,3 +2665,4 @@ LINE 1: ... che_estatus, che_descripcion, che_fecha_entrada, che_fecha_...
 #54 C:\\xampp\\htdocs\\version6ene\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #55 {main}
 "}
+[2019-01-16 23:56:19] local.ERROR: SQLSTATE[08006] [7] FATAL:  no existe la base de datos «logucab2» (SQL: select * from "sucursal" order by "su_nombre" asc)  

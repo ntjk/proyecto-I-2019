@@ -27,7 +27,7 @@ use App\Accion;
         }
     }
 
-    function alerta24(){
+    /*function alerta24(){
         if(isset($_COOKIE['usuario']) && isset($_COOKIE['password']))
         {
             $nombreUsuario=$_COOKIE['usuario'];
@@ -44,7 +44,7 @@ use App\Accion;
                     return 0;
             }
         }
-    }
+    }*/
 
   /*  function auditoria($ac_descrip){
             $nombreUsuario=$_COOKIE['usuario'];
@@ -67,4 +67,4 @@ use App\Accion;
             else
                 return 0;
         }
-    }*/
+    }
