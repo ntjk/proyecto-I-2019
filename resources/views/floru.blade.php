@@ -35,7 +35,7 @@
                         <th>Flota</th>
                         <th>Costo</th>
                         <th>Duracion</th>
-                        <th>Accion</th>
+                        <th id="hidden2">Accion</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -47,7 +47,7 @@
                     <td>{{$r->mod_nombre}} {{$r->flo_año}}, {{$r->flo_subtipo}}</td>
                     <td>{{$r->flo_ru_costo}}</td>
                     <td>{{$r->flo_ru_duracion_hrs}}</td>
-                    <td>
+                    <td name="hidden3">
                       <button class="btn btn-warning btn-detail update" id="{{$r->flo_ru_clave}}" value="{{$r->flo_ru_clave}}" name="Update">Update</button>
                       <button class="btn btn-danger btn-delete delete" id="{{$r->flo_ru_clave}}" value="{{$r->flo_ru_clave}}" name="delete">Delete</button>
                       <button class="btn btn-primary agregarNodoBtn" id="{{$r->flo_ru_clave}}" data-toggle="modal" data-target="#userModal_2" value="{{$r->flo_ru_clave}}" name="delete">Agregar nodo</button>
@@ -148,6 +148,32 @@
         <script>$(function() {
             $('#users-table').DataTable({
             })
+
+            $(".delete").hide();
+            $(".update").hide();
+            $('#add_button').hide();
+            $('#hidden2').hide();
+            $('#hidden3').hide();
+            $('.agregarNodo').hide();
+
+            var eliminar = '{!! verificarPermisosHelper("eliminar rutas"); !!}';
+            var modificar = '{!! verificarPermisosHelper("modificar rutas"); !!}';
+            var insertar = '{!! verificarPermisosHelper("insertar rutas"); !!}';
+
+            if (eliminar || modificar || insertar)
+              $('.agregarNodo').show();
+
+            if(eliminar || modificar){
+              $('#hidden2').show();
+              $('#hidden3').show();
+            }
+            if(eliminar)
+              $(".delete").show();
+            if(modificar)
+              $(".update").show();
+            if(insertar)
+              $('#add_button').show();
+
 
             $(document).on('submit', '#user_form', function(event){
             event.preventDefault();

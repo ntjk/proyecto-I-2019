@@ -161,6 +161,7 @@ function navigate(link, inputid){
             $('#add_button').hide();
             $('#hidden2').hide();
             $('#hidden3').hide();
+            $('.carnet').hide();
 
             var eliminar = '{!! verificarPermisosHelper("eliminar clientes"); !!}';
             var modificar = '{!! verificarPermisosHelper("modificar clientes"); !!}';
@@ -169,6 +170,7 @@ function navigate(link, inputid){
             if(eliminar || modificar){
               $('#hidden2').show();
               $('#hidden3').show();
+              $('.carnet').show();
             }
             if(eliminar)
               $(".delete").show();
