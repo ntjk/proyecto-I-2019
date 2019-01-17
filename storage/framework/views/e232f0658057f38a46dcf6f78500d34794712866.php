@@ -1,5 +1,5 @@
  <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,9 +9,9 @@
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-        <meta name="csrf-token" content="{!! csrf_token() !!}" />
-        <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
-        <script type="text/javascript" src="{{ asset('js/dropdown.js') }}"></script>
+        <meta name="csrf-token" content="<?php echo csrf_token(); ?>" />
+        <link href="<?php echo e(asset('css/styles.css')); ?>" rel="stylesheet">
+        <script type="text/javascript" src="<?php echo e(asset('js/dropdown.js')); ?>"></script>
         <title>Empleado - LogUCAB</title>
 
         <!-- Fonts -->
@@ -20,7 +20,7 @@
         <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     </head>
     <body>
-            @include('header')
+            <?php echo $__env->make('header', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
             <div class="container">
             <br/>
             <h1 class="text-center">Empleados</h1>
@@ -50,30 +50,30 @@
                     </tr>
                 </thead>
                 <tbody>
-                @foreach ($empleados as $e)
+                <?php $__currentLoopData = $empleados; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $e): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                   <tr>
-                    <td>{{$e->em_nacionalidad}}</td>
-                    <td>{{$e->em_cedula}}</td>
-                    <td>{{$e->em_nombre}}</td>
-                    <td>{{$e->em_apellido}}</td>
-                    <td>{{$e->em_profesion}}</td>
-                    <td>{{$e->em_estado_civil}}</td>
-                    <td>{{$e->em_salario_base}}</td>
-                    <td>{{$e->em_email_empresa}}</td>
-                    <td>{{$e->em_email_personal}}</td>
-                    <td>{{$e->em_nivel_academico}}</td>
-                    <td>{{$e->em_cantidad_hijos}}</td>
-                    <td>{{$e->em_descripcion_trabajo}}</td>
-                    <td>{{$e->em_fecha_egreso}}</td>
-                    <td>{{$e->em_fecha_ingreso}}</td>
-                    <td>{{$e->em_fecha_nacimiento}}</td>
-                    <td>{{$e->lu_nombre}}</td>
+                    <td><?php echo e($e->em_nacionalidad); ?></td>
+                    <td><?php echo e($e->em_cedula); ?></td>
+                    <td><?php echo e($e->em_nombre); ?></td>
+                    <td><?php echo e($e->em_apellido); ?></td>
+                    <td><?php echo e($e->em_profesion); ?></td>
+                    <td><?php echo e($e->em_estado_civil); ?></td>
+                    <td><?php echo e($e->em_salario_base); ?></td>
+                    <td><?php echo e($e->em_email_empresa); ?></td>
+                    <td><?php echo e($e->em_email_personal); ?></td>
+                    <td><?php echo e($e->em_nivel_academico); ?></td>
+                    <td><?php echo e($e->em_cantidad_hijos); ?></td>
+                    <td><?php echo e($e->em_descripcion_trabajo); ?></td>
+                    <td><?php echo e($e->em_fecha_egreso); ?></td>
+                    <td><?php echo e($e->em_fecha_ingreso); ?></td>
+                    <td><?php echo e($e->em_fecha_nacimiento); ?></td>
+                    <td><?php echo e($e->lu_nombre); ?></td>
                     <td>
-                      <button class="btn btn-warning btn-detail update" id="{{$e->em_clave}}" value="{{$e->em_clave}}" name="Update">Update</button>
-                      <button class="btn btn-danger btn-delete delete" id="{{$e->em_clave}}" value="{{$e->em_clave}}" name="delete">Delete</button>
+                      <button class="btn btn-warning btn-detail update" id="<?php echo e($e->em_clave); ?>" value="<?php echo e($e->em_clave); ?>" name="Update">Update</button>
+                      <button class="btn btn-danger btn-delete delete" id="<?php echo e($e->em_clave); ?>" value="<?php echo e($e->em_clave); ?>" name="delete">Delete</button>
                     </td>
                   </tr>
-                @endforeach
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>
             </table>
           </div>
@@ -150,9 +150,9 @@
      <br />
      <label>Estado</label>
      <select class="form-control" name="estado" id="estado">
-        @foreach($estados as $estado)
-        <option value="{{$estado->lu_clave}}">{{$estado->lu_nombre}}</option>
-        @endforeach
+        <?php $__currentLoopData = $estados; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $estado): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+        <option value="<?php echo e($estado->lu_clave); ?>"><?php echo e($estado->lu_nombre); ?></option>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
       </select>
       <br />
       <label>Municipio</label>
@@ -296,7 +296,7 @@
           });
           /*$(document).on('click', '.registro', function(){
             var em_clave = $(this).attr("id");
-            var url = "{{url('/registro')}}" + em_clave;
+            var url = "<?php echo e(url('/registro')); ?>" + em_clave;
             window.location.href = url;
             //alert(url);
           });*/
@@ -321,8 +321,8 @@
           });
         });
         </script>
-        @stack('scripts')
-        @include('footer')
+        <?php echo $__env->yieldPushContent('scripts'); ?>
+        <?php echo $__env->make('footer', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
         </div>
       </div>
     </body>
