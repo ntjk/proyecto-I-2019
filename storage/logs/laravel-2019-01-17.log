@@ -54,7 +54,7 @@
 #51 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
 #52 C:\\xampp\\htdocs\\Proyecto\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #53 {main}
-"} 
+"}
 [2019-01-17 00:08:58] local.ERROR: Undefined property: stdClass::$zo_nombre (View: C:\xampp\htdocs\Proyecto\resources\views\chequeo.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined property: stdClass::$zo_nombre (View: C:\\xampp\\htdocs\\Proyecto\esources\\views\\chequeo.blade.php) at C:\\xampp\\htdocs\\Proyecto\\storage\\framework\\views\\976bcdaa7702cbce150156c045c1ec5f7bb6b8ac.php:47, ErrorException(code: 0): Undefined property: stdClass::$zo_nombre at C:\\xampp\\htdocs\\Proyecto\\storage\\framework\\views\\976bcdaa7702cbce150156c045c1ec5f7bb6b8ac.php:47)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(45): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(ErrorException), 1)
@@ -113,7 +113,7 @@
 #53 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
 #54 C:\\xampp\\htdocs\\Proyecto\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #55 {main}
-"} 
+"}
 [2019-01-17 00:10:03] local.ERROR: Undefined property: stdClass::$zo_nombre (View: C:\xampp\htdocs\Proyecto\resources\views\chequeo.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined property: stdClass::$zo_nombre (View: C:\\xampp\\htdocs\\Proyecto\esources\\views\\chequeo.blade.php) at C:\\xampp\\htdocs\\Proyecto\\storage\\framework\\views\\976bcdaa7702cbce150156c045c1ec5f7bb6b8ac.php:47, ErrorException(code: 0): Undefined property: stdClass::$zo_nombre at C:\\xampp\\htdocs\\Proyecto\\storage\\framework\\views\\976bcdaa7702cbce150156c045c1ec5f7bb6b8ac.php:47)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(45): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(ErrorException), 1)
@@ -172,7 +172,7 @@
 #53 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
 #54 C:\\xampp\\htdocs\\Proyecto\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #55 {main}
-"} 
+"}
 [2019-01-17 00:11:24] local.ERROR: Unable to prepare route [api/user] for serialization. Uses Closure. {"exception":"[object] (LogicException(code: 0): Unable to prepare route [api/user] for serialization. Uses Closure. at C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php:880)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\RouteCacheCommand.php(62): Illuminate\\Routing\\Route->prepareForSerialization()
@@ -201,7 +201,7 @@
 #23 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(122): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
 #24 C:\\xampp\\htdocs\\Proyecto\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
 #25 {main}
-"} 
+"}
 [2019-01-17 00:11:33] local.ERROR: Unable to prepare route [api/user] for serialization. Uses Closure. {"exception":"[object] (LogicException(code: 0): Unable to prepare route [api/user] for serialization. Uses Closure. at C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php:880)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\RouteCacheCommand.php(62): Illuminate\\Routing\\Route->prepareForSerialization()
@@ -220,7 +220,7 @@
 #13 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(122): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
 #14 C:\\xampp\\htdocs\\Proyecto\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
 #15 {main}
-"} 
+"}
 [2019-01-17 02:17:42] local.ERROR: SQLSTATE[42703]: Undefined column: 7 ERROR:  no existe la columna «em_nombre||" "||em_apellido»
 LINE 1: select "em_nombre||"" ""||em_apellido" as "nombre", "sum(em_...
                ^ (SQL: select "em_nombre||"" ""||em_apellido" as "nombre", "sum(em_salario_base)" as "salario" from "zona_empleado_horario" inner join "sucursal" on "su_clave" = "fk_zona_empleado_1" inner join "empleado" on "em_clave" = "fk_zona_empleado_3" inner join "asistencia" on "fk_zo_em_ho_5" = "zo_em_ho_clave" where "a_fecha" between 2019-01-14 00:00:00 and 2019-01-20 23:59:59 and "su_clave" = 1 and "a_check" is not null group by "em_nombre") {"exception":"[object] (Illuminate\\Database\\QueryException(code: 42703): SQLSTATE[42703]: Undefined column: 7 ERROR:  no existe la columna «em_nombre||\" \"||em_apellido»
@@ -292,7 +292,7 @@ LINE 1: select \"em_nombre||\"\" \"\"||em_apellido\" as \"nombre\", \"sum(em_...
 #58 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
 #59 C:\\xampp\\htdocs\\Proyecto\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #60 {main}
-"} 
+"}
 [2019-01-17 02:18:53] local.ERROR: SQLSTATE[42703]: Undefined column: 7 ERROR:  no existe la columna «sum(em_salario_base)»
 LINE 1: select "em_nombre", "em_apellido", "em_clave", "sum(em_salar...
                                                        ^ (SQL: select "em_nombre", "em_apellido", "em_clave", "sum(em_salario_base)" as "salario" from "zona_empleado_horario" inner join "sucursal" on "su_clave" = "fk_zona_empleado_1" inner join "empleado" on "em_clave" = "fk_zona_empleado_3" inner join "asistencia" on "fk_zo_em_ho_5" = "zo_em_ho_clave" where "a_fecha" between 2019-01-14 00:00:00 and 2019-01-20 23:59:59 and "su_clave" = 1 and "a_check" is not null group by "em_clave", "em_nombre", "em_apellido") {"exception":"[object] (Illuminate\\Database\\QueryException(code: 42703): SQLSTATE[42703]: Undefined column: 7 ERROR:  no existe la columna «sum(em_salario_base)»
@@ -364,7 +364,7 @@ LINE 1: select \"em_nombre\", \"em_apellido\", \"em_clave\", \"sum(em_salar...
 #58 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
 #59 C:\\xampp\\htdocs\\Proyecto\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #60 {main}
-"} 
+"}
 [2019-01-17 02:19:36] local.ERROR: Undefined variable: sucursal (View: C:\xampp\htdocs\Proyecto\resources\views\consulta71.blade.php) {"exception":"[object] (ErrorException(code: 0): Undefined variable: sucursal (View: C:\\xampp\\htdocs\\Proyecto\esources\\views\\consulta71.blade.php) at C:\\xampp\\htdocs\\Proyecto\\storage\\framework\\views\\3d6f715495ed685a2e86d0957a592374e2d44595.php:25, ErrorException(code: 0): Undefined variable: sucursal at C:\\xampp\\htdocs\\Proyecto\\storage\\framework\\views\\3d6f715495ed685a2e86d0957a592374e2d44595.php:25)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(45): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(ErrorException), 1)
@@ -423,7 +423,7 @@ LINE 1: select \"em_nombre\", \"em_apellido\", \"em_clave\", \"sum(em_salar...
 #53 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
 #54 C:\\xampp\\htdocs\\Proyecto\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #55 {main}
-"} 
+"}
 [2019-01-17 02:29:45] local.ERROR: syntax error, unexpected '->' (T_OBJECT_OPERATOR), expecting ')' (View: C:\xampp\htdocs\Proyecto\resources\views\consulta71.blade.php) {"exception":"[object] (ErrorException(code: 0): syntax error, unexpected '->' (T_OBJECT_OPERATOR), expecting ')' (View: C:\\xampp\\htdocs\\Proyecto\esources\\views\\consulta71.blade.php) at C:\\xampp\\htdocs\\Proyecto\\storage\\framework\\views\\3d6f715495ed685a2e86d0957a592374e2d44595.php:60, Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): syntax error, unexpected '->' (T_OBJECT_OPERATOR), expecting ')' at C:\\xampp\\htdocs\\Proyecto\\storage\\framework\\views\\3d6f715495ed685a2e86d0957a592374e2d44595.php:60)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\PhpEngine.php(47): Illuminate\\View\\Engines\\CompilerEngine->handleViewException(Object(Symfony\\Component\\Debug\\Exception\\FatalThrowableError), 1)
@@ -482,7 +482,7 @@ LINE 1: select \"em_nombre\", \"em_apellido\", \"em_clave\", \"sum(em_salar...
 #53 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
 #54 C:\\xampp\\htdocs\\Proyecto\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #55 {main}
-"} 
+"}
 [2019-01-17 03:33:00] local.ERROR: Trying to get property 'flo_ru_costo' of non-object {"exception":"[object] (ErrorException(code: 0): Trying to get property 'flo_ru_costo' of non-object at C:\\xampp\\htdocs\\Proyecto\\app\\Http\\Controllers\\EnvioController.php:214)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\Proyecto\\app\\Http\\Controllers\\EnvioController.php(214): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(8, 'Trying to get p...', 'C:\\\\xampp\\\\htdocs...', 214, Array)
@@ -538,7 +538,7 @@ LINE 1: select \"em_nombre\", \"em_apellido\", \"em_clave\", \"sum(em_salar...
 #50 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
 #51 C:\\xampp\\htdocs\\Proyecto\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #52 {main}
-"} 
+"}
 [2019-01-17 03:33:02] local.ERROR: Trying to get property 'flo_ru_costo' of non-object {"exception":"[object] (ErrorException(code: 0): Trying to get property 'flo_ru_costo' of non-object at C:\\xampp\\htdocs\\Proyecto\\app\\Http\\Controllers\\EnvioController.php:212)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\Proyecto\\app\\Http\\Controllers\\EnvioController.php(212): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(8, 'Trying to get p...', 'C:\\\\xampp\\\\htdocs...', 212, Array)
@@ -594,7 +594,7 @@ LINE 1: select \"em_nombre\", \"em_apellido\", \"em_clave\", \"sum(em_salar...
 #50 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
 #51 C:\\xampp\\htdocs\\Proyecto\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #52 {main}
-"} 
+"}
 [2019-01-17 03:33:02] local.ERROR: Trying to get property 'flo_ru_costo' of non-object {"exception":"[object] (ErrorException(code: 0): Trying to get property 'flo_ru_costo' of non-object at C:\\xampp\\htdocs\\Proyecto\\app\\Http\\Controllers\\EnvioController.php:212)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\Proyecto\\app\\Http\\Controllers\\EnvioController.php(212): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(8, 'Trying to get p...', 'C:\\\\xampp\\\\htdocs...', 212, Array)
@@ -650,7 +650,7 @@ LINE 1: select \"em_nombre\", \"em_apellido\", \"em_clave\", \"sum(em_salar...
 #50 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
 #51 C:\\xampp\\htdocs\\Proyecto\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #52 {main}
-"} 
+"}
 [2019-01-17 03:33:03] local.ERROR: Trying to get property 'flo_ru_costo' of non-object {"exception":"[object] (ErrorException(code: 0): Trying to get property 'flo_ru_costo' of non-object at C:\\xampp\\htdocs\\Proyecto\\app\\Http\\Controllers\\EnvioController.php:212)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\Proyecto\\app\\Http\\Controllers\\EnvioController.php(212): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(8, 'Trying to get p...', 'C:\\\\xampp\\\\htdocs...', 212, Array)
@@ -706,7 +706,7 @@ LINE 1: select \"em_nombre\", \"em_apellido\", \"em_clave\", \"sum(em_salar...
 #50 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
 #51 C:\\xampp\\htdocs\\Proyecto\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #52 {main}
-"} 
+"}
 [2019-01-17 03:33:04] local.ERROR: Trying to get property 'flo_ru_costo' of non-object {"exception":"[object] (ErrorException(code: 0): Trying to get property 'flo_ru_costo' of non-object at C:\\xampp\\htdocs\\Proyecto\\app\\Http\\Controllers\\EnvioController.php:212)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\Proyecto\\app\\Http\\Controllers\\EnvioController.php(212): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(8, 'Trying to get p...', 'C:\\\\xampp\\\\htdocs...', 212, Array)
@@ -762,7 +762,7 @@ LINE 1: select \"em_nombre\", \"em_apellido\", \"em_clave\", \"sum(em_salar...
 #50 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
 #51 C:\\xampp\\htdocs\\Proyecto\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #52 {main}
-"} 
+"}
 [2019-01-17 05:33:15] local.ERROR: Undefined offset: 1 {"exception":"[object] (ErrorException(code: 0): Undefined offset: 1 at C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Compilers\\Concerns\\CompilesLoops.php:95)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Compilers\\Concerns\\CompilesLoops.php(95): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(8, 'Undefined offse...', 'C:\\\\xampp\\\\htdocs...', 95, Array)
@@ -828,7 +828,7 @@ LINE 1: select \"em_nombre\", \"em_apellido\", \"em_clave\", \"sum(em_salar...
 #60 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
 #61 C:\\xampp\\htdocs\\Proyecto\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #62 {main}
-"} 
+"}
 [2019-01-17 05:33:26] local.ERROR: Undefined offset: 1 {"exception":"[object] (ErrorException(code: 0): Undefined offset: 1 at C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Compilers\\Concerns\\CompilesLoops.php:95)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Compilers\\Concerns\\CompilesLoops.php(95): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(8, 'Undefined offse...', 'C:\\\\xampp\\\\htdocs...', 95, Array)
@@ -894,7 +894,7 @@ LINE 1: select \"em_nombre\", \"em_apellido\", \"em_clave\", \"sum(em_salar...
 #60 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
 #61 C:\\xampp\\htdocs\\Proyecto\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #62 {main}
-"} 
+"}
 [2019-01-17 05:33:53] local.ERROR: Undefined offset: 1 {"exception":"[object] (ErrorException(code: 0): Undefined offset: 1 at C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Compilers\\Concerns\\CompilesLoops.php:95)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Compilers\\Concerns\\CompilesLoops.php(95): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(8, 'Undefined offse...', 'C:\\\\xampp\\\\htdocs...', 95, Array)
@@ -960,7 +960,7 @@ LINE 1: select \"em_nombre\", \"em_apellido\", \"em_clave\", \"sum(em_salar...
 #60 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
 #61 C:\\xampp\\htdocs\\Proyecto\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #62 {main}
-"} 
+"}
 [2019-01-17 05:34:48] local.ERROR: Undefined offset: 1 {"exception":"[object] (ErrorException(code: 0): Undefined offset: 1 at C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Compilers\\Concerns\\CompilesLoops.php:95)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Compilers\\Concerns\\CompilesLoops.php(95): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(8, 'Undefined offse...', 'C:\\\\xampp\\\\htdocs...', 95, Array)
@@ -1026,7 +1026,7 @@ LINE 1: select \"em_nombre\", \"em_apellido\", \"em_clave\", \"sum(em_salar...
 #60 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
 #61 C:\\xampp\\htdocs\\Proyecto\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #62 {main}
-"} 
+"}
 [2019-01-17 05:35:16] local.ERROR: Undefined offset: 1 {"exception":"[object] (ErrorException(code: 0): Undefined offset: 1 at C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Compilers\\Concerns\\CompilesLoops.php:95)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Compilers\\Concerns\\CompilesLoops.php(95): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(8, 'Undefined offse...', 'C:\\\\xampp\\\\htdocs...', 95, Array)
@@ -1092,7 +1092,7 @@ LINE 1: select \"em_nombre\", \"em_apellido\", \"em_clave\", \"sum(em_salar...
 #60 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
 #61 C:\\xampp\\htdocs\\Proyecto\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #62 {main}
-"} 
+"}
 [2019-01-17 05:36:39] local.ERROR: SQLSTATE[42702]: Ambiguous column: 7 ERROR:  la referencia a la columna «fk_lugar» es ambigua
 LINE 1: ...from "cliente" inner join "lugar" on "lu_clave" = "fk_lugar"
                                                              ^ (SQL: select "cli_clave", "cli_cedula", "cli_nombre", "cli_apellido", "cli_estado_civil", "cli_empresa_trabajo", "cli_fecha_nacimiento", "cli_vip", "lu_nombre", "cli_nacionalidad" from "cliente" inner join "lugar" on "lu_clave" = "fk_lugar") {"exception":"[object] (Illuminate\\Database\\QueryException(code: 42702): SQLSTATE[42702]: Ambiguous column: 7 ERROR:  la referencia a la columna «fk_lugar» es ambigua
@@ -1164,7 +1164,7 @@ LINE 1: ...from \"cliente\" inner join \"lugar\" on \"lu_clave\" = \"fk_lugar\"
 #58 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
 #59 C:\\xampp\\htdocs\\Proyecto\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #60 {main}
-"} 
+"}
 [2019-01-17 05:36:49] local.ERROR: SQLSTATE[42702]: Ambiguous column: 7 ERROR:  la referencia a la columna «fk_lugar» es ambigua
 LINE 1: ...from "cliente" inner join "lugar" on "lu_clave" = "fk_lugar"
                                                              ^ (SQL: select "cli_clave", "cli_cedula", "cli_nombre", "cli_apellido", "cli_estado_civil", "cli_empresa_trabajo", "cli_fecha_nacimiento", "cli_vip", "lu_nombre", "cli_nacionalidad" from "cliente" inner join "lugar" on "lu_clave" = "fk_lugar") {"exception":"[object] (Illuminate\\Database\\QueryException(code: 42702): SQLSTATE[42702]: Ambiguous column: 7 ERROR:  la referencia a la columna «fk_lugar» es ambigua
@@ -1236,7 +1236,7 @@ LINE 1: ...from \"cliente\" inner join \"lugar\" on \"lu_clave\" = \"fk_lugar\"
 #58 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
 #59 C:\\xampp\\htdocs\\Proyecto\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #60 {main}
-"} 
+"}
 [2019-01-17 05:37:00] local.ERROR: Undefined offset: 1 {"exception":"[object] (ErrorException(code: 0): Undefined offset: 1 at C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Compilers\\Concerns\\CompilesLoops.php:95)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Compilers\\Concerns\\CompilesLoops.php(95): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(8, 'Undefined offse...', 'C:\\\\xampp\\\\htdocs...', 95, Array)
@@ -1302,7 +1302,7 @@ LINE 1: ...from \"cliente\" inner join \"lugar\" on \"lu_clave\" = \"fk_lugar\"
 #60 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
 #61 C:\\xampp\\htdocs\\Proyecto\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #62 {main}
-"} 
+"}
 [2019-01-17 05:37:40] local.ERROR: Undefined offset: 1 {"exception":"[object] (ErrorException(code: 0): Undefined offset: 1 at C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Compilers\\Concerns\\CompilesLoops.php:95)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Compilers\\Concerns\\CompilesLoops.php(95): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(8, 'Undefined offse...', 'C:\\\\xampp\\\\htdocs...', 95, Array)
@@ -1368,7 +1368,7 @@ LINE 1: ...from \"cliente\" inner join \"lugar\" on \"lu_clave\" = \"fk_lugar\"
 #60 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
 #61 C:\\xampp\\htdocs\\Proyecto\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #62 {main}
-"} 
+"}
 [2019-01-17 05:38:01] local.ERROR: Undefined offset: 1 {"exception":"[object] (ErrorException(code: 0): Undefined offset: 1 at C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Compilers\\Concerns\\CompilesLoops.php:95)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Compilers\\Concerns\\CompilesLoops.php(95): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(8, 'Undefined offse...', 'C:\\\\xampp\\\\htdocs...', 95, Array)
@@ -1434,7 +1434,7 @@ LINE 1: ...from \"cliente\" inner join \"lugar\" on \"lu_clave\" = \"fk_lugar\"
 #60 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
 #61 C:\\xampp\\htdocs\\Proyecto\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #62 {main}
-"} 
+"}
 [2019-01-17 05:38:22] local.ERROR: Undefined offset: 1 {"exception":"[object] (ErrorException(code: 0): Undefined offset: 1 at C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Compilers\\Concerns\\CompilesLoops.php:95)
 [stacktrace]
 #0 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Compilers\\Concerns\\CompilesLoops.php(95): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(8, 'Undefined offse...', 'C:\\\\xampp\\\\htdocs...', 95, Array)
@@ -1500,7 +1500,7 @@ LINE 1: ...from \"cliente\" inner join \"lugar\" on \"lu_clave\" = \"fk_lugar\"
 #60 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
 #61 C:\\xampp\\htdocs\\Proyecto\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #62 {main}
-"} 
+"}
 [2019-01-17 05:50:09] local.ERROR: Method App\Http\Controllers\EmpleadoController::getData does not exist. {"exception":"[object] (BadMethodCallException(code: 0): Method App\\Http\\Controllers\\EmpleadoController::getData does not exist. at C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Controller.php:68)
 [stacktrace]
 #0 [internal function]: Illuminate\\Routing\\Controller->__call('getData', Array)
@@ -1555,4 +1555,4 @@ LINE 1: ...from \"cliente\" inner join \"lugar\" on \"lu_clave\" = \"fk_lugar\"
 #49 C:\\xampp\\htdocs\\Proyecto\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
 #50 C:\\xampp\\htdocs\\Proyecto\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #51 {main}
-"} 
+"}

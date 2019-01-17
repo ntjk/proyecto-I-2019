@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,9 +9,9 @@
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <meta name="csrf-token" content="{!! csrf_token() !!}" />
-    <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
-    <script type="text/javascript" src="{{ asset('js/dropdown.js') }}"></script>
+    <meta name="csrf-token" content="<?php echo csrf_token(); ?>" />
+    <link href="<?php echo e(asset('css/styles.css')); ?>" rel="stylesheet">
+    <script type="text/javascript" src="<?php echo e(asset('js/dropdown.js')); ?>"></script>
     <title>Consultas - LogUCAB</title>
 
     <!-- Fonts -->
@@ -20,7 +20,7 @@
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
   </head>
   <body>
-    @include('header')
+    <?php echo $__env->make('header', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
  <!--   <div class="container labelDestacado" -->
 
     <h1 class="text-center">Listados y reportes</h1>
@@ -90,6 +90,9 @@
                     <td><a href="consulta19">Flota terrestre nacional e internacional ordenado por serial de motor</a></td>
                   </tr>
                   <tr>
+                    <td><a href="consulta20-1-60">Promedio de paquetes de una oficina en un periodo de tiempo</a></td>
+                  </tr>
+                  <tr>
                     <td><a href="consulta21">Listado de Oficinas por Estado ordenadas alfabéticamente</a></td>
                   </tr>
                   <tr>
@@ -108,39 +111,6 @@
                     <td><a href="consulta26">Empleados con su horario y ubicación dentro de cada oficina</a></td>
                   </tr>
                   <tr>
-                    <td><a href="consulta70-1">Listado de Nominas Semanales por Sucursal</a></td>
-                  </tr>
-                  <tr>
-                    <td><a href="falla">Listado de fallas (todas las flotas).</a></td>
-                  </tr>
-                  <tr>
-                    <td><a href="puerto">Listado de puertos.</a></td>
-                  </tr>
-                  <tr>
-                    <td><a href="aeropuerto">Listado de aeropuertos.</a></td>
-                  </tr>
-                  <tr>
-                    <td><a href="consulta41">Sucursales de puertos y aeropuertos.</a></td>
-                  </tr>
-                  <tr>
-                    <td><a href="taller">Listado de talleres.</a></td>
-                  </tr>
-                  <tr>
-                    <td><a href="consulta42">Listado de talleres agrupados por zona.</a></td>
-                  </tr>
-                  <tr>
-                    <td><a href="servicio_sucursal">Listado de Servicios por sucursales.</a></td>
-                  </tr>
-                  <tr>
-                    <td><a href="consulta43">Listado de flotas con su última fecha de revisión y próxima fecha por oficina.</a></td>
-                  </tr>
-                  <tr>
-                    <td><a href="consulta44">Ingresos y egresos por oficina por mes.</a></td>
-                  </tr>
-                  <tr>
-                    <td><a href="consulta45">Total de gastos generados por revisión de flotas por mes y por sucursal.</a></td>
-                  </tr>
-                  <tr>
                     <td><a href="consulta27">Cantidad de flota terrestre nacional e internacional, agrupado por tipo de ubicación tipo de vehículo</a></td>
                   </tr>
                   <tr>
@@ -154,10 +124,7 @@
                   </tr>
                   <tr>
                     <td><a href="consulta31">Medio de transporte más utilizado</a></td>
-                  </tr>
-                  <tr>
-                    <td><a href="consulta71-1-0-0-0-0-0-0">Costo de cada empleado por oficina en un periodo de tiempo</a></td>
-                  </tr>                 
+                  </tr>                   
                 </tbody>
             </table>
         </div>
@@ -173,7 +140,7 @@
             });
         });
         </script>
-    @stack('scripts')
-    @include('footer')
+    <?php echo $__env->yieldPushContent('scripts'); ?>
+    <?php echo $__env->make('footer', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
   </body>
 </html>

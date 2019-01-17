@@ -1,5 +1,5 @@
  <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,9 +9,9 @@
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-        <meta name="csrf-token" content="{!! csrf_token() !!}" />
-        <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
-        <script type="text/javascript" src="{{ asset('js/dropdown.js') }}"></script>
+        <meta name="csrf-token" content="<?php echo csrf_token(); ?>" />
+        <link href="<?php echo e(asset('css/styles.css')); ?>" rel="stylesheet">
+        <script type="text/javascript" src="<?php echo e(asset('js/dropdown.js')); ?>"></script>
         <title>Sucursal - LogUCAB</title>
 
         <!-- Fonts -->
@@ -20,7 +20,7 @@
         <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     </head>
     <body>
-            @include('header')
+            <?php echo $__env->make('header', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
             <div class="container">
             <br/>
             <h1 class="text-center">Sucursales</h1>
@@ -37,19 +37,19 @@
                     </tr>
                 </thead>
                 <tbody>
-                  @foreach($sucursales as $s)
+                  <?php $__currentLoopData = $sucursales; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $s): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                   <tr>
-                    <td>{{$s->su_nombre}}</td>
-                    <td>{{$s->su_email}}</td>
-                    <td>{{$s->su_capacidad}}</td>
-                    <td>{{$s->lu_nombre}}</td>
+                    <td><?php echo e($s->su_nombre); ?></td>
+                    <td><?php echo e($s->su_email); ?></td>
+                    <td><?php echo e($s->su_capacidad); ?></td>
+                    <td><?php echo e($s->lu_nombre); ?></td>
                     <td id="hidden3">
-                      <button class="btn btn-warning btn-detail update" id="{{$s->su_clave}}" value="{{$s->su_clave}}" name="Update">Update</button>
-                      <button class="btn btn-danger btn-delete delete" id="{{$s->su_clave}}" value="'{{$s->su_clave}}" name="delete">Delete</button>
-                      <button class="btn btn-info btn-detail nomina" id="{{$s->su_clave}}" value="{{$s->su_clave}}" onclick="navigate(this,'{{$s->su_clave}}')" name="Nomina">Nomina</button>
+                      <button class="btn btn-warning btn-detail update" id="<?php echo e($s->su_clave); ?>" value="<?php echo e($s->su_clave); ?>" name="Update">Update</button>
+                      <button class="btn btn-danger btn-delete delete" id="<?php echo e($s->su_clave); ?>" value="'<?php echo e($s->su_clave); ?>" name="delete">Delete</button>
+                      <button class="btn btn-info btn-detail nomina" id="<?php echo e($s->su_clave); ?>" value="<?php echo e($s->su_clave); ?>" onclick="navigate(this,'<?php echo e($s->su_clave); ?>')" name="Nomina">Nomina</button>
                     </td>
                   </tr>
-                  @endforeach
+                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>>
             </table>
         </div>
@@ -73,17 +73,13 @@
      <br />
      <label>Estado</label>
      <select class="form-control" name="estado" id="estado">
-        @foreach($estados as $estado)<!-- Busca de cada estado, el nombre, busca de cada
+        <?php $__currentLoopData = $estados; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $estado): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><!-- Busca de cada estado, el nombre, busca de cada
         Para usar variables del controlador usar llave para que lo lea, value es como un id-->
-        <option value="{{$estado->lu_clave}}">{{$estado->lu_nombre}}</option>
-        @endforeach
+        <option value="<?php echo e($estado->lu_clave); ?>"><?php echo e($estado->lu_nombre); ?></option>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
       </select>
       <br />
       <label>Municipio</label>
-      <select class="form-control" name="municipio" id="municipio">
-      </select>
-      <br />
-      <label>Parroquia</label>
       <select class="form-control" name="fk_lugar" id="fk_lugar">
       </select>
     </div>
@@ -101,7 +97,7 @@
 
 function navigate(link, inputid){
   //alert(document.getElementById(inputid).value)
-  var url = "{{url('/sucursal')}}" + document.getElementById(inputid).value + '-0-0-0';
+  var url = "<?php echo e(url('/sucursal')); ?>" + document.getElementById(inputid).value + '-0-0-0';
   window.location.href = url; //navigates to the given url, disabled for demo
   //alert(url);
 }
@@ -120,9 +116,9 @@ function navigate(link, inputid){
             $('#hidden2').hide();    
             $('#hidden3').hide();    
 
-            var eliminar = '{!! verificarPermisosHelper("eliminar sucursales"); !!}';
-            var modificar = '{!! verificarPermisosHelper("modificar sucursales"); !!}';
-            var insertar = '{!! verificarPermisosHelper("insertar sucursales"); !!}';
+            var eliminar = '<?php echo verificarPermisosHelper("eliminar sucursales");; ?>';
+            var modificar = '<?php echo verificarPermisosHelper("modificar sucursales");; ?>';
+            var insertar = '<?php echo verificarPermisosHelper("insertar sucursales");; ?>';
 
             if(eliminar || modificar){
               $('#hidden2').show();    
@@ -143,22 +139,6 @@ function navigate(link, inputid){
                 type: "POST",
                 url: "sucursal/updateSelect",
                 data:{ estado: estado},
-                success: function(data){
-                    var options = '';
-                    $.each(data, function(i, item) {
-                      options += '<option value="' + item.lu_clave + '">' + item.lu_nombre + '</option>';
-                    });
-                    $('#municipio').empty().html(options);
-                }
-              });
-            });
-            $(document).on('change','#municipio',function(){
-              var municipio = $(this).val();
-              $.ajax({
-                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                type: "POST",
-                url: "sucursal/updateSelect2",
-                data:{ municipio: municipio},
                 success: function(data){
                     var options = '';
                     $.each(data, function(i, item) {
@@ -239,8 +219,8 @@ function navigate(link, inputid){
           });
         });
         </script>
-        @stack('scripts')
-        @include('footer')
+        <?php echo $__env->yieldPushContent('scripts'); ?>
+        <?php echo $__env->make('footer', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
         </div>
       </div>
     </body>

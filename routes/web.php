@@ -199,7 +199,9 @@ Route::get('consulta26', 'ConsultasEmpleadoController@horarioEmpleados');
 Route::get('consulta27', 'ConsultasFlotaController@cantFlotaTerrestre');
 Route::get('consulta28', 'ConsultasSucursalController@oficConUbicacion');
 Route::get('consulta29', 'ConsultasSucursalController@masAmplia');
-Route::get('consulta30', 'ConsultasEnvioController@audi');
+Route::get('consulta30', 'ConsultasEnvioController@rutaMasUsada');
+Route::get('consulta31', 'ConsultasEnvioController@medioMasUsado');
+//Route::get('consulta32', 'ConsultasEnvioController@alerta242');
 Route::get('consulta70-{id}', 'ConsultasSucursalController@showNominas');
 Route::get('consulta71-{id}-{yi}-{mi}-{di}-{yf}-{mf}-{df}', 'ConsultasSucursalController@showNominaPeriodo');
 

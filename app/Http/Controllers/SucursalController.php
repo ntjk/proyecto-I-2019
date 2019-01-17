@@ -21,17 +21,10 @@ class SucursalController extends Controller
   public function index()
     {
       $estados= Lugar::where('lu_tipo','estado')->orderBy('lu_nombre')->get();
-    	return view("sucursal",compact('estados'));
+      $sucursales = Sucursal::join('lugar','lugar.lu_clave','=','sucursal.fk_lugar')->select(['sucursal.su_nombre','sucursal.su_clave','sucursal.su_email','sucursal.su_capacidad','lugar.lu_nombre'])->get();
+    	return view("sucursal")->with(compact('estados'))->with(compact('sucursales'));
     }
 
-    public function getData()
-    {
-      $sucursales = Sucursal::join('lugar','lugar.lu_clave','=','sucursal.fk_lugar')->select(['sucursal.su_nombre','sucursal.su_clave','sucursal.su_email','sucursal.su_capacidad','lugar.lu_nombre']);
-        return Datatables::of($sucursales)->addColumn('action', function ($sucursales) {
-                return '<button class="btn btn-warning btn-detail update" id="'.$sucursales->su_clave.'" value="'.$sucursales->su_clave.'" name="Update">Update</button>
-              <button class="btn btn-danger btn-delete delete" id="'.$sucursales->su_clave.'" value="'.$sucursales->su_clave.'" name="delete">Delete</button>
-              <button class="btn btn-info btn-detail nomina" id="'.$sucursales->su_clave.'" value="'.$sucursales->su_clave.'" onclick="navigate(this,'.$sucursales->su_clave.')" name="Nomina">Nomina</button>'; })->make(true);
-    }
 
     public function store(Request $request){
       if ($request->operation == "Edit"){

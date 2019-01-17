@@ -1,12 +1,12 @@
 <div class="content">
   <div class="logo-container">
   <div class="logo">
-    <a href="welcome"><img src={{ asset('img/logo.png')}} class="logo"></img></a>
+    <a href="welcome"><img src=<?php echo e(asset('img/logo.png')); ?> class="logo"></img></a>
   </div>
 </div>
 <div class="motto-container">
   <div class="motto">
-      Mayor empresa de envíos en Venezuela.
+      Mayor empresa de envios en venezuela.
   </div>
 </div>
 </div>
@@ -40,34 +40,34 @@
       </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-    <script>
+    <script>  
       $(document).ready(function () {
-
+   
         $('#envio').hide();
-        $('#usuario').hide();
+        $('#usuario').hide(); 
         $('#rol').hide();
         $('#sucursal').hide();
         $('#transporte').hide();
-        $('#transporteM').hide();
+        $('#transporteM').hide(); 
         $('#transporteA').hide();
-        $('#cliente').hide();
+        $('#cliente').hide(); 
         $('#empleado').hide();
-        $('#ruta').hide();
+        $('#ruta').hide(); 
         $('#asistencia').hide();
         $('#consultas').hide();
         $('#alerta').hide(); 
-        var envios = '{!! verificarPermisosHelper("ver envios"); !!}';
-        var usuario = '{!! verificarPermisosHelper("ver usuarios"); !!}';
-        var rol = '{!! verificarPermisosHelper("ver roles"); !!}';
-        var sucursal = '{!! verificarPermisosHelper("ver sucursales"); !!}';
-        var flota = '{!! verificarPermisosHelper("ver flotas"); !!}';
-        var cliente = '{!! verificarPermisosHelper("ver clientes"); !!}';
-        var empleado = '{!! verificarPermisosHelper("ver empleados"); !!}';
-        var ruta = '{!! verificarPermisosHelper("ver rutas"); !!}';
-        var asistencia = '{!! verificarPermisosHelper("ver asistencias"); !!}';
-        var consultas = '{!! verificarPermisosHelper("ver reportes"); !!}';
-        var alertas = '{!! verificarPermisosHelper("ver revisiones"); !!}';
-        var alerta = '{!! alerta24(); !!}';
+        var envios = '<?php echo verificarPermisosHelper("ver envios");; ?>';
+        var usuario = '<?php echo verificarPermisosHelper("ver usuarios");; ?>';
+        var rol = '<?php echo verificarPermisosHelper("ver roles");; ?>';
+        var sucursal = '<?php echo verificarPermisosHelper("ver sucursales");; ?>';
+        var flota = '<?php echo verificarPermisosHelper("ver flotas");; ?>';
+        var cliente = '<?php echo verificarPermisosHelper("ver clientes");; ?>';
+        var empleado = '<?php echo verificarPermisosHelper("ver empleados");; ?>';
+        var ruta = '<?php echo verificarPermisosHelper("ver rutas");; ?>';
+        var asistencia = '<?php echo verificarPermisosHelper("ver asistencias");; ?>';
+        var consultas = '<?php echo verificarPermisosHelper("ver reportes");; ?>';
+        var alertas = '<?php echo verificarPermisosHelper("ver revisiones");; ?>';
+        var alerta = '<?php echo alerta24();; ?>';
         if(alerta)
           $('#alerta').show();
         if(envios)
@@ -82,7 +82,7 @@
           $('#sucursal').show();
         if(flota){
           $('#transporte').show();
-          $('#transporteM').show();
+          $('#transporteM').show(); 
           $('#transporteA').show();
         }
         if(cliente)
@@ -100,8 +100,8 @@
          $(document).on('click','.sale',function(){
             document.cookie = "usuario=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
             document.cookie = "password=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
-            document.cookie = "usuario=" + " ";
-            var url = "{{url('/inicioSesion')}}";
+            document.cookie = "usuario=" + " ";  
+            var url = "<?php echo e(url('/inicioSesion')); ?>";
             window.location = url;
          });
 
