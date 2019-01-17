@@ -90,9 +90,6 @@
                     <td><a href="consulta19">Flota terrestre nacional e internacional ordenado por serial de motor</a></td>
                   </tr>
                   <tr>
-                    <td><a href="consulta20-1-60">Promedio de paquetes de una oficina en un periodo de tiempo</a></td>
-                  </tr>
-                  <tr>
                     <td><a href="consulta21">Listado de Oficinas por Estado ordenadas alfabéticamente</a></td>
                   </tr>
                   <tr>
@@ -153,8 +150,14 @@
                     <td><a href="consulta29">Oficina es la más amplia por estado, municipio y parroquia</a></td>
                   </tr>
                   <tr>
-                    <td><a href="consulta71-1-0-0-0-0-0-0">Costo de cada empleado por oficina en un periodo de tiempo</a></td>
+                    <td><a href="consulta30">Ruta más utilizada</a></td>
                   </tr>
+                  <tr>
+                    <td><a href="consulta31">Medio de transporte más utilizado</a></td>
+                  </tr>
+                  <tr>
+                    <td><a href="consulta71-1-0-0-0-0-0-0">Costo de cada empleado por oficina en un periodo de tiempo</a></td>
+                  </tr>                 
                 </tbody>
             </table>
         </div>

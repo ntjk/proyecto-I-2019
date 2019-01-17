@@ -46,7 +46,7 @@
                         <th>Fecha (Ingreso)</th>
                         <th>Fecha (Nacimiento)</th>
                         <th>Parroquia</th>
-                        <th id="hd1">Accion</th>
+                        <th id="hidden2">Accion</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -68,7 +68,7 @@
                     <td><?php echo e($e->em_fecha_ingreso); ?></td>
                     <td><?php echo e($e->em_fecha_nacimiento); ?></td>
                     <td><?php echo e($e->lu_nombre); ?></td>
-                    <td>
+                    <td name="hidden3">
                       <button class="btn btn-warning btn-detail update" id="<?php echo e($e->em_clave); ?>" value="<?php echo e($e->em_clave); ?>" name="Update">Update</button>
                       <button class="btn btn-danger btn-delete delete" id="<?php echo e($e->em_clave); ?>" value="<?php echo e($e->em_clave); ?>" name="delete">Delete</button>
                     </td>
@@ -184,6 +184,27 @@
 
             $('#users-table').DataTable({
             })
+
+            $(".delete").hide();
+            $(".update").hide();
+            $('#add_button').hide();
+            $('#hidden2').hide();
+            $('#hidden3').hide();
+
+            var eliminar = '<?php echo verificarPermisosHelper("eliminar empleados");; ?>';
+            var modificar = '<?php echo verificarPermisosHelper("modificar empleados");; ?>';
+            var insertar = '<?php echo verificarPermisosHelper("insertar empleados");; ?>';
+
+            if(eliminar || modificar){
+              $('#hidden2').show();
+              $('#hidden3').show();
+            }
+            if(eliminar)
+              $(".delete").show();
+            if(modificar)
+              $(".update").show();
+            if(insertar)
+              $('#add_button').show();
 
             $(document).on('change','#estado',function(){
               var estado = $(this).val();

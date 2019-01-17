@@ -26,7 +26,8 @@ class Servicio_SucursalController extends Controller
             'sucursal.su_nombre',
             'servicio.ser_tipo',
             'servicio.ser_descripcion',
-        ]);
+        ])
+        ->orderBy('su_nombre');
         return Datatables::of($servicio_sucursal)->addColumn('action', function ($servicio_sucursal) {
             return '<button class="btn btn-warning btn-detail update" id="'.$servicio_sucursal->fk_servicio.'" value="'.$servicio_sucursal->fk_servicio.'" name="Update">Update</button>
             <button class="btn btn-danger btn-delete delete" id="'.$servicio_sucursal->fk_servicio.'" value="'.$servicio_sucursal->fk_servicio.'" name="delete">Delete</button>'; })->make(true);

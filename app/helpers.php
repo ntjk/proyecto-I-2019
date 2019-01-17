@@ -27,7 +27,7 @@ use App\Accion;
         }
     }
 
-    /*function alerta24(){
+    function alerta24(){
         if(isset($_COOKIE['usuario']) && isset($_COOKIE['password']))
         {
             $nombreUsuario=$_COOKIE['usuario'];

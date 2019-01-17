@@ -53,9 +53,9 @@
                   <tr>
                     <td><a href="consulta7">Promedio de paquetes diarios por oficina</a></td>
                   </tr>
-                  <tr>
+                <!--  <tr>
                     <td><a href="consulta8">¿Qué tipo de paquetes combinan más medios de transporte? </a></td>
-                  </tr>
+                  </tr> -->
                   <tr>
                     <td><a href="consulta9">Promedio de estancia de los paquetes por cada zona de las oficinas</a></td>
                   </tr>
@@ -157,7 +157,7 @@
                   </tr>
                   <tr>
                     <td><a href="consulta71-1-0-0-0-0-0-0">Costo de cada empleado por oficina en un periodo de tiempo</a></td>
-                  </tr>                 
+                  </tr>
                 </tbody>
             </table>
         </div>
