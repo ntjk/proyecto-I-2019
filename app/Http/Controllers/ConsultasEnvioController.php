@@ -308,29 +308,57 @@ class ConsultasEnvioController extends Controller
         $revisiones = Revision::join('flota','flota.flo_clave','=','revision.fk_flota')
         ->join('sucursal','sucursal.su_clave','=','flota.fk_sucursal')
         ->select(DB::raw('\'Revisión\' as tipo, revision.rev_monto_pagar as egreso, null as ingreso, sucursal.su_nombre as sucu, revision.rev_fecha_real_salida::date as fecha'))
-        ->whereBetween('revision.rev_fecha_real_salida', [$rangoi, $rangof])->get();
+        ->whereBetween('revision.rev_fecha_real_salida', [$rangoi, $rangof])
+        ->get();
 
-        $empleados = Empleado::join('zona_empleado','zona_empleado.fk_empleado','=','empleado.em_clave')
-        ->join('zona','zona.fk_sucursal','=','zona_empleado.fk_zona_2')
-        ->join('sucursal','sucursal.su_clave','=','zona.fk_sucursal')
-        ->select(DB::raw('\'Salario\' as tipo, empleado.em_salario_base as egreso,null as ingreso, sucursal.su_nombre as sucu, null as fecha'))->get();
-        //->whereBetween('revision.rev_fecha_real_salida', [$rangoi, $rangof])->get();
+        // $empleados = Empleado::join('zona_empleado','zona_empleado.fk_empleado','=','empleado.em_clave')
+        // ->join('zona','zona.fk_sucursal','=','zona_empleado.fk_zona_2')
+        // ->join('sucursal','sucursal.su_clave','=','zona.fk_sucursal')
+        // ->select(DB::raw('\'Salario\' as tipo, empleado.em_salario_base as egreso,null as ingreso, sucursal.su_nombre as sucu, null as fecha'))
+        // ->get();
+        // $unionfinal = $revisiones->union($envios)->union($empleados);
 
-        $union1 = $empleados->union($envios);
-        $unionfinal = $union1->union($revisiones);
-        $unionfinal = $envios->union($revisiones);
+        $sucursales= Sucursal::join('zona_empleado_horario','fk_zona_empleado_1','=','su_clave')
+        ->join('empleado','em_clave','=','fk_zona_empleado_3')
+        ->join('asistencia','fk_zo_em_ho_5','=','zo_em_ho_clave')
+        ->select(DB::raw('\'Salario\' as tipo, empleado.em_salario_base as egreso,null as ingreso, sucursal.su_nombre as sucu, asistencia.a_fecha as fecha'))
+        ->where('a_check','!=',null)
+        ->whereBetween('asistencia.a_fecha', [$rangoi, $rangof])
+        ->get();
+        $unionfinal = $revisiones->union($envios)->union($sucursales);
+        
         return view('consulta46')->with(compact('unionfinal'))->with(compact('rangoi'))->with(compact('rangof'));
     }
+
+    // public function consulta46($rango){
+    //     $rangoi = substr($rango, 0, 10);
+    //     $rangof = substr($rango, 10);
+    //     $consultas= Sucursal::join('servicio_sucursal','servicio_sucursal.fk_sucursal','=','su_clave','left outer')
+    //     ->join('zona_empleado_horario','fk_zona_empleado_1','=','su_clave')
+    //     ->join('empleado','em_clave','=','fk_zona_empleado_3')
+    //     ->join('asistencia','fk_zo_em_ho_5','=','zo_em_ho_clave')
+    //     ->join('flota','flota.fk_sucursal','=','su_clave')
+    //     ->join('revision','fk_flota','=','flo_clave','left outer')
+    //     ->join('envio','fk_sucursal_origen','=','su_clave')
+    //     ->select(DB::raw("sum(COALESCE(em_salario_base,0))+sum(COALESCE(rev_monto_pagar,0)) as egreso, sum(en_precio) as ingreso, date_trunc('month',en_fecha_envio)::date as mes, su_nombre, su_clave"))
+    //     ->where('a_check','!=',null)
+    //     ->whereBetween('en_fecha_envio', [$rangoi, $rangof])
+    //     ->groupBy('mes','su_clave','su_nombre')
+    //     ->get();
+    //     return view('consulta46_2')->with(compact('consultas'))->with(compact('rangoi'))->with(compact('rangof'));
+    // }
 
     public function consulta47(){
 
         $cons47= DB::select(DB::raw('
-            select su.su_nombre as sucu, sum(rev.rev_monto_pagar) + sum(em.em_salario_base) as egreso, lu.lu_nombre as lugar
-            from revision rev, flota flo, sucursal su, empleado em, zona zo, zona_empleado ze, lugar lu
-            where rev.fk_flota = flo.flo_clave and flo.fk_sucursal = su.su_clave
-            and em.em_clave = ze.fk_empleado and ze.fk_zona_2 = zo.fk_sucursal and zo.fk_sucursal = su.su_clave
-            and su.fk_lugar = lu.lu_clave
-            group by su.su_clave, lu.lu_nombre
+            select sum(coalesce(em_salario_base,0))+sum(coalesce(rev_monto_pagar,0)) as gasto, su.su_nombre as nombre, lue.lu_nombre as estado
+            from zona_empleado_horario zeh, empleado em, asistencia, sucursal su,
+            flota left outer join revision on fk_flota = flo_clave, lugar lup, lugar lum, lugar lue
+            where fk_zona_empleado_1 = su_clave and em_clave = fk_zona_empleado_3 and fk_zo_em_ho_5 = zo_em_ho_clave
+            and flota.fk_sucursal = su_clave
+            and su.fk_lugar = lup.lu_clave and lup.fk_lugar = lum.lu_clave and lum.fk_lugar = lue.lu_clave
+            and a_check is not null
+            group by su.su_nombre, lue.lu_nombre
         '));
         return view('consulta47')->with(compact('cons47'));
     }

@@ -277,7 +277,8 @@ Route::get('consulta46', function(){
   $paraDiferenciar = 46;
   return view('buscadorFecha')->with(compact('paraDiferenciar')); 
 });
-Route::get('filtrarFecha_46{rango}','ConsultasEnvioController@consulta46');
+Route::get('filtrarFecha_6{rango}','ConsultasEnvioController@consulta46');
+
   
   /* Consulta 47: Oficinas más costosas por estado */
   Route::get('consulta47','ConsultasEnvioController@consulta47');
