@@ -77,6 +77,8 @@
       <br/>
       <a href="consulta45">Total de gastos generados por revisión de flotas por mes y por sucursal.</a>
       <br/>
+      <a href="consulta46">Ingresos y egresos por oficina por período de tiempo.</a>
+      <br/>
     </div>
     @stack('scripts')
     @include('footer')

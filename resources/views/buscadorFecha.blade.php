@@ -74,6 +74,13 @@
                             window.location.href = url; 
                         }
                     }
+                    // Para la consulta 46
+                    if($('#paraDiferenciar').val() == 46){
+                        if ($("input[name=parametro]:checked").val() == "rango") {
+                            var url = "{{url('/filtrarFecha_46')}}" + document.getElementById(rangoi).value + document.getElementById(rangof).value;
+                            window.location.href = url; 
+                        }
+                    }
                 }
                 </script>
 
