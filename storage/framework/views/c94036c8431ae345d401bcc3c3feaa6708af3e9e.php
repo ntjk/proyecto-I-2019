@@ -12,7 +12,7 @@
         <meta name="csrf-token" content="<?php echo csrf_token(); ?>" />
         <link href="<?php echo e(asset('css/styles.css')); ?>" rel="stylesheet">
         <script type="text/javascript" src="<?php echo e(asset('js/dropdown.js')); ?>"></script>
-        <title>Aéreo - LogUCAB</title>
+        <title>Marítimo - LogUCAB</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
@@ -23,12 +23,14 @@
             <?php echo $__env->make('header', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
             <div class="container">
             <br/>
-            <h1 class="text-center">Transportes Aéreos</h1>
+            <h1 class="text-center">Transportes Maritimos</h1>
             <br/>
             <button type="button" id="add_button" data-toggle="modal" data-target="#userModal" class="btn btn-info btn-lg">Add</button>
             <table class="table table-bordered" id="users-table">
                 <thead>
                     <tr>
+                        <th>Clave</th>
+                        <th>Suptipo</th>
                         <th>Tipo</th>
                         <th>Peso</th>
                         <th>Placa</th>
@@ -39,48 +41,30 @@
                         <th>Modelo</th>
                         <th>Sucursal</th>
                         <th>Año</th>
-                        <th>Longitud</th>
-                        <th>Envergadura</th>
-                        <th>Área</th>
-                        <th>Altura</th>
-                        <th>Ancho de cabina interna</th>
-                        <th>Diámetro de fusilaje</th>
-                        <th>Peso vacío</th>
-                        <th>Peso máximo de despegue</th>
-                        <th>Carrera de despegue</th>
-                        <th>Velocidad máxima</th>
+                        <th>Serial Motor</th>
                         <th>Accion</th>
                     </tr>
                 </thead>
                 <tbody>
-                  <?php $__currentLoopData = $flotas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $floa): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                  <?php $__currentLoopData = $flotas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $floma): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                   <tr>
-                    <td><?php echo e($floa->flo_clave); ?></td>
-                    <td><?php echo e($floa->flo_subtipo); ?></td>
-                    <td><?php echo e($floa->flo_tipo); ?></td>
-                    <td><?php echo e($floa->flo_peso); ?></td>
-                    <td><?php echo e($floa->flo_placa); ?></td>
-                    <td><?php echo e($floa->flo_descripcion); ?></td>
-                    <td><?php echo e($floa->flo_combustible_por_hora); ?></td>
-                    <td><?php echo e($floa->flo_serial_carroceria); ?></td>
-                    <td><?php echo e($floa->flo_capacidad_carga); ?></td>
-                    <td><?php echo e($floa->mod_nombre); ?></td>
-                    <td><?php echo e($floa->su_nombre); ?></td>
-                    <td><?php echo e($floa->flo_año); ?></td>
-                    <td><?php echo e($floa->flo_a_longitud); ?></td>
-                    <td><?php echo e($floa->flo_a_envergadura); ?></td>
-                    <td><?php echo e($floa->flo_a_area); ?></td>
-                    <td><?php echo e($floa->flo_a_altura); ?></td>
-                    <td><?php echo e($floa->flo_a_ancho_cabina_interna); ?></td>
-                    <td><?php echo e($floa->flo_a_diametro_fuselaje); ?></td>
-                    <td><?php echo e($floa->flo_a_peso_vacio); ?></td>
-                    <td><?php echo e($floa->flo_a_peso_maximo_despegue); ?></td>
-                    <td><?php echo e($floa->flo_a_carrera_de_despegue); ?></td>
-                    <td><?php echo e($floa->flo_a_velocidad_maxima); ?></td>
+                    <td><?php echo e($floma->flo_clave); ?></td>
+                    <td><?php echo e($floma->flo_subtipo); ?></td>
+                    <td><?php echo e($floma->flo_tipo); ?></td>
+                    <td><?php echo e($floma->flo_peso); ?></td>
+                    <td><?php echo e($floma->flo_placa); ?></td>
+                    <td><?php echo e($floma->flo_descripcion); ?></td>
+                    <td><?php echo e($floma->flo_combustible_por_hora); ?></td>
+                    <td><?php echo e($floma->flo_serial_carroceria); ?></td>
+                    <td><?php echo e($floma->flo_capacidad_carga); ?></td>
+                    <td><?php echo e($floma->mod_nombre); ?></td>
+                    <td><?php echo e($floma->su_nombre); ?></td>
+                    <td><?php echo e($floma->flo_año); ?></td>
+                    <td><?php echo e($floma->flo_ma_serial_motor); ?></td>
                     <td>
-                      <button class="btn btn-warning btn-detail update" id="<?php echo e($floa->flo_clave); ?>" value="<?php echo e($floa->flo_clave); ?>" name="Update">Update</button>
-                      <button class="btn btn-danger btn-delete delete" id="<?php echo e($floa->flo_clave); ?>" value="<?php echo e($floa->flo_clave); ?>" name="delete">Delete</button>
-                      <button class="btn btn-primary verHistorico" id="<?php echo e($floa->flo_clave); ?>" value="<?php echo e($floa->flo_clave); ?>" name="verHistorico">Histórico</button>
+                      <button class="btn btn-warning btn-detail update" id="<?php echo e($floma->flo_clave); ?>" value="<?php echo e($floma->flo_clave); ?>" name="Update">Update</button>
+                      <button class="btn btn-danger btn-delete delete" id="<?php echo e($floma->flo_clave); ?>" value="<?php echo e($floma->flo_clave); ?>" name="delete">Delete</button>
+                      <button class="btn btn-primary verHistorico" id="<?php echo e($floma->flo_clave); ?>" value="<?php echo e($floma->flo_clave); ?>" name="verHistorico">Histórico</button>
                     </td>
                   </tr>
                   <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -93,12 +77,12 @@
    <div class="modal-content">
     <div class="modal-header">
      <button type="button" class="close" data-dismiss="modal">&times;</button>
-     <h4 class="modal-title">Añadir Flota Aérea</h4>
+     <h4 class="modal-title">Añadir Flota Marítima</h4>
     </div>
     <div class="modal-body">
      <label>Subtipo</label>
      <select class="form-control" name="flo_subtipo" id="flo_subtipo">
-       <option value="aerea" selected>aerea</option>
+       <option value="marítima" selected>marítima</option>
      </select>
      <br />
      <label>Tipo</label>
@@ -138,35 +122,9 @@
      <label>Año</label>
      <input type="text" name="flo_año" id="flo_año" class="form-control" />
      <br />
-     <label>Longitud</label>
-     <input type="number" step="0.01" name="flo_a_longitud" id="flo_a_longitud" class="form-control" />
      <br />
-     <label>Envergadura</label>
-     <input type="number" step="0.01" name="flo_a_envergadura" id="flo_a_envergadura" class="form-control" />
-     <br />
-     <label>Area</label>
-     <input type="number" step="0.01" name="flo_a_area" id="flo_a_area" class="form-control" />
-     <br />
-     <label>Altura</label>
-     <input type="number" step="0.01" name="flo_a_altura" id="flo_a_altura" class="form-control" />
-     <br />
-     <label>Ancho Cabina Interna</label>
-     <input type="number" step="0.01" name="flo_a_ancho_cabina_interna" id="flo_a_ancho_cabina_interna" class="form-control" />
-     <br />
-     <label>Diametro de Fuselaje</label>
-     <input type="number" step="0.01" name="flo_a_diametro_fuselaje" id="flo_a_diametro_fuselaje" class="form-control" />
-     <br />
-     <label>Peso Vacio</label>
-     <input type="number" step="0.01" name="flo_a_peso_vacio" id="flo_a_peso_vacio" class="form-control" />
-     <br />
-     <label>Peso Maximo Despegue</label>
-     <input type="number" step="0.01" name="flo_a_peso_maximo_despegue" id="flo_a_peso_maximo_despegue" class="form-control" />
-     <br />
-     <label>Carrera de Despegue</label>
-     <input type="number" step="0.01" name="flo_a_carrera_de_despegue" id="flo_a_carrera_de_despegue" class="form-control" />
-     <br />
-     <label>Velocidad de Despegue</label>
-     <input type="number" step="0.01" name="flo_a_velocidad_maxima" id="flo_a_velocidad_maxima" class="form-control" />
+     <label>Serial del Motor</label>
+     <input type="text" name="flo_ma_serial_motor" id="flo_ma_serial_motor" class="form-control" />
      <br />
     </div>
     <div class="modal-footer">
@@ -199,21 +157,12 @@
             var fk_modelo = $('#fk_modelo').val();
             var fk_sucursal = $('#fk_sucursal').val();
             var flo_año = $('#flo_año').val();
-            var flo_a_longitud = $('#flo_a_longitud').val();
-            var flo_a_envergadura = $('#flo_a_envergadura').val();
-            var flo_a_area = $('#flo_a_area').val();
-            var flo_a_altura = $('#flo_a_altura').val();
-            var flo_a_ancho_cabina_interna = $('#flo_a_ancho_cabina_interna').val();
-            var flo_a_diametro_fuselaje = $('#flo_a_diametro_fuselaje').val();
-            var flo_a_peso_vacio = $('#flo_a_peso_vacio').val();
-            var flo_a_peso_maximo_despegue = $('#flo_a_peso_maximo_despegue').val();
-            var flo_a_carrera_de_despegue = $('#flo_a_carrera_de_despegue').val();
-            var flo_a_velocidad_maxima = $('#flo_a_velocidad_maxima').val();
+            var flo_te_serial_motor = $('#flo_ma_serial_motor').val();
             if(flo_subtipo != '' && flo_tipo != '')
             {
               $.ajax({
                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                url:"transporteA",
+                url:"transporteM",
                 method:'POST',
                 data: new FormData(this),
                 contentType:false,
@@ -231,16 +180,19 @@
               alert("Both Fields are Required");
             }
           });
+
           $(document).on('click', '.update', function(){
             var flo_clave = $(this).attr("id");
             $.ajax({
               headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-              url:"transporteA/getOne",
+              url:"transporteM/getOne",
               method:"POST",
               data:{flo_clave:flo_clave},
               dataType:"json",
               success:function(data){
                 $('#userModal').modal('show');
+                $('.modal-title').text("Edit Flota");
+                $('#flo_clave').val(flo_clave);
                 $('#flo_subtipo').val(data.flo_subtipo);
                 $('#flo_tipo').val(data.flo_tipo);
                 $('#flo_peso').val(data.flo_peso);
@@ -249,32 +201,22 @@
                 $('#flo_combustible_por_hora').val(data.flo_combustible_por_hora);
                 $('#flo_serial_carroceria').val(data.flo_serial_carroceria);
                 $('#flo_capacidad_carga').val(data.flo_capacidad_carga);
-                $('#flo_año').val(data.flo_año);
-                $('#flo_a_longitud').val(data.flo_a_longitud);
-                $('#flo_a_envergadura').val(data.flo_a_envergadura);
-                $('#flo_a_area').val(data.flo_a_area);
-                $('#flo_a_altura').val(data.flo_a_altura);
-                $('#flo_a_ancho_cabina_interna').val(data.flo_a_ancho_cabina_interna);
-                $('#flo_a_diametro_fuselaje').val(data.flo_a_diametro_fuselaje);
-                $('#flo_a_peso_vacio').val(data.flo_a_peso_vacio);
-                $('#flo_a_peso_maximo_despegue').val(data.flo_a_peso_maximo_despegue);
-                $('#flo_a_carrera_de_despegue').val(data.flo_a_carrera_de_despegue);
-                $('#flo_a_velocidad_maxima').val(data.flo_a_velocidad_maxima);
-                $('.modal-title').text("Edit Flota");
-                $('#flo_clave').val(flo_clave);
                 $('#fk_modelo').val(fk_modelo);
                 $('#fk_sucursal').val(fk_sucursal);
+                $('#flo_año').val(data.flo_año);
+                $('#flo_ma_serial_motor').val(data.flo_te_serial_motor);
                 $('#action').val("Edit");
                 $('#operation').val("Edit");
               }
             })
           });
+
           $(document).on('click','.delete',function(){
             var flo_clave = $(this).attr("id");
             if(confirm("¿Estás seguro de que quieres borrar esta información?")){
               $.ajax({
                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                url:"transporteA/"+flo_clave,
+                url:"transporteM/"+flo_clave,
                 type:"DELETE",
                 data:{flo_clave:flo_clave},
                 success:function(data){
@@ -293,7 +235,6 @@
             var url = "<?php echo e(url('/historicoF')); ?>" + flo_clave;
             window.location.href = url;
           });
-
 
         });
         </script>

@@ -1,4 +1,4 @@
- <!doctype html>
+<!doctype html>
 <html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>">
     <head>
         <meta charset="utf-8">
@@ -12,7 +12,7 @@
         <meta name="csrf-token" content="<?php echo csrf_token(); ?>" />
         <link href="<?php echo e(asset('css/styles.css')); ?>" rel="stylesheet">
         <script type="text/javascript" src="<?php echo e(asset('js/dropdown.js')); ?>"></script>
-        <title>Permisos - LogUCAB</title>
+        <title>Puertos - LogUCAB</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
@@ -21,57 +21,51 @@
     </head>
     <body>
             <?php echo $__env->make('header', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-           <div class="container contLogin" align="center" style="background-color:#404040;">
-          <h3 style="color:#fff;"><b>Inicio de sesión</b><br/>Solo para empleados</h3>
+            <div class="container">
             <br/>
-          <form class="form-inline">
-            <div class="input-group">
-              <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-              <input id="uss" type="text" class="form-control inputLogin" name="uss" placeholder="Usuario">
-            </div>
+            <h1 class="text-center">Puertos</h1>
             <br/>
-            <br/>
-            <div class="input-group">
-              <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-              <input id="password" type="password" class="form-control inputLogin" name="password" placeholder="Contraseña">
-            </div>
-            <br/><br/><br/>
-            <div >
-             <a type="reset" class="btn btn-info btn-lg entra" >Entrar</a>
-
-            </div>
-            <br/><br/><br/>
-          </form>
-        </div>
+            <!--<button type="button" id="add_button" data-toggle="modal" data-target="#userModal" class="btn btn-info btn-lg">Add</button>-->
+            <table class="table table-bordered" id="users-table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Cant. Puestos</th>
+                        <th>Cant. Muelles</th>
+                        <th>Longitud</th>
+                        <th>Ancho</th>
+                        <th>Calado</th>
+                        <th>Uso</th>
+                        <th>Tipo Flota</th>
+                        <th>Sucursal</th>
+                        <!--<th>Accion</th>-->
+                    </tr>
+                </thead>
+                <tbody>
+                  <?php $__currentLoopData = $puertos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $p): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                  <tr>
+                    <td><?php echo e($p->nombre); ?></td>
+                    <td><?php echo e($p->cp); ?></td>
+                    <td><?php echo e($p->cm); ?></td>
+                    <td><?php echo e($p->long); ?></td>
+                    <td><?php echo e($p->ancho); ?></td>
+                    <td><?php echo e($p->calado); ?></td>
+                    <td><?php echo e($p->uso); ?></td>
+                    <td><?php echo e($p->flota); ?></td>
+                    <td><?php echo e($p->sucursal); ?></td>
+                  </tr>
+                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </tbody>
+            </table>
         <script src="//code.jquery.com/jquery.js"></script>
         <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script>$(function() {
-
-          $('#users-table').DataTable({
-          })
-
-          $(document).on('click','.entra',function(){
-
-            var usuario = $('#uss').val();
-            var password = $('#password').val();
-            console.log(usuario);
-            console.log(password);
-            if(usuario != "" && password != ""){
-              document.cookie = "usuario=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
-              document.cookie = "password=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
-              document.cookie = "usuario=" + usuario;
-              document.cookie = "password=" + password;
-              console.log("los que valida "+document.cookie);
-              var url = "<?php echo e(url('/welcome')); ?>";
-              window.location = url;
-            }
-          });
+            $('#users-table').DataTable({
+            })
         });
         </script>
         <?php echo $__env->yieldPushContent('scripts'); ?>
         <?php echo $__env->make('footer', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-        </div>
-      </div>
     </body>
 </html>

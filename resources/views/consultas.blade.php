@@ -158,6 +158,12 @@
                   <tr>
                     <td><a href="consulta71-1-0-0-0-0-0-0">Costo de cada empleado por oficina en un periodo de tiempo</a></td>
                   </tr>
+                  <tr>
+                    <td><a href="consulta46">Ingresos y egresos por oficina por período de tiempo.</a></td>
+                  </tr>
+                  <tr>
+                    <td><a href="consulta47">Oficinas más costosas por estado .</a></td>
+                  </tr>
                 </tbody>
             </table>
         </div>
