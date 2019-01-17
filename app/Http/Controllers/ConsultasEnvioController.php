@@ -260,13 +260,14 @@ class ConsultasEnvioController extends Controller
         ->join('flota','flota.fk_sucursal','=','su_clave')
         ->join('revision','fk_flota','=','flo_clave','left outer')
         ->join('envio','fk_sucursal_origen','=','su_clave')
-        ->select(DB::raw("sum(em_salario_base)+sum(rev_monto_pagar) as egreso, sum(en_precio) as ingreso, date_trunc('month',en_fecha_envio) as mes, su_nombre, su_clave"))
+        ->select(DB::raw("sum(COALESCE(em_salario_base,0))+sum(COALESCE(rev_monto_pagar,0)) as egreso, sum(en_precio) as ingreso, date_trunc('month',en_fecha_envio) as mes, su_nombre, su_clave"))
+        ->where('a_check','!=',null)
         ->groupBy('mes','su_clave','su_nombre')
         ->get();
         return view('consulta44')->with(compact('consultas'));
     }
 
-    /*select sum(em_salario_base)+sum(rev_monto_pagar) as egreso, sum(en_precio) as ingreso, date_trunc('month',en_fecha_envio) as mes, su_nombre, su_clave
+    /*select sum(coalesce(em_salario_base,0))+sum(coalesce(rev_monto_pagar,0)) as egreso, sum(en_precio) as ingreso, date_trunc('month',en_fecha_envio) as mes, su_nombre, su_clave
       from zona_empleado_horario, empleado, asistencia, envio,
       sucursal left outer join servicio_sucursal on servicio_sucursal.fk_sucursal = sucursal.su_clave,
       flota left outer join revision on fk_flota = flo_clave
@@ -275,6 +276,7 @@ class ConsultasEnvioController extends Controller
       and fk_zo_em_ho_5 = zo_em_ho_clave
       and flota.fk_sucursal = su_clave
       and fk_sucursal_origen = su_clave
+      and a_check is not null
       group by mes, su_clave, su_nombre*/
 
 
