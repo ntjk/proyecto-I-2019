@@ -29,7 +29,7 @@
             <table class="table table-bordered" id="users-table">
                 <thead>
                     <tr>
-                        <th>Clave</th>
+                        <th>Nacionalidad</th>
                         <th>Cédula</th>
                         <th>Nombre</th>
                         <th>Apellido</th>
@@ -38,10 +38,29 @@
                         <th>Fecha de Nacimiento</th>
                         <th>VIP</th>
                         <th>Fk_Lugar</th>
-                        <th>Nacionalidad</th>
                         <th id="hd1" name="hd1">Accion</th>
                     </tr>
                 </thead>
+                <tbody>
+                  @foreach ($cliente as $c)
+                  <tr>
+                    <td>{{$c->cli_nacionalidad}}</td>
+                    <td>{{$c->cli_cedula}}</td>
+                    <td>{{$c->cli_nombre}}</td>
+                    <td>{{$c->cli_apellido}}</td>
+                    <td>{{$c->cli_estado_civil}}</td>
+                    <td>{{$c->cli_empresa_trabajo}}</td>
+                    <td>{{$c->cli_fecha_nacimiento}}</td>
+                    <td>{{$c->cli_vip}}</td>
+                    <td>{{$c->lu_nombre}}</td>
+                    <td>
+                    <button class="btn btn-warning btn-detail update" id="{{$c->cli_clave}}" value="{{$c->cli_clave}}" name="Update">Update</button>
+                    <button class="btn btn-danger btn-delete delete" id="{{$c->cli_clave}}" value="{{$c->cli_clave}}" name="delete">Delete</button>
+                    <button class="btn btn-info btn-detail carnet" id="{{$c->cli_clave}}" value="{{$c->cli_clave}}" onclick="navigate(this,'{{$c->cli_clave}}')" name="Carnet">Carnet</button>
+                    </td>
+                  </tr>
+                  @endforeach
+                </tbody>
             </table>
         </div>
         <div id="userModal" class="modal fade">
@@ -135,22 +154,6 @@ function navigate(link, inputid){
            // $(".delete").hide();
 
             $('#users-table').DataTable({
-                processing: true,
-                serverSide: true,
-                ajax: '{!! route('cliente_getData') !!}',
-                columns: [
-                    { data: 'cli_clave', name: 'cli_clave' },
-                    { data: 'cli_cedula', name: 'cli_cedula' },
-                    { data: 'cli_nombre', name: 'cli_nombre' },
-                    { data: 'cli_apellido', name: 'cli_apellido' },
-                    { data: 'cli_estado_civil', name: 'cli_estado_civil' },
-                    { data: 'cli_empresa_trabajo', name: 'cli_empresa_trabajo' },
-                    { data: 'cli_fecha_nacimiento', name: 'cli_fecha_nacimiento' },
-                    { data: 'cli_vip', name: 'cli_vip' },
-                    { data: 'fk_lugar', name: 'fk_lugar' },
-                    { data: 'cli_nacionalidad', name: 'cli_nacionalidad' },
-                    { data: 'action', name: 'action', orderable: false, searchable: false}
-                ]
             })
             $(document).on('change','#estado',function(){
               var estado = $(this).val();

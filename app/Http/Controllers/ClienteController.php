@@ -16,35 +16,27 @@ class ClienteController extends Controller
      */
     public function index()
     {
+        $cliente = Cliente::join('lugar','lugar.lu_clave','=','cliente.fk_lugar')
+        ->select(
+            'cliente.cli_clave',
+            'cliente.cli_cedula',
+            'cliente.cli_nombre',
+            'cliente.cli_apellido',
+            'cliente.cli_estado_civil',
+            'cliente.cli_empresa_trabajo',
+            'cliente.cli_fecha_nacimiento',
+            'cliente.cli_vip',
+            'lugar.lu_nombre',
+            'cliente.cli_nacionalidad'
+        )->get();
+
         $estados= Lugar::where('lu_tipo','estado')->orderBy('lu_nombre')->get();
-        return view('cliente',compact('estados'));
+
+        return view('cliente')
+        ->with(compact('estados'))
+        ->with(compact('cliente'));
     }
 
-    /**
-     * Process ajax request.
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function getData()
-    {
-        $cliente = Cliente::select([
-            'cli_clave',
-            'cli_cedula',
-            'cli_nombre',
-            'cli_apellido',
-            'cli_estado_civil',
-            'cli_empresa_trabajo',
-            'cli_fecha_nacimiento',
-            'cli_vip',
-            'fk_lugar',
-            'cli_nacionalidad',
-        ]);
-
-        return Datatables::of(cliente::query())->addColumn('action', function ($cliente) {
-            return '<button class="btn btn-warning btn-detail update" id="'.$cliente->cli_clave.'" value="'.$cliente->cli_clave.'" name="Update">Update</button>
-            <button class="btn btn-danger btn-delete delete" id="'.$cliente->cli_clave.'" value="'.$cliente->cli_clave.'" name="delete">Delete</button>
-            <button class="btn btn-info btn-detail carnet" id="'.$cliente->cli_clave.'" value="'.$cliente->cli_clave.'" onclick="navigate(this,'.$cliente->cli_clave.')" name="Carnet">Carnet</button>'; })->make(true);
-    }
 
     public function store(Request $request){
       if ($request->operation == "Edit"){
@@ -85,7 +77,7 @@ class ClienteController extends Controller
 
     public function showCarnet($id){
       $cliente = Cliente::find($id);
-      return view('clienteCarnet')->with(compact('cliente')); 
+      return view('clienteCarnet')->with(compact('cliente'));
     }
 
 }
