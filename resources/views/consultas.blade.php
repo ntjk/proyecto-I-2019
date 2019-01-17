@@ -152,6 +152,9 @@
                   <tr>
                     <td><a href="consulta29">Oficina es la más amplia por estado, municipio y parroquia</a></td>
                   </tr>
+                  <tr>
+                    <td><a href="consulta71-1-0-0-0-0-0-0">Costo de cada empleado por oficina en un periodo de tiempo</a></td>
+                  </tr>
                 </tbody>
             </table>
         </div>

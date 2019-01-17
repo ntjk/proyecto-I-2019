@@ -33,7 +33,7 @@
         @endforeach
       </select>
       <br /><br/>
-      <a type="reset" onclick="navigate(this,'inputid')">Edit</a>
+      <a type="reset" onclick="navigate(this,'inputid')">Crear Reporte</a>
       <script>
         function navigate(link, inputid){
           var url = "{{url('/consulta70-')}}" + document.getElementById(inputid).value;

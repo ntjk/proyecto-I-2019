@@ -200,6 +200,7 @@ Route::get('consulta28', 'ConsultasSucursalController@oficConUbicacion');
 Route::get('consulta29', 'ConsultasSucursalController@masAmplia');
 Route::get('consulta30', 'ConsultasEnvioController@audi');
 Route::get('consulta70-{id}', 'ConsultasSucursalController@showNominas');
+Route::get('consulta71-{id}-{yi}-{mi}-{di}-{yf}-{mf}-{df}', 'ConsultasSucursalController@showNominaPeriodo');
 
 /*Asistencias*/
 Route::resource('asistencia','AsistenciaController');
