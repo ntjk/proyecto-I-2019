@@ -78,6 +78,16 @@
                     if($('#paraDiferenciar').val() == 46){
                         if ($("input[name=parametro]:checked").val() == "rango") {
                             var url = "{{url('/filtrarFecha_46')}}" + document.getElementById(rangoi).value + document.getElementById(rangof).value;
+                    // Para la consulta 13
+                    if($('#paraDiferenciar').val() == 13){
+                        if ($("input[name=parametro]:checked").val() == "rango") {
+                            var url = "{{url('/filtrarFecha_4')}}" + document.getElementById(rangoi).value + document.getElementById(rangof).value;
+                            window.location.href = url; 
+                        }
+                    }
+                    if($('#paraDiferenciar').val() == 25){
+                        if ($("input[name=parametro]:checked").val() == "rango") {
+                            var url = "{{url('/filtrarFecha_5')}}" + document.getElementById(rangoi).value + document.getElementById(rangof).value;
                             window.location.href = url; 
                         }
                     }

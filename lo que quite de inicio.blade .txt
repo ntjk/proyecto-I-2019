@@ -1,0 +1,30 @@
+
+  /*  var usuario = $('#uss').val();
+  var password = $('#password').val();
+
+    document.cookie = "usuario=" + usuario;
+    document.cookie = "password=" + password;
+    var validar = '{!! validarUsuario(); !!}';
+    var validar2 = '{!! verificarPermisosHelper("ver envios"); !!}';
+    console.log("prim " + validar);
+    console.log("prim " +validar2);*/
+
+
+    /*var validar = '{!! validarUsuario() !!}';
+    console.log("v1 "+validar);
+    if(validar==1){
+      //var url = "{{url('/welcome')}}";
+      var url = "{{url('/sesion2')}}";
+      console.log("antes "+document.cookie);
+      document.cookie = "usuario=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+      document.cookie = "password=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+      console.log("antes de asignar cookie "+document.cookie);
+      document.cookie = "usuario=" + usuario;
+      document.cookie = "password=" + password;
+      console.log(document.cookie);
+      //window.location = url;
+    }else{
+      alert("Datos incorrectos");
+      document.cookie = "usuario=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+      document.cookie = "password=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+    }*/

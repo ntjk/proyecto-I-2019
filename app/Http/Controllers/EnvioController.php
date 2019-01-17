@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
- 
+
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 use Illuminate\Support\Facades\DB;
@@ -42,20 +42,20 @@ select su_nombre, ru_clave from ruta, sucursal where fk_sucursal_1=su_clave and 
 
         $envio1 = Envio::join('sucursal','sucursal.su_clave','=','envio.fk_sucursal_origen')
         ->select(['sucursal.su_nombre'])
-        ->whereBetween('sucursal.su_clave', [1, 10])
+        //->whereBetween('sucursal.su_clave', [1, 10])
         ->get();
         $envio2 = Envio::join('sucursal','sucursal.su_clave','=','envio.fk_sucursal_destino')
         ->select(['sucursal.su_nombre'])
-        ->whereBetween('sucursal.su_clave', [1, 10])
+        //->whereBetween('sucursal.su_clave', [1, 10])
         ->get();
         $envio3 = Envio::join('cliente','cli_clave','=','envio.fk_cliente')->select(['cliente.cli_cedula'])
-        ->whereBetween('cliente.cli_clave', [1, 10])
+        //->whereBetween('cliente.cli_clave', [1, 10])
         ->get();
         $envio4 = Envio::join('destinatario','des_clave','=','envio.fk_destinatario')->select(['destinatario.des_cedula'])
-        ->whereBetween('destinatario.des_clave', [1, 10])
+        //->whereBetween('destinatario.des_clave', [1, 10])
         ->get();
         $envio5 = Envio::join('tipo','ti_clave','=','envio.fk_tipo')->select(['tipo.ti_nombre'])
-        ->whereBetween('tipo.ti_clave', [1, 10])
+        //->whereBetween('tipo.ti_clave', [1, 10])
         ->get();
 //este poco de envios es por los atributos que necesitamos que salgan en la tabla pero no pertenecen a la tabla envio
 
@@ -86,7 +86,7 @@ select su_nombre, ru_clave from ruta, sucursal where fk_sucursal_1=su_clave and 
         }
 
       return view('envio')->with(compact('sucursales'))->with(compact('clientes'))->with(compact('tipos'))->with(compact('florus'))->with(compact('rutas'))->with(compact('envios'));
-     
+
     }
 
     /**
@@ -159,8 +159,29 @@ select su_nombre, ru_clave from ruta, sucursal where fk_sucursal_1=su_clave and 
         return ['success' => true, 'message' => 'Saved !!', 'value' => Envio::where('fk_cliente',$request->input('fk_cliente'))->count()];
     }
 
-    public function getOne(Request $request){
-      return $envio = Envio::find($request->en_clave);
+    public function updateRuta(Request $request){
+      //cuantas florus tienen esa fk como destino
+      /*$destino=$request->sd;
+      $sql=DB::select(DB::raw('select count (*) from (select * from flota_ruta where fk_ruta_3= ?) as t1'));
+      $cantidadRutas = DB::select(DB::raw($sql), [$destino]);
+      
+      $sql2=DB::select(DB::raw('select distinct flo_ruta from flota_ruta where flo_ruta in (select flo_ruta from flota_ruta where fk_ruta_3= ?)'));
+      $cadaRuta=DB::select(DB::raw($sql2), [$destino]);
+      //por cada floru, recorrer todos los registros de esa ruta Nro. tal
+      for ($i=0; $i < $cantidadRutas; $i++) {
+        $param3 = $cadaRuta[$i];
+        $sql3=DB::select(DB::raw('select so.su_nombre as so, flo_ru_clave from flota_ruta, sucursal as so where fk_ruta_2=so.su_clave and flo_ruta = ?'));;
+        $sucursalesDeEsaRuta=DB::select(DB::raw($sql3), [$param3]);
+
+      }*/
+      $destino=$request->sd;
+      $origen=$request->so;
+      //$sql="select so.su_nombre as so, sd.su_nombre as sd, flo_ruta, flo_ru_clave from flota_ruta, sucursal as so, sucursal as sd where fk_ruta_2=so.su_clave and fk_ruta_3=sd.su_clave and flo_ruta in (select flo_ruta from flota_ruta where fk_ruta_3= ? ) order by flo_ru_clave";
+      $sql="select so.su_nombre as so, flo_subtipo, sd.su_nombre as sd, flo_ruta, flo_ru_clave from flota_ruta, sucursal as so, sucursal as sd, flota where fk_flota=flo_clave and fk_ruta_2=so.su_clave and fk_ruta_3=sd.su_clave and flo_ruta in (select flo_ruta from flota_ruta where fk_ruta_3= ? ) and flo_ruta in (select flo_ruta from flota_ruta where fk_ruta_2= ? ) order by flo_ru_clave";
+      $rutas= DB::select(DB::raw($sql), [$destino, $origen]);
+      //bien pero ahora falta asegurar que el origen sea el primer registro de la flota_ruta, ajuro usar for
+      //porque no sabes cuantos registros debas devolver...
+      return $rutas;
     }
 
     public function destroy($id){
@@ -180,5 +201,23 @@ select su_nombre, ru_clave from ruta, sucursal where fk_sucursal_1=su_clave and 
         $precio=($tipoF->ti_precio_kg + $floruF->flo_ru_costo) * $request->peso;
       }
       return $precio;
+    }
+
+    public function showFactura($id){
+      $envio=Envio::find($id);
+
+      $cliente=Cliente::find($envio->fk_cliente);
+      $destinatario=Destinatario::find($envio->fk_destinatario);
+      $origen=Sucursal::find($envio->fk_sucursal_origen);
+      $destino=Sucursal::find($envio->fk_sucursal_destino);
+      $tipo=Tipo::find($envio->fk_tipo);
+
+      return view('envioFactura')
+      ->with(compact('envio'))
+      ->with(compact('cliente'))
+      ->with(compact('destinatario'))
+      ->with(compact('origen'))
+      ->with(compact('destino'))
+      ->with(compact('tipo'));
     }
 }

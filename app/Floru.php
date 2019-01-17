@@ -10,8 +10,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $fk_ruta_1
  * @property int $fk_ruta_2
  * @property int $fk_ruta_3
- * @property int $fk_ruta_4
- * @property int $fk_ruta_5
+  * @property int $flo_ruta
  * @property float $flo_ru_costo
  * @property float $flo_ru_duracion_hrs
  */
@@ -24,11 +23,13 @@ class Floru extends Model
      */
     protected $table = 'flota_ruta';
     protected $primaryKey ='flo_ru_clave';
+    public $timestamps = false;
+
 
     /**
      * @var array
      */
-    protected $fillable = ['flo_ru_clave','fk_ruta_5','fk_ruta_2','fk_ruta_3','fk_ruta_4','flo_ru_duracion_hrs', 'flo_ru_costo', 'fk_flota'];
+    protected $fillable = ['flo_ru_clave','fk_ruta_2','fk_ruta_3','flo_ru_duracion_hrs', 'flo_ru_costo', 'fk_flota', 'flo_ruta'];
 
     public function formaParte()
     {

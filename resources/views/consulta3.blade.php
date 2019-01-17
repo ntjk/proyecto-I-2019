@@ -13,7 +13,7 @@
         <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
         <link href="{{ asset('css/unselectable.css') }}" rel="stylesheet">
         <script type="text/javascript" src="{{ asset('js/dropdown.js') }}"></script>
-        <title>Consulta 2</title>
+        <title>Consulta 3</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
@@ -28,40 +28,36 @@
                 <thead>
                     <tr>
                         <th>Estatus</th>
+                        <th>Nro de guia</th>
                         <th>Tipo</th>
                         <th>Precio</th>
                         <th>Peso</th>
-                        <th>Descripción</th>
                         <th>Altura</th>
                         <th>Anchura</th>
                         <th>Profundidad</th>
                         <th>Fecha de envío</th>
-                        <th>Fecha de entrega estimada</th>
                         <th>Cliente emisor</th>
                         <th>Destinatario</th>
-                        <th>FKFR1</th>
                         <th>Sucursal origen</th>
                         <th>Sucursal destino</th>
                     </tr>
                 </thead>
                 <tbody>
-                  @foreach ($envios as $envio)
+                  @foreach ($consulta as $envio)
                   <tr>
                     <td>{{$envio->che_estatus}}</td>
+                    <td>{{$envio->en_clave}}</td>
                     <td>{{$envio->ti_nombre}}</td>
                     <td>{{$envio->en_precio}}</td>
                     <td>{{$envio->en_peso}}</td>
-                    <td>{{$envio->en_descripcion}}</td>
                     <td>{{$envio->en_altura}}</td>
                     <td>{{$envio->en_anchura}}</td>
                     <td>{{$envio->en_profundidad}}</td>
                     <td>{{$envio->en_fecha_envio}}</td>
-                    <td>{{$envio->en_fecha_entrega_estimada}}</td>
-                    <td>{{$envio->cli_cedula}}</td>
+                    <td>{{$envio->cli_nacionalidad}} {{$envio->cli_cedula}}</td>
                     <td>{{$envio->des_cedula}}</td>
-                    <td>{{$envio->fk_flota_ruta_1}}</td>
-                    <td>{{$envio->so_nombre}}</td>
-                    <td>{{$envio->su_nombre}}</td>            
+                    <td>{{$envio->so}}</td>
+                    <td>{{$envio->sd}}</td>            
                   </tr>
                   @endforeach
                 </tbody>

@@ -30,7 +30,7 @@ class Servicio_SucursalController extends Controller
         return Datatables::of($servicio_sucursal)->addColumn('action', function ($servicio_sucursal) {
             return '<button class="btn btn-warning btn-detail update" id="'.$servicio_sucursal->fk_servicio.'" value="'.$servicio_sucursal->fk_servicio.'" name="Update">Update</button>
             <button class="btn btn-danger btn-delete delete" id="'.$servicio_sucursal->fk_servicio.'" value="'.$servicio_sucursal->fk_servicio.'" name="delete">Delete</button>'; })->make(true);
-          
+
     }
 
     public function store(Request $request){
@@ -55,7 +55,7 @@ class Servicio_SucursalController extends Controller
     // select su.su_nombre, ser.ser_tipo
     // from sucursal su, servicio ser, servicio_sucursal ss
     // where ss.fk_sucursal=su.su_clave and ss.fk_servicio=ser.ser_clave
-    // group by su.su_nombre, ser.ser_tipo        
+    // group by su.su_nombre, ser.ser_tipo
     // '));
     // return view('')->with(compact('ss'));
 

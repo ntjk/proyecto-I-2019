@@ -40,6 +40,7 @@ Route::post('sucursal/getOne','SucursalController@getOne');
 Route::post('sucursal/updateSelect','SucursalController@updateSelect');
 Route::get('sucursal', 'SucursalController@index');
 Route::get('sucursal-getData','SucursalController@getData')->name('sucursal_getData');
+Route::get('sucursal{id}-{year}-{month}-{day}','SucursalController@showNomina');
 // @eso quiere decir el metodo eso
 /* rol */
 Route::resource('rol','RolController');
@@ -62,6 +63,7 @@ Route::post('empleado/updateSelect','EmpleadoController@updateSelect');
 Route::post('empleado/updateSelect2','EmpleadoController@updateSelect2');
 Route::get('empleado','EmpleadoController@index');
 Route::get('empleado-getData','EmpleadoController@getData')->name('empleado_getData');
+Route::get('empleado{id}-{year}-{month}-{day}-{su_id}','EmpleadoController@showFactura');
 
 /* ruta */
 Route::resource('ruta','RutaController');
@@ -98,6 +100,7 @@ Route::post('cliente/updateSelect','ClienteController@updateSelect');
 Route::post('cliente/updateSelect2','ClienteController@updateSelect2');
 Route::get('cliente', 'ClienteController@index');
 Route::get('cliente-getData','ClienteController@getData')->name('cliente_getData');
+Route::get('cliente{id}','ClienteController@showCarnet');
 
 /* Envio */
 Route::resource('envio','EnvioController');
@@ -106,9 +109,18 @@ Route::post('envio/updateSelect','EnvioController@updateSelect');
 Route::post('envio/updatePrecio','EnvioController@updatePrecio');
 Route::get('envio', 'EnvioController@index');
 Route::get('envio-getData','EnvioController@getData')->name('envio_getData');
+Route::post('envio/updateRuta','EnvioController@updateRuta');
+Route::get('envio{id}','EnvioController@showFactura');
+
 
 /* ruta */
+//Route::resource('floru','FloruController');
+Route::get('floru', function(){
+  return view('floru');
+});
 Route::resource('floru','FloruController');
+Route::post('floru/agregarRuta','FloruController@guardarRuta');
+Route::post('floru/agregarNodo','FloruController@guardarNodo');
 Route::post('floru/getOne','FloruController@getOne');
 Route::post('floru/updateSelect','FloruController@updateSelect');
 Route::get('floru','FloruController@index');
@@ -143,16 +155,14 @@ Route::get('consulta2','ConsultasEnvioController@pesoPromedioPorOficina');
 Route::get('consulta3','ConsultasEnvioController@enviosPorEstatus');
 Route::get('consulta4','ConsultasEnvioController@origenDestinoMaxPaquetes');
 Route::get('consulta5','ConsultasEnvioController@calcularMesConMasEnvios2');
-Route::get('consulta101','ConsultasEnvioController@calcularMesConMasEnvios3');
 
 Route::get('consulta6', function(){
   $paraDiferenciar = 6;
   return view('buscadorFecha')->with(compact('paraDiferenciar')); });
 Route::get('filtrarFecha_1{f}','ConsultasEnvioController@consulta6');
-
-Route::get('consulta7', 'ConsultasEnvioController@promedioPaquetesDiarios');
 Route::get('filtrarFecha_2{rango}','ConsultasEnvioController@consulta6_2');
 
+Route::get('consulta7', 'ConsultasEnvioController@promedioPaquetesDiarios');
 Route::get('consulta8','ConsultasEnvioController@paquetesConMedios');
 Route::get('consulta9','ConsultasEnvioController@promedioEstanciaZonas');
 Route::get('consulta10','ConsultasClienteController@masEnviosPorOfic');
@@ -161,10 +171,35 @@ Route::get('consulta11','ConsultasClienteController@vipPorOfic');
 Route::get('consulta12', function(){
   $paraDiferenciar = 12;
   return view('buscadorFecha')->with(compact('paraDiferenciar')); });
-Route::get('filtrarFecha_3{rango}','ConsultasEnvioController@clasificacionPaquetesPorOficina');
+Route::get('filtrarFecha_3{rango}','ConsultasEnvioController@clasificacionPaquetesPorOficinaCantidad');
+
+Route::get('consulta13', function(){
+  $paraDiferenciar = 13;
+  return view('buscadorFecha')->with(compact('paraDiferenciar')); });
+Route::get('filtrarFecha_4{rango}','ConsultasEnvioController@clasificacionPaquetesPorOficina');
 
 Route::get('consulta14', 'ConsultasEmpleadoController@inasistenciasEmpleados');
 Route::get('consulta15', 'ConsultasEmpleadoController@inasistenciasEmpleadosSinHorario');
+Route::get('consulta16', 'ConsultasFlotaController@flotaPorOfic');
+Route::get('consulta17', 'ConsultasFlotaController@flotaPorSubtipo');
+Route::get('consulta18', 'ConsultasFlotaController@flotaPorTipo');
+Route::get('consulta19', 'ConsultasFlotaController@flotaTerrestre');
+Route::get('consulta20-{id}-{tiempo}', 'ConsultasSucursalController@avgEnviosSucursales');
+Route::get('consulta21', 'ConsultasSucursalController@oficPorEstado');
+Route::get('consulta22', 'ConsultasSucursalController@oficYZonaPorEstado');
+Route::get('consulta23', 'ConsultasSucursalController@oficInternacionales');
+Route::get('consulta24', 'ConsultasEmpleadoController@empleadosFechaIngreso');
+
+Route::get('consulta25', function(){
+  $paraDiferenciar = 25;
+  return view('buscadorFecha')->with(compact('paraDiferenciar')); });
+Route::get('filtrarFecha_5{rango}','ConsultasEmpleadoController@empleadosFechaEgreso');
+Route::get('consulta26', 'ConsultasEmpleadoController@horarioEmpleados');
+Route::get('consulta27', 'ConsultasFlotaController@cantFlotaTerrestre');
+Route::get('consulta28', 'ConsultasSucursalController@oficConUbicacion');
+Route::get('consulta29', 'ConsultasSucursalController@masAmplia');
+Route::get('consulta30', 'ConsultasEnvioController@audi');
+Route::get('consulta70-{id}', 'ConsultasSucursalController@showNominas');
 
 /*Asistencias*/
 Route::resource('asistencia','AsistenciaController');

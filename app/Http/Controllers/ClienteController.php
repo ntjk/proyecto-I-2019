@@ -42,7 +42,8 @@ class ClienteController extends Controller
 
         return Datatables::of(cliente::query())->addColumn('action', function ($cliente) {
             return '<button class="btn btn-warning btn-detail update" id="'.$cliente->cli_clave.'" value="'.$cliente->cli_clave.'" name="Update">Update</button>
-            <button class="btn btn-danger btn-delete delete" id="'.$cliente->cli_clave.'" value="'.$cliente->cli_clave.'" name="delete">Delete</button>'; })->make(true);
+            <button class="btn btn-danger btn-delete delete" id="'.$cliente->cli_clave.'" value="'.$cliente->cli_clave.'" name="delete">Delete</button>
+            <button class="btn btn-info btn-detail carnet" id="'.$cliente->cli_clave.'" value="'.$cliente->cli_clave.'" onclick="navigate(this,'.$cliente->cli_clave.')" name="Carnet">Carnet</button>'; })->make(true);
     }
 
     public function store(Request $request){
@@ -80,6 +81,11 @@ class ClienteController extends Controller
     }
     public function updateSelect2(Request $request){
       return $parroquias= Lugar::where('fk_lugar',$request->municipio)->orderBy('lu_nombre')->get();
+    }
+
+    public function showCarnet($id){
+      $cliente = Cliente::find($id);
+      return view('clienteCarnet')->with(compact('cliente')); 
     }
 
 }
